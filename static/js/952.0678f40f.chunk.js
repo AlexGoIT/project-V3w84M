@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkproject_v3w84m=self.webpackChunkproject_v3w84m||[]).push([[952],{952:function(e,n,r){r.r(n),r.d(n,{default:function(){return u}});var t=r(184),u=function(){return(0,t.jsx)("div",{children:"SignUp Page"})}}}]);
+//# sourceMappingURL=952.0678f40f.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkproject_v3w84m=self.webpackChunkproject_v3w84m||[]).push([[208],{208:function(e,n,r){r.r(n),r.d(n,{default:function(){return t}});var c=r(184),t=function(){return(0,c.jsx)("div",{children:"Exercises Page"})}}}]);
+//# sourceMappingURL=208.bfec3cc9.chunk.js.map
