@@ -27,7 +27,7 @@ export const App = () => {
           <Route path="exercises" element={<ExercisesPage />} />
           {/* <Route path="notfound" element={<NotFoundPage />} /> */}
         </Route>
-        {/* <Route path="*" element={<Navigate to="/notfound" />} /> */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
