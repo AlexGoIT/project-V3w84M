@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/403.748112be.chunk.js","mappings":"8KAIA,EAJgB,WACd,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,gBACd,C","sources":["pages/Welcome/Welcome.jsx"],"sourcesContent":["const Welcome = () => {\n  return <div>Welcome Page</div>;\n};\n\nexport default Welcome;\n"],"names":["_jsx","children"],"sourceRoot":""}
