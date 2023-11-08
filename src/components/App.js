@@ -10,7 +10,7 @@ const ProfilePage = lazy(() => import('pages/Profile'));
 const DiaryPage = lazy(() => import('pages/Diary'));
 const ProductsPage = lazy(() => import('pages/Products'));
 const ExercisesPage = lazy(() => import('pages/Exercises'));
-const NotFoundPage = lazy(() => import('pages/NotFound'));
+// const NotFoundPage = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
   return (
@@ -25,9 +25,9 @@ export const App = () => {
           <Route path="diary" element={<DiaryPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="exercises" element={<ExercisesPage />} />
-          <Route path="notfound" element={<NotFoundPage />} />
+          {/* <Route path="notfound" element={<NotFoundPage />} /> */}
         </Route>
-        <Route path="*" element={<Navigate to="/notfound" />} />
+        {/* <Route path="*" element={<Navigate to="/notfound" />} /> */}
       </Routes>
     </>
   );
