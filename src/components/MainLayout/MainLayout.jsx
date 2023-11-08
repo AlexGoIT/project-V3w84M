@@ -1,19 +1,20 @@
 import Loader from 'components/Loader/Loader';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Layout } from './MainLayout.styled';
 
-const Layout = () => {
+const MainLayout = () => {
   return (
     <>
       <header></header>
-      <main>
+      <Layout>
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
-      </main>
+      </Layout>
       <footer></footer>
     </>
   );
 };
 
-export default Layout;
+export default MainLayout;

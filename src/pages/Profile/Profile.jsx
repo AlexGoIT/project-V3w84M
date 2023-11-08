@@ -1,5 +1,7 @@
+import TitlePage from 'components/TitlePage';
+
 const Profile = () => {
-  return <div>Profile Page</div>;
+  return <TitlePage title="Profile Settings" />;
 };
 
 export default Profile;

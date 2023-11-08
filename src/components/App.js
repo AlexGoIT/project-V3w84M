@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
-import Layout from './Layout/Layout';
+import MainLayout from 'components/MainLayout';
 
 const WelcomePage = lazy(() => import('pages/Welcome'));
 const SignUpPage = lazy(() => import('pages/SignUp'));
@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="/welcome" />} />
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="signup" element={<SignUpPage />} />
