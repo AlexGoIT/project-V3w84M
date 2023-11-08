@@ -25,9 +25,9 @@ export const App = () => {
           <Route path="diary" element={<DiaryPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="exercises" element={<ExercisesPage />} />
-          <Route path="404" element={<NotFoundPage />} />
+          <Route path="notfound" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
     </>
   );
