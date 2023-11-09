@@ -1,41 +1,43 @@
 import styled from '@emotion/styled';
 
 export const SloganWrapper = styled.div`
-  width: 598px;
+  /* width: 598px; */
+  width: 335px;
   position: relative;
 
-  @media screen and (max-width: 375px) {
-    width: 335px;
+  @media screen and (min-width: 767px) {
+    /* width: 335px; */
+    width: 598px;
   }
 `;
 
 export const SloganText = styled.h1`
   color: #efede8;
   font-family: Roboto;
-  font-size: 70px;
   font-style: normal;
   font-weight: 500;
-  line-height: 1.11; /* 111.429% */
-  letter-spacing: 0.7px;
+  font-size: 38px;
+  line-height: 1.05;
+  letter-spacing: 0.38px;
 
-  @media screen and (max-width: 375px) {
-    font-size: 38px;
-    line-height: 1.05;
-    letter-spacing: 0.38px;
+  @media screen and (min-width: 768px) {
+    font-size: 70px;
+    line-height: 1.11;
+    letter-spacing: 0.7px;
   }
 `;
 
 export const SloganImage = styled.svg`
-  width: 185px;
-  height: 67px;
+  width: 98px;
+  height: 35px;
   position: absolute;
-  top: 84px;
-  left: -16px;
+  top: 43px;
+  left: -9px;
 
-  @media screen and (max-width: 375px) {
-    width: 98px;
-    height: 35px;
-    top: 43px;
-    left: -9px;
+  @media screen and (min-width: 768px) {
+    width: 185px;
+    height: 67px;
+    top: 84px;
+    left: -16px;
   }
 `;
