@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/208.74d44d8f.chunk.js","mappings":"+KAIA,EAJkB,WAChB,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,kBACd,C","sources":["pages/Exercises/Exercises.jsx"],"sourcesContent":["const Exercises = () => {\n  return <div>Exercises Page</div>;\n};\n\nexport default Exercises;\n"],"names":["_jsx","children"],"sourceRoot":""}
