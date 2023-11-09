@@ -1,12 +1,10 @@
 import styled from '@emotion/styled';
 
 export const SloganWrapper = styled.div`
-  /* width: 598px; */
   width: 335px;
   position: relative;
 
   @media screen and (min-width: 767px) {
-    /* width: 335px; */
     width: 598px;
   }
 `;
