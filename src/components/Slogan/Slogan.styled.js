@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const SloganWrapper = styled.div`
   width: 335px;
   position: relative;
+  z-index: 0;
 
   @media screen and (min-width: 767px) {
     width: 598px;
@@ -31,6 +32,7 @@ export const SloganImage = styled.svg`
   position: absolute;
   top: 43px;
   left: -9px;
+  z-index: -1;
 
   @media screen and (min-width: 768px) {
     width: 185px;
