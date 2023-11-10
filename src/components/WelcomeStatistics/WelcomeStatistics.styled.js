@@ -6,7 +6,6 @@ export const WelcomeStatisticsWrapper = styled.div`
   width: 400px;
   display: grid;
   gap: 56px 19px;
-
   color: #efede8;
 `;
 
@@ -24,18 +23,28 @@ export const VideoTutorialWrapper = styled.div`
   border-radius: 12px;
   background-color: #303030;
 `;
-export const VideoTutorialImage = styled.svg`
-  width: 40px;
-  height: 40px;
 
-  border-radius: 50%;
-  background-color: #ef8964;
-`;
+export const ImageThumb = styled.div(
+  {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    borderRadius: '50%',
+  },
+  ({ w, h, bgColor }) => ({
+    width: w,
+    height: h,
+    backgroundColor: bgColor,
+  })
+);
+
 export const VideoTutorialInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
+
 export const VideoTutorialText = styled.p`
   color: rgba(239, 237, 232, 0.65);
   font-family: Roboto;
@@ -58,27 +67,21 @@ export const CalWrapper = styled.div`
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
   padding: 20px 23px;
-
   border-radius: 12px;
   background-color: #ef8964;
 `;
-export const CalImage = styled.svg`
-  width: 24px;
-  height: 24px;
 
-  border-radius: 50%;
-  background-color: #efa082;
-`;
 export const CalInfoWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 11px;
 `;
+
 export const CalText = styled.p`
   font-family: Roboto;
   color: rgba(239, 237, 232, 0.65);
@@ -87,6 +90,7 @@ export const CalText = styled.p`
   font-weight: 700;
   line-height: 1.5;
 `;
+
 export const CalCounter = styled.p`
   font-family: Roboto;
   font-size: 48px;
