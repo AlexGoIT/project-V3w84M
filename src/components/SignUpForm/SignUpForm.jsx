@@ -11,25 +11,35 @@ import {
   AuthWrapper,
 } from './SignUpForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshed } from 'redux/auth/authSelectors';
+import {
+  selectIsAuthorized,
+  selectIsRefreshed,
+} from 'redux/auth/authSelectors';
 import { register } from 'redux/auth/authOperations';
 import Loader from 'components/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const initialValues = { name: '', email: '', password: '' };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isRefreshing = useSelector(selectIsRefreshed);
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   const handleSubmit = (credentials, actions) => {
     console.log(credentials);
 
-    const { email, password } = credentials;
-
     actions.resetForm();
+
+    const { email, password } = credentials;
 
     // Коли на бек додадуть обробку поля name замінити цей об'єкт на credentials
     dispatch(register({ email, password }));
+
+    if (isAuthorized) {
+      navigate('/profile');
+    }
   };
 
   return (

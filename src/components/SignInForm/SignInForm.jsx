@@ -11,22 +11,32 @@ import {
   AuthWrapper,
 } from './SignInForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshed } from 'redux/auth/authSelectors';
+import {
+  selectIsAuthorized,
+  selectIsRefreshed,
+} from 'redux/auth/authSelectors';
 import { login } from 'redux/auth/authOperations';
 import Loader from 'components/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
   const initialValues = { email: '', password: '' };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isRefreshing = useSelector(selectIsRefreshed);
+  const isAuthorized = useSelector(selectIsAuthorized);
 
   const handleSubmit = (credentials, actions) => {
-    console.log(credentials);
-
     actions.resetForm();
 
+    console.log(credentials);
+
     dispatch(login(credentials));
+
+    if (isAuthorized) {
+      navigate('/profile');
+    }
   };
 
   return (
