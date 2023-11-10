@@ -2,17 +2,17 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const LogoWrapper = styled(Link)`
-  padding-block: 24px;
+  /* padding-block: 24px; */
   display: flex;
   align-items: center;
   gap: 8px;
 
   @media screen and (min-width: 768px) {
-    padding-block: 32px;
+    /* padding-block: 32px; */
   }
 
   @media screen and (min-width: 1440px) {
-    padding-left: 64px;
+    /* padding-left: 64px; */
   }
 `;
 
