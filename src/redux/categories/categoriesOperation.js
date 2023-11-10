@@ -4,9 +4,9 @@ import { Notify } from 'notiflix';
 
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
-  async (credentials = '', thunkAPI) => {
+  async thunkAPI => {
     try {
-      const { data } = await axios.post('/api/categories', credentials);
+      const { data } = await axios.post('/api/categories');
 
       return data;
     } catch (err) {
