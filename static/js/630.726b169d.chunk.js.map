@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/630.726b169d.chunk.js","mappings":"8KAIA,EAJe,WACb,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,WACd,C","sources":["pages/SignIn/SignIn.jsx"],"sourcesContent":["const SignIn = () => {\n  return <div>Sign In</div>;\n};\n\nexport default SignIn;\n"],"names":["_jsx","children"],"sourceRoot":""}
