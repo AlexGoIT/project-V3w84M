@@ -9,14 +9,27 @@ import {
   AuthStyledLink,
   AuthSubmitButton,
   AuthWrapper,
-} from 'assets/sharedStyles/AuthForms.styled';
+} from './SignUpForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshed } from 'redux/auth/authSelectors';
+import { register } from 'redux/auth/authOperations';
+import Loader from 'components/Loader';
 
 const SignUpForm = () => {
   const initialValues = { name: '', email: '', password: '' };
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshed);
+
+  const handleSubmit = (credentials, actions) => {
+    console.log(credentials);
+
+    const { email, password } = credentials;
+
     actions.resetForm();
+
+    // Коли на бек додадуть обробку поля name замінити цей об'єкт на credentials
+    dispatch(register({ email, password }));
   };
 
   return (
@@ -58,6 +71,8 @@ const SignUpForm = () => {
         Already have an account?{' '}
         <AuthStyledLink to="/signin">Sign In</AuthStyledLink>
       </AuthBottomText>
+
+      {isRefreshing && <Loader />}
     </AuthWrapper>
   );
 };

@@ -1,5 +1,5 @@
 const Loader = () => {
-  return <div>Loading...</div>;
+  return <div style={{ color: '#fff' }}>Loading...</div>;
 };
 
 export default Loader;

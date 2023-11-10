@@ -9,14 +9,24 @@ import {
   AuthStyledLink,
   AuthSubmitButton,
   AuthWrapper,
-} from 'assets/sharedStyles/AuthForms.styled';
+} from './SignInForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshed } from 'redux/auth/authSelectors';
+import { login } from 'redux/auth/authOperations';
+import Loader from 'components/Loader';
 
 const SignInForm = () => {
   const initialValues = { email: '', password: '' };
 
-  const handleSubmit = (values, actions) => {
-    console.log(values);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshed);
+
+  const handleSubmit = (credentials, actions) => {
+    console.log(credentials);
+
     actions.resetForm();
+
+    dispatch(login(credentials));
   };
 
   return (
@@ -55,6 +65,8 @@ const SignInForm = () => {
         Don’t have an account?{' '}
         <AuthStyledLink to="/signup">Sign Up</AuthStyledLink>
       </AuthBottomText>
+
+      {isRefreshing && <Loader />}
     </AuthWrapper>
   );
 };
