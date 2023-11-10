@@ -41,59 +41,16 @@ export const AuthStyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
+  gap: 38px;
   margin-bottom: 12px;
 
   @media screen and (min-width: 768px) {
     width: 364px;
-    gap: 34px;
-  }
-`;
-
-export const AuthInput = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  max-height: 46px;
-  padding: 14px;
-  background-color: transparent;
-  color: #efede8;
-  caret-color: #efede8;
-  font-size: 14px;
-  line-height: calc(18 / 14);
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-
-  @media screen and (min-width: 768px) {
-    max-height: 52px;
-    font-size: 16px;
-    line-height: calc(24 / 16);
-  }
-
-  &:focus-visible {
-    border-color: #e6533c;
-  }
-
-  &.validation-failed {
-    border-color: #d80027;
-  }
-
-  &.validation-success {
-    border-color: #3cbf61;
-  }
-
-  &::placeholder {
-    color: transparent;
-  }
-
-  &:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgb(4, 4, 4) inset;
-    -webkit-text-fill-color: #efede8;
-    caret-color: #efede8;
+    gap: 40px;
   }
 `;
 
 export const AuthSubmitButton = styled.button`
-  box-sizing: border-box;
   margin-top: 10px;
   display: flex;
   padding: 12px 40px;
@@ -113,6 +70,16 @@ export const AuthSubmitButton = styled.button`
     padding: 16px 60px;
     font-size: 20px;
     line-height: calc(24 / 20);
+  }
+
+  &:hover:not([disabled]),
+  &:focus-visible:not([disabled]) {
+    background: #ef8964;
+  }
+
+  &:disabled {
+    color: rgba(239, 237, 232, 0.6);
+    cursor: not-allowed;
   }
 `;
 

@@ -11,7 +11,7 @@ import {
   PasswordToggler,
   PasswordTogglerIcon,
 } from './CustomInput.styled';
-import sprite from '../../../assets/images/sprite.svg';
+import sprite from '../../assets/images/sprite.svg';
 
 const CustomInput = props => {
   const [field, meta] = useField(props);
@@ -56,7 +56,7 @@ const CustomInput = props => {
           onClick={() => setShowPassword(prev => !prev)}
         >
           <PasswordTogglerIcon width="20" height="20">
-            <use href={`${sprite}#${showPassword ? 'eye-off' : 'eye'}`}></use>
+            <use href={`${sprite}#${showPassword ? 'eye' : 'eye-off'}`}></use>
           </PasswordTogglerIcon>
         </PasswordToggler>
       )}

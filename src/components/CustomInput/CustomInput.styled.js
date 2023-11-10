@@ -35,7 +35,6 @@ export const AuthLabel = styled.label`
 `;
 
 export const AuthInput = styled.input`
-  box-sizing: border-box;
   width: 100%;
   max-height: 46px;
   padding: 14px;
@@ -67,6 +66,10 @@ export const AuthInput = styled.input`
 
   &::placeholder {
     color: transparent;
+  }
+
+  &::-ms-reveal {
+    display: none;
   }
 
   &:-webkit-autofill {

@@ -1,9 +1,9 @@
-import AuthForm from 'components/AuthForm/';
+import SignInForm from 'components/SignInForm';
 
 const SignIn = () => {
   return (
     <>
-      <AuthForm formType="SignInForm" />
+      <SignInForm />
     </>
   );
 };
