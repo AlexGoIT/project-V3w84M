@@ -8,13 +8,13 @@ import {
   VideoTutorialInfoWrapper,
   VideoTutorialText,
   VideoTutorialWrapper,
-  WelcomeStatisticsWrapper,
-} from './WelcomeStatistics.styled';
+  StatisticsInfoWrapper,
+} from './StatisticsInfo.styled';
 import sprite from 'assets/images/sprite.svg';
 
-const WelcomeStatistics = () => {
+const StatisticsInfo = () => {
   return (
-    <WelcomeStatisticsWrapper>
+    <StatisticsInfoWrapper>
       <VideoTutorialWrapper>
         <ImageThumb w={40} h={40} bgColor={'#ef8964'}>
           <svg width="20" height="20" fill="#efede8">
@@ -35,11 +35,11 @@ const WelcomeStatistics = () => {
         </ImageThumb>
         <CalInfoWrapper>
           <CalCounter>500</CalCounter>
-          <CalText>Cal</CalText>
+          <CalText>cal</CalText>
         </CalInfoWrapper>
       </CalWrapper>
-    </WelcomeStatisticsWrapper>
+    </StatisticsInfoWrapper>
   );
 };
 
-export default WelcomeStatistics;
+export default StatisticsInfo;
