@@ -12,9 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './auth/authSlice';
-import { categoriesReducer } from './categories/categoriesSlice';
-import { exercisesReducer } from './exercises/exercisesSlice';
-import { filtersReducer } from './filters/filtersSlice';
+import { apiReducer } from './api/apiSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,9 +25,7 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    categories: categoriesReducer,
-    exercises: exercisesReducer,
-    filters: filtersReducer,
+    api: apiReducer,
   },
   middleware: getDefaultMiddleware => {
     return getDefaultMiddleware({

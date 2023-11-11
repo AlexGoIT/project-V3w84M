@@ -9,9 +9,12 @@ import WelcomeStatistics from 'components/StatisticsInfo';
 // Temporary
 import { useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import { fetchExercises } from 'redux/exercises/exercisesOperations';
-import { fetchCategories } from 'redux/categories/categoriesOperation';
-import { fetchFilters } from 'redux/filters/filterOperations';
+
+import {
+  fetchCategories,
+  fetchExercises,
+  fetchFilters,
+} from 'redux/api/apiOperations';
 //
 
 const Welcome = () => {
