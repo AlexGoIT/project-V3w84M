@@ -8,7 +8,7 @@ import WelcomeStatistics from 'components/StatisticsInfo';
 
 // Temporary
 import { useDispatch } from 'react-redux';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import {
   // fetchCategories,
@@ -22,15 +22,9 @@ const Welcome = () => {
   console.log('WelcomePage:', 'render');
   // Temporary
   const dispatch = useDispatch();
-  const ref = useRef(true);
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current = false;
-      return;
-    }
-
-    console.log('WelcomePage:', 'useEffect 2 render');
+    console.log('WelcomePage:', 'useEffect');
 
     // Categories
     // dispatch(fetchCategories());
