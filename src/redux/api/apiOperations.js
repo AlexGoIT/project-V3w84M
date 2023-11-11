@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Notify } from 'notiflix';
 
 export const fetchCategories = createAsyncThunk(
-  'categories/fetchCategories',
+  'api/fetchCategories',
   async thunkAPI => {
     try {
       const { data } = await axios.get('/api/categories');
@@ -17,7 +17,7 @@ export const fetchCategories = createAsyncThunk(
 );
 
 export const fetchFilters = createAsyncThunk(
-  'filters/fetchFilters',
+  'api/fetchFilters',
   async thunkAPI => {
     try {
       const { data } = await axios.get('/api/filter');
@@ -31,7 +31,7 @@ export const fetchFilters = createAsyncThunk(
 );
 
 export const fetchExercises = createAsyncThunk(
-  'exercises/fetchExercises',
+  'api/fetchExercises',
   async thunkAPI => {
     try {
       const { data } = await axios.get('/api/exercises');
