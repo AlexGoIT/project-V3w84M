@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { products_1x } from 'assets/images/background';
+import { products_2x } from 'assets/images/background';
 
 export const Wrapper = styled.div`
   min-width: 280px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: var(--black-color);
-
+  background-color: #040404;
   @media screen and (min-width: 375px) {
   }
 
@@ -15,11 +16,19 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    background: image-set(url(${products_1x}) 1x, url(${products_2x}) 2x);
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-top: 68px;
+    position: relative;
+    min-height: 681px;
+    padding-left: 96px;
+    padding-right: 96px;
   }
 `;
 
 export const ProductsTitle = styled.h1`
-  color: var(--white-color);
+  color: rgba(239, 237, 232, 1);
   @media screen and (min-width: 375px) {
     font-size: 24px;
     font-weight: 700;
