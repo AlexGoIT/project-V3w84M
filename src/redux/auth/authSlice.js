@@ -55,7 +55,7 @@ export const authSlice = createSlice({
       .addCase(logout.fulfilled, state => {
         state.isAuthorized = false;
         state.isRefreshed = false;
-        state.user = { name: null, email: null };
+        state.user = { name: '', email: '' };
         state.token = null;
         state.error = null;
       })
