@@ -17,4 +17,8 @@ export const DaySwitchArea = styled.div`
     width: 240px;
     height: 32px;
   }
+
+  @media screen and (min-width: 1440px) {
+    right: 64px;
+  }
 `;
