@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/project-V3w84M/static/css/main.e753f651.css",
-    "main.js": "/project-V3w84M/static/js/main.d4b5afbe.js",
-    "static/js/819.359931e6.chunk.js": "/project-V3w84M/static/js/819.359931e6.chunk.js",
+    "main.js": "/project-V3w84M/static/js/main.dcb7d551.js",
+    "static/js/554.4fb9a049.chunk.js": "/project-V3w84M/static/js/554.4fb9a049.chunk.js",
     "static/js/835.d4d7e4cf.chunk.js": "/project-V3w84M/static/js/835.d4d7e4cf.chunk.js",
     "static/js/529.1b297d08.chunk.js": "/project-V3w84M/static/js/529.1b297d08.chunk.js",
     "static/js/49.d4cee61b.chunk.js": "/project-V3w84M/static/js/49.d4cee61b.chunk.js",
@@ -11,11 +11,11 @@
     "static/js/208.74d44d8f.chunk.js": "/project-V3w84M/static/js/208.74d44d8f.chunk.js",
     "static/js/307.d62dd8ba.chunk.js": "/project-V3w84M/static/js/307.d62dd8ba.chunk.js",
     "static/js/568.56c3c688.chunk.js": "/project-V3w84M/static/js/568.56c3c688.chunk.js",
-    "static/media/sprite.svg": "/project-V3w84M/static/media/sprite.0e87afecded613ed4c831c3d15207788.svg",
+    "static/media/sprite.svg": "/project-V3w84M/static/media/sprite.30dd78b8b0ae4b52c14e495bc3976981.svg",
     "index.html": "/project-V3w84M/index.html",
     "main.e753f651.css.map": "/project-V3w84M/static/css/main.e753f651.css.map",
-    "main.d4b5afbe.js.map": "/project-V3w84M/static/js/main.d4b5afbe.js.map",
-    "819.359931e6.chunk.js.map": "/project-V3w84M/static/js/819.359931e6.chunk.js.map",
+    "main.dcb7d551.js.map": "/project-V3w84M/static/js/main.dcb7d551.js.map",
+    "554.4fb9a049.chunk.js.map": "/project-V3w84M/static/js/554.4fb9a049.chunk.js.map",
     "835.d4d7e4cf.chunk.js.map": "/project-V3w84M/static/js/835.d4d7e4cf.chunk.js.map",
     "529.1b297d08.chunk.js.map": "/project-V3w84M/static/js/529.1b297d08.chunk.js.map",
     "49.d4cee61b.chunk.js.map": "/project-V3w84M/static/js/49.d4cee61b.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.e753f651.css",
-    "static/js/main.d4b5afbe.js"
+    "static/js/main.dcb7d551.js"
   ]
 }
