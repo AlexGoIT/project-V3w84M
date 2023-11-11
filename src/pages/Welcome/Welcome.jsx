@@ -4,6 +4,7 @@ import Slogan from 'components/Slogan';
 import WelcomeNavigation from 'components/WelcomeNavigation';
 
 import { WelcomeWrapper } from './Welcome.styled';
+import WelcomeStatistics from 'components/WelcomeStatistics';
 
 const Welcome = () => {
   return (
@@ -13,6 +14,7 @@ const Welcome = () => {
         <Slogan />
         <WelcomeNavigation />
       </WelcomeWrapper>
+      <WelcomeStatistics />
     </Container>
   );
 };
