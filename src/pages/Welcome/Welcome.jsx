@@ -4,7 +4,7 @@ import Slogan from 'components/Slogan';
 import WelcomeNavigation from 'components/WelcomeNavigation';
 
 import { WelcomeWrapper } from './Welcome.styled';
-import WelcomeStatistics from 'components/WelcomeStatistics';
+import WelcomeStatistics from 'components/StatisticsInfo';
 
 const Welcome = () => {
   return (
