@@ -18,9 +18,9 @@ export const fetchCategories = createAsyncThunk(
 
 export const fetchFilters = createAsyncThunk(
   'api/fetchFilters',
-  async thunkAPI => {
+  async (params, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/filter');
+      const { data } = await axios.get('/api/filters', { params });
 
       return data;
     } catch (err) {
@@ -32,9 +32,23 @@ export const fetchFilters = createAsyncThunk(
 
 export const fetchExercises = createAsyncThunk(
   'api/fetchExercises',
-  async thunkAPI => {
+  async (params, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/exercises');
+      const { data } = await axios.get('/api/exercises', { params });
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
+
+export const fetchProducts = createAsyncThunk(
+  'api/fetchProducts',
+  async (params, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/products', { params });
 
       return data;
     } catch (err) {

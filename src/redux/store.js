@@ -17,7 +17,7 @@ import { apiReducer } from './api/apiSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isAuthorized'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
