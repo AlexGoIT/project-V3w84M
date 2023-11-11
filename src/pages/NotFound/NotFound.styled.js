@@ -45,10 +45,8 @@ export const NotFoundContent = styled.div`
 `;
 
 export const NotFoundTitle = styled.b`
-  color: #EFEDE8;
-  font-family: Roboto;
-  font-size: 66px;
-  font-style: normal;
+  color: #EFEDE8;  
+  font-size: 66px;  
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.66;
@@ -63,8 +61,6 @@ export const NotFoundText = styled.p`
    width: 200px;
    color: #EFEDE8;
    font-size: 14px;
-   font-style: normal;
-   font-weight: 400;
    line-height: 1.29;
       @media screen and (min-width: 768px) {
          width: 356px;  
@@ -84,10 +80,8 @@ export const BackHomeBtn = styled(Link)`
    width: 149px;         
    border-radius: 12px;
    border: 1px solid rgba(239, 237, 232, 0.30);
-   color: #EFEDE8;
-   font-family: Roboto;
-   font-size: 16px;
-   font-style: normal;
+   color: #EFEDE8;   
+   font-size: 16px;   
    font-weight: 500;
    line-height: 1.13;
       @media screen and (min-width: 768px) {       
