@@ -5,12 +5,15 @@ export const HeaderBar = styled.header`
   align-items: center;
   height: 61px;
   width: 100%;
-  padding: 20px;
+  padding-left: 96px;
+  padding-top: 19px;
+  padding-right: 96px;
+  padding-bottom: 19px;
 `;
 export const LogoWrap = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 20px;
+
   height: 44px;
 `;
 //   @media screen and (min-width: 375px) {

@@ -7,9 +7,7 @@ import Header from 'components/Header/Header';
 const MainLayout = () => {
   return (
     <>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <Layout>
         <Suspense fallback={<Loader />}>
           <Outlet />

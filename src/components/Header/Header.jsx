@@ -9,8 +9,6 @@ import UserNav from 'components/UserNav/UserNav';
 import UserBar from 'components/UserBar/UserBar';
 
 const Header = () => {
-  //   const { isLoggedIn } = useAuth();
-
   return (
     <HeaderBar>
       <LogoWrap>

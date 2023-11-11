@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const UserBarBlock = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   align-items: center;
   margin-left: auto;
   margin-right: auto;
