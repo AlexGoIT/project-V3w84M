@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { fetchExercises } from 'redux/exercises/exercisesOperations';
 import { fetchCategories } from 'redux/categories/categoriesOperation';
+import { fetchFilters } from 'redux/filters/filterOperations';
 //
 
 const Welcome = () => {
@@ -26,6 +27,7 @@ const Welcome = () => {
 
     dispatch(fetchCategories());
     dispatch(fetchExercises());
+    dispatch(fetchFilters());
   }, [dispatch]);
   //
 
