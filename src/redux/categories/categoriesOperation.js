@@ -6,7 +6,7 @@ export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async thunkAPI => {
     try {
-      const { data } = await axios.post('/api/categories');
+      const { data } = await axios.get('/api/categories');
 
       return data;
     } catch (err) {

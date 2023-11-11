@@ -8,8 +8,6 @@ export const fetchExercises = createAsyncThunk(
     try {
       const { data } = await axios.get('/api/exercises');
 
-      console.log('exercises/fetchExercises');
-
       return data;
     } catch (err) {
       Notify.failure(err.response.data.message);
