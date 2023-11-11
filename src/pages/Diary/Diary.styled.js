@@ -7,9 +7,9 @@ export const ForPosition = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media screen and (min-width: 1440px) {
+  /* @media screen and (min-width: 1440px) {
     padding-inline: 64px;
-  }
+  } */
 `;
 
 export const DiaryContainer = styled.div`
