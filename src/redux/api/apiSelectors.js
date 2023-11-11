@@ -1,11 +1,11 @@
 export const selectCategories = state => state.api.categories; // []
 
-export const selectExercises = state => state.api.exercises; // [{}]
+export const selectExercises = state => state.api.exercises; // { result: [], total_results: number }
 
-export const selectFilters = state => state.api.filters; // [{}]
+export const selectFilters = state => state.api.filters; // { result: [], total_results: number }
 
-export const selectProducts = state => state.api.products; // [{}]
+export const selectProducts = state => state.api.products; // { result: [], total_results: number }
 
 export const selectIsLoading = state => state.api.isLoading; // boolean
 
-export const selectError = state => state.api.error; // {message: string}
+export const selectError = state => state.api.error; // { message: string }

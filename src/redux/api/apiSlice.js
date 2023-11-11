@@ -8,9 +8,9 @@ import {
 
 const initialState = {
   categories: [],
-  exercises: [],
-  filters: [],
-  products: [],
+  exercises: {},
+  filters: {},
+  products: {},
   isLoading: false,
   error: null,
 };
