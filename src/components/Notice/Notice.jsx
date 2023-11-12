@@ -11,9 +11,9 @@ const Notice = ({ notice }) => {
   return (
     <NoticeArea>
       <NoticeIcon>
-        <WarningIcon>
+        <svg width="24" height="24" fill="#efede8">
           <use href={`${sprite}#warning`} />
-        </WarningIcon>
+        </svg>
       </NoticeIcon>
       <NoticeMessage>{notice}</NoticeMessage>
     </NoticeArea>
