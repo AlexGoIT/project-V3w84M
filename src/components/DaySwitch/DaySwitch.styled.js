@@ -2,23 +2,51 @@ import styled from '@emotion/styled';
 
 export const DaySwitchArea = styled.div`
   position: absolute;
-  border: 1px solid #fff;
-  border-radius: 12px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 
   @media screen and (min-width: 375px) {
     right: 0;
-    top: 45px;
-    width: 183px;
-    height: 20px;
+    top: 42px;
+    gap: 20px;
   }
 
   @media screen and (min-width: 768px) {
     top: 52px;
-    width: 240px;
-    height: 32px;
+    gap: 40px;
   }
 
   @media screen and (min-width: 1440px) {
     right: 64px;
   }
+`;
+
+export const ArrowIcon = styled.svg`
+  width: 16px;
+  height: 16px;
+  // rgba(239,237,232,0.2) когда неактивная
+  fill: #efede8;
+
+  &:hover,
+  :focus {
+    fill: #ef8964;
+  }
+`;
+
+export const Button = styled.button`
+  border: none;
+  background-color: inherit;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ArrowArea = styled.div`
+  display: flex;
+  gap: 6px;
 `;
