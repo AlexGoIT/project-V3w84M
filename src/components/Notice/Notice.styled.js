@@ -11,7 +11,15 @@ export const NoticeIcon = styled.div`
   height: 24px;
   border-radius: 12px;
   background-color: #efa082;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const WarningIcon = styled.svg({
+  width: '16px',
+  height: '16px',
+});
 
 export const NoticeMessage = styled.div`
   width: 100%;

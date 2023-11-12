@@ -7,15 +7,14 @@ import {
 } from './UserBar.styled';
 
 import sprite from 'assets/images/sprite.svg';
-import PropTypes from 'prop-types';
 
-const UserBar = ({ iconColor }) => {
+const UserBar = () => {
   //   const { isLoggedIn } = useAuth();
 
   return (
     <UserBarBlock>
       <UserBarLink to="/profile">
-        <IconSettings iconColor={iconColor}>
+        <IconSettings>
           <use href={`${sprite}#settings`} />
         </IconSettings>
       </UserBarLink>
@@ -29,6 +28,3 @@ const UserBar = ({ iconColor }) => {
 };
 
 export default UserBar;
-UserBar.propTypes = {
-  iconColor: PropTypes.string,
-};
