@@ -2,12 +2,13 @@ import { forwardRef, useState } from 'react';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
-  CalendarGlobalStyles,
+  calendarGlobalStyles,
   TitleWrapper,
   CalendarIcon,
 } from './Datepicker.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from 'assets/images/sprite.svg';
+import { Global } from '@emotion/react';
 
 const StyledDatepicker = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -26,6 +27,7 @@ const StyledDatepicker = () => {
 
   return (
     <>
+      <Global styles={calendarGlobalStyles} />
       <DatePicker
         selected={selectedDate}
         onChange={date => {
@@ -38,7 +40,6 @@ const StyledDatepicker = () => {
         minDate={new Date()} //временно текущий день, необх поставить дату регистрации юзера
         //maxDate={(new Date(), 3)}
       />
-      <CalendarGlobalStyles />
     </>
   );
 };
