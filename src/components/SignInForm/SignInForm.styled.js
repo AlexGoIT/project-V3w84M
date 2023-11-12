@@ -66,7 +66,7 @@ export const AuthSubmitButton = styled.button`
   background: #e6533c;
 
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 16px 60px;
     font-size: 20px;
     line-height: calc(24 / 20);

@@ -1,10 +1,14 @@
+import Container from 'components/Container';
 import SignInForm from 'components/SignInForm';
+import { SignInSection } from './SignIn.styled';
 
 const SignIn = () => {
   return (
-    <>
-      <SignInForm />
-    </>
+    <SignInSection>
+      <Container>
+        <SignInForm />
+      </Container>
+    </SignInSection>
   );
 };
 
