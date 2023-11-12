@@ -7,13 +7,15 @@ import {
 } from './Notice.styled';
 import sprite from 'assets/images/sprite.svg';
 
+import sprite from 'assets/images/sprite.svg';
+
 const Notice = ({ notice }) => {
   return (
     <NoticeArea>
       <NoticeIcon>
-        <WarningIcon>
+        <svg width="24" height="24" fill="#efede8">
           <use href={`${sprite}#warning`} />
-        </WarningIcon>
+        </svg>
       </NoticeIcon>
       <NoticeMessage>{notice}</NoticeMessage>
     </NoticeArea>
