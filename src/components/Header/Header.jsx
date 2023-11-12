@@ -9,6 +9,7 @@ import UserNav from 'components/UserNav/UserNav';
 import UserBar from 'components/UserBar/UserBar';
 import Container from 'components/Container';
 import BurgerMenu from 'components/BurgerMenu';
+import Logout from 'components/Logout/Logout';
 
 const Header = () => {
   return (
@@ -19,7 +20,7 @@ const Header = () => {
         </LogoWrap>
         <UserNav />
         <UserBar />
-        {/* <LogOutBtn /> */}
+        <Logout />
         <BurgerMenu />
       </HeaderBar>
     </Container>

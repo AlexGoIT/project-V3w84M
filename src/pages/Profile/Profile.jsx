@@ -1,6 +1,6 @@
 import Container from 'components/Container';
 import TitlePage from 'components/TitlePage';
-import UserCard from './UserCard/UserCard';
+import UserCard from '../../components/UserCard/UserCard';
 
 const Profile = () => {
   return (

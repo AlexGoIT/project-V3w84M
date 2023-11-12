@@ -7,8 +7,6 @@ import {
 } from './Notice.styled';
 import sprite from 'assets/images/sprite.svg';
 
-import sprite from 'assets/images/sprite.svg';
-
 const Notice = ({ notice }) => {
   return (
     <NoticeArea>
