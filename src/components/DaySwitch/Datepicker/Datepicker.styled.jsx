@@ -135,6 +135,8 @@ export const CalendarGlobalStyles = createGlobalStyle`
     color:#EFEDE8;
   }
   .react-datepicker__day--weekend {
+  }
+  .react-datepicker__day--disabled {
     opacity: 50%;
   }
 .react-datepicker__day--outside-month {
