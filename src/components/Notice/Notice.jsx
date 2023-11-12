@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
 import { NoticeMessage, NoticeArea, NoticeIcon } from './Notice.styled';
 
+import sprite from 'assets/images/sprite.svg';
+
 const Notice = ({ notice }) => {
   return (
     <NoticeArea>
-      <NoticeIcon></NoticeIcon>
+      <NoticeIcon>
+        <svg width="24" height="24" fill="#efede8">
+          <use href={`${sprite}#warning`} />
+        </svg>
+      </NoticeIcon>
       <NoticeMessage>{notice}</NoticeMessage>
     </NoticeArea>
   );
