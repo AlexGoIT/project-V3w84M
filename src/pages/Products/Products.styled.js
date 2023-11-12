@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { products_1x } from 'utils/background';
-import { products_2x } from 'utils/background';
+import { products_1x } from 'assets/images/background';
+import { products_2x } from 'assets/images/background';
 
 export const Wrapper = styled.div`
   min-width: 280px;
