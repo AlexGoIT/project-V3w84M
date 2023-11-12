@@ -2,13 +2,15 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const UserNavBlock = styled.nav`
-  display: flex;
-  flex-direction: row;
-  /* padding-top: 20px; */
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 10px;
+  display: none;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+  }
 `;
 export const UserNavLink = styled(NavLink)`
   display: flex;
