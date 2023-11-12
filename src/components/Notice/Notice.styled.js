@@ -25,7 +25,10 @@ export const NoticeMessage = styled.div`
   width: 100%;
   height: auto;
   color: rgba(239, 237, 232, 0.3);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;

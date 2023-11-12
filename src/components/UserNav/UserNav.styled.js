@@ -19,7 +19,7 @@ export const UserNavLink = styled(NavLink)`
   color: #efede8;
   /* transition: color, 200ms; */
   font-size: 14px;
-  width: 122px;
+  padding: 10px 27px 10px 27px;
   height: 44px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
