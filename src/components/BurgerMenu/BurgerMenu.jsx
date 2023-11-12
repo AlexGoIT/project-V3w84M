@@ -1,10 +1,15 @@
 // import PropTypes from 'prop-types';
 import sprite from 'assets/images/sprite.svg';
 import { ButtonMenu, IconBurgerMenu } from './BurgerMenu.styled';
+// import { useState } from 'react';
 
-const BurgerMenu = () => {
+const BurgerMenu = ({ openModal }) => {
+  // const [isOpen, setIsOpen] = useState(false);
+  // const onClickMenuBtn = () => {
+  //   setIsOpen({ isOpen: !isOpen });
+  // };
   return (
-    <ButtonMenu>
+    <ButtonMenu onClick={openModal}>
       <IconBurgerMenu>
         <use href={`${sprite}#burger-menu`}></use>
       </IconBurgerMenu>
