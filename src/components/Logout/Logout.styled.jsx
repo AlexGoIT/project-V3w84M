@@ -9,7 +9,9 @@ export const LogoutContainer = styled.div`
   }
 `;
 
-export const LogoutText = styled.p`
+export const LogoutButton = styled.button`
+  background-color: black;
+  border: none;
   font-size: 14px;
   line-height: 18px;
   color: #efede8;
