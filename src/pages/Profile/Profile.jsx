@@ -1,6 +1,5 @@
 import {
   Container,
-  Wrapper,
   WrapperContent,
   WrapperForm,
 } from './Profile.styled';
