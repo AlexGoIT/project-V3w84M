@@ -36,6 +36,8 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
+      console.log(data);
+      console.log(credentials);
 
       tokenControl.set(data.token);
       Notify.success('Login is successful');
