@@ -8,6 +8,9 @@ export const ButtonMenu = styled.button`
   background-color: inherit;
   border: none;
   cursor: pointer;
+  :focus {
+    outline: none;
+  }
   @media screen and (min-width: 768px) {
     width: 32px;
     height: 32px;
