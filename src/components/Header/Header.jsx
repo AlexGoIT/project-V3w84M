@@ -48,7 +48,7 @@ const Header = () => {
         <UserNav />
         <UserBar />
         <Logout />
-        <BurgerMenu />
+        {/* <BurgerMenu /> */}
         <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
         {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
       </HeaderBar>
