@@ -14,6 +14,7 @@ import {
   UserAvatar,
 } from './UserCard.styled';
 
+import Logout from 'components/Logout/Logout';
 import Notice from 'components/Notice';
 import sprite from 'assets/images/sprite.svg';
 
@@ -77,6 +78,7 @@ const UserCard = ({ message }) => {
           }
         ></Notice>
       </NoticeContainer>
+      <Logout></Logout>
     </UserCardContainer>
   );
 };
