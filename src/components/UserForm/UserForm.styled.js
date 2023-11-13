@@ -17,7 +17,7 @@ export const IconSvg = styled.svg`
   right: 14px;
 `;
 export const SectionTitle = styled.p`
-  color: var(--normal-color);
+  color: rgba(239, 237, 232, 0.3);
   margin-bottom: 4px;
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -188,8 +188,8 @@ export const WrappInput = styled.div`
   label {
     position: absolute;
     font-size: 14px;
-    top: 50%;
-    left: 14px;
+    top: -10px;
+    left: 0px;
     transform: translateY(-50%);
     pointer-events: none;
     transition:
