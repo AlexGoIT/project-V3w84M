@@ -3,6 +3,8 @@ import { lazy } from 'react';
 
 import MainLayout from 'components/MainLayout';
 import { PrivateRoute, PublicRoute } from './Routes';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/authSelectors';
 
 const WelcomePage = lazy(() => import('pages/Welcome'));
 const SignUpPage = lazy(() => import('pages/SignUp'));
@@ -14,6 +16,10 @@ const ExercisesPage = lazy(() => import('pages/Exercises'));
 const NotFoundPage = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
+  const user = useSelector(selectUser);
+
+  const redirectLink = user.profileDataFill ? '/diary' : '/profile';
+
   return (
     <>
       <Routes>
@@ -23,7 +29,7 @@ export const App = () => {
           <Route
             path="welcome"
             element={
-              <PublicRoute redirectTo="/profile" restricted>
+              <PublicRoute redirectTo={redirectLink} restricted>
                 <WelcomePage />
               </PublicRoute>
             }
@@ -32,7 +38,7 @@ export const App = () => {
           <Route
             path="signup"
             element={
-              <PublicRoute redirectTo="/profile" restricted>
+              <PublicRoute redirectTo={redirectLink} restricted>
                 <SignUpPage />
               </PublicRoute>
             }
@@ -41,7 +47,7 @@ export const App = () => {
           <Route
             path="signin"
             element={
-              <PublicRoute redirectTo="/profile" restricted>
+              <PublicRoute redirectTo={redirectLink} restricted>
                 <SignInPage />
               </PublicRoute>
             }
