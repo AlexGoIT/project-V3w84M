@@ -133,3 +133,11 @@ export const NoticeContainer = styled.div`
     width: 439px;
   }
 `;
+export const LogoutContainer = styled.div`
+  display: flex;
+  margin-left: auto;
+  margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
+`;
