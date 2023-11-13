@@ -32,10 +32,7 @@ const SignUpForm = () => {
 
     actions.resetForm();
 
-    const { email, password } = credentials;
-
-    // Коли на бек додадуть обробку поля name замінити цей об'єкт на credentials
-    dispatch(register({ email, password }));
+    dispatch(register(credentials));
 
     if (isAuthorized) {
       navigate('/profile');

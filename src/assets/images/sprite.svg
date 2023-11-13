@@ -132,14 +132,20 @@
 <path fill="none" stroke="#efede8" style="stroke: var(--color2, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M16 30v0.020M16 22v-20"></path>
 </symbol>
 <symbol id="x" viewBox="0 0 32 32">
-<path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M24 8l-16 16"></path>
-<path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M8 8l16 16"></path>
+<path fill="none" stroke="#efede8" style="stroke: var(--color1, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M24 8l-16 16"></path>
+<path fill="none" stroke="#efede8" style="stroke: var(--color1, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M8 8l16 16"></path>
 </symbol>
 <symbol id="burger-menu" viewBox="0 0 32 32">
 <path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M4 16h16M4 8h24M4 24h24"></path>
 </symbol>
 <symbol id="icon-close-circle-fill" viewBox="0 0 32 32">
 <path d="M16 29.333c-7.364 0-13.333-5.97-13.333-13.333s5.97-13.333 13.333-13.333c7.364 0 13.333 5.97 13.333 13.333s-5.97 13.333-13.333 13.333zM16 14.114l-3.771-3.771-1.886 1.886 3.771 3.771-3.771 3.771 1.886 1.886 3.771-3.771 3.771 3.771 1.886-1.886-3.771-3.771 3.771-3.771-1.886-1.886-3.771 3.771z"></path>
+</symbol>
+<symbol id="icon-chevron-right" viewBox="0 0 32 32">
+<path fill="#efede8" style="fill: var(--color1, #efede8)" d="M10.914 29.914l-2.828-2.829 11.586-11.586-11.586-11.586 2.828-2.828 14.414 14.414-14.414 14.414z"></path>
+</symbol>
+<symbol id="icon-chevron-left" viewBox="0 0 32 32">
+<path fill="#efede8" style="fill: var(--color1, #efede8)" d="M21.086 1.086l2.828 2.828-11.586 11.586 11.586 11.586-2.828 2.829-14.414-14.414 14.414-14.414z"></path>
 </symbol>
 </defs>
 </svg>
