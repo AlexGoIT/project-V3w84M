@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 
 export const AuthWrapper = styled.div`
   width: 335px;
+  padding-top: 66px;
 
   @media screen and (min-width: 768px) {
     width: 496px;
+    padding-top: 105px;
   }
 `;
 
