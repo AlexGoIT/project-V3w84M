@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCurrentUser, login, logout, register } from './authOperations';
 
+const initUser = {
+  name: '',
+  email: '',
+  avatarURL: '',
+  profileDataFill: false,
+  profileData: null,
+  createdAt: '',
+};
+
 const initialState = {
-  user: {
-    name: '',
-    email: '',
-    avatarURL: '',
-    profileDataFill: false,
-    profileData: null,
-    createdAt: '',
-  },
+  user: initUser,
   token: null,
   isAuthorized: false,
   isRefreshed: false,
@@ -58,7 +60,7 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, state => {
         state.isRefreshed = false;
-        state = initialState;
+        state.user = initUser;
         state.token = null;
         state.isAuthorized = false;
         state.error = null;
@@ -74,14 +76,12 @@ export const authSlice = createSlice({
       })
       .addCase(fetchCurrentUser.fulfilled, (state, action) => {
         state.isRefreshed = false;
-        state.isAuthorized = true;
         state.user = action.payload;
         state.error = null;
       })
       .addCase(fetchCurrentUser.rejected, (state, action) => {
         state.isRefreshed = false;
         state.error = action.payload;
-        // state = initialState;
       });
   },
 });
