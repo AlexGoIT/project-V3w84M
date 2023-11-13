@@ -2,13 +2,13 @@
 
 import Logo from 'components/Logo';
 
-// import LogOutBtn from './LogOutBtn/LogOutBtn';
-
 import { HeaderBar, LogoWrap } from './Header.styled';
 import UserNav from 'components/UserNav/UserNav';
 import UserBar from 'components/UserBar/UserBar';
 import Container from 'components/Container';
 import BurgerMenu from 'components/BurgerMenu';
+import Logout from 'components/Logout/Logout';
+
 import { useEffect, useRef, useState } from 'react';
 import ModalWindowBurgerMenu from 'components/ModalWindowBurgerMenu';
 
@@ -47,7 +47,8 @@ const Header = () => {
         </LogoWrap>
         <UserNav />
         <UserBar />
-        {/* <LogOutBtn /> */}
+        <Logout />
+        <BurgerMenu />
         <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
         {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
       </HeaderBar>

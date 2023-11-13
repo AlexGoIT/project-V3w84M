@@ -2,6 +2,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 
 import MainLayout from 'components/MainLayout';
+import { PrivateRoute, PublicRoute } from './Routes';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/authSelectors';
 
 const WelcomePage = lazy(() => import('pages/Welcome'));
 const SignUpPage = lazy(() => import('pages/SignUp'));
@@ -13,21 +16,81 @@ const ExercisesPage = lazy(() => import('pages/Exercises'));
 const NotFoundPage = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
+  const user = useSelector(selectUser);
+
+  const redirectLink = user.profileDataFill ? '/diary' : '/profile';
+
   return (
     <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Navigate to="/welcome" />} />
-          <Route path="welcome" element={<WelcomePage />} />
-          <Route path="signup" element={<SignUpPage />} />
-          <Route path="signin" element={<SignInPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="diary" element={<DiaryPage />} />
-          <Route path="products" element={<ProductsPage />} />
-          <Route path="exercises" element={<ExercisesPage />} />
-          <Route path="notfound" element={<NotFoundPage />} />
+
+          <Route
+            path="welcome"
+            element={
+              <PublicRoute redirectTo={redirectLink} restricted>
+                <WelcomePage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="signup"
+            element={
+              <PublicRoute redirectTo={redirectLink} restricted>
+                <SignUpPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="signin"
+            element={
+              <PublicRoute redirectTo={redirectLink} restricted>
+                <SignInPage />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="profile"
+            element={
+              <PrivateRoute redirectTo="/welcome">
+                <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="diary"
+            element={
+              <PrivateRoute redirectTo="/welcome">
+                <DiaryPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="products"
+            element={
+              <PrivateRoute redirectTo="/welcome">
+                <ProductsPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="exercises"
+            element={
+              <PrivateRoute redirectTo="/welcome">
+                <ExercisesPage />
+              </PrivateRoute>
+            }
+          />
         </Route>
-        <Route path="*" element={<Navigate to="/notfound" />} />
+        <Route path="404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </>
   );
