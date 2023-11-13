@@ -9,6 +9,7 @@ import './index.css';
 
 import { persistor, store } from 'redux/store';
 import Loader from 'components/Loader';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
