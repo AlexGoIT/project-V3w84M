@@ -23,6 +23,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/user/userOperations';
 import { selectCalculate } from 'redux/user/userSelectors';
+// import { fetchCurrentUser } from 'redux/auth/authOperations';
 //
 
 const UserCard = ({ message }) => {
@@ -31,6 +32,8 @@ const UserCard = ({ message }) => {
   const calculate = useSelector(selectCalculate);
 
   useEffect(() => {
+    // dispatch(fetchCurrentUser());
+
     dispatch(fetchCalculate());
   }, [dispatch]);
   //

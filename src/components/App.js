@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 
 import MainLayout from 'components/MainLayout';
 import { PrivateRoute, PublicRoute } from './Routes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/authSelectors';
+import { currentUser } from 'redux/auth/authOperations';
 
 const WelcomePage = lazy(() => import('pages/Welcome'));
 const SignUpPage = lazy(() => import('pages/SignUp'));
@@ -16,7 +17,12 @@ const ExercisesPage = lazy(() => import('pages/Exercises'));
 const NotFoundPage = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
 
   const redirectLink = user.profileDataFill ? '/diary' : '/profile';
 
