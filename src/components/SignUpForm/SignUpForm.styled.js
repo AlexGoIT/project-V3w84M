@@ -62,6 +62,7 @@ export const AuthSubmitButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
+  border: none;
   border-radius: 12px;
   background: #e6533c;
 
