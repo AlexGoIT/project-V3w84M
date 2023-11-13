@@ -17,7 +17,26 @@ import {
 import Notice from 'components/Notice';
 import sprite from 'assets/images/sprite.svg';
 
+//
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCalculate } from 'redux/user/userOperations';
+import { selectCalculate } from 'redux/user/userSelectors';
+//
+
 const UserCard = ({ message }) => {
+  //
+  const dispatch = useDispatch();
+  const calculate = useSelector(selectCalculate);
+
+  useEffect(() => {
+    dispatch(fetchCalculate());
+  }, [dispatch]);
+  //
+
+  const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
+  const bmr = calculate.BMR ? calculate.BMR : 0;
+
   return (
     <UserCardContainer style={{ color: 'white' }}>
       <UserAvatar>
@@ -35,7 +54,7 @@ const UserCard = ({ message }) => {
             </svg>
           </ImageContainer>
           <InformationText>Daily calorie intake</InformationText>
-          <ActiveDataCalories>0</ActiveDataCalories>
+          <ActiveDataCalories>{bmr}</ActiveDataCalories>
         </CaloriesContainer>
         <ActivityContainer>
           <ActivityStaticInfoContainer>
@@ -47,7 +66,7 @@ const UserCard = ({ message }) => {
             <InformationText>Daily physical activity</InformationText>
           </ActivityStaticInfoContainer>
 
-          <ActiveDataMinutes>0 min</ActiveDataMinutes>
+          <ActiveDataMinutes>{dailyActivity} min</ActiveDataMinutes>
         </ActivityContainer>
       </InformationContainer>
 
