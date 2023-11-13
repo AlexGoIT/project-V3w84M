@@ -7,7 +7,7 @@ export const calendarGlobalStyles = css`
   }
   .react-datepicker {
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 50%;
     transform: translate(-1%, 0%);
     display: flex;
@@ -67,7 +67,7 @@ export const calendarGlobalStyles = css`
   }
   .react-datepicker__navigation {
     margin-top: 4px;
-    color: #efede8;
+    color: #efe8eb;
   }
   .react-datepicker__navigation--previous {
     left: 7px;
@@ -119,7 +119,7 @@ export const calendarGlobalStyles = css`
   }
   .react-datepicker__day--selected {
     background-color: #040404;
-    color: #efede8;
+    color: #efe8e8;
     font-size: 14px;
   }
   .react-datepicker__day--selected:hover {

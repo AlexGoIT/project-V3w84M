@@ -18,7 +18,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        <Value>...</Value>
+        <Value>2000</Value>
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -27,7 +27,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily physical activity</Title>
         </TitleArea>
-        <Value>...</Value>
+        <Value>110 min</Value>
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
