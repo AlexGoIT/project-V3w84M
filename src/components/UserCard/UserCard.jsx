@@ -12,6 +12,7 @@ import {
   ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
+  LogoutContainer,
 } from './UserCard.styled';
 
 import Logout from 'components/Logout/Logout';
@@ -81,7 +82,9 @@ const UserCard = ({ message }) => {
           }
         ></Notice>
       </NoticeContainer>
-      <Logout></Logout>
+      <LogoutContainer>
+        <Logout />
+      </LogoutContainer>
     </UserCardContainer>
   );
 };
