@@ -1,14 +1,15 @@
 import SignUpForm from 'components/SignUpForm';
-import { SignUpSection } from './SignUp.styled';
-import Container from 'components/Container';
+import { AuthContainer, SignUpSection } from './SignUp.styled';
+import Logo from 'components/Logo';
 
 const SignUp = () => {
   return (
     <>
       <SignUpSection>
-        <Container>
+        <AuthContainer>
+          <Logo />
           <SignUpForm />
-        </Container>
+        </AuthContainer>
       </SignUpSection>
     </>
   );
