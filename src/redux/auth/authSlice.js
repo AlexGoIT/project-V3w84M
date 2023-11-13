@@ -18,6 +18,8 @@ const initialState = {
   error: null,
 };
 
+console.log(initialState);
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
