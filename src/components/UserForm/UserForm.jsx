@@ -137,7 +137,8 @@ const UserForm = () => {
           <WrapperInputField>
             <WrappInput>
               <Field
-                type="number"
+                type="text"
+                inputMode="numeric" 
                 name="height"
                 id="height"
                 placeholder=""
@@ -148,7 +149,8 @@ const UserForm = () => {
             <Wrapper>
               <WrappInput>
                 <Field
-                  type="number"
+                  type="text"
+                  inputMode="numeric" 
                   name="currentWeight"
                   id="currentWeight"
                   placeholder=""
@@ -160,7 +162,8 @@ const UserForm = () => {
             <Wrapper>
             <WrappInput>
               <Field
-                type="number"
+                type="text"
+                inputMode="numeric" 
                 name="desiredWeight"
                 id="desiredWeight"
                 placeholder=""
@@ -172,7 +175,8 @@ const UserForm = () => {
             <Wrapper>
             <WrappInput>
               <Field
-                type="number"
+                type="text"
+                inputMode="numeric" 
                 name="birthday"
                 id="birthday"
                 placeholder="00-00-0000"
