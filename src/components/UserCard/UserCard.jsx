@@ -11,7 +11,7 @@ import {
   ActiveDataMinutes,
   ActivityContainer,
   ImageContainer,
-  CaloriesStaticInfoContainer,
+  // CaloriesStaticInfoContainer,
   ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
@@ -27,11 +27,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/user/userOperations';
 import { selectCalculate, selectName } from 'redux/user/userSelectors';
-import { setFile } from 'redux/auth/authOperations';
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 //
 
-const UserCard = ({ message }) => {
+const UserCard = ({ message, changeAvatar }) => {
   //
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
@@ -44,10 +43,9 @@ const UserCard = ({ message }) => {
   }, [dispatch]);
   //
 
-  const uploadFile = e => {
+  const uploadAvatar = e => {
     const file = e.target.files[0];
-    console.log({ file });
-    dispatch(setFile({ file }));
+    changeAvatar(file);
   };
 
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
@@ -60,7 +58,7 @@ const UserCard = ({ message }) => {
           <use href={`${sprite}#user`} />
         </svg>
         <AvatarLabel>
-          <AvatarInput type="file" hidden onChange={uploadFile} />
+          <AvatarInput type="file" hidden onChange={uploadAvatar} />
           <svg width="32" height="32" fill="#efede8">
             <use href={`${sprite}#add`} />
           </svg>

@@ -14,7 +14,7 @@ export const OverlayModal = styled.div`
 export const WrapperModalWindowUserMenu = styled.div`
   position: absolute;
   top: 0;
-  left: 40%;
+  left: 25vw;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -51,7 +51,11 @@ export const BtnCloseWindow = styled.button`
   position: absolute;
   top: 6px;
   right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
+  padding: 0;
   border: none;
   cursor: pointer;
   width: 24px;
@@ -81,6 +85,10 @@ export const UserNavModalWindow = styled.nav`
   margin-bottom: 282px;
   height: 146px;
   width: 114px;
+  @media screen and (min-width: 768px) {
+    width: 122px;
+    height: 164px;
+  }
 `;
 export const UserNavLinkModal = styled(NavLink)`
   display: flex;
@@ -97,12 +105,22 @@ export const UserNavLinkModal = styled(NavLink)`
     background-color: #e6533c;
     border: 1px solid rgba(239, 237, 232, 1);
   }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 export const LogoutModalWindowWrapper = styled.div`
   position: absolute;
   top: 94%;
   left: 5%;
-  height: 24px;
-  width: 78px;
+  height: 20px;
+  width: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 4;
+  @media screen and (min-width: 768px) {
+    width: 78px;
+    height: 24px;
+  }
 `;

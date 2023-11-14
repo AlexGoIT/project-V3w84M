@@ -8,8 +8,9 @@ export const UserNavBlock = styled.nav`
     flex-direction: row;
     align-items: center;
     margin-left: auto;
-    margin-right: auto;
+    /* margin-right: auto; */
     gap: 10px;
+    width: 364px;
   }
 `;
 export const UserNavLink = styled(NavLink)`

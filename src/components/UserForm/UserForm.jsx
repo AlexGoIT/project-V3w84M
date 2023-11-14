@@ -1,6 +1,8 @@
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
+import { parseISO } from 'date-fns';
 
 import {
   FormContainer,
@@ -13,26 +15,18 @@ import {
   Wrapper,
   WrapperLevel,
   WrappInput,
-  IconSvg,
 } from './UserForm.styled';
 
-import sprite from '../../assets/images/sprite.svg';
+import StyledDatepicker from './Datepicker/Datepicker';
 import { useSelector } from 'react-redux';
-import { selectFile, selectUser } from 'redux/auth/authSelectors';
-
-// Для передачи файла
-import { patchProfile } from 'redux/auth/authOperations';
+import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
-//
+import { patchProfile } from 'redux/auth/authOperations';
 
-const UserForm = () => {
+const UserForm = ({ avatar }) => {
   const user = useSelector(selectUser);
-  const file = useSelector(selectFile);
-  console.log(file);
 
-  // для передачи файла
   const dispatch = useDispatch();
-  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -76,8 +70,7 @@ const UserForm = () => {
   ];
 
   const initialValues = {
-    name: user.name,
-    // email: user.email,
+    name: user.name || 'Name',
     height: '',
     currentWeight: '',
     desiredWeight: '',
@@ -101,12 +94,7 @@ const UserForm = () => {
       .min(35, 'Desired weight must be at least 35 kg')
       .positive('Weight must be positive')
       .required('Desired weight is required'),
-    birthday: Yup.date()
-      .max(
-        new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
-        'Must be at least 18 years old'
-      )
-      .required('Birthday is required'),
+    birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
       .required('Blood type is required'),
@@ -119,30 +107,24 @@ const UserForm = () => {
   });
 
   const handleSubmit = ({ name, ...profileData }) => {
-    const payload = { name, profileData: JSON.stringify(profileData) };
+    const user = JSON.stringify({ name, profileData });
 
+    console.log(profileData);
     const formData = new FormData();
-    Object.entries(payload).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
 
-    // for (let property of formData.entries()) {
-    //   console.log(property[0], ':', property[1]);
-    // }
+    formData.append('user', user);
 
-    //
-    // А там де інпут прописати:
-    // import { setFile } from 'redux/auth/authSlice';
+    if (avatar) {
+      formData.append('avatar', avatar, avatar.name);
+    } else {
+      formData.append('avatar', null);
+    }
 
-    // dispatch(setFile(file));  // з інпуту
-
-    // const file = selectFile();
-    if (file) {
-      formData.append('avatar', file);
+    for (let property of formData.entries()) {
+      console.log(property[0], ':', property[1]);
     }
 
     dispatch(patchProfile(formData));
-    //
   };
 
   return (
@@ -161,6 +143,7 @@ const UserForm = () => {
                 type="text"
                 placeholder="Your name"
                 as={Input}
+                value={formik.values.name}
               />
             </div>
             <div>
@@ -214,22 +197,20 @@ const UserForm = () => {
                 <label htmlFor="desiredWeight">Desired Weight</label>
               </WrappInput>
             </Wrapper>
+
             <Wrapper>
               <WrappInput>
-                <Field
-                  type="text"
-                  inputMode="numeric"
-                  name="birthday"
-                  id="birthday"
-                  placeholder="00-00-0000"
-                  as={InputField}
+                <StyledDatepicker
+                  selectedDate={
+                    formik.values.birthday
+                      ? new Date(formik.values.birthday)
+                      : null
+                  }
+                  setSelectedDate={date => {
+                    const formattedDate = parseISO(date.toISOString());
+                    formik.setFieldValue('birthday', formattedDate);
+                  }}
                 />
-                <label htmlFor="birthday"></label>
-                <div style={{ position: 'relative' }}>
-                  <IconSvg width="18" height="18">
-                    <use href={`${sprite}#calendar`}></use>
-                  </IconSvg>
-                </div>
               </WrappInput>
             </Wrapper>
           </WrapperInputField>
