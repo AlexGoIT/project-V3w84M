@@ -27,6 +27,8 @@ import { useDispatch } from 'react-redux';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+  const file = useSelector(selectFile);
+  console.log(file);
 
   // для передачи файла
   const dispatch = useDispatch();
@@ -124,9 +126,9 @@ const UserForm = () => {
       formData.append(key, value);
     });
 
-    for (let property of formData.entries()) {
-      console.log(property[0], ':', property[1]);
-    }
+    // for (let property of formData.entries()) {
+    //   console.log(property[0], ':', property[1]);
+    // }
 
     //
     // А там де інпут прописати:
@@ -134,7 +136,7 @@ const UserForm = () => {
 
     // dispatch(setFile(file));  // з інпуту
 
-    const file = selectFile();
+    // const file = selectFile();
     if (file) {
       formData.append('avatar', file);
     }

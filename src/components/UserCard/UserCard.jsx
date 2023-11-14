@@ -27,6 +27,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/user/userOperations';
 import { selectCalculate, selectName } from 'redux/user/userSelectors';
+import { setFile } from 'redux/auth/authOperations';
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 //
 
@@ -43,6 +44,12 @@ const UserCard = ({ message }) => {
   }, [dispatch]);
   //
 
+  const uploadFile = e => {
+    const file = e.target.files[0];
+    console.log({ file });
+    dispatch(setFile({ file }));
+  };
+
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
   const bmr = calculate.BMR ? calculate.BMR : 0;
 
@@ -53,7 +60,7 @@ const UserCard = ({ message }) => {
           <use href={`${sprite}#user`} />
         </svg>
         <AvatarLabel>
-          <AvatarInput type="file" hidden />
+          <AvatarInput type="file" hidden onChange={uploadFile} />
           <svg width="32" height="32" fill="#efede8">
             <use href={`${sprite}#add`} />
           </svg>
