@@ -18,10 +18,19 @@ import {
 
 import sprite from '../../assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/authSelectors';
+import { selectFile, selectUser } from 'redux/auth/authSelectors';
+
+// Для передачи файла
+import { patchProfile } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+//
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+
+  // для передачи файла
+  const dispatch = useDispatch();
+  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -119,8 +128,19 @@ const UserForm = () => {
       console.log(property[0], ':', property[1]);
     }
 
-    const parsedProfileData = JSON.parse(formData.get('profileData'));
-    console.log(parsedProfileData);
+    //
+    // А там де інпут прописати:
+    // import { setFile } from 'redux/auth/authSlice';
+
+    // dispatch(setFile(file));  // з інпуту
+
+    const file = selectFile();
+    if (file) {
+      formData.append('avatar', file);
+    }
+
+    dispatch(patchProfile(formData));
+    //
   };
 
   return (
@@ -129,7 +149,7 @@ const UserForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting, ...formik }) => (
+      {({ isValid, dirty, ...formik }) => (
         <Form>
           <FormContainer>
             <div>
@@ -259,7 +279,9 @@ const UserForm = () => {
             </WrapperLevel>
           </WrapperRadio>
 
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={!(isValid && dirty)}>
+            Save
+          </Button>
         </Form>
       )}
     </Formik>
