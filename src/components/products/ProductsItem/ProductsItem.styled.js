@@ -86,7 +86,7 @@ export const ProductsCardStatusAdd = styled.button`
     color: #efede8;
   }
 
-  &::after {
+  /* &::after {
     content: url();
     display: block;
     width: 16px;
@@ -97,7 +97,29 @@ export const ProductsCardStatusAdd = styled.button`
     &:focus {
       fill: #efede8;
     }
+  } */
+`;
+
+export const IconAfterAdd = styled.svg`
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  margin-top: -3px;
+  fill: #efa082;
+  &:hover,
+  &:focus {
+    fill: #efede8;
   }
+`;
+
+export const IconBeforeTitle = styled.svg`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 0;
+  top: calc(50% - 12px);
+  fill: #efa082;
 `;
 
 export const ProductsCardTitle = styled.h4`
@@ -112,14 +134,14 @@ export const ProductsCardTitle = styled.h4`
   white-space: nowrap;
   padding-left: 40px;
   max-width: 100%;
-  &::before {
+  /* &::before {
     content: url();
     position: absolute;
     width: 24px;
     height: 24px;
     left: 0;
     top: calc(50% - 12px);
-  }
+  } */
 `;
 
 export const ProductsCardInfoList = styled.ul`

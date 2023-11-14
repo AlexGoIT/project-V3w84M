@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import sprite from 'assets/images/sprite.svg';
 
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/authSelectors';
@@ -15,11 +16,13 @@ import {
   ProductsCardInfoList,
   ProductsCardInfoItem,
   ProductsCardInfoValue,
+  IconAfterAdd,
+  IconBeforeTitle,
 } from './ProductsItem.styled';
 
-export const ProductsItem = ({ product, openModalToggle }) => {
-  const profileData = useSelector(selectUser);
-  const bloodType = profileData.blood;
+export const ProductsItem = ({ product, openModalToggle, color }) => {
+  const data = useSelector(selectUser);
+  const bloodType = data.user.profileData.blood;
   // console.log(bloodType);
 
   return (
@@ -44,10 +47,19 @@ export const ProductsItem = ({ product, openModalToggle }) => {
             type="button"
           >
             Add
+            <IconAfterAdd>
+              <use href={`${sprite}#icon-arrow`} />
+            </IconAfterAdd>
           </ProductsCardStatusAdd>
         </ProductsCardStatusCount>
       </ProductsCardStatus>
-      <ProductsCardTitle>{product.title}</ProductsCardTitle>
+
+      <ProductsCardTitle>
+        <IconBeforeTitle>
+          <use href={`${sprite}#icon-icon`} />
+        </IconBeforeTitle>
+        {product.title}
+      </ProductsCardTitle>
 
       <ProductsCardInfoList>
         <ProductsCardInfoItem>

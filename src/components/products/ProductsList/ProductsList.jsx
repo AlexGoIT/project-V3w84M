@@ -14,8 +14,8 @@ import { selectUser } from 'redux/auth/authSelectors';
 
 const ProductsList = () => {
   const dispatch = useDispatch();
-  const profileData = useSelector(selectUser);
-  const bloodType = profileData.blood;
+  const data = useSelector(selectUser);
+  const bloodType = data.user.profileData.blood;
   const [products, setProducts] = useState(null);
 
   const productsList = useSelector(selectProducts);
@@ -27,7 +27,6 @@ const ProductsList = () => {
 
   // const filteredList = productItems.filter(item => item.recommended );
 
-  // console.log(bloodType, 'blood');
   const filterProducts = (productItems, filter) => {
     const { category, recommended } = filter;
     const search = filter.search ? filter.search.toLowerCase() : undefined;
