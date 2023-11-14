@@ -1,5 +1,3 @@
-// import { useAuth } from 'hooks/useAuth';
-
 import Logo from 'components/Logo';
 
 import { HeaderBar, LogoWrap } from './Header.styled';
@@ -11,10 +9,12 @@ import Logout from 'components/Logout/Logout';
 
 import { useEffect, useRef, useState } from 'react';
 import ModalWindowBurgerMenu from 'components/ModalWindowBurgerMenu';
+import { useAuth } from 'redux/hooks/useAuth';
 
 const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const buttonRef = useRef(null);
+  const { isAuthorized } = useAuth();
 
   const openModal = () => {
     setModalOpen(true);
@@ -45,12 +45,15 @@ const Header = () => {
         <LogoWrap>
           <Logo />
         </LogoWrap>
-        <UserNav />
-        <UserBar />
-        <Logout />
-        {/* <BurgerMenu /> */}
-        <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
-        {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
+        {isAuthorized && (
+          <>
+            <UserNav />
+            <UserBar />
+            <Logout />
+            <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
+            {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
+          </>
+        )}
       </HeaderBar>
     </Container>
   );

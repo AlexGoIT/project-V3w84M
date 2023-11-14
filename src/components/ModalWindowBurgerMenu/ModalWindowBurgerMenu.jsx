@@ -3,37 +3,15 @@ import sprite from 'assets/images/sprite.svg';
 import {
   BtnCloseWindow,
   IconCloseWindow,
+  LogoutModalWindowWrapper,
   OverlayModal,
   UserNavLinkModal,
   UserNavModalWindow,
   WrapperModalWindowUserMenu,
 } from './ModalWindowBurgerMenu.styled';
-// import { useEffect, useState } from 'react';
+import Logout from 'components/Logout/Logout';
 
 const ModalWindowMenuUser = ({ isModalOpen, closeModal }) => {
-  //   const [isModalOpen, setModalOpen] = useState(false);
-  //   const closeModal = () => {
-  //     setModalOpen(false);
-  //   };
-  //   useEffect(() => {
-  //     const handleEscKeyDown = e => {
-  //       if (e.key === 'Escape') {
-  //         closeModal();
-  //       }
-  //     };
-  //     window.addEventListener('keydown', handleEscKeyDown);
-  //     const closeModal = () => {
-  //       setModalOpen(false);
-  //     };
-  //     return () => {
-  //       window.removeEventListener('keydown', handleEscKeyDown);
-  //     };
-  //   }, []);
-
-  //   useEffect(() => {
-  //     setModalOpen(isModalOpen);
-  //   }, [isModalOpen]);
-
   const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       closeModal();
@@ -41,9 +19,6 @@ const ModalWindowMenuUser = ({ isModalOpen, closeModal }) => {
   };
   return (
     <>
-      {/* {isModalOpen && (
-        <OverlayModal onClick={handleBackdropClick}></OverlayModal>
-      )} */}
       <OverlayModal onClick={handleBackdropClick}></OverlayModal>
       {/* <WrapperModalWindowUserMenu className={isModalOpen ? 'show' : 'hidden'}> */}
       <WrapperModalWindowUserMenu>
@@ -63,12 +38,12 @@ const ModalWindowMenuUser = ({ isModalOpen, closeModal }) => {
             Exercises
           </UserNavLinkModal>
         </UserNavModalWindow>
+        <LogoutModalWindowWrapper>
+          <Logout color="rgba(239, 237, 232, 1)" />
+        </LogoutModalWindowWrapper>
       </WrapperModalWindowUserMenu>
-      {/* <BtnLogout /> */}
     </>
   );
 };
-// ModalWindowMenuUser.propTypes = {
-//   isOpen: PropTypes.bool.isRequired,
-// };
+
 export default ModalWindowMenuUser;
