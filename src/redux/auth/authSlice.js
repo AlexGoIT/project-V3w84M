@@ -19,6 +19,7 @@ const initUser = {
 const initialState = {
   user: initUser,
   token: null,
+  file: null,
   isAuthorized: false,
   isRefreshed: false,
   error: null,
@@ -27,6 +28,11 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setFile: (state, action) => {
+      state.file = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(register.pending, state => {
@@ -95,11 +101,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(patchProfile.fulfilled, (state, action) => {
-        // state.user.profileData = action.payload;
-
-        const { name, profileData } = action.payload;
-
-        console.log('authSlice: patchProfile', name, profileData);
+        // state.user = action.payload;
 
         state.isLoading = false;
       })
