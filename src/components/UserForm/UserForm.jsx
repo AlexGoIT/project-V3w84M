@@ -1,6 +1,8 @@
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
+import { parseISO } from 'date-fns';
 
 import {
   FormContainer,
@@ -13,16 +15,14 @@ import {
   Wrapper,
   WrapperLevel,
   WrappInput,
-  IconSvg,
 } from './UserForm.styled';
 
-import sprite from '../../assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
+import StyledDatepicker from './Datepicker/Datepicker';
 import { selectUser } from 'redux/auth/authSelectors';
 
 import { useDispatch } from 'react-redux';
 import { patchProfile } from 'redux/auth/authOperations';
-//
 
 const UserForm = ({ avatar }) => {
   const user = useSelector(selectUser);
@@ -71,7 +71,7 @@ const UserForm = ({ avatar }) => {
   ];
 
   const initialValues = {
-    name: user.name,
+    name: user.name || 'Name',
     // email: user.email,
     height: '',
     currentWeight: '',
@@ -96,12 +96,7 @@ const UserForm = ({ avatar }) => {
       .min(35, 'Desired weight must be at least 35 kg')
       .positive('Weight must be positive')
       .required('Desired weight is required'),
-    birthday: Yup.date()
-      .max(
-        new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
-        'Must be at least 18 years old'
-      )
-      .required('Birthday is required'),
+    birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
       .required('Blood type is required'),
@@ -163,6 +158,7 @@ const UserForm = ({ avatar }) => {
                 type="text"
                 placeholder="Your name"
                 as={Input}
+                value={formik.values.name}
               />
             </div>
             <div>
@@ -216,22 +212,20 @@ const UserForm = ({ avatar }) => {
                 <label htmlFor="desiredWeight">Desired Weight</label>
               </WrappInput>
             </Wrapper>
+
             <Wrapper>
               <WrappInput>
-                <Field
-                  type="text"
-                  inputMode="numeric"
-                  name="birthday"
-                  id="birthday"
-                  placeholder="00-00-0000"
-                  as={InputField}
+                <StyledDatepicker
+                  selectedDate={
+                    formik.values.birthday
+                      ? new Date(formik.values.birthday)
+                      : null
+                  }
+                  setSelectedDate={date => {
+                    const formattedDate = parseISO(date.toISOString());
+                    formik.setFieldValue('birthday', formattedDate);
+                  }}
                 />
-                <label htmlFor="birthday"></label>
-                <div style={{ position: 'relative' }}>
-                  <IconSvg width="18" height="18">
-                    <use href={`${sprite}#calendar`}></use>
-                  </IconSvg>
-                </div>
               </WrappInput>
             </Wrapper>
           </WrapperInputField>
@@ -282,7 +276,6 @@ const UserForm = ({ avatar }) => {
               ))}
             </WrapperLevel>
           </WrapperRadio>
-
           <Button type="submit" disabled={!(isValid && dirty)}>
             Save
           </Button>

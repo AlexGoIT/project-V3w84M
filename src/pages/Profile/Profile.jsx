@@ -4,6 +4,7 @@ import UserCard from '../../components/UserCard/UserCard';
 
 import UserForm from 'components/UserForm';
 import { useState } from 'react';
+import UserForm from '../../components/UserForm/UserForm';
 
 const Profile = () => {
   const [avatar, setAvatar] = useState(null);

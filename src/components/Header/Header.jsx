@@ -1,9 +1,9 @@
 import Logo from 'components/Logo';
 
-import { HeaderBar, LogoWrap } from './Header.styled';
+import { HeaderBar, HideLogout, LogoWrap } from './Header.styled';
 import UserNav from 'components/UserNav/UserNav';
 import UserBar from 'components/UserBar/UserBar';
-import Container from 'components/Container';
+// import Container from 'components/Container';
 import BurgerMenu from 'components/BurgerMenu';
 import Logout from 'components/Logout/Logout';
 
@@ -40,22 +40,22 @@ const Header = () => {
     };
   }, []);
   return (
-    <Container>
-      <HeaderBar>
-        <LogoWrap>
-          <Logo />
-        </LogoWrap>
-        {isAuthorized && (
-          <>
-            <UserNav />
-            <UserBar />
+    <HeaderBar>
+      <LogoWrap>
+        <Logo />
+      </LogoWrap>
+      {isAuthorized && (
+        <>
+          <UserNav />
+          <UserBar />
+          <HideLogout>
             <Logout />
-            <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
-            {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
-          </>
-        )}
-      </HeaderBar>
-    </Container>
+          </HideLogout>
+          <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
+          {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
+        </>
+      )}
+    </HeaderBar>
   );
 };
 

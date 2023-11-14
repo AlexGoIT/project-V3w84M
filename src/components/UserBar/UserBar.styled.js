@@ -5,9 +5,17 @@ export const UserBarBlock = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 14px;
   gap: 10px;
+  @media screen and (min-width: 1440px) {
+    margin-right: 16px;
+    margin-left: auto;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-left: 32px;
+  }
 `;
 export const UserBarLink = styled(Link)``;
 export const UserAvatar = styled.div`
