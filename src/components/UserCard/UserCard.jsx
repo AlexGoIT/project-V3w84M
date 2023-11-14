@@ -30,7 +30,7 @@ import { selectCalculate, selectName } from 'redux/user/userSelectors';
 // import { fetchCurrentUser } from 'redux/auth/authOperations';
 //
 
-const UserCard = ({ message }) => {
+const UserCard = ({ message, changeAvatar }) => {
   //
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
@@ -43,6 +43,11 @@ const UserCard = ({ message }) => {
   }, [dispatch]);
   //
 
+  const uploadAvatar = e => {
+    const file = e.target.files[0];
+    changeAvatar(file);
+  };
+
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
   const bmr = calculate.BMR ? calculate.BMR : 0;
 
@@ -53,7 +58,7 @@ const UserCard = ({ message }) => {
           <use href={`${sprite}#user`} />
         </svg>
         <AvatarLabel>
-          <AvatarInput type="file" hidden />
+          <AvatarInput type="file" hidden onChange={uploadAvatar} />
           <svg width="32" height="32" fill="#efede8">
             <use href={`${sprite}#add`} />
           </svg>

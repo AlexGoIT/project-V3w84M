@@ -15,28 +15,18 @@ import {
   Wrapper,
   WrapperLevel,
   WrappInput,
-
 } from './UserForm.styled';
 
-
-import { useSelector } from 'react-redux';
-
 import StyledDatepicker from './Datepicker/Datepicker';
-
-import { selectFile, selectUser } from 'redux/auth/authSelectors';
-
-// Для передачи файла
-import { patchProfile } from 'redux/auth/authOperations';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
-//
+import { patchProfile } from 'redux/auth/authOperations';
 
-
-const UserForm = () => {
+const UserForm = ({ avatar }) => {
   const user = useSelector(selectUser);
 
-  // для передачи файла
   const dispatch = useDispatch();
-  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -81,7 +71,6 @@ const UserForm = () => {
 
   const initialValues = {
     name: user.name || 'Name',
-    // email: user.email,
     height: '',
     currentWeight: '',
     desiredWeight: '',
@@ -117,29 +106,25 @@ const UserForm = () => {
       .required('Activity level is required'),
   });
 
-  const handleSubmit = values => {
+  const handleSubmit = ({ name, ...profileData }) => {
+    const user = JSON.stringify({ name, profileData });
+
+    console.log(profileData);
     const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
-    console.log(values);
+
+    formData.append('user', user);
+
+    if (avatar) {
+      formData.append('avatar', avatar, avatar.name);
+    } else {
+      formData.append('avatar', null);
+    }
+
     for (let property of formData.entries()) {
       console.log(property[0], ':', property[1]);
     }
 
-    //
-    // А там де інпут прописати:
-    // import { setFile } from 'redux/auth/authSlice';
-
-    // dispatch(setFile(file));  // з інпуту
-
-    const file = selectFile();
-    if (file) {
-      formData.append('avatar', file);
-    }
-
     dispatch(patchProfile(formData));
-    //
   };
 
   return (
@@ -158,7 +143,7 @@ const UserForm = () => {
                 type="text"
                 placeholder="Your name"
                 as={Input}
-                value={formik.values.name} 
+                value={formik.values.name}
               />
             </div>
             <div>
@@ -211,25 +196,23 @@ const UserForm = () => {
                 />
                 <label htmlFor="desiredWeight">Desired Weight</label>
               </WrappInput>
-              </Wrapper>
+            </Wrapper>
 
-          <Wrapper>
+            <Wrapper>
               <WrappInput>
-
-                    <StyledDatepicker 
-                 
-               
-                 selectedDate={formik.values.birthday ? new Date(formik.values.birthday) : null}
-                 setSelectedDate={date => {
-                   const formattedDate = parseISO(date.toISOString());
-                   formik.setFieldValue('birthday', formattedDate);
-                 }}
-               
-                    />
-                
-           
+                <StyledDatepicker
+                  selectedDate={
+                    formik.values.birthday
+                      ? new Date(formik.values.birthday)
+                      : null
+                  }
+                  setSelectedDate={date => {
+                    const formattedDate = parseISO(date.toISOString());
+                    formik.setFieldValue('birthday', formattedDate);
+                  }}
+                />
               </WrappInput>
-            </Wrapper>     
+            </Wrapper>
           </WrapperInputField>
           <WrapperRadio>
             <div style={{ display: 'flex', marginRight: '20px' }}>
