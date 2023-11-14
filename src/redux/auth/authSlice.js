@@ -93,6 +93,9 @@ export const authSlice = createSlice({
       })
       .addCase(currentUser.rejected, (state, action) => {
         state.isRefreshed = false;
+        state.isAuthorized = false;
+        state.token = null;
+        state.user = initUser;
         state.error = action.payload;
       });
 
