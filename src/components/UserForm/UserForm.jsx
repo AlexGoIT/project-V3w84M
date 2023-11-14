@@ -1,6 +1,8 @@
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
+import { parseISO } from 'date-fns';
 
 import {
   FormContainer,
@@ -13,15 +15,28 @@ import {
   Wrapper,
   WrapperLevel,
   WrappInput,
-  IconSvg,
+
 } from './UserForm.styled';
 
-import sprite from '../../assets/images/sprite.svg';
+
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/authSelectors';
+
+import StyledDatepicker from './Datepicker/Datepicker';
+
+import { selectFile, selectUser } from 'redux/auth/authSelectors';
+
+// Для передачи файла
+import { patchProfile } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+//
+
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+
+  // для передачи файла
+  const dispatch = useDispatch();
+  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -65,7 +80,7 @@ const UserForm = () => {
   ];
 
   const initialValues = {
-    name: user.name,
+    name: user.name || 'Name',
     // email: user.email,
     height: '',
     currentWeight: '',
@@ -90,12 +105,7 @@ const UserForm = () => {
       .min(35, 'Desired weight must be at least 35 kg')
       .positive('Weight must be positive')
       .required('Desired weight is required'),
-    birthday: Yup.date()
-      .max(
-        new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
-        'Must be at least 18 years old'
-      )
-      .required('Birthday is required'),
+    birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
       .required('Blood type is required'),
@@ -116,6 +126,20 @@ const UserForm = () => {
     for (let property of formData.entries()) {
       console.log(property[0], ':', property[1]);
     }
+
+    //
+    // А там де інпут прописати:
+    // import { setFile } from 'redux/auth/authSlice';
+
+    // dispatch(setFile(file));  // з інпуту
+
+    const file = selectFile();
+    if (file) {
+      formData.append('avatar', file);
+    }
+
+    dispatch(patchProfile(formData));
+    //
   };
 
   return (
@@ -124,7 +148,7 @@ const UserForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting, ...formik }) => (
+      {({ isValid, dirty, ...formik }) => (
         <Form>
           <FormContainer>
             <div>
@@ -134,6 +158,7 @@ const UserForm = () => {
                 type="text"
                 placeholder="Your name"
                 as={Input}
+                value={formik.values.name} 
               />
             </div>
             <div>
@@ -186,25 +211,25 @@ const UserForm = () => {
                 />
                 <label htmlFor="desiredWeight">Desired Weight</label>
               </WrappInput>
-            </Wrapper>
-            <Wrapper>
+              </Wrapper>
+
+          <Wrapper>
               <WrappInput>
-                <Field
-                  type="text"
-                  inputMode="numeric"
-                  name="birthday"
-                  id="birthday"
-                  placeholder="00-00-0000"
-                  as={InputField}
-                />
-                <label htmlFor="birthday"></label>
-                <div style={{ position: 'relative' }}>
-                  <IconSvg width="18" height="18">
-                    <use href={`${sprite}#calendar`}></use>
-                  </IconSvg>
-                </div>
+
+                    <StyledDatepicker 
+                 
+               
+                 selectedDate={formik.values.birthday ? new Date(formik.values.birthday) : null}
+                 setSelectedDate={date => {
+                   const formattedDate = parseISO(date.toISOString());
+                   formik.setFieldValue('birthday', formattedDate);
+                 }}
+               
+                    />
+                
+           
               </WrappInput>
-            </Wrapper>
+            </Wrapper>     
           </WrapperInputField>
           <WrapperRadio>
             <div style={{ display: 'flex', marginRight: '20px' }}>
@@ -254,7 +279,9 @@ const UserForm = () => {
             </WrapperLevel>
           </WrapperRadio>
 
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={!(isValid && dirty)}>
+            Save
+          </Button>
         </Form>
       )}
     </Formik>
