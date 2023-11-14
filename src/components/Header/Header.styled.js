@@ -9,6 +9,9 @@ export const HeaderBar = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   margin-inline: auto;
+
+  position: fixed;
+
   @media screen and (min-width: 375px) {
     width: 375px;
     @media screen and (min-width: 768px) {
