@@ -11,7 +11,7 @@ import {
   ActiveDataMinutes,
   ActivityContainer,
   ImageContainer,
-  CaloriesStaticInfoContainer,
+  // CaloriesStaticInfoContainer,
   ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
