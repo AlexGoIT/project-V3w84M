@@ -107,15 +107,20 @@ const UserForm = () => {
       .required('Activity level is required'),
   });
 
-  const handleSubmit = values => {
+  const handleSubmit = ({ name, ...profileData }) => {
+    const payload = { name, profileData: JSON.stringify(profileData) };
+
     const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
+    Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     });
-    console.log(values);
+
     for (let property of formData.entries()) {
       console.log(property[0], ':', property[1]);
     }
+
+    const parsedProfileData = JSON.parse(formData.get('profileData'));
+    console.log(parsedProfileData);
   };
 
   return (
