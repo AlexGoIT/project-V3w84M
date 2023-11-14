@@ -17,10 +17,9 @@ import {
   WrappInput,
 } from './UserForm.styled';
 
-import { useSelector } from 'react-redux';
 import StyledDatepicker from './Datepicker/Datepicker';
+import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/authSelectors';
-
 import { useDispatch } from 'react-redux';
 import { patchProfile } from 'redux/auth/authOperations';
 
@@ -72,7 +71,6 @@ const UserForm = ({ avatar }) => {
 
   const initialValues = {
     name: user.name || 'Name',
-    // email: user.email,
     height: '',
     currentWeight: '',
     desiredWeight: '',
@@ -110,36 +108,23 @@ const UserForm = ({ avatar }) => {
 
   const handleSubmit = ({ name, ...profileData }) => {
     const user = JSON.stringify({ name, profileData });
+
+    console.log(profileData);
     const formData = new FormData();
 
     formData.append('user', user);
-    formData.append('avatar', avatar, avatar.name);
+
+    if (avatar) {
+      formData.append('avatar', avatar, avatar.name);
+    } else {
+      formData.append('avatar', null);
+    }
 
     for (let property of formData.entries()) {
       console.log(property[0], ':', property[1]);
     }
 
     dispatch(patchProfile(formData));
-
-    // Object.entries(payload).forEach(([key, value]) => {
-    //   formData.append(key, value);
-    // });
-
-    // for (let property of formData.entries()) {
-    //   console.log(property[0], ':', property[1]);
-    // }
-
-    //
-    // А там де інпут прописати:
-    // import { setFile } from 'redux/auth/authSlice';
-
-    // dispatch(setFile(file));  // з інпуту
-
-    // const file = selectFile();
-
-    // if (file) {
-    //   formData.append('avatar', file);
-    // }
   };
 
   return (
@@ -276,6 +261,7 @@ const UserForm = ({ avatar }) => {
               ))}
             </WrapperLevel>
           </WrapperRadio>
+
           <Button type="submit" disabled={!(isValid && dirty)}>
             Save
           </Button>
