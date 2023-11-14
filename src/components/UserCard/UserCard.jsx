@@ -1,5 +1,7 @@
 import {
   UserCardContainer,
+  AvatarInput,
+  AvatarLabel,
   NameContainer,
   UserInscription,
   InformationContainer,
@@ -9,6 +11,7 @@ import {
   ActiveDataMinutes,
   ActivityContainer,
   ImageContainer,
+  // CaloriesStaticInfoContainer,
   ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
@@ -49,11 +52,18 @@ const UserCard = ({ message }) => {
         <svg width="61" height="62" fill="#efede8">
           <use href={`${sprite}#user`} />
         </svg>
+        <AvatarLabel>
+          <AvatarInput type="file" hidden />
+          <svg width="32" height="32" fill="#efede8">
+            <use href={`${sprite}#add`} />
+          </svg>
+        </AvatarLabel>
       </UserAvatar>
       <NameContainer>{user.name}</NameContainer>
       <UserInscription>User</UserInscription>
       <InformationContainer>
         <CaloriesContainer>
+          {/* <CaloriesStaticInfoContainer> */}
           <ImageContainer>
             <svg width="20" height="20" fill="#efede8">
               <use href={`${sprite}#food`} />
@@ -61,6 +71,7 @@ const UserCard = ({ message }) => {
           </ImageContainer>
           <InformationText>Daily calorie intake</InformationText>
           <ActiveDataCalories>{bmr}</ActiveDataCalories>
+          {/* </CaloriesStaticInfoContainer> */}
         </CaloriesContainer>
         <ActivityContainer>
           <ActivityStaticInfoContainer>
