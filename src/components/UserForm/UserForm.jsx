@@ -18,21 +18,16 @@ import {
 
 import sprite from '../../assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectFile, selectUser } from 'redux/auth/authSelectors';
+import { selectUser } from 'redux/auth/authSelectors';
 
-// Для передачи файла
-import { patchProfile } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
+import { patchProfile } from 'redux/auth/authOperations';
 //
 
-const UserForm = () => {
+const UserForm = ({ avatar }) => {
   const user = useSelector(selectUser);
-  const file = useSelector(selectFile);
-  console.log(file);
 
-  // для передачи файла
   const dispatch = useDispatch();
-  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -119,12 +114,21 @@ const UserForm = () => {
   });
 
   const handleSubmit = ({ name, ...profileData }) => {
-    const payload = { name, profileData: JSON.stringify(profileData) };
-
+    const user = JSON.stringify({ name, profileData });
     const formData = new FormData();
-    Object.entries(payload).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+
+    formData.append('user', user);
+    formData.append('avatar', avatar, avatar.name);
+
+    for (let property of formData.entries()) {
+      console.log(property[0], ':', property[1]);
+    }
+
+    dispatch(patchProfile(formData));
+
+    // Object.entries(payload).forEach(([key, value]) => {
+    //   formData.append(key, value);
+    // });
 
     // for (let property of formData.entries()) {
     //   console.log(property[0], ':', property[1]);
@@ -137,12 +141,10 @@ const UserForm = () => {
     // dispatch(setFile(file));  // з інпуту
 
     // const file = selectFile();
-    if (file) {
-      formData.append('avatar', file);
-    }
 
-    dispatch(patchProfile(formData));
-    //
+    // if (file) {
+    //   formData.append('avatar', file);
+    // }
   };
 
   return (
