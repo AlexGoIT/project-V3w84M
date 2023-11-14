@@ -18,10 +18,19 @@ import {
 
 import sprite from '../../assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/auth/authSelectors';
+import { selectFile, selectUser } from 'redux/auth/authSelectors';
+
+// Для передачи файла
+import { patchProfile } from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+//
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+
+  // для передачи файла
+  const dispatch = useDispatch();
+  //
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
@@ -116,6 +125,20 @@ const UserForm = () => {
     for (let property of formData.entries()) {
       console.log(property[0], ':', property[1]);
     }
+
+    //
+    // А там де інпут прописати:
+    // import { setFile } from 'redux/auth/authSlice';
+
+    // dispatch(setFile(file));  // з інпуту
+
+    const file = selectFile();
+    if (file) {
+      formData.append('avatar', file);
+    }
+
+    dispatch(patchProfile(formData));
+    //
   };
 
   return (
