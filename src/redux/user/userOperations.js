@@ -6,7 +6,7 @@ export const fetchCalculate = createAsyncThunk(
   'user/fetchCalculate',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/users/calculate');
+      const { data } = await axios.get('/api/calculate');
 
       return data;
     } catch (err) {

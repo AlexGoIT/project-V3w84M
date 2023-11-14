@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCalculate } from './userOperations';
+import { fetchCalculate, patchProfile } from './userOperations';
 
 const initialState = {
   calculate: {},

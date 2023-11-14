@@ -83,3 +83,18 @@ export const currentUser = createAsyncThunk(
     }
   }
 );
+
+export const patchProfile = createAsyncThunk(
+  'auth/patchProfile',
+  async (profileData, thunkAPI) => {
+    try {
+      // const { data: result } = await axios.patch('/auth/profile', data);
+
+      Notify.success('Profile updated');
+      return profileData;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);

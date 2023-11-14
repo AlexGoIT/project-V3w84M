@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { currentUser, login, logout, register } from './authOperations';
+import {
+  currentUser,
+  login,
+  logout,
+  patchProfile,
+  register,
+} from './authOperations';
 
 const initUser = {
   name: '',
@@ -17,8 +23,6 @@ const initialState = {
   isRefreshed: false,
   error: null,
 };
-
-console.log(initialState);
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -84,6 +88,24 @@ export const authSlice = createSlice({
       .addCase(currentUser.rejected, (state, action) => {
         state.isRefreshed = false;
         state.error = action.payload;
+      });
+
+    builder
+      .addCase(patchProfile.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(patchProfile.fulfilled, (state, action) => {
+        // state.user.profileData = action.payload;
+
+        const { name, profileData } = action.payload;
+
+        console.log('authSlice: patchProfile', name, profileData);
+
+        state.isLoading = false;
+      })
+      .addCase(patchProfile.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
       });
   },
 });
