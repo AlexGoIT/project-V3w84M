@@ -124,7 +124,7 @@ const UserForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting, ...formik }) => (
+      {({ isValid, dirty, ...formik })  => (
         <Form>
           <FormContainer>
             <div>
@@ -254,7 +254,7 @@ const UserForm = () => {
             </WrapperLevel>
           </WrapperRadio>
 
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={!(isValid && dirty)}>Save</Button>
         </Form>
       )}
     </Formik>

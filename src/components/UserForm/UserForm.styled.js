@@ -162,13 +162,34 @@ export const Button = styled.button`
   padding: 12px 40px;
   border-radius: 12px;
   background: #E6533C;
-  color: rgba(239, 237, 232, 0.30);
+  color: #efede8;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 18px;
+  
 
   @media screen and (min-width: 768px) {
     margin: 40px 0px 0px 0;
     padding: 16px 50px;
   }
+  &:hover:not([disabled]),
+&:focus-visible:not([disabled]) {
+  background: #ef8964;
+}
+
+&:disabled {
+  color: rgba(239, 237, 232, 0.6);
+  cursor: not-allowed;
+}
+
 `;
+
+
+
+
+
+
 
 
 export const WrapperLevel = styled.div`
