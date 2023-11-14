@@ -1,23 +1,30 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
-export const LogoutContainer = styled.div`
+// export const LogoutContainer = styled.div`
+//   display: flex;
+//   height: 20px;
+//   width: 72px;
+
+//   margin-top: 40px;
+//   @media screen and (min-width: 768px) {
+//     margin-top: 32px;
+//   }
+// `;
+
+export const LogoutButtonLink = styled(NavLink)`
   display: flex;
-  margin-left: auto;
-  margin-top: 40px;
-  @media screen and (min-width: 768px) {
-    margin-top: 32px;
-  }
-`;
+  justify-content: flex-end;
+  align-items: center;
+  color: rgba(239, 237, 232, 1);
+  /* margin-top: 40px; */
 
-export const LogoutButton = styled.button`
-  background-color: black;
-  border: none;
-  font-size: 14px;
-  line-height: 18px;
-  color: #efede8;
+  /* @media screen and (min-width: 768px) and (max-width: 1440px) {
+    margin-right: 150px;
+  } */
+`;
+export const Text = styled.span`
   margin-right: 8px;
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
+  font-size: 14px;
+  font-weight: 400;
 `;

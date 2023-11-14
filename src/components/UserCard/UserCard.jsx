@@ -12,6 +12,7 @@ import {
   ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
+  LogoutContainer,
 } from './UserCard.styled';
 
 import Logout from 'components/Logout/Logout';
@@ -22,15 +23,19 @@ import sprite from 'assets/images/sprite.svg';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/user/userOperations';
-import { selectCalculate } from 'redux/user/userSelectors';
+import { selectCalculate, selectName } from 'redux/user/userSelectors';
+// import { fetchCurrentUser } from 'redux/auth/authOperations';
 //
 
 const UserCard = ({ message }) => {
   //
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
+  const user = useSelector(selectName);
 
   useEffect(() => {
+    // dispatch(fetchCurrentUser());
+
     dispatch(fetchCalculate());
   }, [dispatch]);
   //
@@ -45,7 +50,7 @@ const UserCard = ({ message }) => {
           <use href={`${sprite}#user`} />
         </svg>
       </UserAvatar>
-      <NameContainer>Anna Rybachok</NameContainer>
+      <NameContainer>{user.name}</NameContainer>
       <UserInscription>User</UserInscription>
       <InformationContainer>
         <CaloriesContainer>
@@ -78,7 +83,9 @@ const UserCard = ({ message }) => {
           }
         ></Notice>
       </NoticeContainer>
-      <Logout></Logout>
+      <LogoutContainer>
+        <Logout />
+      </LogoutContainer>
     </UserCardContainer>
   );
 };

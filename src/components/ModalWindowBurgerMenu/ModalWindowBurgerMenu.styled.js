@@ -98,3 +98,11 @@ export const UserNavLinkModal = styled(NavLink)`
     border: 1px solid rgba(239, 237, 232, 1);
   }
 `;
+export const LogoutModalWindowWrapper = styled.div`
+  position: absolute;
+  top: 94%;
+  left: 5%;
+  height: 24px;
+  width: 78px;
+  z-index: 4;
+`;

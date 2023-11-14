@@ -25,6 +25,8 @@ const StyledDatepicker = () => {
     );
   });
 
+  const date = new Date();
+
   return (
     <>
       <Global styles={calendarGlobalStyles} />
@@ -36,8 +38,8 @@ const StyledDatepicker = () => {
         customInput={<CustomInput />}
         dateFormat={'MM dd yyyy'}
         calendarStartDay={1}
-        popperPlacement="bottom-start"
-        minDate={new Date()} //временно текущий день, необх поставить дату регистрации юзера
+        //popperPlacement={'bottom-start'}
+        minDate={date} //временно текущий день, необх поставить дату регистрации юзера
         //maxDate={(new Date(), 3)}
       />
     </>

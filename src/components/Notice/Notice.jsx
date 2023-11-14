@@ -8,7 +8,7 @@ const Notice = ({ notice }) => {
   return (
     <NoticeArea>
       <NoticeIcon>
-        <svg width="24" height="24" fill="#efede8">
+        <svg width="18" height="18" fill="#efede8">
           <use href={`${sprite}#warning`} />
         </svg>
       </NoticeIcon>
