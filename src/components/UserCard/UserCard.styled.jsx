@@ -9,6 +9,7 @@ export const UserCardContainer = styled.div`
 `;
 
 export const UserAvatar = styled.div`
+  position: relative;
   width: 90px;
   height: 90px;
   display: flex;
@@ -17,10 +18,18 @@ export const UserAvatar = styled.div`
   border: solid 1px #e6533c;
   border-radius: 50%;
   margin-top: 40px;
+
+  & > label {
+    position: absolute;
+    bottom: -16px;
+  }
+
   @media screen and (min-width: 768px) {
     margin-top: 64px;
   }
 `;
+export const AvatarLabel = styled.label``;
+export const AvatarInput = styled.input``;
 
 export const NameContainer = styled.div`
   font-size: 20px;
@@ -76,8 +85,16 @@ export const CaloriesContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 214px;
     height: 108px;
+    position: relative;
   }
 `;
+
+export const CaloriesStaticInfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
 export const ActiveDataCalories = styled.span`
   font-size: 18px;
   line-height: 20px;
@@ -86,6 +103,9 @@ export const ActiveDataCalories = styled.span`
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 32px;
+    position: absolute;
+    bottom: 14px;
+    left: 18px;
   }
 `;
 
