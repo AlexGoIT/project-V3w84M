@@ -22,7 +22,6 @@ import { selectUser } from 'redux/auth/authSelectors';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
-  const userName = user.name;
 
   const bloodOptions = [
     { id: '1', value: 1, label: '1' },
