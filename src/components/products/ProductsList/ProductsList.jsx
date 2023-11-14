@@ -8,7 +8,7 @@ import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { ProductsListUl } from './ProductsList.styled';
 import BasicModalWindow from '../../BasicModalWindow/BasicModalWindow';
 import AddProductForm from '../../AddProductForm/AddProductForm';
-import { AddProductSuccess } from '../AddProductSuccess/AddProductSuccess';
+import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
 import { SearchNotResult } from '../SearchNotResult/SearchNotResult';
 import { selectUser } from 'redux/auth/authSelectors';
 
