@@ -3,7 +3,7 @@ import {
   NotResultOrangeTextBlock,
   NotResultText,
   NotResultWrapper,
-} from './SearchNotResult.styles';
+} from './SearchNotResult.styled';
 
 export const SearchNotResult = () => {
   return (
