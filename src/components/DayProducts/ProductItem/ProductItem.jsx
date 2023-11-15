@@ -67,12 +67,11 @@ const ProductItem = ({
 
 ProductItem.propTypes = {
   id: PropTypes.string,
-  bodyPart: PropTypes.string,
-  equipment: PropTypes.string,
-  name: PropTypes.string,
-  target: PropTypes.string,
-  burnedCalories: PropTypes.string,
-  time: PropTypes.number,
+  title: PropTypes.string,
+  category: PropTypes.string,
+  calories: PropTypes.number,
+  weight: PropTypes.number,
+  groupBloodNotAllowed: PropTypes.string,
 };
 
 export default ProductItem;

@@ -35,8 +35,6 @@ const DayProducts = () => {
   const error = useSelector(selectError);
   const productsData = useSelector(selectProducts);
   const { result, total_results } = productsData;
-  console.log(result);
-  console.log(total_results);
 
   const [heightProductArea, setHeightProductArea] = useState(true);
   if (total_results === 0) {

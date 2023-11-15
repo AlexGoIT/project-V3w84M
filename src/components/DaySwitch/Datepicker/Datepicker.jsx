@@ -16,8 +16,9 @@ import { selectUser } from 'redux/auth/authSelectors';
 const StyledDatepicker = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
   const dispatch = useDispatch();
-  const { user } = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const createdDate = Date.parse(user.createdAt);
+  console.log(createdDate);
 
   useEffect(() => {
     dispatch(currentUser());
@@ -51,7 +52,7 @@ const StyledDatepicker = () => {
         customInput={<CustomInput />}
         dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
-        minDate={user.createdAt ? createdDate : Date.now()}
+        minDate={user ? createdDate : Date.now()}
       />
     </>
   );
