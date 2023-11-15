@@ -13,12 +13,13 @@ export const calendarGlobalStyles = css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 280px;
+    width: auto;
     height: auto;
-    padding: 20px 18px;
+    padding: 14px 14px;
     background-color: #ef8964;
     font-family: Inter;
     border-radius: 16px;
+    border: none;
   }
   .react-datepicker__month-container {
     float: inherit;
@@ -71,13 +72,13 @@ export const calendarGlobalStyles = css`
   }
   .react-datepicker__navigation--previous {
     left: 7px;
-    top: 20px;
+    top: 14px;
     width: 18px;
     height: 18px;
   }
   .react-datepicker__navigation--next {
     right: 7px;
-    top: 20px;
+    top: 14px;
     width: 18px;
     height: 18px;
   }

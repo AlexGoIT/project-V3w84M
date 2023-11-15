@@ -9,27 +9,28 @@ import {
   Message,
 } from './DayProducts.styled';
 import sprite from 'assets/images/sprite.svg';
-// import { fetchProducts } from '../../redux/api/apiOperations';
-// import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   selectIsLoading,
-//   selectError,
-//   selectProducts,
-// } from '../../redux/api/apiSelectors';
-// import { useEffect } from 'react';
-// import Loader from 'components/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  selectError,
+  selectIsLoading,
+  selectProducts,
+} from 'redux/api/apiSelectors';
+import { fetchProducts } from 'redux/api/apiOperations';
+import Loader from 'components/Loader';
+import { Notify } from 'notiflix';
 
 const DayProducts = () => {
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
-  // const productsData = useSelector(selectProducts);
-  // const { result, total_results } = productsData;
-  // console.log(result);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const productsData = useSelector(selectProducts);
+  const { result } = productsData;
+  console.log(result);
 
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <DayProductsArea>
@@ -43,23 +44,9 @@ const DayProducts = () => {
         </Button>
       </TitleArea>
       <TableArea>
-        {/* {isLoading && <Loader />}
-        {total_results > 0 ? (
-          <div></div>
-        ) : ( */}
-        <table>
-          <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Calories</th>
-            <th>Weight</th>
-            <th>Recommend</th>
-            <th>del</th>
-          </tr>
-        </table>
+        {isLoading && <Loader />}
         <Message>Not found products</Message>
-        {/* )}
-        {error && alert('Sorry, something is wrong!')} */}
+        {error && Notify.failure(error.message)}
       </TableArea>
     </DayProductsArea>
   );

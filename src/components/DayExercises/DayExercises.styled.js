@@ -1,5 +1,16 @@
 import styled from '@emotion/styled';
 
+const setHeight = props => {
+  switch (props.dimention) {
+    case 'true':
+      return '992px';
+    case 'false':
+      return '335px';
+    default:
+      return '992px';
+  }
+};
+
 export const DayExercisesArea = styled.div`
   position: relative;
   width: 100%;
@@ -10,7 +21,7 @@ export const DayExercisesArea = styled.div`
   padding: 16px;
 
   @media screen and (min-width: 375px) {
-    height: 335px;
+    max-height: ${setHeight};
   }
 
   @media screen and (min-width: 768px) {
@@ -71,7 +82,7 @@ export const ArrowIcon = styled.svg(
 
 export const TableArea = styled.div`
   @media screen and (min-width: 1440px) {
-    padding-inline: 16px;
+    padding-left: 16px;
   }
 `;
 
@@ -89,5 +100,98 @@ export const Message = styled.p`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+  }
+`;
+
+export const TableHeader = styled.div`
+  @media screen and (min-width: 375px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 8px;
+    color: #ef8964;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+`;
+
+export const Body = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 90px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 115px;
+  }
+`;
+
+export const Equipment = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 132px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 157px;
+  }
+`;
+
+export const Name = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 128px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 131px;
+  }
+`;
+
+export const Target = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 84px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 106px;
+  }
+`;
+
+export const Calories = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 78px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 91px;
+  }
+`;
+
+export const Time = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 72px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 82px;
+  }
+`;
+
+export const List = styled.div`
+  @media screen and (min-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 8px;
+    height: 136px;
   }
 `;
