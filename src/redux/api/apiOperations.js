@@ -57,3 +57,17 @@ export const fetchProducts = createAsyncThunk(
     }
   }
 );
+
+export const fetchCalculate = createAsyncThunk(
+  'user/fetchCalculate',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/calculate');
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.message });
+    }
+  }
+);
