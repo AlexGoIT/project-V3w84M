@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 const setHeight = props => {
   switch (props.dimention) {
     case 'true':
-      return '992px';
+      return '1064px';
     case 'false':
       return '335px';
     default:
-      return '992px';
+      return '335';
   }
 };
 
@@ -80,12 +80,6 @@ export const ArrowIcon = styled.svg(
   })
 );
 
-export const TableArea = styled.div`
-  @media screen and (min-width: 1440px) {
-    padding-left: 16px;
-  }
-`;
-
 export const Message = styled.p`
   font-weight: 400;
   color: rgba(239, 237, 232, 0.3);
@@ -103,91 +97,69 @@ export const Message = styled.p`
   }
 `;
 
+export const TableArea = styled.div`
+  @media screen and (min-width: 1440px) {
+    padding-left: 16px;
+  }
+`;
+
 export const TableHeader = styled.div`
   @media screen and (min-width: 375px) {
     display: none;
   }
 
   @media screen and (min-width: 768px) {
-    display: flex;
-    gap: 8px;
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
+    grid-template-rows: auto;
+    grid-template-areas: 'grid1 grid2 grid3 grid4 grid5 grid6 grid7';
     color: #ef8964;
     font-size: 12px;
     font-weight: 400;
     margin-bottom: 8px;
   }
-`;
-
-export const Body = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 90px;
-  }
 
   @media screen and (min-width: 1440px) {
-    width: 115px;
+    grid-template-columns: 115px 157px 131px 106px 91px 82px 20px;
   }
 `;
 
-export const Equipment = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 132px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 157px;
-  }
+export const Grid1 = styled.div`
+  grid-area: grid1;
+`;
+export const Grid2 = styled.div`
+  grid-area: grid2;
+`;
+export const Grid3 = styled.div`
+  grid-area: grid3;
+`;
+export const Grid4 = styled.div`
+  grid-area: grid4;
+`;
+export const Grid5 = styled.div`
+  grid-area: grid5;
+`;
+export const Grid6 = styled.div`
+  grid-area: grid6;
+`;
+export const Grid7 = styled.div`
+  grid-area: grid7;
 `;
 
-export const Name = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 128px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 131px;
-  }
-`;
-
-export const Target = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 84px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 106px;
-  }
-`;
-
-export const Calories = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 78px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 91px;
-  }
-`;
-
-export const Time = styled.div`
-  @media screen and (min-width: 768px) {
-    width: 72px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 82px;
-  }
+export const ShorterTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const List = styled.div`
   @media screen and (min-width: 375px) {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 38px;
     overflow-y: scroll;
-    height: 100%;
+    height: 900px;
   }
 
   @media screen and (min-width: 768px) {

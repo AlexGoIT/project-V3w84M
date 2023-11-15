@@ -5,16 +5,18 @@ import {
   Button,
   Add,
   ArrowIcon,
-  TableArea,
   Message,
+  TableArea,
   TableHeader,
-  Body,
-  Equipment,
-  Name,
-  Target,
-  Calories,
-  Time,
   List,
+  Grid1,
+  Grid2,
+  Grid3,
+  Grid4,
+  Grid5,
+  Grid6,
+  Grid7,
+  ShorterTitle,
 } from './DayExercises.styled';
 import sprite from 'assets/images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,7 +50,7 @@ const DayExercises = () => {
   }, [dispatch]);
 
   return (
-    <DayExercisesArea>
+    <DayExercisesArea dimention={heightExerciseArea}>
       <TitleArea>
         <Title>Execrcises</Title>
         <Button>
@@ -59,17 +61,20 @@ const DayExercises = () => {
         </Button>
       </TitleArea>
 
-      <TableArea dimention={heightExerciseArea}>
+      <TableArea>
         {isLoading && <Loader />}
         {total_results > 0 ? (
           <>
             <TableHeader>
-              <Body>Body Part</Body>
-              <Equipment>Equipment</Equipment>
-              <Name>Name</Name>
-              <Target>Target</Target>
-              <Calories>Burned Calories</Calories>
-              <Time>Time</Time>
+              <Grid1>Body Part</Grid1>
+              <Grid2>Equipment</Grid2>
+              <Grid3>Name</Grid3>
+              <Grid4>Target</Grid4>
+              <Grid5>
+                <ShorterTitle>Burned Calories</ShorterTitle>
+              </Grid5>
+              <Grid6>Time</Grid6>
+              <Grid7 />
             </TableHeader>
             <List>
               {result.map(

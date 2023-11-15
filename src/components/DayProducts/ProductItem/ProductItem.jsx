@@ -1,5 +1,5 @@
 import {
-  ExerciseDiv,
+  ProductDiv,
   Column,
   ButtonEl,
   DeleteIcon,
@@ -9,68 +9,63 @@ import {
   Grid4,
   Grid5,
   Grid6,
-  Grid7,
   Title,
-} from './ExerciseItem.styled';
+} from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
 // import { useDispatch } from 'react-redux';
 // import { useState } from 'react';
 
-const ExerciseItem = ({
+const ProductItem = ({
   id,
-  bodyPart,
-  equipment,
-  name,
-  target,
-  burnedCalories,
-  time,
+  title,
+  category,
+  calories,
+  weight,
+  groupBloodNotAllowed,
 }) => {
   //   const dispatch = useDispatch();
-  //   const deleteThisExercise = id => {
-  //     dispatch(deleteExercise(id));
+  //   const deleteThisProduct = id => {
+  //     dispatch(deleteProduct(id));
   //   };
 
   return (
-    <ExerciseDiv key={id}>
+    <ProductDiv key={id}>
       <Grid1>
-        <Title>Body Part</Title>
-        <Column>{bodyPart}</Column>
+        <Title>Title</Title>
+        <Column>{title}</Column>
       </Grid1>
       <Grid2>
-        <Title>Equipment</Title>
-        <Column>{equipment}</Column>
+        <Title>Category</Title>
+        <Column>{category}</Column>
       </Grid2>
       <Grid3>
-        <Title>Name</Title>
-        <Column>{name}</Column>
+        <Title>Calories</Title>
+        <Column>{calories}</Column>
       </Grid3>
       <Grid4>
-        <Title>Target</Title>
-        <Column>{target}</Column>
+        <Title>Weight</Title>
+        <Column>{weight}</Column>
       </Grid4>
       <Grid5>
-        <Title>Burned Calorie</Title>
-        <Column>{burnedCalories}</Column>
+        <Title>Recommend</Title>
+        <Column>Yes</Column>
+        {/* колонку доработаю, когда можно будет добавлять продукты  */}
       </Grid5>
-      <Grid6>
-        <Title>Time</Title>
-        <Column>{time}</Column>
-      </Grid6>
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
-      <Grid7>
+      <Grid6>
         <Title></Title>
         <ButtonEl>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>
         </ButtonEl>
-      </Grid7>
-    </ExerciseDiv>
+      </Grid6>
+    </ProductDiv>
   );
 };
 
-ExerciseItem.propTypes = {
+ProductItem.propTypes = {
   id: PropTypes.string,
   bodyPart: PropTypes.string,
   equipment: PropTypes.string,
@@ -80,4 +75,4 @@ ExerciseItem.propTypes = {
   time: PropTypes.number,
 };
 
-export default ExerciseItem;
+export default ProductItem;
