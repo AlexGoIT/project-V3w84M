@@ -1,11 +1,11 @@
 import {
   ExerciseDiv,
   Column1,
-  Column2,
-  Column3,
-  Column4,
-  Column5,
-  Column6,
+  //Column2,
+  //Column3,
+  //Column4,
+  //Column5,
+  //Column6,
   ButtonEl,
   DeleteIcon,
   Grid1,
@@ -44,23 +44,23 @@ const ExerciseItem = ({
       </Grid1>
       <Grid2>
         <Title>Equipment</Title>
-        <Column2>{equipment}</Column2>
+        <Column1>{equipment}</Column1>
       </Grid2>
       <Grid3>
         <Title>Name</Title>
-        <Column3>{name}</Column3>
+        <Column1>{name}</Column1>
       </Grid3>
       <Grid4>
         <Title>Target</Title>
-        <Column4>{target}</Column4>
+        <Column1>{target}</Column1>
       </Grid4>
       <Grid5>
         <Title>Burned Calorie</Title>
-        <Column5>{burnedCalories}</Column5>
+        <Column1>{burnedCalories}</Column1>
       </Grid5>
       <Grid6>
         <Title>Time</Title>
-        <Column6>{time}</Column6>
+        <Column1>{time}</Column1>
       </Grid6>
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid7>
