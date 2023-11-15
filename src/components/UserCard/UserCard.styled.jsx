@@ -13,15 +13,23 @@ export const UserAvatar = styled.div`
   width: 90px;
   height: 90px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: solid 1px #e6533c;
   border-radius: 50%;
   margin-top: 40px;
 
-  & > label {
+  & > label,
+  & > button {
     position: absolute;
     bottom: -16px;
+  }
+
+  & > img {
+    border-radius: 50%;
+    width: 87px;
+    height: 87px;
   }
 
   @media screen and (min-width: 768px) {
@@ -30,6 +38,16 @@ export const UserAvatar = styled.div`
 `;
 export const AvatarLabel = styled.label``;
 export const AvatarInput = styled.input``;
+
+export const AddAvatarButton = styled.button`
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+`;
 
 export const NameContainer = styled.div`
   font-size: 20px;
