@@ -25,20 +25,18 @@ import sprite from 'assets/images/sprite.svg';
 //
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCalculate } from 'redux/user/userOperations';
-import { selectCalculate, selectName } from 'redux/user/userSelectors';
-// import { fetchCurrentUser } from 'redux/auth/authOperations';
+import { fetchCalculate } from 'redux/api/apiOperations';
+import { selectCalculate } from 'redux/api/apiSelectors';
+import { selectUser } from 'redux/auth/authSelectors';
 //
 
 const UserCard = ({ message, changeAvatar }) => {
   //
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
-  const user = useSelector(selectName);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    // dispatch(fetchCurrentUser());
-
     dispatch(fetchCalculate());
   }, [dispatch]);
   //

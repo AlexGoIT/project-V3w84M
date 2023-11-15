@@ -9,3 +9,5 @@ export const selectProducts = state => state.api.products; // { result: [], tota
 export const selectIsLoading = state => state.api.isLoading; // boolean
 
 export const selectError = state => state.api.error; // { message: string }
+
+export const selectCalculate = state => state.api.calculate; // {}

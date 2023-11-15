@@ -19,7 +19,6 @@ const initUser = {
 const initialState = {
   user: initUser,
   token: null,
-  file: null,
   isAuthorized: false,
   isRefreshed: false,
   error: null,
@@ -55,6 +54,8 @@ export const authSlice = createSlice({
         state.isRefreshed = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        console.log('authSlice: login', action.payload);
+
         state.isRefreshed = false;
         state.isAuthorized = true;
         state.error = null;
@@ -88,7 +89,7 @@ export const authSlice = createSlice({
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.isRefreshed = false;
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.error = null;
       })
       .addCase(currentUser.rejected, (state, action) => {
