@@ -74,9 +74,9 @@ export const fetchCalculate = createAsyncThunk(
 
 export const fetchDiary = createAsyncThunk(
   'api/fetchDiary',
-  async (date, thunkAPI) => {
+  async (params, thunkAPI) => {
     try {
-      const { data } = await axios.get('/api/diary', date);
+      const { data } = await axios.get('/api/diary', params);
 
       return data;
     } catch (err) {
