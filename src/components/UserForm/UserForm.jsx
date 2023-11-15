@@ -183,6 +183,8 @@ const UserForm = () => {
                 id="height"
                 placeholder="0"
                 as={InputField}
+                min="150"
+                step="1"
               />
               <label htmlFor="height">Height</label>
             </WrappInput>
@@ -195,6 +197,8 @@ const UserForm = () => {
                   id="currentWeight"
                   placeholder="0"
                   as={InputField}
+                  min="35"
+                  step="1"
                 />
                 <label htmlFor="currentWeight">Current Weight</label>
               </WrappInput>
@@ -208,6 +212,8 @@ const UserForm = () => {
                   id="desiredWeight"
                   placeholder="0"
                   as={InputField}
+                  min="35"
+                  step="1"
                 />
                 <label htmlFor="desiredWeight">Desired Weight</label>
               </WrappInput>
