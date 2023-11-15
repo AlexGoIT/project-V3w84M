@@ -26,10 +26,14 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate }) => {
           selected={selectedDate}
           onChange={handleDateChange}
           customInput={<InputField style={{ cursor: 'pointer' }} />}
-          dateFormat={'dd.MM.yyyy'}
+          dateFormat={'dd/MM/yyyy'}
           calendarStartDay={1}
           formatWeekDay={day => day.substring(0, 1)}
           maxDate={eighteenYearsAgo}
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+  
         />
 
         <CalendarGlobalStyles />
