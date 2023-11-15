@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  fetchCalculate,
   fetchCategories,
   fetchExercises,
   fetchFilters,
@@ -11,6 +12,7 @@ const initialState = {
   exercises: {},
   filters: {},
   products: {},
+  calculate: {},
   isLoading: false,
   error: null,
 };
@@ -67,6 +69,19 @@ export const apiSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
+    builder
+      .addCase(fetchCalculate.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchCalculate.fulfilled, (state, action) => {
+        state.calculate = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchCalculate.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });
