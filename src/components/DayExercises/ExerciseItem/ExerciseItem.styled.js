@@ -9,7 +9,7 @@ export const ExerciseDiv = styled.div`
     display: grid;
     grid-gap: 14px;
     grid-template-columns: 81px 80px 76px 20px;
-    grid-template-rows: auto;
+    grid-template-rows: 38px;
     grid-template-areas:
       'grid1 grid1 grid1 grid1'
       'grid2 grid2 grid2 grid2'
@@ -18,8 +18,14 @@ export const ExerciseDiv = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    display: flex;
-    gap: 8px;
+    grid-gap: 8px;
+    grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
+    grid-template-rows: 40px;
+    grid-template-areas: 'grid1 grid2 grid3 grid4 grid5 grid6 grid7';
+  }
+
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: 115px 157px 131px 106px 91px 82px 20px;
   }
 `;
 
@@ -72,119 +78,119 @@ export const Column1 = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: 90px;
+    /* width: 90px; */
     height: 40px;
   }
-
+  /* 
   @media screen and (min-width: 1440px) {
     width: 115px;
-  }
+  } */
 `;
 
-export const Column2 = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 100%;
-    height: 38px;
-  }
+// export const Column2 = styled.div`
+//   border: 1px solid rgba(239, 237, 232, 0.3);
+//   border-radius: 12px;
+//   display: flex;
+//   align-items: center;
+//   padding-inline: 14px;
+//   @media screen and (min-width: 375px) {
+//     width: 100%;
+//     /*height: 38px;*/
+//   }
 
-  @media screen and (min-width: 768px) {
-    width: 132px;
-    height: 40px;
-  }
+//   /* @media screen and (min-width: 768px) {
+//     width: 132px;
+//     height: 40px;
+//   }
 
-  @media screen and (min-width: 1440px) {
-    width: 157px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     width: 157px;
+//   } */
+// `;
 
-export const Column3 = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 100%;
-    height: 38px;
-  }
+// export const Column3 = styled.div`
+//   border: 1px solid rgba(239, 237, 232, 0.3);
+//   border-radius: 12px;
+//   display: flex;
+//   align-items: center;
+//   padding-inline: 14px;
+//   @media screen and (min-width: 375px) {
+//     width: 100%;
+//     /* height: 38px; */
+//   }
 
-  @media screen and (min-width: 768px) {
-    width: 128px;
-    height: 40px;
-  }
+//   /* @media screen and (min-width: 768px) {
+//     width: 128px;
+//     height: 40px;
+//   }
 
-  @media screen and (min-width: 1440px) {
-    width: 131px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     width: 131px;
+//   } */
+// `;
 
-export const Column4 = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 81px;
-    height: 38px;
-  }
+// export const Column4 = styled.div`
+//   border: 1px solid rgba(239, 237, 232, 0.3);
+//   border-radius: 12px;
+//   display: flex;
+//   align-items: center;
+//   padding-inline: 14px;
+//   /* @media screen and (min-width: 375px) {
+//     width: 81px;
+//     height: 38px;
+//   }
 
-  @media screen and (min-width: 768px) {
-    width: 84px;
-    height: 40px;
-  }
+//   @media screen and (min-width: 768px) {
+//     width: 84px;
+//     height: 40px;
+//   }
 
-  @media screen and (min-width: 1440px) {
-    width: 106px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     width: 106px;
+//   } */
+// `;
 
-export const Column5 = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 80px;
-    height: 38px;
-  }
+// export const Column5 = styled.div`
+//   border: 1px solid rgba(239, 237, 232, 0.3);
+//   border-radius: 12px;
+//   display: flex;
+//   align-items: center;
+//   padding-inline: 14px;
+//   /* @media screen and (min-width: 375px) {
+//     width: 80px;
+//     height: 38px;
+//   }
 
-  @media screen and (min-width: 768px) {
-    width: 78px;
-    height: 40px;
-  }
+//   @media screen and (min-width: 768px) {
+//     width: 78px;
+//     height: 40px;
+//   }
 
-  @media screen and (min-width: 1440px) {
-    width: 91px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     width: 91px;
+//   } */
+// `;
 
-export const Column6 = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 76px;
-    height: 38px;
-  }
+// export const Column6 = styled.div`
+//   border: 1px solid rgba(239, 237, 232, 0.3);
+//   border-radius: 12px;
+//   display: flex;
+//   align-items: center;
+//   padding-inline: 14px;
+//   /* @media screen and (min-width: 375px) {
+//     width: 76px;
+//     height: 38px;
+//   }
 
-  @media screen and (min-width: 768px) {
-    width: 72px;
-    height: 40px;
-  }
+//   @media screen and (min-width: 768px) {
+//     width: 72px;
+//     height: 40px;
+//   }
 
-  @media screen and (min-width: 1440px) {
-    width: 82px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     width: 82px;
+//   } */
+// `;
 
 export const ButtonEl = styled.button`
   width: auto;
@@ -193,13 +199,13 @@ export const ButtonEl = styled.button`
   border: none;
   padding-inline: 0;
 
-  @media screen and (min-width: 375px) {
+  /* @media screen and (min-width: 375px) {
     height: 38px;
   }
 
   @media screen and (min-width: 768px) {
     height: 40px;
-  }
+  } */
 `;
 
 export const DeleteIcon = styled.svg(

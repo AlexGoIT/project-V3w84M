@@ -51,7 +51,7 @@ const StyledDatepicker = () => {
         customInput={<CustomInput />}
         dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
-        minDate={createdDate}
+        minDate={user.createdAt ? createdDate : Date.now()}
         //maxDate={(createdDate, 5)}
       />
     </>
