@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ExerciseDiv = styled.div`
+export const ProductDiv = styled.div`
   @media screen and (min-width: 375px) {
     align-items: center;
     font-size: 13px;
@@ -13,19 +13,18 @@ export const ExerciseDiv = styled.div`
     grid-template-areas:
       'grid1 grid1 grid1 grid1'
       'grid2 grid2 grid2 grid2'
-      'grid3 grid3 grid3 grid3'
-      'grid4 grid5 grid6 grid7';
+      'grid3 grid4 grid5 grid6';
   }
 
   @media screen and (min-width: 768px) {
     grid-gap: 8px;
-    grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
+    grid-template-columns: 204px 128px 90px 90px 80px 20px;
     grid-template-rows: 40px;
-    grid-template-areas: 'grid1 grid2 grid3 grid4 grid5 grid6 grid7';
+    grid-template-areas: 'grid1 grid2 grid3 grid4 grid5 grid6';
   }
 
   @media screen and (min-width: 1440px) {
-    grid-template-columns: 115px 157px 131px 106px 91px 82px 20px;
+    grid-template-columns: 212px 166px 105px 105px 110px 20px;
   }
 `;
 
@@ -46,9 +45,6 @@ export const Grid5 = styled.div`
 `;
 export const Grid6 = styled.div`
   grid-area: grid6;
-`;
-export const Grid7 = styled.div`
-  grid-area: grid7;
 `;
 
 export const Title = styled.p`

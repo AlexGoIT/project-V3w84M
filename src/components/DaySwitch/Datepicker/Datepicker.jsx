@@ -52,7 +52,6 @@ const StyledDatepicker = () => {
         dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
         minDate={user.createdAt ? createdDate : Date.now()}
-        //maxDate={(createdDate, 5)}
       />
     </>
   );
