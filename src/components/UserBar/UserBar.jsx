@@ -9,8 +9,6 @@ import {
 import sprite from 'assets/images/sprite.svg';
 
 const UserBar = () => {
-  //   const { isLoggedIn } = useAuth();
-
   return (
     <UserBarBlock>
       <UserBarLink to="/profile">
