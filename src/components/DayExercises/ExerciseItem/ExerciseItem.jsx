@@ -76,7 +76,7 @@ ExerciseItem.propTypes = {
   equipment: PropTypes.string,
   name: PropTypes.string,
   target: PropTypes.string,
-  burnedCalories: PropTypes.string,
+  burnedCalories: PropTypes.number,
   time: PropTypes.number,
 };
 

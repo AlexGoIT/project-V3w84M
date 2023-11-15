@@ -37,8 +37,6 @@ const DayExercises = () => {
   const error = useSelector(selectError);
   const exercisesData = useSelector(selectExercises);
   const { result, total_results } = exercisesData;
-  console.log(result);
-  console.log(total_results);
 
   const [heightExerciseArea, setHeightExerciseArea] = useState(true);
   if (total_results === 0) {
