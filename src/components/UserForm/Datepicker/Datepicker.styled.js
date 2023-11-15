@@ -146,7 +146,8 @@ export const CalendarGlobalStyles = () => (
       margin-bottom: 14px;
       border: none;
       background: inherit;
-      margin-left: 15px
+      margin-left: 15px;
+      outline: none;
 
       }
       .react-datepicker__year-select{
@@ -158,7 +159,9 @@ export const CalendarGlobalStyles = () => (
       margin-bottom: 14px;
       border: none;
       background: inherit;
+      outline: none;
       }
+
       .react-datepicker__header__dropdown,
       .react-datepicker__header__dropdown--select{
         display: flex;
