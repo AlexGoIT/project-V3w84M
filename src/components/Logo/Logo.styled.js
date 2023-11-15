@@ -21,7 +21,7 @@ export const LogoIcon = styled.svg(
     width: '36px',
     height: '13px',
   },
-  ({ iconColor = '#e6533c' }) => ({
+  ({ iconColor = 'var(--orange-color)' }) => ({
     fill: iconColor,
     stroke: iconColor,
   })

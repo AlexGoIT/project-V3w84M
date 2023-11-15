@@ -1,6 +1,17 @@
 @import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+:root {
+  --black-color: rgba(4, 4, 4, 1);
+  --orange-color: rgba(230, 83, 60, 1);
+  --light-orange-color: rgba(239, 137, 100, 1);
+  --beige-color: rgba(239, 160, 130, 1);
+  --white-color: rgba(239, 237, 232, 1);
+  --opacity1: 0.1;
+  --opacity2: 0.2;
+  --opacity5: 0.5;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;

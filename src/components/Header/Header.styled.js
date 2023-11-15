@@ -11,6 +11,7 @@ export const HeaderBar = styled.header`
   margin-inline: auto;
 
   position: fixed;
+  z-index: 10;
 
   @media screen and (min-width: 375px) {
     width: 375px;

@@ -9,18 +9,37 @@ export const OverlayModal = styled.div`
   height: 100%;
   background-color: rgba(4, 4, 4, 0.4);
   overflow: hidden;
-  z-index: 3;
+  z-index: 30;
 `;
 export const WrapperModalWindowUserMenu = styled.div`
   position: absolute;
   top: 0;
-  left: 25vw;
+  right: 0;
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 200px;
   background-color: rgba(230, 83, 60, 1);
-  z-index: 4;
+  z-index: 1200;
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    padding: 26px 32px 32px 32px;
+  }
+  @media screen and (max-width: 1439px) {
+    &.show {
+      right: 0;
+    }
+
+    &.hidden {
+      position: absolute;
+      clip: rect(0 0 0 0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+    }
+
+    transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
   /* @media screen and (min-width: 768px) {
     width: 350px;
     padding: 26px 32px 32px 32px;
