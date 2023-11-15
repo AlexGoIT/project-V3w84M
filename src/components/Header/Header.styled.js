@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const HeaderBar = styled.header`
   display: flex;
   align-items: center;
-
+  justify-content: flex-end;
   width: 100%;
   padding-inline: 20px;
   padding-top: 12px;
@@ -40,6 +40,7 @@ export const LogoWrap = styled.div`
 `;
 export const HideLogout = styled.div`
   display: block;
+  /* margin-left: auto; */
   @media screen and (min-width: 1440px) {
     width: 78px;
     height: 24px;
