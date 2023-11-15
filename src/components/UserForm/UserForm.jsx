@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
-import { parseISO } from 'date-fns';
+import formatDate from '../../utils/formatDate';
 
 import {
   FormContainer,
@@ -23,7 +23,7 @@ import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
 import { patchProfile } from 'redux/auth/authOperations';
 
-const UserForm = ({ avatar }) => {
+const UserForm = () => {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
@@ -107,24 +107,9 @@ const UserForm = ({ avatar }) => {
   });
 
   const handleSubmit = ({ name, ...profileData }) => {
-    const user = JSON.stringify({ name, profileData });
+    const user = { name, profileData };
 
-    console.log(profileData);
-    const formData = new FormData();
-
-    formData.append('user', user);
-
-    if (avatar) {
-      formData.append('avatar', avatar, avatar.name);
-    } else {
-      formData.append('avatar', null);
-    }
-
-    for (let property of formData.entries()) {
-      console.log(property[0], ':', property[1]);
-    }
-
-    dispatch(patchProfile(formData));
+    dispatch(patchProfile(user));
   };
 
   return (
@@ -154,7 +139,7 @@ const UserForm = ({ avatar }) => {
                 style={{ color: 'rgba(239, 237, 232, 0.60)' }}
                 as={Input}
                 placeholder="Your email"
-                defaultValue={user.email}
+                value={user.email}
                 disabled
               />
             </div>
@@ -214,7 +199,7 @@ const UserForm = ({ avatar }) => {
                       : null
                   }
                   setSelectedDate={date => {
-                    const formattedDate = parseISO(date.toISOString());
+                    const formattedDate = formatDate(date);
                     formik.setFieldValue('birthday', formattedDate);
                   }}
                 />
