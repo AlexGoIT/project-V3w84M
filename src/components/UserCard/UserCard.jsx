@@ -16,6 +16,7 @@ import {
   NoticeContainer,
   UserAvatar,
   LogoutContainer,
+  AddAvatarButton,
 } from './UserCard.styled';
 
 import Logout from 'components/Logout/Logout';
@@ -23,7 +24,7 @@ import Notice from 'components/Notice';
 import sprite from 'assets/images/sprite.svg';
 
 //
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/api/apiOperations';
 import { selectCalculate } from 'redux/api/apiSelectors';
@@ -35,6 +36,8 @@ const UserCard = ({ message, changeAvatar }) => {
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
   const user = useSelector(selectUser);
+  const fileInput = useRef(null);
+  const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     dispatch(fetchCalculate());
@@ -43,7 +46,18 @@ const UserCard = ({ message, changeAvatar }) => {
 
   const uploadAvatar = e => {
     const file = e.target.files[0];
-    changeAvatar(file);
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        setImageSrc(fileReader.result);
+      };
+      fileReader.readAsDataURL(file);
+      changeAvatar(file);
+    }
+  };
+
+  const handleClick = () => {
+    fileInput.current.click();
   };
 
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
@@ -52,15 +66,27 @@ const UserCard = ({ message, changeAvatar }) => {
   return (
     <UserCardContainer style={{ color: 'white' }}>
       <UserAvatar>
-        <svg width="61" height="62" fill="#efede8">
-          <use href={`${sprite}#user`} />
-        </svg>
+        {imageSrc ? (
+          <img src={imageSrc} alt="avatar" />
+        ) : (
+          <svg width="61" height="62" fill="#efede8">
+            <use href={`${sprite}#user`} />
+          </svg>
+        )}
         <AvatarLabel>
-          <AvatarInput type="file" hidden onChange={uploadAvatar} />
+          <AvatarInput
+            type="file"
+            hidden
+            onChange={uploadAvatar}
+            ref={fileInput}
+            accept=".jpg, .jpeg"
+          />
+        </AvatarLabel>
+        <AddAvatarButton onClick={handleClick}>
           <svg width="32" height="32" fill="#efede8">
             <use href={`${sprite}#add`} />
           </svg>
-        </AvatarLabel>
+        </AddAvatarButton>
       </UserAvatar>
       <NameContainer>{user.name}</NameContainer>
       <UserInscription>User</UserInscription>

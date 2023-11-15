@@ -70,7 +70,7 @@ const UserForm = ({ avatar }) => {
   ];
 
   const initialValues = {
-    name: user.name || 'Name',
+    name: user.name,
     height: '',
     currentWeight: '',
     desiredWeight: '',
@@ -132,6 +132,7 @@ const UserForm = ({ avatar }) => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       {({ isValid, dirty, ...formik }) => (
         <Form>
