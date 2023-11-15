@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const FormContainer = styled.div`
-  margin-top: 20px;
+
 overflow-y: hidden;
   @media screen and (min-width: 768px) {
     margin-top: 40px;
@@ -9,6 +9,7 @@ overflow-y: hidden;
     align-items: flex-end;
     justify-content: space-between;
     width: 700px;
+    margin-bottom: 40px;
   }
 `;
 export const IconSvg = styled.svg`
@@ -18,7 +19,7 @@ export const IconSvg = styled.svg`
 `;
 export const SectionTitle = styled.p`
   color: rgba(239, 237, 232, 0.3);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   font-size: 12px;
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -26,7 +27,7 @@ export const SectionTitle = styled.p`
 `;
 
 export const Input = styled.input`
-  width: 335px;
+  width: 341px;
   padding: 14px;
   margin-bottom: 14px;
   align-items: center;
@@ -56,14 +57,14 @@ export const Wrapper = styled.div`
 `;
 
 export const InputField = styled.input`
-  width: 165px;
-  padding: 14px;
-  align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  background-color: transparent;
-  color: #efede8;
+width: 165px;
+padding: 14px;
+align-items: center;
+gap: 10px;
+border-radius: 12px;
+border: 1px solid rgba(239, 237, 232, 0.3);
+background-color: transparent;
+color: #efede8;
 `;
 
 export const Label = styled.label`
@@ -204,26 +205,19 @@ export const WrapperLevel = styled.div`
 
 export const WrappInput = styled.div`
   position: relative;
-  margin-top: 40px;
 
   label {
     position: absolute;
     font-size: 14px;
-    top: -10px;
+    top: -25px;
     left: 0px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    transition:
-      top 0.2s,
-      left 0.2s,
-      transform 0.2s;
     color: rgba(239, 237, 232, 0.3);
   }
 
   input[type='number']:focus + label,
   input[type='number']:not(:placeholder-shown) + label {
     color:rgba(239, 237, 232, 0.3);
-    transform: translateY(-44px);
+
   }
 `;
 
