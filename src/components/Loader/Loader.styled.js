@@ -3,18 +3,12 @@ import styled from '@emotion/styled';
 export const WrapRevolvingDot = styled.div`
   position: fixed;
   z-index: 20;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px; 
-
-  @media (min-width: 768px) {
-    width: 70px;
-    height: 70px;
-  }
-
-  @media (min-width: 1440px) {
-    width: 80px;
-    height: 80px;
-  }
+   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #040404;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 `;
