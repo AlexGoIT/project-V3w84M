@@ -59,7 +59,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 export const fetchCalculate = createAsyncThunk(
-  'user/fetchCalculate',
+  'api/fetchCalculate',
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get('/api/calculate');
@@ -68,6 +68,20 @@ export const fetchCalculate = createAsyncThunk(
     } catch (err) {
       Notify.failure(err.response.data.message);
       return thunkAPI.rejectWithValue({ message: err.message });
+    }
+  }
+);
+
+export const fetchDiary = createAsyncThunk(
+  'api/fetchDiary',
+  async (date, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/diary', date);
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
     }
   }
 );
