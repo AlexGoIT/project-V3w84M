@@ -66,7 +66,7 @@ export const fetchCalculate = createAsyncThunk(
 
       return data;
     } catch (err) {
-      Notify.failure(err.response.data.message);
+      // Notify.failure(err.response.data.message);
       return thunkAPI.rejectWithValue({ message: err.message });
     }
   }
