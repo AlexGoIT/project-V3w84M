@@ -3,15 +3,18 @@ import WelcomeNavigation from 'components/WelcomeNavigation';
 
 import { WelcomeSection, WelcomeWrapper } from './Welcome.styled';
 import WelcomeStatistics from 'components/StatisticsInfo';
+import Container from 'components/Container/Container';
 
 const Welcome = () => {
   return (
     <WelcomeSection>
-      <WelcomeWrapper>
-        <Slogan />
-        <WelcomeNavigation />
+      <Container>
+        <WelcomeWrapper>
+          <Slogan />
+          <WelcomeNavigation />
+        </WelcomeWrapper>
         <WelcomeStatistics />
-      </WelcomeWrapper>
+      </Container>
     </WelcomeSection>
   );
 };
