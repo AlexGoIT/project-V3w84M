@@ -19,7 +19,6 @@ const NotFoundPage = lazy(() => import('pages/NotFound'));
 export const App = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const profileDataFill = user.profileDataFill;
 
   useEffect(() => {
     dispatch(currentUser());
@@ -73,7 +72,7 @@ export const App = () => {
             path="diary"
             element={
               <PrivateRoute redirectTo="/welcome">
-                {profileDataFill ? <DiaryPage /> : <Navigate to="/profile" />}
+                <DiaryPage />
               </PrivateRoute>
             }
           />
@@ -82,11 +81,7 @@ export const App = () => {
             path="products"
             element={
               <PrivateRoute redirectTo="/welcome">
-                {profileDataFill ? (
-                  <ProductsPage />
-                ) : (
-                  <Navigate to="/profile" />
-                )}
+                <ProductsPage />
               </PrivateRoute>
             }
           />
@@ -95,11 +90,7 @@ export const App = () => {
             path="exercises"
             element={
               <PrivateRoute redirectTo="/welcome">
-                {profileDataFill ? (
-                  <ExercisesPage />
-                ) : (
-                  <Navigate to="/profile" />
-                )}
+                <ExercisesPage />
               </PrivateRoute>
             }
           />
