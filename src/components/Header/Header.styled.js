@@ -8,6 +8,7 @@ export const HeaderBar = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   margin-inline: auto;
+  background-color: var(--black-color);
 
   position: fixed;
   left: 50%;
