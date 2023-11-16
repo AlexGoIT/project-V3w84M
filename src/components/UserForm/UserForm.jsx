@@ -84,17 +84,20 @@ const UserForm = () => {
     //   .email('Invalid email format')
     //   .required('Email is required'),
     height: Yup.number()
-      .min(150, 'Height must be at least 150 cm')
-      .positive('Height must be positive')
-      .required('Height is required'),
-    currentWeight: Yup.number()
-      .min(35, 'Current weight must be at least 35 kg')
-      .positive('Weight must be positive')
-      .required('Current weight is required'),
-    desiredWeight: Yup.number()
-      .min(35, 'Desired weight must be at least 35 kg')
-      .positive('Weight must be positive')
-      .required('Desired weight is required'),
+    .min(150, 'Height must be at least 150 cm')
+    .max(250, 'Height must not exceed 250 cm')
+    .positive('Height must be positive')
+    .required('Height is required'),
+  currentWeight: Yup.number()
+    .min(35, 'Current weight must be at least 35 kg')
+    .max(200, 'Current weight must not exceed 200 kg')
+    .positive('Weight must be positive')
+    .required('Current weight is required'),
+  desiredWeight: Yup.number()
+    .min(35, 'Desired weight must be at least 35 kg')
+    .max(200, 'Desired weight must not exceed 200 kg')
+    .positive('Weight must be positive')
+    .required('Desired weight is required'),
     birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
