@@ -57,8 +57,6 @@ export const authSlice = createSlice({
         state.isRefreshed = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log('authSlice: login', action.payload);
-
         state.isRefreshed = false;
         state.isAuthorized = true;
         state.error = null;

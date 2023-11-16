@@ -21,6 +21,7 @@ export const register = createAsyncThunk(
       const { data } = await axios.post('/users/register', credentials);
 
       tokenControl.set(data.token);
+
       Notify.success('Registration is successful');
       return data;
     } catch (err) {
@@ -36,10 +37,9 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
-      console.log(data);
-      console.log(credentials);
 
       tokenControl.set(data.token);
+
       Notify.success('Login is successful');
       return data;
     } catch (err) {

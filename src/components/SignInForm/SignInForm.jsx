@@ -30,8 +30,6 @@ const SignInForm = () => {
   const handleSubmit = (credentials, actions) => {
     actions.resetForm();
 
-    console.log(credentials);
-
     dispatch(login(credentials));
 
     if (isAuthorized) {

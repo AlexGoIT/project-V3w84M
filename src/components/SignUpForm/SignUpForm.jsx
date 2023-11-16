@@ -28,8 +28,6 @@ const SignUpForm = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
 
   const handleSubmit = (credentials, actions) => {
-    console.log(credentials);
-
     actions.resetForm();
 
     dispatch(register(credentials));
