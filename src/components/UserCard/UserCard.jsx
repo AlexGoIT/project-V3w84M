@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/api/apiOperations';
 import { selectCalculate } from 'redux/api/apiSelectors';
 import { selectUser } from 'redux/auth/authSelectors';
+import { Notify } from 'notiflix';
 //
 
 const UserCard = ({ message }) => {
@@ -49,6 +50,15 @@ const UserCard = ({ message }) => {
     const file = e.target.files[0];
 
     if (file) {
+      const fileExtension = file.name.split('.')[1];
+
+      if (fileExtension !== 'jpg' || fileExtension !== 'jpeg') {
+        Notify.failure(
+          "I will pretend I didn't see that 👀. Only '.jpeg' and '.jpg' files are allowed."
+        );
+        return;
+      }
+
       const formData = new FormData();
       formData.append('avatar', file, file.name);
 
