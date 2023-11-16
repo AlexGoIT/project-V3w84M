@@ -36,7 +36,7 @@ const AddProductForm = ({ productId, closeModal }) => {
   const handleSubmit = amount => {
     const data = {
       id: productId,
-      date: format(Date.now(), 'dd/MM/yyyy'),
+      date: format(Date.now(), 'dd-MM-yyyy'),
       amount,
       calories: calculateCalories(),
     };

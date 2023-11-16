@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
-import formatDate from '../../utils/formatDate';
+import format from 'date-fns/format';
 
 import {
   FormContainer,
@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
 import { updateProfile } from 'redux/auth/usersOperations';
+import { parseISO } from 'date-fns';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
@@ -107,8 +108,13 @@ const UserForm = () => {
   });
 
   const handleSubmit = ({ name, ...profileData }) => {
-    const user = { name, profileData };
-
+    const user = {
+      name,
+      profileData: {
+        ...profileData,
+        birthday: format(profileData.birthday, 'dd-MM-yyyy'),
+      },
+    };
     dispatch(updateProfile(user));
   };
 
@@ -199,7 +205,7 @@ const UserForm = () => {
                       : null
                   }
                   setSelectedDate={date => {
-                    const formattedDate = formatDate(date);
+                    const formattedDate = parseISO(date.toISOString());
                     formik.setFieldValue('birthday', formattedDate);
                   }}
                 />
