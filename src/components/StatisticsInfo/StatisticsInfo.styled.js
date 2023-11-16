@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const StatisticsInfoWrapper = styled.div`
-
+  /* position: relative; */
 `;
 
 export const VideoTutorialWrapper = styled.div`
@@ -18,16 +18,15 @@ export const VideoTutorialWrapper = styled.div`
   border-radius: 12px;
   background-color: #303030;
 
-    @media screen and (min-width: 768px) {
-      bottom: 214px;
-      right: 231px;
+  @media screen and (min-width: 768px) {
+    bottom: 214px;
+    right: 231px;
   }
 
-    @media screen and (min-width: 1440px) {
-        bottom: 320px;
-        right: 464px;
-    }
-  
+  @media screen and (min-width: 1440px) {
+    bottom: 320px;
+    right: 464px;
+  }
 `;
 
 export const ImageThumb = styled.div(
@@ -52,14 +51,14 @@ export const VideoTutorialInfoWrapper = styled.div`
 `;
 
 export const VideoTutorialText = styled.p`
-  color: rgba(239, 237, 232, 0.65);  
+  color: rgba(239, 237, 232, 0.65);
   font-size: 16px;
   line-height: 1.5;
 `;
 
-export const VideoTutorialCounter = styled.p` 
-  color: #EFEDE8;
-  font-size: 24px;  
+export const VideoTutorialCounter = styled.p`
+  color: #efede8;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1;
 `;
@@ -75,7 +74,7 @@ export const CalWrapper = styled.div`
   border-radius: 12px;
   background-color: #ef8964;
 
-    @media screen and (min-width: 375px) {
+  @media screen and (min-width: 375px) {
     bottom: 40px;
     right: 20px;
   }
@@ -86,8 +85,8 @@ export const CalWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-      bottom: 171px;
-      right: 32px;
+    bottom: 171px;
+    right: 32px;
   }
 `;
 
@@ -97,16 +96,16 @@ export const CalInfoWrapper = styled.div`
   gap: 11px;
 `;
 
-export const CalText = styled.p`  
+export const CalText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;  
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
 `;
 
-export const CalCounter = styled.p`  
-  color: #EFEDE8;
-  font-size: 48px;  
+export const CalCounter = styled.p`
+  color: #efede8;
+  font-size: 48px;
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: -1px;

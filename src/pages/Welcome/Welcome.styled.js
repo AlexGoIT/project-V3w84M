@@ -9,11 +9,15 @@ import {
 } from 'utils/background';
 
 export const WelcomeSection = styled.div`
-  min-height: 100dvh;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 20px;
+  padding-top: 127px;
+
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 66px;
-  gap: 40px;
+
   background-repeat: no-repeat;
   background-position: bottom right;
   background-image: image-set(
@@ -22,8 +26,9 @@ export const WelcomeSection = styled.div`
   );
 
   @media screen and (min-width: 768px) {
-    gap: 64px;
-    padding-top: 105px;
+    width: 768px;
+    padding-inline: 32px;
+    padding-top: 200px;
     background-image: image-set(
       url(${welcome_background_1x_tab}) 1x,
       url(${welcome_background_2x_tab}) 2x
@@ -31,6 +36,8 @@ export const WelcomeSection = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    width: 1440px;
+
     background-size: contain;
     background-image: image-set(
       url(${welcome_background_1x_desk}) 1x,
@@ -40,6 +47,14 @@ export const WelcomeSection = styled.div`
 `;
 
 export const WelcomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media screen and (min-width: 768px) {
+    gap: 64px;
+  }
+
   @media screen and (min-width: 1440px) {
     padding-left: 64px;
   }
