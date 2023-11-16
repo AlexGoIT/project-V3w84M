@@ -21,7 +21,7 @@ import StyledDatepicker from './Datepicker/Datepicker';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
-import { patchProfile } from 'redux/auth/authOperations';
+import { updateProfile } from 'redux/auth/usersOperations';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
@@ -109,7 +109,7 @@ const UserForm = () => {
   const handleSubmit = ({ name, ...profileData }) => {
     const user = { name, profileData };
 
-    dispatch(patchProfile(user));
+    dispatch(updateProfile(user));
   };
 
   return (

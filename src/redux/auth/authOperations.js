@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://powerpulse-backend-7hwo.onrender.com';
 
@@ -84,21 +84,33 @@ export const currentUser = createAsyncThunk(
   }
 );
 
-export const patchProfile = createAsyncThunk(
-  'auth/patchProfile',
-  async (profileData, thunkAPI) => {
-    try {
-      const result = await axios.patch('/auth/profile', profileData);
+// export const updateProfile = createAsyncThunk(
+//   'users/updateProfile',
+//   async (profileData, thunkAPI) => {
+//     try {
+//       const result = await axios.patch('/users/profile', profileData);
 
-      // console.log('patchProfile: result', result);
+//       // console.log('patchProfile: result', result);
 
-      Notify.success('Profile updated');
-      return result;
-    } catch (err) {
-      Notify.failure(err.response.data.message);
-      return thunkAPI.rejectWithValue({ message: err.response.data.message });
-    }
-  }
-);
+//       Notify.success('Profile updated');
+//       return result;
+//     } catch (err) {
+//       Notify.failure(err.response.data.message);
+//       return thunkAPI.rejectWithValue({ message: err.response.data.message });
+//     }
+//   }
+// );
 
-export const setFile = createAction('auth/setFile');
+// export const updateAvatar = createAsyncThunk(
+//   'users/updateAvatar',
+//   async (params, thunkAPI) => {
+//     try {
+//       const result = await axios.patch('/users/avatar', params);
+
+//       return result;
+//     } catch (err) {
+//       Notify.failure(err.response.data.message);
+//       return thunkAPI.rejectWithValue({ message: err.response.data.message });
+//     }
+//   }
+// );

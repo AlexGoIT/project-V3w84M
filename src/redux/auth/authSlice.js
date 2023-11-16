@@ -3,9 +3,12 @@ import {
   currentUser,
   login,
   logout,
-  patchProfile,
   register,
+  // updateProfile,
+  // updateAvatar,
 } from './authOperations';
+
+import { updateProfile, updateAvatar } from './usersOperations';
 
 const initUser = {
   name: '',
@@ -101,15 +104,28 @@ export const authSlice = createSlice({
       });
 
     builder
-      .addCase(patchProfile.pending, state => {
+      .addCase(updateProfile.pending, state => {
         state.isLoading = true;
       })
-      .addCase(patchProfile.fulfilled, (state, action) => {
+      .addCase(updateProfile.fulfilled, (state, action) => {
         // state.user = action.payload;
 
         state.isLoading = false;
       })
-      .addCase(patchProfile.rejected, (state, action) => {
+      .addCase(updateProfile.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
+    builder
+      .addCase(updateAvatar.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatarURL = action.payload.avatarURL;
+        state.isLoading = false;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });
