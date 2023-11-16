@@ -94,8 +94,9 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-          <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </>
   );
