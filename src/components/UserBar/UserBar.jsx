@@ -20,7 +20,7 @@ const UserBar = () => {
   if (user.avatarURL.includes('gravatar')) {
     avatarURL = user.avatarURL;
   } else {
-    avatarURL = `${baseURL}${user.avatarURL}`;
+    avatarURL = user.avatarURL ? `${baseURL}${user.avatarURL}` : null;
   }
   //Олександр https://t.me/Tech_Prodigy
 
