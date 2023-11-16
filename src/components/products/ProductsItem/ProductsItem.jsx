@@ -22,7 +22,7 @@ import {
 
 export const ProductsItem = ({ product, openModalToggle, color }) => {
   const data = useSelector(selectUser);
-  const bloodType = data.user.profileData.blood;
+  const bloodType = data.profileData.blood;
   // console.log(bloodType);
 
   return (

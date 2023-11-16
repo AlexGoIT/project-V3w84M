@@ -19,7 +19,7 @@ const ModalWindowMenuUser = ({ isModalOpen, closeModal }) => {
   return (
     <>
       <OverlayModal onClick={handleBackdropClick}></OverlayModal>
-      {/* <WrapperModalWindowUserMenu className={isModalOpen ? 'show' : 'hidden'}> */}
+
       <WrapperModalWindowUserMenu>
         <BtnCloseWindow onClick={closeModal}>
           <IconCloseWindow>

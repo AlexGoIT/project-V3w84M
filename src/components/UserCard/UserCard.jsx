@@ -24,20 +24,22 @@ import Notice from 'components/Notice';
 import sprite from 'assets/images/sprite.svg';
 
 //
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/api/apiOperations';
 import { selectCalculate } from 'redux/api/apiSelectors';
 import { selectUser } from 'redux/auth/authSelectors';
+import { Notify } from 'notiflix';
 //
 
-const UserCard = ({ message, changeAvatar }) => {
+const UserCard = ({ message }) => {
   //
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
   const user = useSelector(selectUser);
   const fileInput = useRef(null);
-  const [imageSrc, setImageSrc] = useState('');
+  // !! Замість цього useState треба використовувати useSelector щоб отримати аватар з редаксу
+  // const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     dispatch(fetchCalculate());
@@ -46,13 +48,25 @@ const UserCard = ({ message, changeAvatar }) => {
 
   const uploadAvatar = e => {
     const file = e.target.files[0];
+
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        setImageSrc(fileReader.result);
-      };
-      fileReader.readAsDataURL(file);
-      changeAvatar(file);
+      const fileExtension = file.name.split('.')[1];
+
+      if (fileExtension !== 'jpg' || fileExtension !== 'jpeg') {
+        Notify.failure(
+          "I will pretend I didn't see that 👀. Only '.jpeg' and '.jpg' files are allowed."
+        );
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('avatar', file, file.name);
+
+      for (let property of formData.entries()) {
+        console.log(property[0], ':', property[1]);
+      }
+      // !! Тут треба діспатчити танк з аватаром,
+      // !! Після цього у відповідь бек поверне посилання на аватар, яке можна буде вставити як прев'ю
     }
   };
 
@@ -66,13 +80,14 @@ const UserCard = ({ message, changeAvatar }) => {
   return (
     <UserCardContainer style={{ color: 'white' }}>
       <UserAvatar>
-        {imageSrc ? (
+        {/* Тут треба буде рендерити картинку, яку поверне бекенд після відправки туди файлу */}
+        {/* {imageSrc ? (
           <img src={imageSrc} alt="avatar" />
-        ) : (
-          <svg width="61" height="62" fill="#efede8">
-            <use href={`${sprite}#user`} />
-          </svg>
-        )}
+        ) : ( */}
+        <svg width="61" height="62" fill="#efede8">
+          <use href={`${sprite}#user`} />
+        </svg>
+        {/* )} */}
         <AvatarLabel>
           <AvatarInput
             type="file"

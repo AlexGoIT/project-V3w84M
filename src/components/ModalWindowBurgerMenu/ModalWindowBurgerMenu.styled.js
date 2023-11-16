@@ -27,18 +27,12 @@ export const WrapperModalWindowUserMenu = styled.div`
   }
   @media screen and (max-width: 1439px) {
     &.show {
-      right: 0;
+      display: flex;
     }
 
     &.hidden {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
+      display: none;
     }
-
-    transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   /* @media screen and (min-width: 768px) {
     width: 350px;
