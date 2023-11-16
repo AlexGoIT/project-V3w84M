@@ -77,16 +77,31 @@ const UserCard = ({ message }) => {
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
   const bmr = calculate.BMR ? calculate.BMR : 0;
 
+  // Олександр https://t.me/Tech_Prodigy
+  const baseURL = 'https://powerpulse-backend-7hwo.onrender.com/';
+  const avatarURL = `${baseURL}${user.avatarURL}` || user.avatarURL;
+  // Олександр https://t.me/Tech_Prodigy
+
   return (
     <UserCardContainer style={{ color: 'white' }}>
       <UserAvatar>
+        {/* Олександр https://t.me/Tech_Prodigy*/}
+        {avatarURL ? (
+          <img src={avatarURL} alt="avatar" />
+        ) : (
+          <svg width="61" height="62" fill="#efede8">
+            <use href={`${sprite}#user`} />
+          </svg>
+        )}
+        {/* Олександр https://t.me/Tech_Prodigy*/}
+
         {/* Тут треба буде рендерити картинку, яку поверне бекенд після відправки туди файлу */}
         {/* {imageSrc ? (
           <img src={imageSrc} alt="avatar" />
         ) : ( */}
-        <svg width="61" height="62" fill="#efede8">
+        {/* <svg width="61" height="62" fill="#efede8">
           <use href={`${sprite}#user`} />
-        </svg>
+        </svg> */}
         {/* )} */}
         <AvatarLabel>
           <AvatarInput
