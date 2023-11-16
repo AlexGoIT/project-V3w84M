@@ -77,13 +77,8 @@ const UserCard = ({ message }) => {
   // Олександр https://t.me/Tech_Prodigy
   const baseURL = 'https://powerpulse-backend-7hwo.onrender.com/';
 
-  let avatarURL;
+  const avatarURL = user.avatarURL && `${baseURL}${user.avatarURL}`;
 
-  if (user.avatarURL.includes('gravatar')) {
-    avatarURL = user.avatarURL;
-  } else {
-    avatarURL = user.avatarURL ? `${baseURL}${user.avatarURL}` : null;
-  }
   // Олександр https://t.me/Tech_Prodigy
 
   return (

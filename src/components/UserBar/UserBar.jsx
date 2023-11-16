@@ -15,13 +15,8 @@ const UserBar = () => {
   const user = useSelector(selectUser);
 
   const baseURL = 'https://powerpulse-backend-7hwo.onrender.com/';
-  let avatarURL;
 
-  if (user.avatarURL.includes('gravatar')) {
-    avatarURL = user.avatarURL;
-  } else {
-    avatarURL = user.avatarURL ? `${baseURL}${user.avatarURL}` : null;
-  }
+  const avatarURL = user.avatarURL && `${baseURL}${user.avatarURL}`;
   //Олександр https://t.me/Tech_Prodigy
 
   return (
