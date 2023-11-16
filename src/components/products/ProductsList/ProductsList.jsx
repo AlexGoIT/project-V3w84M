@@ -15,7 +15,7 @@ import { selectUser } from 'redux/auth/authSelectors';
 const ProductsList = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectUser);
-  const bloodType = data.user.profileData.blood;
+  const bloodType = data.profileData.blood;
   const [products, setProducts] = useState(null);
 
   const productsList = useSelector(selectProducts);
