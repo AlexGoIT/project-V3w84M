@@ -30,6 +30,7 @@ import { fetchCalculate } from 'redux/api/apiOperations';
 import { selectCalculate } from 'redux/api/apiSelectors';
 import { selectUser } from 'redux/auth/authSelectors';
 import { Notify } from 'notiflix';
+import { updateAvatar } from 'redux/auth/usersOperations';
 //
 
 const UserCard = ({ message }) => {
@@ -38,8 +39,6 @@ const UserCard = ({ message }) => {
   const calculate = useSelector(selectCalculate);
   const user = useSelector(selectUser);
   const fileInput = useRef(null);
-  // !! Замість цього useState треба використовувати useSelector щоб отримати аватар з редаксу
-  // const [imageSrc, setImageSrc] = useState('');
 
   useEffect(() => {
     dispatch(fetchCalculate());
@@ -50,9 +49,11 @@ const UserCard = ({ message }) => {
     const file = e.target.files[0];
 
     if (file) {
-      const fileExtension = file.name.split('.')[1];
+      const validFileExtension = ['jpg', 'jpeg'].some(
+        ext => ext === file.name.split('.')[1]
+      );
 
-      if (fileExtension !== 'jpg' || fileExtension !== 'jpeg') {
+      if (!validFileExtension) {
         Notify.failure(
           "I will pretend I didn't see that 👀. Only '.jpeg' and '.jpg' files are allowed."
         );
@@ -62,11 +63,7 @@ const UserCard = ({ message }) => {
       const formData = new FormData();
       formData.append('avatar', file, file.name);
 
-      for (let property of formData.entries()) {
-        console.log(property[0], ':', property[1]);
-      }
-      // !! Тут треба діспатчити танк з аватаром,
-      // !! Після цього у відповідь бек поверне посилання на аватар, яке можна буде вставити як прев'ю
+      dispatch(updateAvatar(formData));
     }
   };
 
@@ -102,14 +99,6 @@ const UserCard = ({ message }) => {
         )}
         {/* Олександр https://t.me/Tech_Prodigy*/}
 
-        {/* Тут треба буде рендерити картинку, яку поверне бекенд після відправки туди файлу */}
-        {/* {imageSrc ? (
-          <img src={imageSrc} alt="avatar" />
-        ) : ( */}
-        {/* <svg width="61" height="62" fill="#efede8">
-          <use href={`${sprite}#user`} />
-        </svg> */}
-        {/* )} */}
         <AvatarLabel>
           <AvatarInput
             type="file"
