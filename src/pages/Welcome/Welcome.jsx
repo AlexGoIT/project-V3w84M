@@ -1,19 +1,18 @@
-import Container from 'components/Container';
 import Slogan from 'components/Slogan';
 import WelcomeNavigation from 'components/WelcomeNavigation';
 
-import { WelcomeWrapper } from './Welcome.styled';
+import { WelcomeSection, WelcomeWrapper } from './Welcome.styled';
 import WelcomeStatistics from 'components/StatisticsInfo';
 
 const Welcome = () => {
   return (
-    <Container>
+    <WelcomeSection>
       <WelcomeWrapper>
         <Slogan />
         <WelcomeNavigation />
+        <WelcomeStatistics />
       </WelcomeWrapper>
-      <WelcomeStatistics />
-    </Container>
+    </WelcomeSection>
   );
 };
 

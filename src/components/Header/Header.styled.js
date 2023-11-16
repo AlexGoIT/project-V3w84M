@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const HeaderBar = styled.header`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   width: 100%;
   padding-inline: 20px;
   padding-top: 12px;
@@ -11,6 +10,8 @@ export const HeaderBar = styled.header`
   margin-inline: auto;
 
   position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 
   @media screen and (min-width: 375px) {
