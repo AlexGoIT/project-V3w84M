@@ -122,7 +122,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.user.avatarURL = action.payload.avatarURL;
+        state.user.avatarURL = action.payload.user.avatarURL;
         state.isLoading = false;
       })
       .addCase(updateAvatar.rejected, (state, action) => {
