@@ -28,6 +28,11 @@ export const UserAvatar = styled.div`
   border: solid 1px #e6533c;
   border-radius: 50%;
   background-color: rgba(48, 48, 48, 0.3);
+
+  /* Олександр https://t.me/Tech_Prodigy */
+  overflow: hidden;
+  /* Олександр https://t.me/Tech_Prodigy */
+
   @media screen and (min-width: 768px) {
     width: 46px;
     height: 46px;
