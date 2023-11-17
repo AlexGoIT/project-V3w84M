@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { selectProducts } from 'redux/api/apiSelectors';
 import { fetchProducts } from 'redux/api/apiOperations';
 // import products from '../../../resources/products.json';
 
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { ProductsListUl } from './ProductsList.styled';
-import BasicModalWindow from '../../BasicModalWindow/BasicModalWindow';
-import AddProductForm from '../../AddProductForm/AddProductForm';
-import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
 import { SearchNotResult } from '../SearchNotResult/SearchNotResult';
 import { selectUser } from 'redux/auth/authSelectors';
 
@@ -16,7 +13,6 @@ const ProductsList = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectUser);
   const bloodType = data.profileData.blood;
-  const [products, setProducts] = useState(null);
 
   const productsList = useSelector(selectProducts);
   const productItems =
@@ -51,37 +47,13 @@ const ProductsList = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const openModalToggle = el => {
-    setProducts(el);
-  };
-
-  const closeModal = () => {
-    setProducts(null);
-  };
-
   return (
     <>
-      {products && (
-        <BasicModalWindow isOpenModalToggle={closeModal}>
-          {typeof products === 'object' ? (
-            <AddProductForm products={products} closeModal={closeModal} />
-          ) : (
-            <AddProductSuccess
-              closeModal={closeModal}
-              calories={products.calories}
-            />
-          )}
-        </BasicModalWindow>
-      )}
       {filterProducts.length > 0 ? (
         <ProductsListUl>
           {productItems.length > 0 &&
             productItems.map(product => (
-              <ProductsItem
-                key={product.title}
-                product={product}
-                openModalToggle={openModalToggle}
-              />
+              <ProductsItem key={product.title} product={product} />
             ))}
         </ProductsListUl>
       ) : (

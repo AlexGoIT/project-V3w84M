@@ -19,11 +19,28 @@ import {
   IconAfterAdd,
   IconBeforeTitle,
 } from './ProductsItem.styled';
+import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
+import AddProductForm from 'components/AddProductForm';
+import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
+import { useState } from 'react';
 
-export const ProductsItem = ({ product, openModalToggle, color }) => {
+export const ProductsItem = ({ product, color }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProductAdded, setIsProductAdded] = useState(false);
+  const [totalCalories, setTotalCalories] = useState(0);
   const data = useSelector(selectUser);
   const bloodType = data.profileData.blood;
-  // console.log(bloodType);
+
+  const toggleModal = () => {
+    setIsModalOpen(prev => !prev);
+    setIsProductAdded(false);
+    setTotalCalories(0);
+  };
+
+  const onAddedSuccessfully = calories => {
+    setTotalCalories(calories);
+    setIsProductAdded(true);
+  };
 
   return (
     <ProductsCard>
@@ -40,12 +57,7 @@ export const ProductsItem = ({ product, openModalToggle, color }) => {
               : 'Not recommended'}
           </ProductsCardStatusCountTrue>
 
-          <ProductsCardStatusAdd
-            onClick={() => {
-              openModalToggle(product);
-            }}
-            type="button"
-          >
+          <ProductsCardStatusAdd onClick={toggleModal} type="button">
             Add
             <IconAfterAdd>
               <use href={`${sprite}#icon-arrow`} />
@@ -81,6 +93,25 @@ export const ProductsItem = ({ product, openModalToggle, color }) => {
           </ProductsCardInfoValue>
         </ProductsCardInfoItem>
       </ProductsCardInfoList>
+
+      {isModalOpen && (
+        <BasicModalWindow isOpenModalToggle={toggleModal}>
+          {isProductAdded ? (
+            <AddProductSuccess
+              key={'prodSuccess'}
+              onClose={toggleModal}
+              totalCalories={totalCalories}
+            />
+          ) : (
+            <AddProductForm
+              key={'addProd'}
+              productId={product._id}
+              closeModal={toggleModal}
+              onSuccess={onAddedSuccessfully}
+            />
+          )}
+        </BasicModalWindow>
+      )}
     </ProductsCard>
   );
 };
