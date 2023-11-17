@@ -20,45 +20,61 @@ import sprite from 'assets/images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import {
+  selectDiary,
   selectError,
   selectIsLoading,
-  selectProducts,
 } from 'redux/api/apiSelectors';
 import { fetchProducts } from 'redux/api/apiOperations';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
+import { Link, useLocation } from 'react-router-dom';
 
 const DayProducts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const productsData = useSelector(selectProducts);
-  const { result, total_results } = productsData;
+  const { consumedProducts } = useSelector(selectDiary);
+  const location = useLocation();
+
+  const findLength = async array => {
+    try {
+      const length = await array.length;
+      return length;
+    } catch (err) {
+      return err;
+    }
+  };
+  const arrayLength = findLength(consumedProducts);
 
   const [heightProductArea, setHeightProductArea] = useState(true);
-  if (total_results === 0) {
+  if (arrayLength === 0) {
     setHeightProductArea(false);
   }
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  useEffect(
+    date => {
+      dispatch(fetchProducts(date));
+    },
+    [dispatch]
+  );
 
   return (
     <DayProductsArea dimention={heightProductArea}>
       <TitleArea>
         <Title>Products</Title>
-        <Button>
-          <Add>Add product</Add>
-          <ArrowIcon iconColor="#E6533C">
-            <use href={`${sprite}#arrow`} />
-          </ArrowIcon>
-        </Button>
+        <Link to={`/products`} state={{ from: location }}>
+          <Button>
+            <Add>Add product</Add>
+            <ArrowIcon iconColor="#E6533C">
+              <use href={`${sprite}#arrow`} />
+            </ArrowIcon>
+          </Button>{' '}
+        </Link>
       </TitleArea>
       <TableArea>
         {isLoading && <Loader />}
-        {total_results > 0 ? (
+        {arrayLength > 0 ? (
           <>
             <TableHeader>
               <Grid1>Title</Grid1>
@@ -69,7 +85,7 @@ const DayProducts = () => {
               <Grid6></Grid6>
             </TableHeader>
             <List>
-              {result.map(
+              {consumedProducts.map(
                 ({
                   _id,
                   title,
