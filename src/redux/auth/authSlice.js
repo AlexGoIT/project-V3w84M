@@ -106,9 +106,13 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
-        // state.user = action.payload;
+        state.user = {
+          ...state.user,
+          ...action.payload.user,
+        };
 
         state.isLoading = false;
+        state.error = null;
       })
       .addCase(updateProfile.rejected, (state, action) => {
         state.error = action.payload;
