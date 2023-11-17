@@ -16,38 +16,52 @@ import {
   ProductStyledForm,
 } from './AddProductForm.styled';
 import sprite from '../../assets/images/sprite.svg';
-import products from '../../resources/products.json';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectError,
+  selectIsLoading,
+  selectProducts,
+} from 'redux/api/apiSelectors';
+import { addProduct } from 'redux/api/apiOperations';
+import Loader from 'components/Loader';
 
-const AddProductForm = ({ productId, closeModal }) => {
+const AddProductForm = ({ productId, closeModal, onSuccess }) => {
+  const products = useSelector(selectProducts);
+  const product = products.result.find(product => product._id === productId);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: { amount: '' },
     validationSchema: addProductSchema,
     onSubmit: ({ amount }) => handleSubmit(amount),
   });
 
-  productId = '5d51694902b2373622ff5e13';
-  const product = products.find(product => product._id.$oid === productId);
-
   const calculateCalories = () => {
     const calories = (formik.values.amount * product.calories) / 100;
     return Math.round(calories);
   };
 
-  const handleSubmit = amount => {
+  const handleSubmit = async amount => {
     const data = {
-      id: productId,
+      productId: productId,
       date: format(Date.now(), 'dd-MM-yyyy'),
-      amount,
-      calories: calculateCalories(),
+      weightConsumed: amount,
+      caloriesConsumed: calculateCalories(),
     };
-    console.log(data);
 
-    //Відправляємо дані на бек, чекаємо позитивної відповіді після якої закриваємо модалку з формою
+    await dispatch(addProduct(data)).unwrap();
+
+    if (!isLoading && !error) {
+      onSuccess(calculateCalories());
+    }
   };
 
   return (
     <>
       <ProductStyledForm onSubmit={formik.handleSubmit}>
+        {isLoading && <Loader />}
         <ProductFormFieldsWrapper>
           <ProductNameField type="text" defaultValue={product.title} disabled />
           <ProductCaloriesFieldWrapper>
