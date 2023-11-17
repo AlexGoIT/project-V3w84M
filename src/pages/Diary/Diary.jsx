@@ -25,7 +25,7 @@ const Diary = () => {
   //console.log(newDate);
 
   useEffect(() => {
-    dispatch(fetchDiary(newDate));
+    dispatch(fetchDiary({ date: newDate }));
     dispatch(currentUser());
     dispatch(fetchCalculate());
   }, [dispatch, newDate]);
