@@ -17,24 +17,17 @@ import {
   Grid6,
 } from './DayProducts.styled';
 import sprite from 'assets/images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import {
-  selectDiary,
-  selectError,
-  selectIsLoading,
-} from 'redux/api/apiSelectors';
-import { fetchProducts } from 'redux/api/apiOperations';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayProducts = () => {
-  const dispatch = useDispatch();
+const DayProducts = ({ consumedProducts }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const { consumedProducts } = useSelector(selectDiary);
   const location = useLocation();
 
   const findLength = async array => {
@@ -51,13 +44,6 @@ const DayProducts = () => {
   if (arrayLength === 0) {
     setHeightProductArea(false);
   }
-
-  useEffect(
-    date => {
-      dispatch(fetchProducts(date));
-    },
-    [dispatch]
-  );
 
   return (
     <DayProductsArea dimention={heightProductArea}>

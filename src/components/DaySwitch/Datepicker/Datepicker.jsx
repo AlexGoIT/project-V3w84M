@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef } from 'react';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
@@ -9,25 +9,17 @@ import {
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from 'assets/images/sprite.svg';
 import { Global } from '@emotion/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { currentUser } from 'redux/auth/authOperations';
-import { selectUser } from 'redux/auth/authSelectors';
+//import formatDate from 'utils/formatDate';
 
-const StyledDatepicker = () => {
-  const [selectedDate, setSelectedDate] = useState(Date.now());
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
   const createdDate = Date.parse(user.createdAt);
 
   const submitSelectedDate = date => {
-    setSelectedDate(date);
     const newDate = format(date, 'dd-MM-yyyy');
+    //const selDate = formatDate(date);
     console.log(newDate);
+    setSelectedDate(newDate);
   };
-
-  useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (

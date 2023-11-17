@@ -7,20 +7,8 @@ import {
   Icon,
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchCalculate } from 'redux/api/apiOperations';
-import { selectCalculate } from 'redux/api/apiSelectors';
 
-const DayDashboard = () => {
-  const dispatch = useDispatch();
-  const calculateData = useSelector(selectCalculate);
-  const { dailyActivity, BMR } = calculateData;
-
-  useEffect(() => {
-    dispatch(fetchCalculate());
-  }, [dispatch]);
-
+const DayDashboard = ({ dailyActivity, BMR }) => {
   return (
     <DayDashboardArea>
       <DashboardItem accent="true">

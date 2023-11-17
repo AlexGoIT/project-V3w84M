@@ -19,25 +19,18 @@ import {
   ShorterTitle,
 } from './DayExercises.styled';
 import sprite from 'assets/images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import {
-  selectError,
-  selectIsLoading,
-  selectDiary,
-} from 'redux/api/apiSelectors';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ExerciseItem from './ExerciseItem';
-import { fetchDiary } from 'redux/api/apiOperations';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayExercises = () => {
-  const dispatch = useDispatch();
+const DayExercises = ({ doneExercises }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
-  const { doneExercises } = useSelector(selectDiary);
 
   const findLength = async array => {
     try {
@@ -53,13 +46,6 @@ const DayExercises = () => {
   if (arrayLength === 0) {
     setHeightExerciseArea(false);
   }
-
-  useEffect(
-    date => {
-      dispatch(fetchDiary(date));
-    },
-    [dispatch]
-  );
 
   return (
     <DayExercisesArea dimention={heightExerciseArea}>
