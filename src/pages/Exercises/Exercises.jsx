@@ -5,6 +5,8 @@ import TitlePage from 'components/TitlePage';
 import ExercisesCategories from 'components/ExercisesCategories';
 import { ContentDiv, WrapperTitleCategoriesDiv } from './Exercises.styled';
 
+import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+
 const EXERCISES_CATEGORY = {
   BODY_PARTS: 'bodyPart',
   MUSCLES: 'target',
@@ -25,6 +27,8 @@ export function Exercises() {
         <TitlePage title={subcategoriesLocation ? 'Exercises' : subcategory} />
         <ExercisesCategories setCategory={setCategory} category={category} />
       </WrapperTitleCategoriesDiv>
+
+      <ExerciseCardItem></ExerciseCardItem>
 
       <Outlet context={category} />
     </ContentDiv>
