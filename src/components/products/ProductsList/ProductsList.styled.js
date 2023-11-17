@@ -17,7 +17,7 @@ export const ProductsListUl = styled.ul`
     max-height: 660px;
     padding-right: 16px;
 
-    &::-webkit-scrollbar-track {
+    /* &::-webkit-scrollbar-track {
       background: rgba(239, 237, 232, 0.1);
       border-radius: 12px;
       height: 15px;
@@ -32,7 +32,7 @@ export const ProductsListUl = styled.ul`
     &::-webkit-scrollbar {
       width: 8px;
       height: 15px;
-    }
+    } */
   }
 
   @media screen and (min-width: 1440px) {

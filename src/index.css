@@ -49,6 +49,23 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+
+  &::-webkit-scrollbar-track {
+    background: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+    height: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ef8964;
+    border-radius: 12px;
+    height: 15px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
+  }
 }
 
 a {

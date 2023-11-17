@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addExercise,
+  addProduct,
   fetchCalculate,
   fetchCategories,
   fetchDiary,
@@ -88,6 +90,7 @@ export const apiSlice = createSlice({
         state.isLoading = false;
       });
 
+    //===============================================================
     builder
       .addCase(fetchDiary.pending, state => {
         state.isLoading = true;
@@ -100,6 +103,33 @@ export const apiSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
+
+    builder
+      .addCase(addProduct.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        // state.diary = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addProduct.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
+    builder
+      .addCase(addExercise.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addExercise.fulfilled, (state, action) => {
+        // state.diary = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addExercise.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+    //===============================================================
   },
 });
 
