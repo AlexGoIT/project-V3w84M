@@ -11,13 +11,7 @@ import sprite from 'assets/images/sprite.svg';
 import { selectUser } from 'redux/auth/authSelectors';
 
 const UserBar = () => {
-  //Олександр https://t.me/Tech_Prodigy
   const user = useSelector(selectUser);
-
-  const baseURL = 'https://powerpulse-backend-7hwo.onrender.com/';
-
-  const avatarURL = user.avatarURL && `${baseURL}${user.avatarURL}`;
-  //Олександр https://t.me/Tech_Prodigy
 
   return (
     <UserBarBlock>
@@ -27,17 +21,13 @@ const UserBar = () => {
         </IconSettings>
       </UserBarLink>
       <UserAvatar>
-        {/* Олександр https://t.me/Tech_Prodigy */}
-        {avatarURL ? (
-          <img src={avatarURL} alt="avatar" />
+        {user.avatarURL ? (
+          <img src={user.avatarURL} alt="avatar" />
         ) : (
           <IconUserAvatar>
             <use href={`${sprite}#user`} />
           </IconUserAvatar>
         )}
-        {/* Олександр https://t.me/Tech_Prodigy */}
-
-        {/* <IconUserAvatar><use href={`${sprite}#user`} /></IconUserAvatar> */}
       </UserAvatar>
     </UserBarBlock>
   );

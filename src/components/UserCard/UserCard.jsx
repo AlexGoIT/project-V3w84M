@@ -74,25 +74,16 @@ const UserCard = ({ message }) => {
   const dailyActivity = calculate.dailyActivity ? calculate.dailyActivity : 0;
   const bmr = calculate.BMR ? calculate.BMR : 0;
 
-  // Олександр https://t.me/Tech_Prodigy
-  const baseURL = 'https://powerpulse-backend-7hwo.onrender.com/';
-
-  const avatarURL = user.avatarURL && `${baseURL}${user.avatarURL}`;
-
-  // Олександр https://t.me/Tech_Prodigy
-
   return (
     <UserCardContainer style={{ color: 'white' }}>
       <UserAvatar>
-        {/* Олександр https://t.me/Tech_Prodigy*/}
-        {avatarURL ? (
-          <img src={avatarURL} alt="avatar" />
+        {user.avatarURL ? (
+          <img src={user.avatarURL} alt="avatar" />
         ) : (
           <svg width="61" height="62" fill="#efede8">
             <use href={`${sprite}#user`} />
           </svg>
         )}
-        {/* Олександр https://t.me/Tech_Prodigy*/}
 
         <AvatarLabel>
           <AvatarInput
@@ -110,7 +101,7 @@ const UserCard = ({ message }) => {
         </AddAvatarButton>
       </UserAvatar>
       <NameContainer>{user.name}</NameContainer>
-      <UserInscription>User</UserInscription>
+      <UserInscription>{user.email}</UserInscription>
       <InformationContainer>
         <CaloriesContainer>
           {/* <CaloriesStaticInfoContainer> */}

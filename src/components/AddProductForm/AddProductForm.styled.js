@@ -5,10 +5,8 @@ export const ProductStyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin: 48px 24px;
 
   @media screen and (min-width: 768px) {
-    margin: 48px 32px;
     width: 415px;
   }
 `;

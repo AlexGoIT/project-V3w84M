@@ -17,6 +17,23 @@ export const Modal = styled.div`
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
   position: relative;
+  ${({ children }) => {
+    if (children.some(child => child.key === 'prodSuccess')) {
+      return 'padding: 48px 89px;   @media screen and (min-width: 768px) {padding: 64px 136px;}';
+    }
+    if (children.some(child => child.key === 'addProd')) {
+      return `padding: 48px 24px;   @media screen and (min-width: 768px) {padding: 48px 32px;}`;
+    }
+    if (children.some(child => child.key === 'exercSuccess')) {
+      return `padding: 48px 89px;   @media screen and (min-width: 768px) {padding: 64px 134px;}`;
+    }
+    if (children.some(child => child.key === 'addExerc')) {
+      return `padding: 48px 16px;   @media screen and (min-width: 768px) {padding: 48px 32px;}`;
+    }
+  }};
+
+  @media screen and (min-width: 768px) {
+  }
 `;
 export const ButtonClouse = styled.button`
   width: 22px;
