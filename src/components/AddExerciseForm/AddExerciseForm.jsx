@@ -32,9 +32,9 @@ export const AddExerciseForm = ({ data, onClick}) => {
   const dispatch = useDispatch();
  
 
-  useEffect(() => {
-    dispatch(getUserParams());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUserParams());
+  // }, [dispatch]);
 
   const amount = Math.round((burnedCalories / (time * 60)) * 180);
  
@@ -57,18 +57,18 @@ export const AddExerciseForm = ({ data, onClick}) => {
       return;
     }
 
-    dispatch(
-      addExercise({
-        date: formattedDate, 
-        bodyPart,
-        target,
-        time: dinamicTime,
-        exerciseId: _id,
-        equipment,
-        name,
-        burnedCalories: dinamicBurnCal,
-      }),
-    );
+    // dispatch(
+    //   addExercise({
+    //     date: formattedDate, 
+    //     bodyPart,
+    //     target,
+    //     time: dinamicTime,
+    //     exerciseId: _id,
+    //     equipment,
+    //     name,
+    //     burnedCalories: dinamicBurnCal,
+    //   }),
+    // );
     onClick();
   };
 
