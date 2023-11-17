@@ -14,7 +14,7 @@ import {
 
 import sprite from '../../../assets/images/sprite.svg';
 
- const AddProductSuccess = ({ onClose, totalCalories }) => {
+ const AddProductSuccess = ({ onClose, calculateCalories }) => {
 
   return (
     <DivSuccess>
@@ -25,7 +25,7 @@ import sprite from '../../../assets/images/sprite.svg';
       <DivCalories>
         <CaloriesP>Calories:</CaloriesP>
 
-        <ValueCalories>{totalCalories}</ValueCalories>
+        <ValueCalories>{calculateCalories}</ValueCalories>
       </DivCalories>
 
       <ButtonAdd onClick={onClose}>Next product</ButtonAdd>
