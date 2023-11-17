@@ -12,6 +12,7 @@ import { selectCalculate, selectDiary } from 'redux/api/apiSelectors';
 import { fetchCalculate, fetchDiary } from 'redux/api/apiOperations';
 import { currentUser } from 'redux/auth/authOperations';
 import { selectUser } from 'redux/auth/authSelectors';
+import { format } from 'date-fns';
 
 const Diary = () => {
   const dispatch = useDispatch();
@@ -20,12 +21,14 @@ const Diary = () => {
   const { consumedProducts, doneExercises } = useSelector(selectDiary);
   const user = useSelector(selectUser);
   const { dailyActivity, BMR } = calculateData;
+  const newDate = format(selectedDate, 'dd-MM-yyyy');
+  //console.log(newDate);
 
   useEffect(() => {
-    dispatch(fetchDiary(selectedDate));
+    dispatch(fetchDiary(newDate));
     dispatch(currentUser());
     dispatch(fetchCalculate());
-  }, [dispatch, selectedDate]);
+  }, [dispatch, newDate]);
 
   return (
     <Container>

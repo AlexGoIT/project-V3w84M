@@ -15,9 +15,7 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
   const createdDate = Date.parse(user.createdAt);
 
   const submitSelectedDate = date => {
-    const newDate = format(date, 'dd-MM-yyyy');
-    console.log(newDate);
-    setSelectedDate(newDate);
+    setSelectedDate(date);
   };
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
