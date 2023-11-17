@@ -110,7 +110,7 @@ const UserCard = ({ message }) => {
         </AddAvatarButton>
       </UserAvatar>
       <NameContainer>{user.name}</NameContainer>
-      <UserInscription>User</UserInscription>
+      <UserInscription>{user.email}</UserInscription>
       <InformationContainer>
         <CaloriesContainer>
           {/* <CaloriesStaticInfoContainer> */}
