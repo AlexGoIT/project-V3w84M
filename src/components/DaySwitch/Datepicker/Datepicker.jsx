@@ -18,17 +18,16 @@ const StyledDatepicker = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const createdDate = Date.parse(user.createdAt);
-  console.log(createdDate);
+
+  const submitSelectedDate = date => {
+    setSelectedDate(date);
+    const newDate = format(date, 'dd-MM-yyyy');
+    console.log(newDate);
+  };
 
   useEffect(() => {
     dispatch(currentUser());
   }, [dispatch]);
-
-  const submitSelectedDate = date => {
-    setSelectedDate(date);
-    const newDate = format(date, 'dd/MM/yyyy');
-    console.log(newDate);
-  };
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (

@@ -24,44 +24,60 @@ import { useEffect, useState } from 'react';
 import {
   selectError,
   selectIsLoading,
-  selectExercises,
+  selectDiary,
 } from 'redux/api/apiSelectors';
-import { fetchExercises } from 'redux/api/apiOperations';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ExerciseItem from './ExerciseItem';
+import { fetchDiary } from 'redux/api/apiOperations';
+import { Link, useLocation } from 'react-router-dom';
 
 const DayExercises = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const exercisesData = useSelector(selectExercises);
-  const { result, total_results } = exercisesData;
+  const location = useLocation();
+  const { doneExercises } = useSelector(selectDiary);
+
+  const findLength = async array => {
+    try {
+      const length = await array.length;
+      return length;
+    } catch (err) {
+      return err;
+    }
+  };
+  const arrayLength = findLength(doneExercises);
 
   const [heightExerciseArea, setHeightExerciseArea] = useState(true);
-  if (total_results === 0) {
+  if (arrayLength === 0) {
     setHeightExerciseArea(false);
   }
 
-  useEffect(() => {
-    dispatch(fetchExercises());
-  }, [dispatch]);
+  useEffect(
+    date => {
+      dispatch(fetchDiary(date));
+    },
+    [dispatch]
+  );
 
   return (
     <DayExercisesArea dimention={heightExerciseArea}>
       <TitleArea>
         <Title>Execrcises</Title>
-        <Button>
-          <Add>Add execrcise</Add>
-          <ArrowIcon iconColor="#E6533C">
-            <use href={`${sprite}#arrow`} />
-          </ArrowIcon>
-        </Button>
+        <Link to={`/exercises`} state={{ from: location }}>
+          <Button>
+            <Add>Add exercise</Add>
+            <ArrowIcon iconColor="#E6533C">
+              <use href={`${sprite}#arrow`} />
+            </ArrowIcon>
+          </Button>
+        </Link>
       </TitleArea>
 
       <TableArea>
         {isLoading && <Loader />}
-        {total_results > 0 ? (
+        {arrayLength > 0 ? (
           <>
             <TableHeader>
               <Grid1>Body Part</Grid1>
@@ -75,7 +91,7 @@ const DayExercises = () => {
               <Grid7 />
             </TableHeader>
             <List>
-              {result.map(
+              {doneExercises.map(
                 ({
                   _id,
                   bodyPart,

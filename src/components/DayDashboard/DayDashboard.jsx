@@ -7,8 +7,20 @@ import {
   Icon,
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchCalculate } from 'redux/api/apiOperations';
+import { selectCalculate } from 'redux/api/apiSelectors';
 
 const DayDashboard = () => {
+  const dispatch = useDispatch();
+  const calculateData = useSelector(selectCalculate);
+  const { dailyActivity, BMR } = calculateData;
+
+  useEffect(() => {
+    dispatch(fetchCalculate());
+  }, [dispatch]);
+
   return (
     <DayDashboardArea>
       <DashboardItem accent="true">
@@ -18,7 +30,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        <Value>2000</Value>
+        <Value>{BMR}</Value>
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -27,7 +39,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily physical activity</Title>
         </TitleArea>
-        <Value>110 min</Value>
+        {dailyActivity && <Value>{dailyActivity} min</Value>}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -36,7 +48,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories consumed</Title>
         </TitleArea>
-        <Value>...</Value>
+        <Value>0</Value>
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -45,7 +57,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories burned</Title>
         </TitleArea>
-        <Value>...</Value>
+        <Value>0</Value>
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -54,7 +66,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        <Value>...</Value>
+        <Value>{BMR}</Value>
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -63,7 +75,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
-        <Value>...</Value>
+        {dailyActivity && <Value>{dailyActivity} min</Value>}
       </DashboardItem>
     </DayDashboardArea>
   );

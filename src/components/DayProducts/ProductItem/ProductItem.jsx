@@ -71,7 +71,7 @@ ProductItem.propTypes = {
   category: PropTypes.string,
   calories: PropTypes.number,
   weight: PropTypes.number,
-  groupBloodNotAllowed: PropTypes.string,
+  groupBloodNotAllowed: PropTypes.number,
 };
 
 export default ProductItem;
