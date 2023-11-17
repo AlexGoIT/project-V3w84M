@@ -16,7 +16,6 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
 
   const submitSelectedDate = date => {
     const newDate = format(date, 'dd-MM-yyyy');
-    //const selDate = formatDate(date);
     console.log(newDate);
     setSelectedDate(newDate);
   };
@@ -44,6 +43,7 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
         dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
         minDate={user.createdAt ? createdDate : Date.now()}
+        maxDate={Date.now()}
       />
     </>
   );
