@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
@@ -140,4 +140,46 @@ export const addExercise = createAsyncThunk(
     }
   }
 );
+
+// DELETE api/diary/products/5d51694902b2373622ff5b8d  Delete eaten product from diary
+//
+export const deleteProduct = createAsyncThunk(
+  'api/deleteProduct',
+  async (diaryProductId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/diary/products/${diaryProductId}`
+      );
+
+      console.log('Delete product from diary =>', data);
+
+      return diaryProductId;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
+
+// DELETE api/diary/exercises/5d51694902b2373622ff5b8d  Delete done exercise from diary
+//
+export const deleteExercise = createAsyncThunk(
+  'api/deleteExercise',
+  async (diaryExercisesId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(
+        `/api/diary/exercises/${diaryExercisesId}`
+      );
+
+      console.log('Delete exercise from diary =>', data);
+
+      return diaryExercisesId;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
 //=============================================================================
+
+export const diaryUpdateReset = createAction('api/diaryUpdateReset');
