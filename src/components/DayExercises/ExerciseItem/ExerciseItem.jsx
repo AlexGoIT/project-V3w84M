@@ -13,7 +13,10 @@ import {
   Title,
 } from './ExerciseItem.styled';
 import sprite from 'assets/images/sprite.svg';
+import { format } from 'date-fns';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteExercise } from 'redux/api/apiOperations';
 // import { useDispatch } from 'react-redux';
 // import { useState } from 'react';
 
@@ -25,11 +28,20 @@ const ExerciseItem = ({
   target,
   burnedCalories,
   time,
+  date,
 }) => {
   //   const dispatch = useDispatch();
   //   const deleteThisExercise = id => {
   //     dispatch(deleteExercise(id));
   //   };
+
+  const dispatch = useDispatch();
+
+  const handleClick = (productId, date) => {
+    const fDate = format(new Date(date), 'dd-MM-yyyy');
+
+    dispatch(deleteExercise({ productId, date: fDate }));
+  };
 
   return (
     <ExerciseDiv key={id}>
@@ -60,7 +72,7 @@ const ExerciseItem = ({
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid7>
         <Title></Title>
-        <ButtonEl>
+        <ButtonEl onClick={() => handleClick(id, date)}>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>
@@ -78,6 +90,7 @@ ExerciseItem.propTypes = {
   target: PropTypes.string,
   burnedCalories: PropTypes.number,
   time: PropTypes.number,
+  date: PropTypes.string.isRequired,
 };
 
 export default ExerciseItem;
