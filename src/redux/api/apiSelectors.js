@@ -13,3 +13,5 @@ export const selectError = state => state.api.error; // { message: string }
 export const selectCalculate = state => state.api.calculate; // {}
 
 export const selectDiary = state => state.api.diary; // {}
+
+export const selectDiaryUpdated = state => state.api.diaryUpdated; // boolean

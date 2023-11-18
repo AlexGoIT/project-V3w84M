@@ -29,7 +29,7 @@ export const ProductsItem = ({ product, color }) => {
   const [isProductAdded, setIsProductAdded] = useState(false);
   const [totalCalories, setTotalCalories] = useState(0);
   const data = useSelector(selectUser);
-  const bloodType = data.profileData.blood;
+  const bloodType = data?.profileData?.blood;
 
   const toggleModal = () => {
     setIsModalOpen(prev => !prev);
@@ -118,5 +118,5 @@ export const ProductsItem = ({ product, color }) => {
 
 ProductsItem.propTypes = {
   product: PropTypes.object.isRequired,
-  openModalToggle: PropTypes.func.isRequired,
+  isOpenModalToggle: PropTypes.func,
 };

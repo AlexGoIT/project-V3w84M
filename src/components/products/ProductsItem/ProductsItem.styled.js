@@ -22,13 +22,17 @@ export const ProductsCard = styled.li`
     max-width: 405px;
   }
 `;
-export const ProductsCardStatus = styled.label`
+export const ProductsCardStatus = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 27px;
+  margin-bottom: 35px;
   justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 27px;
+  }
 `;
 export const ProductsCardDiet = styled.span`
   display: inline-flex;
@@ -71,11 +75,14 @@ export const ProductsCardStatusCountTrue = styled.p`
 `;
 
 export const ProductsCardStatusAdd = styled.button`
+  width: 49px;
+  height: 14px;
   background: transparent;
   border: none;
   color: #e6533c;
-  font-size: 16px;
-  line-height: 24px;
+
+  font-size: 14px;
+  line-height: 18px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -86,18 +93,12 @@ export const ProductsCardStatusAdd = styled.button`
     color: #efede8;
   }
 
-  /* &::after {
-    content: url();
-    display: block;
-    width: 16px;
-    height: 16px;
-    margin-left: 8px;
-    margin-top: -3px;
-    &:hover,
-    &:focus {
-      fill: #efede8;
-    }
-  } */
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+    width: 53px;
+    height: 24px;
+  }
 `;
 
 export const IconAfterAdd = styled.svg`
@@ -106,11 +107,7 @@ export const IconAfterAdd = styled.svg`
   height: 16px;
   margin-left: 8px;
   margin-top: -3px;
-  fill: #efa082;
-  &:hover,
-  &:focus {
-    fill: #efede8;
-  }
+  fill: #e6533c;
 `;
 
 export const IconBeforeTitle = styled.svg`
@@ -124,27 +121,25 @@ export const IconBeforeTitle = styled.svg`
 
 export const ProductsCardTitle = styled.h4`
   position: relative;
-  font-size: 24px;
-  line-height: 1.333;
+  font-size: 20px;
+  line-height: 24px;
   color: #efede8;
-
+  font-weight: 400;
   margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-left: 40px;
   max-width: 100%;
-  /* &::before {
-    content: url();
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    left: 0;
-    top: calc(50% - 12px);
-  } */
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 `;
 
 export const ProductsCardInfoList = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -156,8 +151,9 @@ export const ProductsCardInfoItem = styled.li`
   flex-direction: row;
   gap: 4px;
   color: rgba(239, 237, 232, 0.4);
+  font-weight: 400;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 14px;
 `;
 
 export const ProductsCardInfoValue = styled.p`
@@ -166,5 +162,5 @@ export const ProductsCardInfoValue = styled.p`
   text-overflow: ellipsis;
   color: #efede8;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 14px;
 `;

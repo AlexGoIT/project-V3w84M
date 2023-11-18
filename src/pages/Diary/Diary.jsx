@@ -13,24 +13,50 @@ import { fetchCalculate, fetchDiary } from 'redux/api/apiOperations';
 import { currentUser } from 'redux/auth/authOperations';
 import { selectUser } from 'redux/auth/authSelectors';
 import { format } from 'date-fns';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDiaryUpdated } from 'redux/api/apiSelectors';
+import { useEffect } from 'react';
+import {
+  deleteProduct,
+  diaryUpdateReset,
+  fetchDiary,
+} from 'redux/api/apiOperations';
+
+// const dispatch = useDispatch();
+//   const calculateData = useSelector(selectCalculate);
+//   const [selectedDate, setSelectedDate] = useState(Date.now());
+//   const data = useSelector(selectDiary);
+//   console.log(data);
+
+//   const { consumedProducts, doneExercises, userDailyStats } = data;
+//   const user = useSelector(selectUser);
+//   const { dailyActivity, BMR } = calculateData;
+//   const newDate = format(selectedDate, 'dd-MM-yyyy');
+
+//   useEffect(() => {
+//     dispatch(fetchDiary({ date: newDate }));
+//     dispatch(currentUser());
+//     dispatch(fetchCalculate());
+//   }, [dispatch, newDate]);
 
 const Diary = () => {
   const dispatch = useDispatch();
-  const calculateData = useSelector(selectCalculate);
-  const [selectedDate, setSelectedDate] = useState(Date.now());
-  const data = useSelector(selectDiary);
-  console.log(data);
+  const dairyUpdated = useSelector(selectDiaryUpdated);
 
-  const { consumedProducts, doneExercises, userDailyStats } = data;
-  const user = useSelector(selectUser);
-  const { dailyActivity, BMR } = calculateData;
-  const newDate = format(selectedDate, 'dd-MM-yyyy');
+  console.log('Diary: dairyUpdated =>', dairyUpdated);
 
   useEffect(() => {
-    dispatch(fetchDiary({ date: newDate }));
-    dispatch(currentUser());
-    dispatch(fetchCalculate());
-  }, [dispatch, newDate]);
+    if (dairyUpdated) {
+      dispatch(fetchDiary({ date: '17-11-2023' }));
+    }
+
+    dispatch(diaryUpdateReset());
+  }, [dispatch, dairyUpdated]);
+
+  const handleClick = () => {
+    console.log("Diary: handleClick => '123'");
+    dispatch(deleteProduct('123'));
+  };
 
   return (
     <Container>
@@ -42,6 +68,7 @@ const Diary = () => {
           user={user}
         />
         <DiaryContainer>
+          {/* <button type="button" onClick={handleClick}>Delete</button> */}
           <Left>
             <DayProducts consumedProducts={consumedProducts} />
             <DayExercises doneExercises={doneExercises} />
