@@ -19,16 +19,19 @@ export const DiaryContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     margin-top: 40px;
+    margin-bottom: 80px;
   }
 
   @media screen and (min-width: 768px) {
     gap: 64px;
     margin-top: 32px;
+    margin-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;
+    margin-bottom: 68px;
   }
 `;
 

@@ -7,7 +7,7 @@ const setHeight = props => {
     case 'false':
       return '335px';
     default:
-      return '335';
+      return '335px';
   }
 };
 
