@@ -8,7 +8,15 @@ import {
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
 
-const DayDashboard = ({ dailyActivity, BMR }) => {
+const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
+  // console.log(userDailyStats);
+  // const {
+  //   caloriesBurnedSum,
+  //   caloriesConsumedSum,
+  //   caloriesRemaining,
+  //   sportsRemaining,
+  // } = userDailyStats;
+
   return (
     <DayDashboardArea>
       <DashboardItem accent="true">
@@ -36,7 +44,7 @@ const DayDashboard = ({ dailyActivity, BMR }) => {
           </Icon>
           <Title accent="false">Calories consumed</Title>
         </TitleArea>
-        <Value>0</Value>
+        {/* {userDailyStats && <Value>{caloriesConsumedSum}</Value>} */}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -45,7 +53,7 @@ const DayDashboard = ({ dailyActivity, BMR }) => {
           </Icon>
           <Title accent="false">Calories burned</Title>
         </TitleArea>
-        <Value>0</Value>
+        {/* {userDailyStats && <Value>{caloriesBurnedSum}</Value>} */}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -54,7 +62,7 @@ const DayDashboard = ({ dailyActivity, BMR }) => {
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        <Value>{BMR}</Value>
+        {/* {userDailyStats && <Value>{caloriesRemaining}</Value>} */}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -63,7 +71,7 @@ const DayDashboard = ({ dailyActivity, BMR }) => {
           </Icon>
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
-        {dailyActivity && <Value>{dailyActivity} min</Value>}
+        {/* {userDailyStats && <Value>{sportsRemaining} min</Value>} */}
       </DashboardItem>
     </DayDashboardArea>
   );

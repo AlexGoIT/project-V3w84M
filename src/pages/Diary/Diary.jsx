@@ -18,11 +18,13 @@ const Diary = () => {
   const dispatch = useDispatch();
   const calculateData = useSelector(selectCalculate);
   const [selectedDate, setSelectedDate] = useState(Date.now());
-  const { consumedProducts, doneExercises } = useSelector(selectDiary);
+  const data = useSelector(selectDiary);
+  console.log(data);
+
+  const { consumedProducts, doneExercises, userDailyStats } = data;
   const user = useSelector(selectUser);
   const { dailyActivity, BMR } = calculateData;
   const newDate = format(selectedDate, 'dd-MM-yyyy');
-  //console.log(newDate);
 
   useEffect(() => {
     dispatch(fetchDiary({ date: newDate }));
@@ -45,7 +47,11 @@ const Diary = () => {
             <DayExercises doneExercises={doneExercises} />
           </Left>
           <Right>
-            <DayDashboard dailyActivity={dailyActivity} BMR={BMR} />
+            <DayDashboard
+              dailyActivity={dailyActivity}
+              BMR={BMR}
+              userDailyStats={userDailyStats}
+            />
             <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
           </Right>
         </DiaryContainer>

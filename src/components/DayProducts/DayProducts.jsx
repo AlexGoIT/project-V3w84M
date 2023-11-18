@@ -38,7 +38,10 @@ const DayProducts = ({ consumedProducts }) => {
       return err;
     }
   };
-  const arrayLength = findLength(consumedProducts);
+  const arrayLength = findLength(consumedProducts); //Array.isArray(consumedProducts)
+
+  //console.log(arrayLength);
+  // console.log(consumedProducts);
 
   const [heightProductArea, setHeightProductArea] = useState(true);
   if (arrayLength === 0) {
@@ -76,18 +79,18 @@ const DayProducts = ({ consumedProducts }) => {
                   _id,
                   title,
                   category,
-                  calories,
-                  weight,
-                  groupBloodNotAllowed,
+                  caloriesConsumed,
+                  weightConsumed,
+                  recommendedByGroupBlood,
                 }) => (
                   <ProductItem
                     key={_id}
                     id={_id}
                     title={title}
                     category={category}
-                    calories={calories}
-                    weight={weight}
-                    groupBloodNotAllowed={groupBloodNotAllowed}
+                    caloriesConsumed={caloriesConsumed}
+                    weightConsumed={weightConsumed}
+                    recommendedByGroupBlood={recommendedByGroupBlood}
                   />
                 )
               )}
