@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
@@ -9,26 +9,14 @@ import {
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from 'assets/images/sprite.svg';
 import { Global } from '@emotion/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { currentUser } from 'redux/auth/authOperations';
-import { selectUser } from 'redux/auth/authSelectors';
+//import formatDate from 'utils/formatDate';
 
-const StyledDatepicker = ({ selectedDate, onDateChange }) => {
-  // const [selectedDate, setSelectedDate] = useState(Date.now());
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
   const createdDate = Date.parse(user.createdAt);
 
   const submitSelectedDate = date => {
-    // setSelectedDate(date);
-    onDateChange(date);
-    const newDate = format(date, 'dd-MM-yyyy');
-    console.log(newDate);
+    setSelectedDate(date);
   };
-
-  useEffect(() => {
-    dispatch(currentUser());
-  }, [dispatch]);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
@@ -53,6 +41,7 @@ const StyledDatepicker = ({ selectedDate, onDateChange }) => {
         dateFormat={'dd MM yyyy'}
         calendarStartDay={1}
         minDate={user.createdAt ? createdDate : Date.now()}
+        maxDate={Date.now()}
       />
     </>
   );
