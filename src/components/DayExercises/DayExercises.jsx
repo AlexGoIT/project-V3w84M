@@ -63,7 +63,7 @@ const DayExercises = ({ doneExercises }) => {
 
       <TableArea>
         {isLoading && <Loader />}
-        {arrayLength > 0 ? (
+        {doneExercises && doneExercises.length > 0 ? (
           <>
             <TableHeader>
               <Grid1>Body Part</Grid1>

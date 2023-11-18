@@ -8,14 +8,15 @@ import {
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
 
-const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
-  // console.log(userDailyStats);
-  // const {
-  //   caloriesBurnedSum,
-  //   caloriesConsumedSum,
-  //   caloriesRemaining,
-  //   sportsRemaining,
-  // } = userDailyStats;
+const DayDashboard = ({ data }) => {
+  const {
+    dailyPhysicalActivity,
+    userBMR,
+    caloriesBurnedSum,
+    caloriesConsumedSum,
+    caloriesRemaining,
+    sportsRemaining,
+  } = data;
 
   return (
     <DayDashboardArea>
@@ -26,7 +27,7 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        <Value>{BMR}</Value>
+        {data && Object.keys(data).length !== 0 && <Value>{userBMR}</Value>}
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -35,7 +36,9 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="true">Daily physical activity</Title>
         </TitleArea>
-        {dailyActivity && <Value>{dailyActivity} min</Value>}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{dailyPhysicalActivity} min</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -44,7 +47,9 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="false">Calories consumed</Title>
         </TitleArea>
-        {/* {userDailyStats && <Value>{caloriesConsumedSum}</Value>} */}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesConsumedSum}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -53,7 +58,9 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="false">Calories burned</Title>
         </TitleArea>
-        {/* {userDailyStats && <Value>{caloriesBurnedSum}</Value>} */}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesBurnedSum}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -62,7 +69,9 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        {/* {userDailyStats && <Value>{caloriesRemaining}</Value>} */}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesRemaining}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -71,7 +80,9 @@ const DayDashboard = ({ dailyActivity, BMR, userDailyStats }) => {
           </Icon>
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
-        {/* {userDailyStats && <Value>{sportsRemaining} min</Value>} */}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{sportsRemaining} min</Value>
+        )}
       </DashboardItem>
     </DayDashboardArea>
   );

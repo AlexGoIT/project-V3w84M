@@ -18,7 +18,6 @@ import {
 } from './DayProducts.styled';
 import sprite from 'assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
@@ -29,27 +28,15 @@ const DayProducts = ({ consumedProducts }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
+  console.log(consumedProducts);
 
-  const findLength = async array => {
-    try {
-      const length = await array.length;
-      return length;
-    } catch (err) {
-      return err;
-    }
-  };
-  const arrayLength = findLength(consumedProducts); //Array.isArray(consumedProducts)
-
-  //console.log(arrayLength);
-  // console.log(consumedProducts);
-
-  const [heightProductArea, setHeightProductArea] = useState(true);
-  if (arrayLength === 0) {
-    setHeightProductArea(false);
-  }
+  // const [heightProductArea, setHeightProductArea] = useState(true);
+  // if (arrayLength === 0) {
+  //   setHeightProductArea(false);
+  // }
 
   return (
-    <DayProductsArea dimention={heightProductArea}>
+    <DayProductsArea>
       <TitleArea>
         <Title>Products</Title>
         <Link to={`/products`} state={{ from: location }}>
@@ -63,7 +50,7 @@ const DayProducts = ({ consumedProducts }) => {
       </TitleArea>
       <TableArea>
         {isLoading && <Loader />}
-        {arrayLength > 0 ? (
+        {consumedProducts && consumedProducts.length > 0 ? (
           <>
             <TableHeader>
               <Grid1>Title</Grid1>
