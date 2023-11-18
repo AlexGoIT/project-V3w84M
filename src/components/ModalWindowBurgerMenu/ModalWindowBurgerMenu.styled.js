@@ -34,26 +34,6 @@ export const WrapperModalWindowUserMenu = styled.div`
       display: none;
     }
   }
-  /* @media screen and (min-width: 768px) {
-    width: 350px;
-    padding: 26px 32px 32px 32px;
-  } */
-
-  /* @media screen and (max-width: 1439px) {
-    &.show {
-      right: 0;
-    }
-
-    &.hidden {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-    }
-
-    transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  } */
 
   @media screen and (min-width: 1440px) {
     display: none;
@@ -108,8 +88,8 @@ export const UserNavLinkModal = styled(NavLink)`
   align-items: center;
   justify-content: center;
   color: #efede8;
-  /* transition: color, 200ms; */
   font-size: 14px;
+  line-height: 18px;
   padding: 10px 27px 10px 27px;
   height: 44px;
   border-radius: 12px;

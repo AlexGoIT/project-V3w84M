@@ -9,6 +9,7 @@ export const HeaderBar = styled.header`
   padding-bottom: 12px;
   margin-inline: auto;
   background-color: var(--black-color);
+  border-bottom: 1px solid rgba(239, 237, 232, 0.2);
 
   position: fixed;
   left: 50%;
@@ -50,4 +51,8 @@ export const HideLogout = styled.div`
   @media screen and (max-width: 1439px) {
     display: none;
   }
+`;
+export const TransparentHeader = styled(HeaderBar)`
+  /* Специфічні стилі для прозорого HeaderBar */
+  opacity: 0.7;
 `;

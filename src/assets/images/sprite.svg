@@ -160,7 +160,7 @@
 <path fill="#efede8" style="fill: var(--color2, #efede8)" d="M21.126 9.735c1.215 0 2.201-0.985 2.201-2.201s-0.985-2.201-2.201-2.201c-1.215 0-2.201 0.985-2.201 2.201s0.985 2.201 2.201 2.201z"></path>
 </symbol>
 <symbol id="icon-arrow" viewBox="0 0 32 32">
-<path fill="none" stroke="#e6533c" style="stroke: var(--color3, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6" d="M15 28l13-13M28 15l-13-13M28 15h-26"></path>
+<path fill="none" stroke="#efede8" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6" d="M15 28l13-13M28 15l-13-13M28 15h-26"></path>
 </symbol>
 </defs>
 </svg>

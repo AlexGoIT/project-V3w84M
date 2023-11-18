@@ -17,14 +17,10 @@ export const LogoutButtonLink = styled(NavLink)`
   justify-content: flex-end;
   align-items: center;
   color: rgba(239, 237, 232, 1);
-  /* margin-top: 40px; */
-
-  /* @media screen and (min-width: 768px) and (max-width: 1440px) {
-    margin-right: 150px;
-  } */
 `;
 export const Text = styled.span`
   margin-right: 8px;
   font-size: 14px;
+  line-height: 24px;
   font-weight: 400;
 `;

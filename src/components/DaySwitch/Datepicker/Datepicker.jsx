@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect } from 'react';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
@@ -13,14 +13,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/authOperations';
 import { selectUser } from 'redux/auth/authSelectors';
 
-const StyledDatepicker = () => {
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+const StyledDatepicker = ({ selectedDate, onDateChange }) => {
+  // const [selectedDate, setSelectedDate] = useState(Date.now());
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const createdDate = Date.parse(user.createdAt);
 
   const submitSelectedDate = date => {
-    setSelectedDate(date);
+    // setSelectedDate(date);
+    onDateChange(date);
     const newDate = format(date, 'dd-MM-yyyy');
     console.log(newDate);
   };
