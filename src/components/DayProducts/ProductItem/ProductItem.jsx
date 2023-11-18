@@ -76,6 +76,7 @@ ProductItem.propTypes = {
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
   recommendedByGroupBlood: PropTypes.bool,
+  date: PropTypes.string.isRequired,
 };
 
 export default ProductItem;

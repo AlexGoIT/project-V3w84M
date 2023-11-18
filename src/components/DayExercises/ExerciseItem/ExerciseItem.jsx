@@ -90,6 +90,7 @@ ExerciseItem.propTypes = {
   target: PropTypes.string,
   burnedCalories: PropTypes.number,
   time: PropTypes.number,
+  date: PropTypes.string.isRequired,
 };
 
 export default ExerciseItem;
