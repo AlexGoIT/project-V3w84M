@@ -17,6 +17,12 @@ const Header = () => {
   const buttonRef = useRef(null);
   const { isAuthorized } = useAuth();
   const { profileDataFill } = useSelector(selectUser);
+  const isWideScreen = window.innerWidth >= 1440;
+  const headerStyle = {
+    borderBottom: isAuthorized ? '1px solid rgba(239, 237, 232, 0.2)' : '0',
+    backgroundColor:
+      isWideScreen && !isAuthorized ? 'transparent' : 'rgba(4, 4, 4, 1)',
+  };
   const openModal = () => {
     setModalOpen(true);
   };
@@ -47,7 +53,7 @@ const Header = () => {
     }
   }, [isAuthorized, isModalOpen, closeModal]);
   return (
-    <HeaderBar>
+    <HeaderBar style={headerStyle}>
       <LogoWrap>
         <Logo />
       </LogoWrap>
@@ -59,7 +65,9 @@ const Header = () => {
           <HideLogout>
             <Logout />
           </HideLogout>
-          <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
+          {!profileDataFill || (
+            <BurgerMenu openModal={openModal} buttonRef={buttonRef} />
+          )}
           {isModalOpen && <ModalWindowBurgerMenu closeModal={closeModal} />}
         </>
       )}

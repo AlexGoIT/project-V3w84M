@@ -8,9 +8,7 @@ export const UserNavBlock = styled.nav`
     flex-direction: row;
     align-items: center;
     margin-left: auto;
-    /* margin-right: auto; */
-    gap: 10px;
-    width: 364px;
+    gap: 16px;
   }
 `;
 export const UserNavLink = styled(NavLink)`
@@ -20,6 +18,7 @@ export const UserNavLink = styled(NavLink)`
   color: #efede8;
   /* transition: color, 200ms; */
   font-size: 14px;
+  line-height: 24px;
   padding: 10px 27px 10px 27px;
   height: 44px;
   border-radius: 12px;
