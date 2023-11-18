@@ -144,6 +144,8 @@ export const apiSlice = createSlice({
         //   product => product._id !== action.payload
         // );
 
+        state.diary = action.payload;
+
         state.diaryUpdated = true;
         state.isLoading = false;
       })
@@ -161,6 +163,7 @@ export const apiSlice = createSlice({
         //   exercise => exercise._id !== action.payload
         // );
 
+        state.diary = action.payload;
         state.diaryUpdated = true;
         state.isLoading = false;
       })
