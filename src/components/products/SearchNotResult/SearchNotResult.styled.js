@@ -30,7 +30,7 @@ export const NotResultText = styled.p`
 `;
 
 export const NotResultOrangeText = styled.span`
-  color: var(--orange-color);
+  color: #e6533c;
   @media screen and (min-width: 375px) {
     font-size: 14px;
     line-height: 18px;
@@ -44,7 +44,7 @@ export const NotResultOrangeText = styled.span`
 `;
 
 export const NotResultOrangeTextBlock = styled.p`
-  color: var(--orange-color);
+  color: #e6533c;
   @media screen and (min-width: 375px) {
     font-size: 14px;
     line-height: 18px;

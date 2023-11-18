@@ -12,7 +12,7 @@ import { selectUser } from 'redux/auth/authSelectors';
 const ProductsList = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectUser);
-  const bloodType = data.profileData.blood;
+  const bloodType = data?.profileData?.blood;
 
   const productsList = useSelector(selectProducts);
   const productItems =
@@ -20,8 +20,6 @@ const ProductsList = () => {
       ...el,
       recommended: el.groupBloodNotAllowed[bloodType],
     })) ?? [];
-
-  // const filteredList = productItems.filter(item => item.recommended );
 
   const filterProducts = (productItems, filter) => {
     const { category, recommended } = filter;
