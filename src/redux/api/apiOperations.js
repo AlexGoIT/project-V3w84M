@@ -141,19 +141,22 @@ export const addExercise = createAsyncThunk(
   }
 );
 
-// DELETE api/diary/products/5d51694902b2373622ff5b8d  Delete eaten product from diary
+// DELETE api/diary/products  Delete eaten product from diary
+// {
+//   "productId": "5d51694902b2373622ff5b8d",
+//   "date": "10-10-2023",
+// }
 //
 export const deleteProduct = createAsyncThunk(
   'api/deleteProduct',
-  async (diaryProductId, thunkAPI) => {
+  async (body, thunkAPI) => {
     try {
-      const { data } = await axios.delete(
-        `/api/diary/products/${diaryProductId}`
-      );
+      const { data } = await axios.delete(`/api/diary/products`, body);
+      // Повертає оновленні данні щоденника
 
       console.log('Delete product from diary =>', data);
 
-      return diaryProductId;
+      return data;
     } catch (err) {
       Notify.failure(err.response.data.message);
       return thunkAPI.rejectWithValue({ message: err.response.data.message });
@@ -161,19 +164,22 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
-// DELETE api/diary/exercises/5d51694902b2373622ff5b8d  Delete done exercise from diary
+// DELETE api/diary/exercises  Delete done exercise from diary
+// {
+//   "exerciseId": "5d51694902b2373622ff5b8d",
+//   "date": "10-10-2023",
+// }
 //
 export const deleteExercise = createAsyncThunk(
   'api/deleteExercise',
-  async (diaryExercisesId, thunkAPI) => {
+  async (body, thunkAPI) => {
     try {
-      const { data } = await axios.delete(
-        `/api/diary/exercises/${diaryExercisesId}`
-      );
+      const { data } = await axios.delete(`/api/diary/exercises`, body);
+      // Повертає оновленні данні щоденника
 
       console.log('Delete exercise from diary =>', data);
 
-      return diaryExercisesId;
+      return data;
     } catch (err) {
       Notify.failure(err.response.data.message);
       return thunkAPI.rejectWithValue({ message: err.response.data.message });
