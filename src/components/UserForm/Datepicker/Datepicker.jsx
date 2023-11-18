@@ -23,6 +23,7 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate }) => {
         </IconSvg>
 
         <DatePicker
+          placeholderText="00/00/0000"
           selected={selectedDate}
           onChange={handleDateChange}
           customInput={<InputField style={{ cursor: 'pointer' }} />}
@@ -33,7 +34,6 @@ const StyledDatepicker = ({ selectedDate, setSelectedDate }) => {
           showMonthDropdown
           showYearDropdown
           dropdownMode="select"
-  
         />
 
         <CalendarGlobalStyles />
