@@ -23,14 +23,11 @@ const Diary = () => {
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(Date.now());
   const data = useSelector(selectDiary);
-  console.log(data);
 
   const { consumedProducts, doneExercises } = data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);
-
-  console.log('Diary: dairyUpdated =>', dairyUpdated);
 
   useEffect(() => {
     dispatch(fetchDiary({ date: newDate }));
@@ -44,11 +41,6 @@ const Diary = () => {
     dispatch(diaryUpdateReset());
   }, [dispatch, dairyUpdated, newDate]);
 
-  // const handleClick = () => {
-  //   console.log("Diary: handleClick => '123'");
-  //   dispatch(deleteProduct('123'));
-  // };
-
   return (
     <Container>
       <ForPosition>
@@ -59,7 +51,6 @@ const Diary = () => {
           user={user}
         />
         <DiaryContainer>
-          {/* <button type="button" onClick={handleClick}>Delete</button> */}
           <Left>
             <DayProducts consumedProducts={consumedProducts} />
             <DayExercises doneExercises={doneExercises} />
