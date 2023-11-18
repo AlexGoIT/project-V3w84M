@@ -20,7 +20,7 @@ const ProductsFilter = () => {
   const dispatch = useDispatch();
   const productCategories = useSelector(selectCategories);
   const formik = useFormik({
-    initialValues: { title: '', category: '', recomended: '' },
+    initialValues: { title: '', category: '', recommended: '' },
     onSubmit: values => handleSubmit(values),
   });
 
@@ -93,8 +93,8 @@ const ProductsFilter = () => {
           </ProdFilterCategorySlct>
 
           <ProdFilterRecSlct
-            name="recomended"
-            value={formik.values.recomended}
+            name="recommended"
+            value={formik.values.recommended}
             onChange={handleChange}
           >
             <option value="">All</option>
