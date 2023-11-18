@@ -7,19 +7,16 @@ import {
   Icon,
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchCalculate } from 'redux/api/apiOperations';
-import { selectCalculate } from 'redux/api/apiSelectors';
 
-const DayDashboard = () => {
-  const dispatch = useDispatch();
-  const calculateData = useSelector(selectCalculate);
-  const { dailyActivity, BMR } = calculateData;
-
-  useEffect(() => {
-    dispatch(fetchCalculate());
-  }, [dispatch]);
+const DayDashboard = ({ data }) => {
+  const {
+    dailyPhysicalActivity,
+    userBMR,
+    caloriesBurnedSum,
+    caloriesConsumedSum,
+    caloriesRemaining,
+    sportsRemaining,
+  } = data;
 
   return (
     <DayDashboardArea>
@@ -30,7 +27,7 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        <Value>{BMR}</Value>
+        {data && Object.keys(data).length !== 0 && <Value>{userBMR}</Value>}
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -39,7 +36,9 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="true">Daily physical activity</Title>
         </TitleArea>
-        {dailyActivity && <Value>{dailyActivity} min</Value>}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{dailyPhysicalActivity} min</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -48,7 +47,9 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories consumed</Title>
         </TitleArea>
-        <Value>0</Value>
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesConsumedSum}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -57,7 +58,9 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories burned</Title>
         </TitleArea>
-        <Value>0</Value>
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesBurnedSum}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -66,7 +69,9 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        <Value>{BMR}</Value>
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{caloriesRemaining}</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="false">
         <TitleArea>
@@ -75,7 +80,9 @@ const DayDashboard = () => {
           </Icon>
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
-        {dailyActivity && <Value>{dailyActivity} min</Value>}
+        {data && Object.keys(data).length !== 0 && (
+          <Value>{sportsRemaining} min</Value>
+        )}
       </DashboardItem>
     </DayDashboardArea>
   );

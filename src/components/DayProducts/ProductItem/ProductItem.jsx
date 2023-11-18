@@ -13,22 +13,15 @@ import {
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
-// import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
 
 const ProductItem = ({
   id,
   title,
   category,
-  calories,
-  weight,
-  groupBloodNotAllowed,
+  caloriesConsumed,
+  weightConsumed,
+  recommendedByGroupBlood,
 }) => {
-  //   const dispatch = useDispatch();
-  //   const deleteThisProduct = id => {
-  //     dispatch(deleteProduct(id));
-  //   };
-
   return (
     <ProductDiv key={id}>
       <Grid1>
@@ -41,16 +34,15 @@ const ProductItem = ({
       </Grid2>
       <Grid3>
         <Title>Calories</Title>
-        <Column>{calories}</Column>
+        <Column>{caloriesConsumed}</Column>
       </Grid3>
       <Grid4>
         <Title>Weight</Title>
-        <Column>{weight}</Column>
+        <Column>{weightConsumed}</Column>
       </Grid4>
       <Grid5>
         <Title>Recommend</Title>
         <Column>Yes</Column>
-        {/* колонку доработаю, когда можно будет добавлять продукты  */}
       </Grid5>
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
@@ -69,9 +61,9 @@ ProductItem.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   category: PropTypes.string,
-  calories: PropTypes.number,
-  weight: PropTypes.number,
-  groupBloodNotAllowed: PropTypes.number,
+  caloriesConsumed: PropTypes.number,
+  weightConsumed: PropTypes.number,
+  recommendedByGroupBlood: PropTypes.bool,
 };
 
 export default ProductItem;
