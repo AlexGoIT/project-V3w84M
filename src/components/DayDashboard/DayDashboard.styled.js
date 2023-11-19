@@ -38,9 +38,22 @@ const setBgColor = props => {
   }
 };
 
+const setRedBorderColor = props => {
+  switch (props.borderColor) {
+    case 'red':
+      return '#E9101D';
+    case 'green':
+      return '#3CBF61';
+    case 'default':
+      return 'rgba(239, 237, 232, 0.2)';
+    default:
+      return 'rgba(239, 237, 232, 0.2)';
+  }
+};
+
 export const DashboardItem = styled.li`
   border: 1px solid;
-  border-color: rgba(239, 237, 232, 0.2);
+  border-color: ${setRedBorderColor};
   border-radius: 12px;
   background-color: ${setBgColor};
   padding: 18px;

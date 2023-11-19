@@ -23,16 +23,20 @@ export const DaySwitchArea = styled.div`
   }
 `;
 
+// const setColor = props => {
+//   switch (props.disabled) {
+//     case 'true':
+//       return 'rgba(239,237,232,0.2)';
+//     case 'false':
+//       return '#efede8';
+//     default:
+//       return '#efede8';
+//   }
+// };
+
 export const ArrowIcon = styled.svg`
   width: 16px;
   height: 16px;
-  // rgba(239,237,232,0.2) когда неактивная
-  fill: #efede8;
-
-  &:hover,
-  :focus {
-    fill: #ef8964;
-  }
 `;
 
 export const Button = styled.button`

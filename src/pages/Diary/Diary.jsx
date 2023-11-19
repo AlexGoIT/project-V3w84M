@@ -21,10 +21,10 @@ import {
 
 const Diary = () => {
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
-  const { consumedProducts, doneExercises } = data;
+  const { consumedProducts, doneExercises, date } = data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);

@@ -24,11 +24,10 @@ import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayProducts = ({ consumedProducts }) => {
+const DayProducts = ({ consumedProducts, dateForDelete }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
-  console.log(consumedProducts);
 
   // const [heightProductArea, setHeightProductArea] = useState(true);
   // if (arrayLength === 0) {
@@ -45,7 +44,7 @@ const DayProducts = ({ consumedProducts }) => {
             <ArrowIcon iconColor="#E6533C">
               <use href={`${sprite}#arrow`} />
             </ArrowIcon>
-          </Button>{' '}
+          </Button>
         </Link>
       </TitleArea>
       <TableArea>
@@ -64,22 +63,19 @@ const DayProducts = ({ consumedProducts }) => {
               {consumedProducts.map(
                 ({
                   _id,
-                  title,
-                  category,
+                  product,
                   caloriesConsumed,
                   weightConsumed,
                   recommendedByGroupBlood,
-                  createdAt,
                 }) => (
                   <ProductItem
                     key={_id}
                     id={_id}
-                    title={title}
-                    category={category}
+                    product={product}
                     caloriesConsumed={caloriesConsumed}
                     weightConsumed={weightConsumed}
                     recommendedByGroupBlood={recommendedByGroupBlood}
-                    date={createdAt}
+                    dateForDelete={dateForDelete}
                   />
                 )
               )}

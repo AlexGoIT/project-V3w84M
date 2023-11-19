@@ -62,7 +62,10 @@ const DayDashboard = ({ data }) => {
           <Value>{caloriesBurnedSum}</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        borderColor={caloriesRemaining >= 0 ? 'default' : 'red'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#bubble`} />
@@ -73,7 +76,10 @@ const DayDashboard = ({ data }) => {
           <Value>{caloriesRemaining}</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        borderColor={sportsRemaining >= 0 ? 'default' : 'green'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#figure`} />
@@ -81,7 +87,10 @@ const DayDashboard = ({ data }) => {
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
         {data && Object.keys(data).length !== 0 && (
-          <Value>{sportsRemaining} min</Value>
+          <Value>
+            {sportsRemaining >= 0 ? <span></span> : <span>+</span>}
+            {Math.abs(sportsRemaining)} min
+          </Value>
         )}
       </DashboardItem>
     </DayDashboardArea>
