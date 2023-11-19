@@ -28,7 +28,6 @@ const DayProducts = ({ consumedProducts }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
-  console.log(consumedProducts);
 
   // const [heightProductArea, setHeightProductArea] = useState(true);
   // if (arrayLength === 0) {
@@ -45,7 +44,7 @@ const DayProducts = ({ consumedProducts }) => {
             <ArrowIcon iconColor="#E6533C">
               <use href={`${sprite}#arrow`} />
             </ArrowIcon>
-          </Button>{' '}
+          </Button>
         </Link>
       </TitleArea>
       <TableArea>
