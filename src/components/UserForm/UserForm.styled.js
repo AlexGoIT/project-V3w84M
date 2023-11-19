@@ -57,6 +57,12 @@ export const Input = styled.input`
     font-size: 16px;
     line-height: calc(24 / 16);
   }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(4, 4, 4) inset;
+    -webkit-text-fill-color: #efede8;
+    caret-color: #efede8;
+  }
 `;
 
 export const WrapperInputField = styled.div`
@@ -111,6 +117,12 @@ export const InputField = styled.input`
     border: 1px solid rgba(239, 237, 232, 0.3);
     background-color: transparent;
     color: #efede8;
+  }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgb(4, 4, 4) inset;
+    -webkit-text-fill-color: #efede8;
+    caret-color: #efede8;
   }
 `;
 
