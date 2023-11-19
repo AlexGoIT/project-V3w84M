@@ -1,5 +1,20 @@
 import styled from '@emotion/styled';
 
+export const DiaryWrapper = styled.div`
+  padding-top: 62px;
+  padding-bottom: 80px;  
+  width: 100%;
+
+    @media screen and (min-width: 768px) {   
+      padding-bottom: 64px;  
+  }
+
+  @media screen and (min-width: 1440px) {
+      padding-top: 85px;
+      padding-bottom: 68px; 
+  }
+`;
+
 export const ForPosition = styled.div`
   width: 100%;
   position: relative;
@@ -19,19 +34,16 @@ export const DiaryContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     margin-top: 40px;
-    margin-bottom: 80px;
   }
 
   @media screen and (min-width: 768px) {
     gap: 64px;
     margin-top: 32px;
-    margin-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;
-    margin-bottom: 68px;
   }
 `;
 
