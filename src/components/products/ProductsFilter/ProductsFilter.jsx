@@ -10,6 +10,8 @@ import {
   ProdFilterSearchBox,
   ProdFilterSearchField,
   ProdFilterSelectsWrapper,
+  ProdFilterTitle,
+  ProdFilterWrapper,
   ProdSearchCancelBtn,
   ProdSearchIcon,
   ProdSearchSubmitBtn,
@@ -49,60 +51,63 @@ const ProductsFilter = () => {
 
   return (
     <>
-      <ProdFilterForm onSubmit={formik.handleSubmit}>
-        <ProdFilterSearchBox>
-          <ProdFilterSearchField
-            type="search"
-            name="title"
-            placeholder="Search"
-            value={formik.values.title}
-            onChange={formik.handleChange}
-          />
-          {formik.initialValues.title !== formik.values.title && (
-            <ProdSearchCancelBtn
-              type="button"
-              onClick={() => {
-                formik.setFieldValue('title', '');
-                formik.handleSubmit();
-              }}
-            >
+      <ProdFilterWrapper>
+        <ProdFilterTitle>Filters</ProdFilterTitle>
+        <ProdFilterForm onSubmit={formik.handleSubmit}>
+          <ProdFilterSearchBox>
+            <ProdFilterSearchField
+              type="search"
+              name="title"
+              placeholder="Search"
+              value={formik.values.title}
+              onChange={formik.handleChange}
+            />
+            {formik.initialValues.title !== formik.values.title && (
+              <ProdSearchCancelBtn
+                type="button"
+                onClick={() => {
+                  formik.setFieldValue('title', '');
+                  formik.handleSubmit();
+                }}
+              >
+                <ProdSearchIcon>
+                  <use href={`${sprite}#x2`}></use>
+                </ProdSearchIcon>
+              </ProdSearchCancelBtn>
+            )}
+            <ProdSearchSubmitBtn type="submit">
               <ProdSearchIcon>
-                <use href={`${sprite}#x2`}></use>
+                <use href={`${sprite}#search`}></use>
               </ProdSearchIcon>
-            </ProdSearchCancelBtn>
-          )}
-          <ProdSearchSubmitBtn type="submit">
-            <ProdSearchIcon>
-              <use href={`${sprite}#search`}></use>
-            </ProdSearchIcon>
-          </ProdSearchSubmitBtn>
-        </ProdFilterSearchBox>
+            </ProdSearchSubmitBtn>
+          </ProdFilterSearchBox>
 
-        <ProdFilterSelectsWrapper>
-          <ProdFilterCategorySlct
-            name="category"
-            value={formik.values.category}
-            onChange={handleChange}
-          >
-            <option value="">Categories</option>
-            {productCategories.map(category => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </ProdFilterCategorySlct>
+          <ProdFilterSelectsWrapper>
+            <ProdFilterCategorySlct
+              name="category"
+              value={formik.values.category}
+              onChange={handleChange}
+            >
+              <option value="">Categories</option>
+              {productCategories.map(category => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </ProdFilterCategorySlct>
 
-          <ProdFilterRecSlct
-            name="recommended"
-            value={formik.values.recommended}
-            onChange={handleChange}
-          >
-            <option value="">All</option>
-            <option value={true}>Recommended</option>
-            <option value={false}>Not recommended</option>
-          </ProdFilterRecSlct>
-        </ProdFilterSelectsWrapper>
-      </ProdFilterForm>
+            <ProdFilterRecSlct
+              name="recommended"
+              value={formik.values.recommended}
+              onChange={handleChange}
+            >
+              <option value="">All</option>
+              <option value={true}>Recommended</option>
+              <option value={false}>Not recommended</option>
+            </ProdFilterRecSlct>
+          </ProdFilterSelectsWrapper>
+        </ProdFilterForm>
+      </ProdFilterWrapper>
     </>
   );
 };

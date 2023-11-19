@@ -1,5 +1,15 @@
 import styled from '@emotion/styled';
 
+export const ProdFilterWrapper = styled.div`
+  @media screen and (min-width: 1440px) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+  }
+`;
+
 export const ProdFilterForm = styled.form`
   width: 335px;
   margin-block: 40px;
@@ -18,6 +28,17 @@ export const ProdFilterForm = styled.form`
   @media screen and (min-width: 1440px) {
     margin-block: 0px;
     margin-left: auto;
+  }
+`;
+
+export const ProdFilterTitle = styled.p`
+  display: none;
+
+  @media screen and (min-width: 1440px) {
+    color: rgba(239, 237, 232, 0.5);
+    display: inline-block;
+    font-size: 14px;
+    line-height: calc(18 / 14);
   }
 `;
 
