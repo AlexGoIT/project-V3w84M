@@ -161,12 +161,32 @@ export const CalendarGlobalStyles = () => (
         border: none;
         background: inherit;
         outline: none;
+
+        &::-webkit-scrollbar-track {
+          background-color: #ef8964;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 12px;
+          background: rgba(239, 237, 232);
+          width: 6px;
+          height: 90px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 8px;
+          height: 45px;
+        }
       }
 
       option {
         color: #efede8;
         background-color: #ef8964;
         font-size: 12px;
+
+        &:checked {
+          color: #040404;
+        }
       }
 
       .react-datepicker__header__dropdown,
