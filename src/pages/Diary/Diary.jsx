@@ -5,7 +5,7 @@ import DayProducts from 'components/DayProducts';
 import DaySwitch from 'components/DaySwitch';
 import TitlePage from 'components/TitlePage';
 import {
-  // DiaryWrapper,
+  DiaryWrapper,
   DiaryContainer,
   Left,
   Right,
@@ -48,29 +48,31 @@ const Diary = () => {
   }, [dispatch, dairyUpdated, newDate]);
 
   return (
-    <Container>
-      <ForPosition>
-        <TitlePage title="Diary" />
-        <DaySwitch
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          user={user}
-        />
-        <DiaryContainer>
-          <Left>
-            <DayProducts
-              consumedProducts={consumedProducts}
-              dateForDelete={date}
-            />
-            <DayExercises doneExercises={doneExercises} dateForDelete={date} />
-          </Left>
-          <Right>
-            <DayDashboard data={data} />
-            <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
-          </Right>
-        </DiaryContainer>
-      </ForPosition>
-    </Container>
+    <DiaryWrapper>
+      <Container>
+        <ForPosition>
+          <TitlePage title="Diary" />
+          <DaySwitch
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            user={user}
+          />
+          <DiaryContainer>
+            <Left>
+              <DayProducts
+                consumedProducts={consumedProducts}
+                dateForDelete={date}
+              />
+              <DayExercises doneExercises={doneExercises} dateForDelete={date} />
+            </Left>
+            <Right>
+              <DayDashboard data={data} />
+              <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
+            </Right>
+          </DiaryContainer>
+        </ForPosition>
+      </Container>
+    </DiaryWrapper>
   );
 };
 
