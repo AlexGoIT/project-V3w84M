@@ -1,12 +1,16 @@
-import { Container, WrapperContent, WrapperForm } from './Profile.styled';
-import TitlePage from 'components/TitlePage';
+import {
+  Container,
+  ProfileTitle,
+  WrapperContent,
+  WrapperForm,
+} from './Profile.styled';
 import UserCard from '../../components/UserCard/UserCard';
 import UserForm from '../../components/UserForm/UserForm';
 
 const Profile = () => {
   return (
     <Container>
-      <TitlePage title="Profile Settings" />
+      <ProfileTitle>Profile Settings</ProfileTitle>
       <WrapperContent>
         <div>
           <UserCard />

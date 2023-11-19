@@ -1,8 +1,9 @@
 import React from 'react';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
 import format from 'date-fns/format';
+import sprite from '../../assets/images/sprite.svg';
 
 import {
   FormContainer,
@@ -12,9 +13,14 @@ import {
   InputField,
   Button,
   WrapperRadio,
-  Wrapper,
   WrapperLevel,
   WrappInput,
+  UserFormStyled,
+  UserFormFieldWrapper,
+  UserFormError,
+  UserFormBloodWrapper,
+  UserFormBloodSexWrapper,
+  UserFormSexWrapper,
 } from './UserForm.styled';
 
 import StyledDatepicker from './Datepicker/Datepicker';
@@ -26,6 +32,9 @@ import { parseISO } from 'date-fns';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+  const birthdayDateObj = parseISO(
+    user.profileData?.birthday.split('-').reverse().join('-')
+  );
 
   const dispatch = useDispatch();
 
@@ -70,34 +79,42 @@ const UserForm = () => {
     },
   ];
 
-  const initialValues = {
-    name: user.name,
-    height: '',
-    currentWeight: '',
-    desiredWeight: '',
-    birthday: '',
-  };
+  const initialValues = user.profileDataFill
+    ? {
+        name: user.name,
+        height: user.profileData.height,
+        currentWeight: user.profileData.currentWeight,
+        desiredWeight: user.profileData.desiredWeight,
+        birthday: birthdayDateObj,
+        levelActivity: user.profileData.levelActivity,
+        sex: user.profileData.sex,
+        blood: user.profileData.blood,
+      }
+    : {
+        name: user.name,
+        height: '',
+        currentWeight: '',
+        desiredWeight: '',
+        birthday: '',
+      };
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
-    // email: Yup.string()
-    //   .email('Invalid email format')
-    //   .required('Email is required'),
     height: Yup.number()
-    .min(150, 'Height must be at least 150 cm')
-    .max(250, 'Height must not exceed 250 cm')
-    .positive('Height must be positive')
-    .required('Height is required'),
-  currentWeight: Yup.number()
-    .min(35, 'Current weight must be at least 35 kg')
-    .max(200, 'Current weight must not exceed 200 kg')
-    .positive('Weight must be positive')
-    .required('Current weight is required'),
-  desiredWeight: Yup.number()
-    .min(35, 'Desired weight must be at least 35 kg')
-    .max(200, 'Desired weight must not exceed 200 kg')
-    .positive('Weight must be positive')
-    .required('Desired weight is required'),
+      .min(150, 'Height must be at least 150 cm')
+      .max(250, 'Height must not exceed 250 cm')
+      .positive('Height must be positive')
+      .required('Height is required'),
+    currentWeight: Yup.number()
+      .min(35, 'Current weight must be at least 35 kg')
+      .max(200, 'Current weight must not exceed 200 kg')
+      .positive('Weight must be positive')
+      .required('Current weight is required'),
+    desiredWeight: Yup.number()
+      .min(35, 'Desired weight must be at least 35 kg')
+      .max(200, 'Desired weight must not exceed 200 kg')
+      .positive('Weight must be positive')
+      .required('Desired weight is required'),
     birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
@@ -129,9 +146,9 @@ const UserForm = () => {
       enableReinitialize={true}
     >
       {({ isValid, dirty, ...formik }) => (
-        <Form>
+        <UserFormStyled>
           <FormContainer>
-            <div>
+            <UserFormFieldWrapper>
               <SectionTitle>Basic info</SectionTitle>
               <Field
                 name="name"
@@ -140,8 +157,16 @@ const UserForm = () => {
                 as={Input}
                 value={formik.values.name}
               />
-            </div>
-            <div>
+              {formik.touched.name && formik.errors.name && (
+                <UserFormError>
+                  <svg>
+                    <use href={`${sprite}#error`}></use>
+                  </svg>
+                  {formik.errors.name}
+                </UserFormError>
+              )}
+            </UserFormFieldWrapper>
+            <UserFormFieldWrapper>
               <Field
                 type="text"
                 name="email"
@@ -151,11 +176,12 @@ const UserForm = () => {
                 value={user.email}
                 disabled
               />
-            </div>
+            </UserFormFieldWrapper>
           </FormContainer>
 
           <WrapperInputField>
             <WrappInput>
+              <label htmlFor="height">Height</label>
               <Field
                 type="number"
                 inputMode="numeric"
@@ -166,58 +192,86 @@ const UserForm = () => {
                 min="150"
                 step="1"
               />
-              <label htmlFor="height">Height</label>
+              {formik.touched.height && formik.errors.height && (
+                <UserFormError>
+                  <svg>
+                    <use href={`${sprite}#error`}></use>
+                  </svg>
+                  {formik.errors.height}
+                </UserFormError>
+              )}
             </WrappInput>
-            <Wrapper>
-              <WrappInput>
-                <Field
-                  type="number"
-                  inputMode="numeric"
-                  name="currentWeight"
-                  id="currentWeight"
-                  placeholder="0"
-                  as={InputField}
-                  min="35"
-                  step="1"
-                />
-                <label htmlFor="currentWeight">Current Weight</label>
-              </WrappInput>
-            </Wrapper>
-            <Wrapper>
-              <WrappInput>
-                <Field
-                  type="number"
-                  inputMode="numeric"
-                  name="desiredWeight"
-                  id="desiredWeight"
-                  placeholder="0"
-                  as={InputField}
-                  min="35"
-                  step="1"
-                />
-                <label htmlFor="desiredWeight">Desired Weight</label>
-              </WrappInput>
-            </Wrapper>
 
-            <Wrapper>
-              <WrappInput>
-                <StyledDatepicker
-                  selectedDate={
-                    formik.values.birthday
-                      ? new Date(formik.values.birthday)
-                      : null
-                  }
-                  setSelectedDate={date => {
-                    const formattedDate = parseISO(date.toISOString());
-                    formik.setFieldValue('birthday', formattedDate);
-                  }}
-                />
-              </WrappInput>
-            </Wrapper>
+            <WrappInput>
+              <label htmlFor="currentWeight">Current Weight</label>
+              <Field
+                type="number"
+                inputMode="numeric"
+                name="currentWeight"
+                id="currentWeight"
+                placeholder="0"
+                as={InputField}
+                min="35"
+                step="1"
+              />
+              {formik.touched.currentWeight && formik.errors.currentWeight && (
+                <UserFormError>
+                  <svg>
+                    <use href={`${sprite}#error`}></use>
+                  </svg>
+                  {formik.errors.currentWeight}
+                </UserFormError>
+              )}
+            </WrappInput>
+
+            <WrappInput>
+              <label htmlFor="desiredWeight">Desired Weight</label>
+              <Field
+                type="number"
+                inputMode="numeric"
+                name="desiredWeight"
+                id="desiredWeight"
+                placeholder="0"
+                as={InputField}
+                min="35"
+                step="1"
+              />
+              {formik.touched.desiredWeight && formik.errors.desiredWeight && (
+                <UserFormError>
+                  <svg>
+                    <use href={`${sprite}#error`}></use>
+                  </svg>
+                  {formik.errors.desiredWeight}
+                </UserFormError>
+              )}
+            </WrappInput>
+
+            <WrappInput>
+              <StyledDatepicker
+                selectedDate={
+                  formik.values.birthday
+                    ? new Date(formik.values.birthday)
+                    : null
+                }
+                setSelectedDate={date => {
+                  const formattedDate = parseISO(date.toISOString());
+                  formik.setFieldValue('birthday', formattedDate);
+                }}
+              />
+              {formik.touched.birthday && formik.errors.birthday && (
+                <UserFormError>
+                  <svg>
+                    <use href={`${sprite}#error`}></use>
+                  </svg>
+                  {formik.errors.birthday}
+                </UserFormError>
+              )}
+            </WrappInput>
           </WrapperInputField>
           <WrapperRadio>
-            <div style={{ display: 'flex', marginRight: '20px' }}>
-              <div style={{ display: 'flex', marginRight: '20px' }}>
+            <SectionTitle>Blood</SectionTitle>
+            <UserFormBloodSexWrapper>
+              <UserFormBloodWrapper>
                 {bloodOptions.map(option => (
                   <RadioOption
                     key={option.id}
@@ -229,9 +283,9 @@ const UserForm = () => {
                     onChange={() => formik.setFieldValue('blood', option.value)}
                   />
                 ))}
-              </div>
+              </UserFormBloodWrapper>
 
-              <div style={{ display: 'flex' }}>
+              <UserFormSexWrapper>
                 {sexOptions.map(option => (
                   <RadioOption
                     key={option.id}
@@ -243,8 +297,8 @@ const UserForm = () => {
                     onChange={() => formik.setFieldValue('sex', option.value)}
                   />
                 ))}
-              </div>
-            </div>
+              </UserFormSexWrapper>
+            </UserFormBloodSexWrapper>
 
             <WrapperLevel>
               {levelOptions.map(option => (
@@ -266,7 +320,7 @@ const UserForm = () => {
           <Button type="submit" disabled={!(isValid && dirty)}>
             Save
           </Button>
-        </Form>
+        </UserFormStyled>
       )}
     </Formik>
   );
