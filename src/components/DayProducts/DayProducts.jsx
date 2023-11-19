@@ -69,6 +69,7 @@ const DayProducts = ({ consumedProducts }) => {
                   caloriesConsumed,
                   weightConsumed,
                   recommendedByGroupBlood,
+                  createdAt,
                 }) => (
                   <ProductItem
                     key={_id}
@@ -78,6 +79,7 @@ const DayProducts = ({ consumedProducts }) => {
                     caloriesConsumed={caloriesConsumed}
                     weightConsumed={weightConsumed}
                     recommendedByGroupBlood={recommendedByGroupBlood}
+                    date={createdAt}
                   />
                 )
               )}
