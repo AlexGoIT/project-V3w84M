@@ -28,6 +28,7 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     if (formatNewDate === formatRegisterDate) {
       setDisabledLeft(true);
     }
+    setDisabledRight(false);
   };
 
   const handleNextDay = () => {
@@ -40,14 +41,7 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     if (formatNewDate !== formatTodayDate) {
       setDisabledRight(false);
     }
-  };
-
-  const disabledLeftStyle = {
-    fill: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
-  };
-
-  const disabledRightStyle = {
-    fill: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
+    setDisabledLeft(false);
   };
 
   return (
@@ -60,12 +54,22 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
       />
       <ArrowArea>
         <Button type="button" onClick={handlePrevDay} disabled={disabledLeft}>
-          <ArrowIcon style={disabledLeftStyle}>
+          <ArrowIcon
+            style={{
+              '--color1': disabledLeft ? 'rgba(239, 237, 232, 0.2)' : '#efede8',
+            }}
+          >
             <use href={`${sprite}#icon-chevron-left`} />
           </ArrowIcon>
         </Button>
         <Button type="button" onClick={handleNextDay} disabled={disabledRight}>
-          <ArrowIcon style={disabledRightStyle}>
+          <ArrowIcon
+            style={{
+              '--color1': disabledRight
+                ? 'rgba(239, 237, 232, 0.2)'
+                : '#efede8',
+            }}
+          >
             <use href={`${sprite}#icon-chevron-right`} />
           </ArrowIcon>
         </Button>
