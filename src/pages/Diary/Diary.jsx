@@ -4,7 +4,13 @@ import DayExercises from 'components/DayExercises';
 import DayProducts from 'components/DayProducts';
 import DaySwitch from 'components/DaySwitch';
 import TitlePage from 'components/TitlePage';
-import { DiaryWrapper, DiaryContainer, Left, Right, ForPosition } from './Diary.styled';
+import {
+  DiaryWrapper,
+  DiaryContainer,
+  Left,
+  Right,
+  ForPosition,
+} from './Diary.styled';
 import Notice from 'components/Notice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -24,7 +30,7 @@ const Diary = () => {
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
-  const { consumedProducts, doneExercises, date } = data;
+  const { consumedProducts, doneExercises } = data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);
