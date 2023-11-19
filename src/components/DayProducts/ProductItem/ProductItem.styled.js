@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const ProductDiv = styled.div`
   @media screen and (min-width: 375px) {
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     color: #efede8;
     display: grid;
@@ -17,6 +17,7 @@ export const ProductDiv = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    font-size: 16px;
     grid-gap: 8px;
     grid-template-columns: 204px 128px 90px 90px 80px 20px;
     grid-template-rows: 40px;
