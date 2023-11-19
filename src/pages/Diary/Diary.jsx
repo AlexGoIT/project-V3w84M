@@ -30,7 +30,7 @@ const Diary = () => {
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
-  const { consumedProducts, doneExercises } = data;
+  const { consumedProducts, doneExercises, date } = data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);
@@ -48,28 +48,29 @@ const Diary = () => {
   }, [dispatch, dairyUpdated, newDate]);
 
   return (
-    <DiaryWrapper>
-      <Container>
-        <ForPosition>
-          <TitlePage title="Diary" />
-          <DaySwitch
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-            user={user}
-          />
-          <DiaryContainer>
-            <Left>
-              <DayProducts consumedProducts={consumedProducts} />
-              <DayExercises doneExercises={doneExercises} />
-            </Left>
-            <Right>
-              <DayDashboard data={data} />
-              <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
-            </Right>
-          </DiaryContainer>
-        </ForPosition>
-      </Container>
-    </DiaryWrapper>
+    <Container>
+      <ForPosition>
+        <TitlePage title="Diary" />
+        <DaySwitch
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          user={user}
+        />
+        <DiaryContainer>
+          <Left>
+            <DayProducts
+              consumedProducts={consumedProducts}
+              dateForDelete={date}
+            />
+            <DayExercises doneExercises={doneExercises} dateForDelete={date} />
+          </Left>
+          <Right>
+            <DayDashboard data={data} />
+            <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
+          </Right>
+        </DiaryContainer>
+      </ForPosition>
+    </Container>
   );
 };
 
