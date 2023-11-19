@@ -43,7 +43,7 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
   };
 
   const disabledLeftStyle = {
-    color: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
+    fill: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
   };
 
   const disabledRightStyle = {
