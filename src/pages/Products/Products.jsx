@@ -7,16 +7,14 @@ import TitlePage from 'components/TitlePage';
 const ProductsPage = () => {
   return (
     <ProductsWrapper>
-          <Container>
-      <Wrapper>
-        <TitlePage title="Products" />
-        <ProductsFilter />
-        <ProductsList />
-      </Wrapper>
-    </Container>
-
+      <Container>
+        <Wrapper>
+          <TitlePage title="Products" />
+          <ProductsFilter />
+          <ProductsList />
+        </Wrapper>
+      </Container>
     </ProductsWrapper>
-
   );
 };
 
