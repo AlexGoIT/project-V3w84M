@@ -64,7 +64,7 @@ const DayDashboard = ({ data }) => {
       </DashboardItem>
       <DashboardItem
         accent="false"
-        redBorder={caloriesRemaining >= 0 ? 'false' : 'true'}
+        borderColor={caloriesRemaining >= 0 ? 'default' : 'red'}
       >
         <TitleArea>
           <Icon iconColor="#EF8964">
@@ -76,7 +76,10 @@ const DayDashboard = ({ data }) => {
           <Value>{caloriesRemaining}</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        // borderColor={sportsRemaining >= 0 ? 'default' : 'green'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#figure`} />
