@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/project-V3w84M/static/css/main.c1f6657d.css",
-    "main.js": "/project-V3w84M/static/js/main.ac882a60.js",
+    "main.js": "/project-V3w84M/static/js/main.8cc4ec14.js",
     "static/js/447.522a931c.chunk.js": "/project-V3w84M/static/js/447.522a931c.chunk.js",
     "static/js/966.9bda2300.chunk.js": "/project-V3w84M/static/js/966.9bda2300.chunk.js",
     "static/js/561.35ae495f.chunk.js": "/project-V3w84M/static/js/561.35ae495f.chunk.js",
-    "static/js/388.d553c409.chunk.js": "/project-V3w84M/static/js/388.d553c409.chunk.js",
+    "static/js/388.ca720fd6.chunk.js": "/project-V3w84M/static/js/388.ca720fd6.chunk.js",
     "static/js/534.1271d4fd.chunk.js": "/project-V3w84M/static/js/534.1271d4fd.chunk.js",
     "static/js/944.94502d80.chunk.js": "/project-V3w84M/static/js/944.94502d80.chunk.js",
     "static/js/7.a6970ba2.chunk.js": "/project-V3w84M/static/js/7.a6970ba2.chunk.js",
@@ -27,11 +27,11 @@
     "static/media/welcome_background_1x_mob.jpg": "/project-V3w84M/static/media/welcome_background_1x_mob.b3056d15120c26fdecc4.jpg",
     "index.html": "/project-V3w84M/index.html",
     "main.c1f6657d.css.map": "/project-V3w84M/static/css/main.c1f6657d.css.map",
-    "main.ac882a60.js.map": "/project-V3w84M/static/js/main.ac882a60.js.map",
+    "main.8cc4ec14.js.map": "/project-V3w84M/static/js/main.8cc4ec14.js.map",
     "447.522a931c.chunk.js.map": "/project-V3w84M/static/js/447.522a931c.chunk.js.map",
     "966.9bda2300.chunk.js.map": "/project-V3w84M/static/js/966.9bda2300.chunk.js.map",
     "561.35ae495f.chunk.js.map": "/project-V3w84M/static/js/561.35ae495f.chunk.js.map",
-    "388.d553c409.chunk.js.map": "/project-V3w84M/static/js/388.d553c409.chunk.js.map",
+    "388.ca720fd6.chunk.js.map": "/project-V3w84M/static/js/388.ca720fd6.chunk.js.map",
     "534.1271d4fd.chunk.js.map": "/project-V3w84M/static/js/534.1271d4fd.chunk.js.map",
     "944.94502d80.chunk.js.map": "/project-V3w84M/static/js/944.94502d80.chunk.js.map",
     "7.a6970ba2.chunk.js.map": "/project-V3w84M/static/js/7.a6970ba2.chunk.js.map",
@@ -43,6 +43,6 @@
   },
   "entrypoints": [
     "static/css/main.c1f6657d.css",
-    "static/js/main.ac882a60.js"
+    "static/js/main.8cc4ec14.js"
   ]
 }
