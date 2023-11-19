@@ -4,7 +4,7 @@ import DayExercises from 'components/DayExercises';
 import DayProducts from 'components/DayProducts';
 import DaySwitch from 'components/DaySwitch';
 import TitlePage from 'components/TitlePage';
-import { DiaryContainer, Left, Right, ForPosition } from './Diary.styled';
+import { DiaryWrapper, DiaryContainer, Left, Right, ForPosition } from './Diary.styled';
 import Notice from 'components/Notice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -42,29 +42,28 @@ const Diary = () => {
   }, [dispatch, dairyUpdated, newDate]);
 
   return (
-    <Container>
-      <ForPosition>
-        <TitlePage title="Diary" />
-        <DaySwitch
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
-          user={user}
-        />
-        <DiaryContainer>
-          <Left>
-            <DayProducts
-              consumedProducts={consumedProducts}
-              dateForDelete={date}
-            />
-            <DayExercises doneExercises={doneExercises} dateForDelete={date} />
-          </Left>
-          <Right>
-            <DayDashboard data={data} />
-            <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
-          </Right>
-        </DiaryContainer>
-      </ForPosition>
-    </Container>
+    <DiaryWrapper>
+      <Container>
+        <ForPosition>
+          <TitlePage title="Diary" />
+          <DaySwitch
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            user={user}
+          />
+          <DiaryContainer>
+            <Left>
+              <DayProducts consumedProducts={consumedProducts} />
+              <DayExercises doneExercises={doneExercises} />
+            </Left>
+            <Right>
+              <DayDashboard data={data} />
+              <Notice notice="Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices." />
+            </Right>
+          </DiaryContainer>
+        </ForPosition>
+      </Container>
+    </DiaryWrapper>
   );
 };
 

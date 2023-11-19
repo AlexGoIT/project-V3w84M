@@ -1,29 +1,21 @@
 import {
   UserCardContainer,
-  AvatarInput,
-  AvatarLabel,
   NameContainer,
   UserInscription,
   InformationContainer,
   InformationText,
-  CaloriesContainer,
-  ActiveDataCalories,
-  ActiveDataMinutes,
-  ActivityContainer,
-  ImageContainer,
-  // CaloriesStaticInfoContainer,
-  ActivityStaticInfoContainer,
   NoticeContainer,
   UserAvatar,
   LogoutContainer,
   AddAvatarButton,
+  InformationCard,
+  InformationCounter,
 } from './UserCard.styled';
 
 import Logout from 'components/Logout/Logout';
 import Notice from 'components/Notice';
 import sprite from 'assets/images/sprite.svg';
 
-//
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCalculate } from 'redux/api/apiOperations';
@@ -31,10 +23,8 @@ import { selectCalculate } from 'redux/api/apiSelectors';
 import { selectUser } from 'redux/auth/authSelectors';
 import { Notify } from 'notiflix';
 import { updateAvatar } from 'redux/auth/usersOperations';
-//
 
-const UserCard = ({ message }) => {
-  //
+const UserCard = () => {
   const dispatch = useDispatch();
   const calculate = useSelector(selectCalculate);
   const user = useSelector(selectUser);
@@ -43,7 +33,6 @@ const UserCard = ({ message }) => {
   useEffect(() => {
     dispatch(fetchCalculate());
   }, [dispatch]);
-  //
 
   const uploadAvatar = e => {
     const file = e.target.files[0];
@@ -55,7 +44,7 @@ const UserCard = ({ message }) => {
 
       if (!validFileExtension) {
         Notify.failure(
-          "I will pretend I didn't see that 👀. Only '.jpeg' and '.jpg' files are allowed."
+          "Invalid file extension. Only '.jpeg' and '.jpg' files are allowed."
         );
         return;
       }
@@ -75,7 +64,7 @@ const UserCard = ({ message }) => {
   const bmr = calculate.BMR ? calculate.BMR : 0;
 
   return (
-    <UserCardContainer style={{ color: 'white' }}>
+    <UserCardContainer>
       <UserAvatar>
         {user.avatarURL ? (
           <img src={user.avatarURL} alt="avatar" />
@@ -85,17 +74,17 @@ const UserCard = ({ message }) => {
           </svg>
         )}
 
-        <AvatarLabel>
-          <AvatarInput
+        <label>
+          <input
             type="file"
             hidden
             onChange={uploadAvatar}
             ref={fileInput}
             accept=".jpg, .jpeg"
           />
-        </AvatarLabel>
+        </label>
         <AddAvatarButton onClick={handleClick}>
-          <svg width="32" height="32" fill="#efede8">
+          <svg>
             <use href={`${sprite}#add`} />
           </svg>
         </AddAvatarButton>
@@ -103,29 +92,24 @@ const UserCard = ({ message }) => {
       <NameContainer>{user.name}</NameContainer>
       <UserInscription>{user.email}</UserInscription>
       <InformationContainer>
-        <CaloriesContainer>
-          {/* <CaloriesStaticInfoContainer> */}
-          <ImageContainer>
+        <InformationCard>
+          <InformationText>
             <svg width="20" height="20" fill="#efede8">
               <use href={`${sprite}#food`} />
             </svg>
-          </ImageContainer>
-          <InformationText>Daily calorie intake</InformationText>
-          <ActiveDataCalories>{bmr}</ActiveDataCalories>
-          {/* </CaloriesStaticInfoContainer> */}
-        </CaloriesContainer>
-        <ActivityContainer>
-          <ActivityStaticInfoContainer>
-            <ImageContainer>
-              <svg width="20" height="20" fill="#efede8">
-                <use href={`${sprite}#dumbbell`} />
-              </svg>
-            </ImageContainer>
-            <InformationText>Daily physical activity</InformationText>
-          </ActivityStaticInfoContainer>
-
-          <ActiveDataMinutes>{dailyActivity} min</ActiveDataMinutes>
-        </ActivityContainer>
+            Daily calorie intake
+          </InformationText>
+          <InformationCounter>{bmr}</InformationCounter>
+        </InformationCard>
+        <InformationCard>
+          <InformationText>
+            <svg width="20" height="20" fill="#efede8">
+              <use href={`${sprite}#dumbbell`} />
+            </svg>
+            Daily physical activity
+          </InformationText>
+          <InformationCounter>{dailyActivity} min</InformationCounter>
+        </InformationCard>
       </InformationContainer>
 
       <NoticeContainer>

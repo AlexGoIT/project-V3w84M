@@ -1,25 +1,22 @@
-import {
-  Container,
-  ProfileTitle,
-  WrapperContent,
-  WrapperForm,
-} from './Profile.styled';
+import { ProfilerWrapper, WrapperContent, WrapperForm } from './Profile.styled';
 import UserCard from '../../components/UserCard/UserCard';
 import UserForm from '../../components/UserForm/UserForm';
+import Container from 'components/Container';
+import TitlePage from 'components/TitlePage';
 
 const Profile = () => {
-  return (
-    <Container>
-      <ProfileTitle>Profile Settings</ProfileTitle>
+  return (    
+    <ProfilerWrapper>
+      <Container>
+      <TitlePage title="ProfileSettings" />
       <WrapperContent>
-        <div>
-          <UserCard />
-        </div>
+        <UserCard />
         <WrapperForm>
           <UserForm />
         </WrapperForm>
       </WrapperContent>
     </Container>
+    </ProfilerWrapper>
   );
 };
 export default Profile;
