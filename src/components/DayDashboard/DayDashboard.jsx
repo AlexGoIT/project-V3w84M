@@ -78,7 +78,7 @@ const DayDashboard = ({ data }) => {
       </DashboardItem>
       <DashboardItem
         accent="false"
-        // borderColor={sportsRemaining >= 0 ? 'default' : 'green'}
+        borderColor={sportsRemaining >= 0 ? 'default' : 'green'}
       >
         <TitleArea>
           <Icon iconColor="#EF8964">
@@ -87,7 +87,10 @@ const DayDashboard = ({ data }) => {
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
         {data && Object.keys(data).length !== 0 && (
-          <Value>{sportsRemaining} min</Value>
+          <Value>
+            {sportsRemaining >= 0 ? <span></span> : <span>+</span>}
+            {sportsRemaining} min
+          </Value>
         )}
       </DashboardItem>
     </DayDashboardArea>
