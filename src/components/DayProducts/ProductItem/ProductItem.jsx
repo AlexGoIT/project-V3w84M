@@ -11,6 +11,8 @@ import {
   Grid5,
   Grid6,
   Title,
+  Indicator,
+  RecommendText
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
@@ -27,6 +29,8 @@ const ProductItem = ({
   date,
 }) => {
   const dispatch = useDispatch();
+  
+  const isRecommended = recommendedByGroupBlood; 
 
   const handleClick = (productId, date) => {
     const fDate = format(new Date(date), 'dd-MM-yyyy');
@@ -54,7 +58,19 @@ const ProductItem = ({
       </Grid4>
       <Grid5>
         <Title>Recommend</Title>
-        <Column>Yes</Column>
+        <Column>
+          {isRecommended ? (
+            <>
+              <Indicator color="#419B09" />
+              <RecommendText>Yes</RecommendText>
+            </>
+          ) : (
+            <>
+              <Indicator color="#E9101D" />
+              <RecommendText>No</RecommendText>
+            </>
+          )}
+        </Column>
       </Grid5>
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
