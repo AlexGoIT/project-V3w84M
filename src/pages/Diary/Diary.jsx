@@ -5,7 +5,7 @@ import DayProducts from 'components/DayProducts';
 import DaySwitch from 'components/DaySwitch';
 import TitlePage from 'components/TitlePage';
 import {
-  DiaryWrapper,
+  // DiaryWrapper,
   DiaryContainer,
   Left,
   Right,
