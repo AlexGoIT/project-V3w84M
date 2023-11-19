@@ -21,7 +21,7 @@ import {
 
 const Diary = () => {
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
   const { consumedProducts, doneExercises } = data;

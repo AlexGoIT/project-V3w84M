@@ -63,8 +63,7 @@ const DayProducts = ({ consumedProducts }) => {
               {consumedProducts.map(
                 ({
                   _id,
-                  title,
-                  category,
+                  product,
                   caloriesConsumed,
                   weightConsumed,
                   recommendedByGroupBlood,
@@ -73,8 +72,7 @@ const DayProducts = ({ consumedProducts }) => {
                   <ProductItem
                     key={_id}
                     id={_id}
-                    title={title}
-                    category={category}
+                    product={product}
                     caloriesConsumed={caloriesConsumed}
                     weightConsumed={weightConsumed}
                     recommendedByGroupBlood={recommendedByGroupBlood}

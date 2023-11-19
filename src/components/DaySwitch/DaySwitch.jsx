@@ -11,7 +11,7 @@ import { format } from 'date-fns';
 
 const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
   const [disabledLeft, setDisabledLeft] = useState(false);
-  const [disabledRight, setDisabledRight] = useState(false);
+  const [disabledRight, setDisabledRight] = useState(true);
   const createdDate = Date.parse(user.createdAt);
 
   const handleDateChange = date => {
@@ -37,9 +37,17 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
 
     const formatNewDate = format(newDate, 'dd-MM-yyyy');
     const formatTodayDate = format(new Date(), 'dd-MM-yyyy');
-    if (formatNewDate === formatTodayDate) {
-      setDisabledRight(true);
+    if (formatNewDate !== formatTodayDate) {
+      setDisabledRight(false);
     }
+  };
+
+  const disabledLeftStyle = {
+    color: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
+  };
+
+  const disabledRightStyle = {
+    fill: disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8',
   };
 
   return (
@@ -52,16 +60,12 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
       />
       <ArrowArea>
         <Button type="button" onClick={handlePrevDay} disabled={disabledLeft}>
-          <ArrowIcon
-            iconColor={disabledLeft ? 'rgba(239,237,232,0.2)' : '#efede8'}
-          >
+          <ArrowIcon style={disabledLeftStyle}>
             <use href={`${sprite}#icon-chevron-left`} />
           </ArrowIcon>
         </Button>
         <Button type="button" onClick={handleNextDay} disabled={disabledRight}>
-          <ArrowIcon
-            iconColor={disabledRight ? 'rgba(239,237,232,0.2)' : '#efede8'}
-          >
+          <ArrowIcon style={disabledRightStyle}>
             <use href={`${sprite}#icon-chevron-right`} />
           </ArrowIcon>
         </Button>

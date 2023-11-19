@@ -19,8 +19,7 @@ import { deleteProduct } from 'redux/api/apiOperations';
 
 const ProductItem = ({
   id,
-  title,
-  category,
+  product,
   caloriesConsumed,
   weightConsumed,
   recommendedByGroupBlood,
@@ -28,21 +27,21 @@ const ProductItem = ({
 }) => {
   const dispatch = useDispatch();
 
-  const handleClick = (productId, date) => {
+  const handleClick = (id, date) => {
     const fDate = format(new Date(date), 'dd-MM-yyyy');
 
-    dispatch(deleteProduct({ productId, date: fDate }));
+    dispatch(deleteProduct({ productId: id, date: fDate }));
   };
 
   return (
     <ProductDiv key={id}>
       <Grid1>
         <Title>Title</Title>
-        <Column>{title}</Column>
+        <Column>{product.title}</Column>
       </Grid1>
       <Grid2>
         <Title>Category</Title>
-        <Column>{category}</Column>
+        <Column>{product.category}</Column>
       </Grid2>
       <Grid3>
         <Title>Calories</Title>
@@ -56,7 +55,6 @@ const ProductItem = ({
         <Title>Recommend</Title>
         <Column>Yes</Column>
       </Grid5>
-      {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
         <Title></Title>
         <ButtonEl onClick={() => handleClick(id, date)}>
@@ -76,7 +74,7 @@ ProductItem.propTypes = {
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
   recommendedByGroupBlood: PropTypes.bool,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
 };
 
 export default ProductItem;

@@ -78,23 +78,11 @@ const DayExercises = ({ doneExercises }) => {
             </TableHeader>
             <List>
               {doneExercises.map(
-                ({
-                  _id,
-                  bodyPart,
-                  equipment,
-                  name,
-                  target,
-                  burnedCalories,
-                  time,
-                  createAt,
-                }) => (
+                ({ _id, exercise, burnedCalories, time, createAt }) => (
                   <ExerciseItem
                     key={_id}
                     id={_id}
-                    bodyPart={bodyPart}
-                    equipment={equipment}
-                    name={name}
-                    target={target}
+                    exercise={exercise}
                     burnedCalories={burnedCalories}
                     time={time}
                     date={createAt}
