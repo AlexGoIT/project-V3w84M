@@ -6,7 +6,7 @@ import {
 } from './DaySwitch.styled';
 import StyledDatepicker from './Datepicker';
 import sprite from 'assets/images/sprite.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { format } from 'date-fns';
 
 const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
@@ -28,9 +28,6 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     if (formatNewDate === formatRegisterDate) {
       setDisabledLeft(true);
     }
-    if (formatNewDate !== formatRegisterDate) {
-      setDisabledLeft(false);
-    }
   };
 
   const handleNextDay = () => {
@@ -42,9 +39,6 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     const formatTodayDate = format(new Date(), 'dd-MM-yyyy');
     if (formatNewDate === formatTodayDate) {
       setDisabledRight(true);
-    }
-    if (formatNewDate !== formatTodayDate) {
-      setDisabledRight(false);
     }
   };
 

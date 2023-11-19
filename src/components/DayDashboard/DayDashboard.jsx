@@ -62,7 +62,10 @@ const DayDashboard = ({ data }) => {
           <Value>{caloriesBurnedSum}</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        redBorder={caloriesRemaining >= 0 ? 'false' : 'true'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#bubble`} />
