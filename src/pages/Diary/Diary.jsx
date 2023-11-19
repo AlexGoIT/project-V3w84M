@@ -24,7 +24,7 @@ const Diary = () => {
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
-  const { consumedProducts, doneExercises } = data;
+  const { consumedProducts, doneExercises, date } = data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);
@@ -52,8 +52,11 @@ const Diary = () => {
         />
         <DiaryContainer>
           <Left>
-            <DayProducts consumedProducts={consumedProducts} />
-            <DayExercises doneExercises={doneExercises} />
+            <DayProducts
+              consumedProducts={consumedProducts}
+              dateForDelete={date}
+            />
+            <DayExercises doneExercises={doneExercises} dateForDelete={date} />
           </Left>
           <Right>
             <DayDashboard data={data} />

@@ -13,18 +13,21 @@ import {
   Title,
 } from './ExerciseItem.styled';
 import sprite from 'assets/images/sprite.svg';
-import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteExercise } from 'redux/api/apiOperations';
 
-const ExerciseItem = ({ id, exercise, burnedCalories, time, date }) => {
+const ExerciseItem = ({
+  id,
+  exercise,
+  burnedCalories,
+  time,
+  dateForDelete,
+}) => {
   const dispatch = useDispatch();
 
-  const handleClick = (id, date) => {
-    const fDate = format(new Date(date), 'dd-MM-yyyy');
-
-    dispatch(deleteExercise({ exerciseId: id, date: fDate }));
+  const handleClick = (id, dateForDelete) => {
+    dispatch(deleteExercise({ exerciseId: id, date: dateForDelete }));
   };
 
   return (
@@ -53,10 +56,9 @@ const ExerciseItem = ({ id, exercise, burnedCalories, time, date }) => {
         <Title>Time</Title>
         <Column>{time}</Column>
       </Grid6>
-      {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid7>
         <Title></Title>
-        <ButtonEl onClick={() => handleClick(id, date)}>
+        <ButtonEl onClick={() => handleClick(id, dateForDelete)}>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>

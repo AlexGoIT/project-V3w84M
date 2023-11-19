@@ -24,7 +24,7 @@ import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayProducts = ({ consumedProducts }) => {
+const DayProducts = ({ consumedProducts, dateForDelete }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
@@ -67,7 +67,6 @@ const DayProducts = ({ consumedProducts }) => {
                   caloriesConsumed,
                   weightConsumed,
                   recommendedByGroupBlood,
-                  createdAt,
                 }) => (
                   <ProductItem
                     key={_id}
@@ -76,7 +75,7 @@ const DayProducts = ({ consumedProducts }) => {
                     caloriesConsumed={caloriesConsumed}
                     weightConsumed={weightConsumed}
                     recommendedByGroupBlood={recommendedByGroupBlood}
-                    date={createdAt}
+                    dateForDelete={dateForDelete}
                   />
                 )
               )}
