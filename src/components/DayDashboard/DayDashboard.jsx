@@ -89,7 +89,7 @@ const DayDashboard = ({ data }) => {
         {data && Object.keys(data).length !== 0 && (
           <Value>
             {sportsRemaining >= 0 ? <span></span> : <span>+</span>}
-            {sportsRemaining} min
+            {Math.abs(sportsRemaining)} min
           </Value>
         )}
       </DashboardItem>
