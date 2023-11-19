@@ -21,7 +21,7 @@ export const DayProductsArea = styled.div`
   padding: 16px;
 
   @media screen and (min-width: 375px) {
-    height: ${setHeight};
+    /* height: ${setHeight}; */
   }
 
   @media screen and (min-width: 768px) {
@@ -154,12 +154,31 @@ export const List = styled.div`
     display: flex;
     flex-direction: column;
     gap: 38px;
-    overflow-y: scroll;
-    height: 786px;
+    /* height: 786px; */
+    /* min-height: 335px; */
+
   }
 
   @media screen and (min-width: 768px) {
     gap: 8px;
     height: 136px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background: rgba(239, 237, 232, 0.10);
+      width: 6px;
+      height: 90px;   
+    }
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 15px;
+    }
   }
 `;

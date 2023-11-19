@@ -7,10 +7,14 @@ import {
 import StyledDatepicker from './Datepicker';
 import sprite from 'assets/images/sprite.svg';
 
-const DaySwitch = () => {
+const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
   return (
     <DaySwitchArea>
-      <StyledDatepicker />
+      <StyledDatepicker
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        user={user}
+      />
       <ArrowArea>
         <Button type="button">
           <ArrowIcon iconColor="#efede8">

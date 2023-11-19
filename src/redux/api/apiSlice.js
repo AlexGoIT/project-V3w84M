@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addExercise,
   addProduct,
+  deleteExercise,
+  deleteProduct,
   fetchCalculate,
   fetchCategories,
   fetchDiary,
@@ -17,6 +19,7 @@ const initialState = {
   products: {},
   calculate: {},
   diary: {},
+  diaryUpdated: false,
   isLoading: false,
   error: null,
 };
@@ -91,6 +94,8 @@ export const apiSlice = createSlice({
       });
 
     //===============================================================
+    // Diary
+    //===============================================================
     builder
       .addCase(fetchDiary.pending, state => {
         state.isLoading = true;
@@ -129,7 +134,50 @@ export const apiSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       });
+
+    builder
+      .addCase(deleteProduct.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        // state.diary.products = state.diary.products.filter(
+        //   product => product._id !== action.payload
+        // );
+
+        state.diary = action.payload;
+
+        state.diaryUpdated = true;
+        state.isLoading = false;
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
+    builder
+      .addCase(deleteExercise.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteExercise.fulfilled, (state, action) => {
+        // state.diary.exercises = state.diary.exercises.filter(
+        //   exercise => exercise._id !== action.payload
+        // );
+
+        state.diary = action.payload;
+        state.diaryUpdated = true;
+        state.isLoading = false;
+      })
+      .addCase(deleteExercise.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
     //===============================================================
+  },
+  reducers: {
+    diaryUpdateReset: state => {
+      state.diaryUpdated = false;
+    },
   },
 });
 

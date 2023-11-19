@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
@@ -140,4 +140,52 @@ export const addExercise = createAsyncThunk(
     }
   }
 );
+
+// DELETE api/diary/products  Delete eaten product from diary
+// {
+//   "productId": "5d51694902b2373622ff5b8d",
+//   "date": "10-10-2023",
+// }
+//
+export const deleteProduct = createAsyncThunk(
+  'api/deleteProduct',
+  async (body, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/api/diary/products`, body);
+      // Повертає оновленні данні щоденника
+
+      console.log('Delete product from diary =>', data);
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
+
+// DELETE api/diary/exercises  Delete done exercise from diary
+// {
+//   "exerciseId": "5d51694902b2373622ff5b8d",
+//   "date": "10-10-2023",
+// }
+//
+export const deleteExercise = createAsyncThunk(
+  'api/deleteExercise',
+  async (body, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`/api/diary/exercises`, body);
+      // Повертає оновленні данні щоденника
+
+      console.log('Delete exercise from diary =>', data);
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
 //=============================================================================
+
+export const diaryUpdateReset = createAction('api/diaryUpdateReset');

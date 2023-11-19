@@ -17,50 +17,26 @@ import {
   Grid6,
 } from './DayProducts.styled';
 import sprite from 'assets/images/sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import {
-  selectDiary,
-  selectError,
-  selectIsLoading,
-} from 'redux/api/apiSelectors';
-import { fetchProducts } from 'redux/api/apiOperations';
+import { useSelector } from 'react-redux';
+import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayProducts = () => {
-  const dispatch = useDispatch();
+const DayProducts = ({ consumedProducts }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const { consumedProducts } = useSelector(selectDiary);
   const location = useLocation();
+  console.log(consumedProducts);
 
-  const findLength = async array => {
-    try {
-      const length = await array.length;
-      return length;
-    } catch (err) {
-      return err;
-    }
-  };
-  const arrayLength = findLength(consumedProducts);
-
-  const [heightProductArea, setHeightProductArea] = useState(true);
-  if (arrayLength === 0) {
-    setHeightProductArea(false);
-  }
-
-  useEffect(
-    date => {
-      dispatch(fetchProducts(date));
-    },
-    [dispatch]
-  );
+  // const [heightProductArea, setHeightProductArea] = useState(true);
+  // if (arrayLength === 0) {
+  //   setHeightProductArea(false);
+  // }
 
   return (
-    <DayProductsArea dimention={heightProductArea}>
+    <DayProductsArea>
       <TitleArea>
         <Title>Products</Title>
         <Link to={`/products`} state={{ from: location }}>
@@ -74,7 +50,7 @@ const DayProducts = () => {
       </TitleArea>
       <TableArea>
         {isLoading && <Loader />}
-        {arrayLength > 0 ? (
+        {consumedProducts && consumedProducts.length > 0 ? (
           <>
             <TableHeader>
               <Grid1>Title</Grid1>
@@ -90,18 +66,18 @@ const DayProducts = () => {
                   _id,
                   title,
                   category,
-                  calories,
-                  weight,
-                  groupBloodNotAllowed,
+                  caloriesConsumed,
+                  weightConsumed,
+                  recommendedByGroupBlood,
                 }) => (
                   <ProductItem
                     key={_id}
                     id={_id}
                     title={title}
                     category={category}
-                    calories={calories}
-                    weight={weight}
-                    groupBloodNotAllowed={groupBloodNotAllowed}
+                    caloriesConsumed={caloriesConsumed}
+                    weightConsumed={weightConsumed}
+                    recommendedByGroupBlood={recommendedByGroupBlood}
                   />
                 )
               )}
