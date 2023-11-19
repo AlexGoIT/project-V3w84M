@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.h1`
-  margin-top: 72px;
+  margin-top: 40px;
   font-family: Roboto;
   color: #efede8;
   font-style: normal;
