@@ -24,12 +24,6 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const IconSvg = styled.svg`
-  position: absolute;
-  top: -32px;
-  right: 14px;
-`;
-
 export const SectionTitle = styled.p`
   margin-bottom: 4px;
   color: rgba(239, 237, 232, 0.5);

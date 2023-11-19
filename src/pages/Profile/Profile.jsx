@@ -12,9 +12,7 @@ const Profile = () => {
     <Container>
       <ProfileTitle>Profile Settings</ProfileTitle>
       <WrapperContent>
-        <div>
-          <UserCard />
-        </div>
+        <UserCard />
         <WrapperForm>
           <UserForm />
         </WrapperForm>
