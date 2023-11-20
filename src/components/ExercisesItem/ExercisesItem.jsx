@@ -79,21 +79,29 @@ export const ExerciseCardItem = ({
       </ExercisesCardTitle>
 
       <ExercisesCardInfoList>
-        <ExercisesCardInfoItem>Burned calories:</ExercisesCardInfoItem>
-        <ExercisesCardInfoValue>
-          {/* 312 {burnedCalories || '999'} */}
-          {burnedCalories}
-        </ExercisesCardInfoValue>
-        <ExercisesCardInfoItem>Body part:</ExercisesCardInfoItem>
-        <ExercisesCardInfoValue>
-          {/* Waist {bodyPart || '999'} */}
-          {bodyPart}
-        </ExercisesCardInfoValue>
-        <ExercisesCardInfoItem>Target:</ExercisesCardInfoItem>
-        <ExercisesCardInfoValue>
-          {/* Abs {target || '300'} */}
-          {target}
-        </ExercisesCardInfoValue>
+        <ExercisesCardInfoItem>
+          Burned calories:
+          <ExercisesCardInfoValue>
+            {/* 312 {burnedCalories || '999'} */}
+            {burnedCalories}
+          </ExercisesCardInfoValue>
+        </ExercisesCardInfoItem>
+
+        <ExercisesCardInfoItem>
+          Body part:
+          <ExercisesCardInfoValue>
+            {/* Waist {bodyPart || '999'} */}
+            {bodyPart}
+          </ExercisesCardInfoValue>
+        </ExercisesCardInfoItem>
+
+        <ExercisesCardInfoItem>
+          Target:
+          <ExercisesCardInfoValue>
+            {/* Abs {target || '300'} */}
+            {target}
+          </ExercisesCardInfoValue>
+        </ExercisesCardInfoItem>
       </ExercisesCardInfoList>
 
       {isModalOpen && (

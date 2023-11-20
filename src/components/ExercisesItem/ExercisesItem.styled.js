@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 
 export const ExercisesCard = styled.li`
-  margin-left: 20px;
-  margin-right: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -16,7 +14,7 @@ export const ExercisesCard = styled.li`
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
-    /* width: calc((100% - 16px) / 2); */
+    width: calc((100% - 16px) / 2);
     overflow: hidden;
   }
 
@@ -57,8 +55,8 @@ export const ExercisesCardAddBtn = styled.button`
   background: transparent;
   border: none;
   color: #e6533c;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -67,6 +65,10 @@ export const ExercisesCardAddBtn = styled.button`
   &:hover,
   &:focus {
     color: #efede8;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
   }
 `;
 
@@ -94,7 +96,7 @@ export const IconBeforeTitle = styled.svg`
 
 export const ExercisesCardTitle = styled.h4`
   position: relative;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.333;
   color: #efede8;
 
@@ -104,6 +106,9 @@ export const ExercisesCardTitle = styled.h4`
   white-space: nowrap;
   padding-left: 40px;
   max-width: 100%;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
   /* &::before {
     content: url();
     position: absolute;
@@ -115,20 +120,24 @@ export const ExercisesCardTitle = styled.h4`
 `;
 
 export const ExercisesCardInfoList = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   gap: 16px;
+  flex-wrap: wrap;
 `;
 
 export const ExercisesCardInfoItem = styled.li`
+  width: 40%;
   display: flex;
-  flex-wrap: nowrap;
-  /* flex-direction: row; */
+  flex-direction: row;
   gap: 4px;
   color: rgba(239, 237, 232, 0.4);
+  font-weight: 400;
   font-size: 12px;
   line-height: 18px;
+  /* word-wrap: break-word; */
+  /* flex-wrap: nowrap; */
 `;
 
 export const ExercisesCardInfoValue = styled.p`
@@ -138,4 +147,6 @@ export const ExercisesCardInfoValue = styled.p`
   color: #efede8;
   font-size: 12px;
   line-height: 18px;
+  white-space: pre-wrap;
+  /* word-wrap: break-word; */
 `;
