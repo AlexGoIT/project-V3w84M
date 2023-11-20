@@ -7,10 +7,8 @@ import { selectExercises } from 'redux/api/apiSelectors';
 const ExercisesList = () => {
   const dispatch = useDispatch();
   const exercises = useSelector(selectExercises);
-  const { result, total_results } = exercises;
-  console.log(result);
-  console.log(total_results);
-
+  const { result } = exercises;
+  //{total_results } = exercises; для бесконечного скрола
   useEffect(() => {
     dispatch(fetchExercises());
   }, [dispatch]);
