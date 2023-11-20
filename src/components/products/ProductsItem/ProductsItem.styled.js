@@ -69,7 +69,7 @@ export const ProductsCardStatusCountTrue = styled.p`
     width: 14px;
     height: 14px;
     border-radius: 10px;
-    background: ${props => (props.isRecommended ? '#419b09' : '#e6533c')};
+    background: ${props => (props.isRecommended ? '#e6533c' : '#419b09')};
     margin-right: 8px;
   }
 `;
