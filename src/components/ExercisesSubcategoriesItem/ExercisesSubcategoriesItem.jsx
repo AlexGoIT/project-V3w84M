@@ -1,30 +1,36 @@
 import PropTypes from 'prop-types';
 import {
-  ExercisesSubcategoryPicture,
+  ExercisesSubcategoryPictureLi,
   PictureLink,
   WrapperDiv,
-  Description,
+  DescriptionUl,
   MainText,
   Subtext,
 } from './ExercisesSubcategoriesItem.styled';
 
-export default function ExercisesSubcategoriesItem({ item }) {
+export default function ExercisesSubcategoriesItem() {
   return (
-    <ExercisesSubcategoryPicture>
-      <PictureLink to={item.name}>
-        <WrapperDiv img={item.imgURL}>
-          <Description>
+    <ExercisesSubcategoryPictureLi>
+      <PictureLink to="#">
+        <WrapperDiv>
+          <DescriptionUl>
             <li>
-              <MainText>{item.name}</MainText>
+              <MainText>
+                Shoulders
+                {/* {item.name} */}
+              </MainText>
             </li>
 
             <li>
-              <Subtext>{item.filter}</Subtext>
+              <Subtext>
+                Body parts
+                {/* {item.filter} */}
+              </Subtext>
             </li>
-          </Description>
+          </DescriptionUl>
         </WrapperDiv>
       </PictureLink>
-    </ExercisesSubcategoryPicture>
+    </ExercisesSubcategoryPictureLi>
   );
 }
 

@@ -1,7 +1,8 @@
 import Container from 'components/Container';
 import TitlePage from 'components/TitlePage';
 import { ExercisesCategories } from 'components/ExercisesCategories/ExercisesCategories';
-// import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+//import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+import { ExercisesSubcategoriesList } from 'components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 
 import {
   ExercisesWrapper,
@@ -15,6 +16,7 @@ import { selectFilters, selectIsLoading } from 'redux/api/apiSelectors';
 import { useEffect } from 'react';
 import { fetchFilters } from 'redux/api/apiOperations';
 import Loader from 'components/Loader';
+import ExercisesList from 'components/ExercisesList';
 // import Back from 'components/exercises/Back/Back';
 
 const exercisesCategories = {
@@ -51,6 +53,8 @@ const Exercises = () => {
             <TitlePage title="Exercises" />
             <ExercisesCategories />
           </WrapperTitleCategoriesDiv>
+
+          <ExercisesSubcategoriesList />
           <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             {filterResult &&
               filterResult.map(el => {
@@ -67,10 +71,7 @@ const Exercises = () => {
                 );
               })}
           </ul>
-          {/* <ExerciseCardItem></ExerciseCardItem>
-          <ExerciseCardItem></ExerciseCardItem>
-          <ExerciseCardItem></ExerciseCardItem> */}
-          {/* <Outlet /> */}
+          <ExercisesList />
         </ContentDiv>
       </Container>
     </ExercisesWrapper>

@@ -25,22 +25,18 @@ const formatDate = date => {
 };
 
 export const AddExerciseForm = ({
-  data,
+  id,
+  name,
+  burnedCalories,
+  bodyPart,
+  target,
+  equipment,
+  gifUrl,
+  time,
   onSuccess,
   dynamicTime,
   setDynamicTime,
 }) => {
-  const {
-    bodyPart,
-    equipment,
-    burnedCalories,
-    gifUrl,
-    name,
-    target,
-    _id,
-    time,
-  } = data;
-
   const [dynamicBurnCal, setDynamicBurnCal] = useState(0);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
@@ -75,7 +71,7 @@ export const AddExerciseForm = ({
 
     await dispatch(
       addExercise({
-        exerciseId: _id,
+        exerciseId: id,
         date: formattedDate,
         workoutTime: dynamicTime,
         caloriesBurned: dynamicBurnCal,
@@ -94,7 +90,8 @@ export const AddExerciseForm = ({
         <ExersiceModalImg src={gifUrl} alt={name} />
         <ExersiceModalTimer>
           <Timer
-            data={data}
+            burnedCalories={burnedCalories}
+            time={time}
             setDynamicBurnCal={setDynamicBurnCal}
             dynamicBurnCal={dynamicBurnCal}
             setDynamicTime={setDynamicTime}
