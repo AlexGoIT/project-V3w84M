@@ -19,11 +19,7 @@ import { currentUser } from 'redux/auth/authOperations';
 import { selectUser } from 'redux/auth/authSelectors';
 import { format } from 'date-fns';
 import { selectDiaryUpdated } from 'redux/api/apiSelectors';
-import {
-  //deleteProduct,
-  diaryUpdateReset,
-  fetchDiary,
-} from 'redux/api/apiOperations';
+import { diaryUpdateReset, fetchDiary } from 'redux/api/apiOperations';
 
 const Diary = () => {
   const dispatch = useDispatch();
@@ -63,7 +59,10 @@ const Diary = () => {
                 consumedProducts={consumedProducts}
                 dateForDelete={date}
               />
-              <DayExercises doneExercises={doneExercises} dateForDelete={date} />
+              <DayExercises
+                doneExercises={doneExercises}
+                dateForDelete={date}
+              />
             </Left>
             <Right>
               <DayDashboard data={data} />

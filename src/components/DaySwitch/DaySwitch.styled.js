@@ -9,7 +9,7 @@ export const DaySwitchArea = styled.div`
 
   @media screen and (min-width: 375px) {
     right: 0;
-    top: 42px;
+    top: 46px;
     gap: 20px;
   }
 
@@ -22,17 +22,6 @@ export const DaySwitchArea = styled.div`
     right: 64px;
   }
 `;
-
-// const setColor = props => {
-//   switch (props.disabled) {
-//     case 'true':
-//       return 'rgba(239,237,232,0.2)';
-//     case 'false':
-//       return '#efede8';
-//     default:
-//       return '#efede8';
-//   }
-// };
 
 export const ArrowIcon = styled.svg`
   width: 16px;

@@ -29,13 +29,12 @@ const DayProducts = ({ consumedProducts, dateForDelete }) => {
   const error = useSelector(selectError);
   const location = useLocation();
 
-  // const [heightProductArea, setHeightProductArea] = useState(true);
-  // if (arrayLength === 0) {
-  //   setHeightProductArea(false);
-  // }
-
   return (
-    <DayProductsArea>
+    <DayProductsArea
+      dimentionArea={
+        consumedProducts && consumedProducts.length > 0 ? 'true' : 'false'
+      }
+    >
       <TitleArea>
         <Title>Products</Title>
         <Link to={`/products`} state={{ from: location }}>
@@ -59,7 +58,13 @@ const DayProducts = ({ consumedProducts, dateForDelete }) => {
               <Grid5>Recommend</Grid5>
               <Grid6></Grid6>
             </TableHeader>
-            <List>
+            <List
+              dimentionList={
+                consumedProducts && consumedProducts.length > 0
+                  ? 'true'
+                  : 'false'
+              }
+            >
               {consumedProducts.map(
                 ({
                   _id,

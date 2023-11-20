@@ -162,16 +162,31 @@ export const TitleWrapper = styled.button`
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  font-size: 24px;
   display: flex;
   gap: 8px;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 375px) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const CalendarIcon = styled.svg`
-  width: 24px;
-  height: 24px;
   fill: #ef8964;
   stroke: #ef8964;
+
+  @media screen and (min-width: 375px) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
