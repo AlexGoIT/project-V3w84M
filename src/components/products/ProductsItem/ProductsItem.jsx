@@ -53,8 +53,8 @@ export const ProductsItem = ({ product, color }) => {
             isRecommended={product.groupBloodNotAllowed[bloodType]}
           >
             {product.groupBloodNotAllowed[bloodType]
-              ? 'Recommended'
-              : 'Not recommended'}
+              ? 'Not recommended'
+              : 'Recommended'}
           </ProductsCardStatusCountTrue>
 
           <ProductsCardStatusAdd onClick={toggleModal} type="button">
