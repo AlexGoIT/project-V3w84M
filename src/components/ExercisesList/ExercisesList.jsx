@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchExercises } from 'redux/api/apiOperations';
 import { selectExercises } from 'redux/api/apiSelectors';
+import { ExercisesListUl } from './ExercisesList.styled';
 
 const ExercisesList = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const ExercisesList = () => {
   }, [dispatch]);
 
   return (
-    <ul>
+    <ExercisesListUl>
       {result &&
         result.length > 0 &&
         result.map(
@@ -41,7 +42,7 @@ const ExercisesList = () => {
             />
           )
         )}
-    </ul>
+    </ExercisesListUl>
   );
 };
 
