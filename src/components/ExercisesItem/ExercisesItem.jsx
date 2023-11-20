@@ -21,7 +21,16 @@ import { useEffect, useState } from 'react';
 import { fetchExercises } from 'redux/api/apiOperations';
 import AddExerciseSuccess from 'components/AddExerciseSuccess/AddExerciseSuccess';
 
-export const ExerciseCardItem = ({ exercise }) => {
+export const ExerciseCardItem = ({
+  id,
+  name,
+  burnedCalories,
+  bodyPart,
+  target,
+  equipment,
+  gifUrl,
+  time,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExercAdded, setIsExercAdded] = useState(true);
   const [totalCalories, setTotalCalories] = useState(0);
@@ -66,25 +75,28 @@ export const ExerciseCardItem = ({ exercise }) => {
         <IconBeforeTitle>
           <use href={`${sprite}#icon-icon`} />
         </IconBeforeTitle>
-        Exercise title {/* {exercise.title} */}
+        {name}
       </ExercisesCardTitle>
 
       <ExercisesCardInfoList>
         <ExercisesCardInfoItem>Burned calories:</ExercisesCardInfoItem>
         <ExercisesCardInfoValue>
-          312 {/* {exercise.calories || '999'} */}
+          {/* 312 {burnedCalories || '999'} */}
+          {burnedCalories}
         </ExercisesCardInfoValue>
         <ExercisesCardInfoItem>Body part:</ExercisesCardInfoItem>
         <ExercisesCardInfoValue>
-          Waist {/* {exercise.part || '999'} */}
+          {/* Waist {bodyPart || '999'} */}
+          {bodyPart}
         </ExercisesCardInfoValue>
         <ExercisesCardInfoItem>Target:</ExercisesCardInfoItem>
         <ExercisesCardInfoValue>
-          Abs {/* {exercise.target || '300'} */}
+          {/* Abs {target || '300'} */}
+          {target}
         </ExercisesCardInfoValue>
       </ExercisesCardInfoList>
 
-      {exercise && isModalOpen && (
+      {isModalOpen && (
         <BasicModalWindow isOpenModalToggle={toggleModal}>
           {isExercAdded ? (
             <AddExerciseSuccess
@@ -96,7 +108,14 @@ export const ExerciseCardItem = ({ exercise }) => {
           ) : (
             <AddExerciseForm
               key={'addExerc'}
-              data={exercise}
+              id={id}
+              name={name}
+              burnedCalories={burnedCalories}
+              bodyPart={bodyPart}
+              target={target}
+              gifUrl={gifUrl}
+              equipment={equipment}
+              time={time}
               onSuccess={onAddedSuccessfully}
               dynamicTime={totalTime}
               setDynamicTime={setTotalTime}
