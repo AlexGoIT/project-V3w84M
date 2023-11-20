@@ -9,7 +9,7 @@ import {
   WrapperTitleCategoriesDiv,
 } from './Exercises.styled';
 
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 // import Back from 'components/exercises/Back/Back';
 
 const Exercises = () => {
