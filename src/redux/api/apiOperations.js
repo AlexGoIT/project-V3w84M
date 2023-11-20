@@ -2,6 +2,12 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
+// =============================================================================
+// CATEGORIES
+//=============================================================================
+// GET api/categories => Return ALL categories
+//
+
 export const fetchCategories = createAsyncThunk(
   'api/fetchCategories',
   async thunkAPI => {
@@ -16,6 +22,26 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
+//=============================================================================
+// FILTERS
+//=============================================================================
+// GET api/filters => Return ALL filters
+// or
+// GET api/filters?filter=Body parts => Return Body parts filter
+// {
+//   "filter": "Body parts"
+// }
+// or
+// GET api/filters?filter=Muscles => Return Muscles filter
+// {
+//   "filter": "Muscles",
+// }
+// or
+// GET api/filters?filter=Equipment => Return Equipment filter
+// {
+//   "filter": "Equipment",
+// }
+//
 export const fetchFilters = createAsyncThunk(
   'api/fetchFilters',
   async (params, thunkAPI) => {
@@ -29,6 +55,33 @@ export const fetchFilters = createAsyncThunk(
     }
   }
 );
+// ==============================================================================
+// EXERCISES
+// ==============================================================================
+// GET api/exercises => Return ALL exercises
+// or
+// GET api/exercises?bodyparts=back => Return Body parts exercises for back
+// {
+//   "bodyparts": "back",
+//   "page": 1,   // DEFAULT
+//   "limit": 10  // DEFAULT
+// }
+// or
+// GET api/exercises?muscles=biceps => Return Muscles exercises for biceps
+// {
+//   "muscles": "biceps",
+//   "page": 1,   // DEFAULT
+//   "limit": 10  // DEFAULT
+// }
+// or
+// GET api/exercises?equipment=barbell => Return Equipment exercises for barbell
+// {
+//   "equipment": "barbell",
+//   "page": 1,   // DEFAULT
+//   "limit": 10  // DEFAULT
+// }
+// or
+//
 
 export const fetchExercises = createAsyncThunk(
   'api/fetchExercises',
@@ -44,6 +97,10 @@ export const fetchExercises = createAsyncThunk(
   }
 );
 
+//=============================================================================
+// PRODUCTS
+// ============================================================================
+
 export const fetchProducts = createAsyncThunk(
   'api/fetchProducts',
   async (params, thunkAPI) => {
@@ -57,6 +114,10 @@ export const fetchProducts = createAsyncThunk(
     }
   }
 );
+
+// ============================================================================
+// CALCULATE
+// ============================================================================
 
 export const fetchCalculate = createAsyncThunk(
   'api/fetchCalculate',
@@ -73,7 +134,8 @@ export const fetchCalculate = createAsyncThunk(
 );
 
 //=============================================================================
-
+// DIARY
+// ============================================================================
 // GET api/diary Get user diary data for selected date
 // {
 //   "date": "10-10-2023"
@@ -107,8 +169,6 @@ export const addProduct = createAsyncThunk(
     try {
       const { data } = await axios.post('/api/diary/products', params);
 
-      console.log('addProduct to diary =>', data);
-
       return data;
     } catch (err) {
       Notify.failure(err.response.data.message);
@@ -130,8 +190,6 @@ export const addExercise = createAsyncThunk(
   async (params, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/diary/exercises', params);
-
-      console.log('Add exercise to diary =>', data);
 
       return data;
     } catch (err) {

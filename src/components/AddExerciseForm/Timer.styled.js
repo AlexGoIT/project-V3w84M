@@ -6,12 +6,12 @@ export const TimerWrapper = styled.div`
   align-items: center;
   position: relative;
 `;
+
 export const TimerTitle = styled.h1`
   color: rgba(239, 237, 232, 0.4);
   font-size: 10px;
   line-height: 1.4;
-  margin-top: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 `;
 
 export const FormattedTitle = styled.p`
@@ -24,11 +24,17 @@ export const FormattedTitle = styled.p`
 `;
 
 export const TimerBtn = styled.button`
-  background-color: #E6533C;
+  background-color: #e6533c;
   margin-top: 14px;
   padding: 5px;
+  border: none;
   border-radius: 5px;
   display: flex;
+
+  &:hover,
+  &:focus-visible {
+    background-color: #ef8964;
+  }
 `;
 
 export const PlayIcon = styled.svg`
@@ -44,10 +50,9 @@ export const TimerText = styled.p`
 `;
 
 export const TimerSub = styled.span`
-  color: #E6533C;
+  color: #e6533c;
   font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
+  line-height: 1.28;
   display: inline-flex;
-  margin-left: 3px;
+  margin-left: 8px;
 `;
