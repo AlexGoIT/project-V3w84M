@@ -9,13 +9,18 @@ import {
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from 'assets/images/sprite.svg';
 import { Global } from '@emotion/react';
-//import formatDate from 'utils/formatDate';
 
-const StyledDatepicker = ({ selectedDate, setSelectedDate, user }) => {
+const StyledDatepicker = ({
+  selectedDate,
+  setSelectedDate,
+  user,
+  onDateChange,
+}) => {
   const createdDate = Date.parse(user.createdAt);
 
   const submitSelectedDate = date => {
     setSelectedDate(date);
+    onDateChange(date);
   };
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {

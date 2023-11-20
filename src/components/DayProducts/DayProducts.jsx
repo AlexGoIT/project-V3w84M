@@ -24,19 +24,17 @@ import { Notify } from 'notiflix';
 import ProductItem from './ProductItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayProducts = ({ consumedProducts }) => {
+const DayProducts = ({ consumedProducts, dateForDelete }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
-  console.log(consumedProducts);
-
-  // const [heightProductArea, setHeightProductArea] = useState(true);
-  // if (arrayLength === 0) {
-  //   setHeightProductArea(false);
-  // }
 
   return (
-    <DayProductsArea>
+    <DayProductsArea
+      dimentionArea={
+        consumedProducts && consumedProducts.length > 0 ? 'true' : 'false'
+      }
+    >
       <TitleArea>
         <Title>Products</Title>
         <Link to={`/products`} state={{ from: location }}>
@@ -45,7 +43,7 @@ const DayProducts = ({ consumedProducts }) => {
             <ArrowIcon iconColor="#E6533C">
               <use href={`${sprite}#arrow`} />
             </ArrowIcon>
-          </Button>{' '}
+          </Button>
         </Link>
       </TitleArea>
       <TableArea>
@@ -60,26 +58,29 @@ const DayProducts = ({ consumedProducts }) => {
               <Grid5>Recommend</Grid5>
               <Grid6></Grid6>
             </TableHeader>
-            <List>
+            <List
+              dimentionList={
+                consumedProducts && consumedProducts.length > 0
+                  ? 'true'
+                  : 'false'
+              }
+            >
               {consumedProducts.map(
                 ({
                   _id,
-                  title,
-                  category,
+                  product,
                   caloriesConsumed,
                   weightConsumed,
                   recommendedByGroupBlood,
-                  createdAt,
                 }) => (
                   <ProductItem
                     key={_id}
                     id={_id}
-                    title={title}
-                    category={category}
+                    product={product}
                     caloriesConsumed={caloriesConsumed}
                     weightConsumed={weightConsumed}
                     recommendedByGroupBlood={recommendedByGroupBlood}
-                    date={createdAt}
+                    dateForDelete={dateForDelete}
                   />
                 )
               )}

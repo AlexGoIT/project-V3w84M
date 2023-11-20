@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-const setHeight = props => {
-  switch (props.dimention) {
+const setAreaHeight = props => {
+  switch (props.dimentionArea) {
     case 'true':
-      return '824px';
+      return '780px';
     case 'false':
       return '335px';
     default:
@@ -21,11 +21,13 @@ export const DayProductsArea = styled.div`
   padding: 16px;
 
   @media screen and (min-width: 375px) {
-    /* height: ${setHeight}; */
+    height: ${setAreaHeight};
+    padding-right: 8px;
   }
 
   @media screen and (min-width: 768px) {
     height: 234px;
+    padding-right: 16px;
   }
 `;
 
@@ -149,19 +151,23 @@ export const ShorterTitle = styled.div`
   text-overflow: ellipsis;
 `;
 
+const setListHeight = props => {
+  switch (props.dimentionList) {
+    case 'true':
+      return '700px';
+    case 'false':
+      return '335px';
+    default:
+      return '300px';
+  }
+};
+
 export const List = styled.div`
   @media screen and (min-width: 375px) {
     display: flex;
     flex-direction: column;
-    gap: 38px;
-    /* height: 786px; */
-    /* min-height: 335px; */
-
-  }
-
-  @media screen and (min-width: 768px) {
-    gap: 8px;
-    height: 136px;
+    gap: 40px;
+    height: ${setListHeight};
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -171,14 +177,19 @@ export const List = styled.div`
 
     &::-webkit-scrollbar-thumb {
       border-radius: 12px;
-      background: rgba(239, 237, 232, 0.10);
+      background: rgba(239, 237, 232, 0.1);
       width: 6px;
-      height: 90px;   
+      height: 90px;
     }
 
     &::-webkit-scrollbar {
       width: 8px;
       height: 15px;
     }
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 8px;
+    height: 136px;
   }
 `;

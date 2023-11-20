@@ -20,35 +20,23 @@ import {
 } from './DayExercises.styled';
 import sprite from 'assets/images/sprite.svg';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
 import { Notify } from 'notiflix';
 import ExerciseItem from './ExerciseItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayExercises = ({ doneExercises }) => {
+const DayExercises = ({ doneExercises, dateForDelete }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
 
-  const findLength = async array => {
-    try {
-      const length = await array.length;
-      return length;
-    } catch (err) {
-      return err;
-    }
-  };
-  const arrayLength = findLength(doneExercises);
-
-  const [heightExerciseArea, setHeightExerciseArea] = useState(true);
-  if (arrayLength === 0) {
-    setHeightExerciseArea(false);
-  }
-
   return (
-    <DayExercisesArea dimention={heightExerciseArea}>
+    <DayExercisesArea
+      dimentionArea={
+        doneExercises && doneExercises.length > 0 ? 'true' : 'false'
+      }
+    >
       <TitleArea>
         <Title>Execrcises</Title>
         <Link to={`/exercises`} state={{ from: location }}>
@@ -76,31 +64,21 @@ const DayExercises = ({ doneExercises }) => {
               <Grid6>Time</Grid6>
               <Grid7 />
             </TableHeader>
-            <List>
-              {doneExercises.map(
-                ({
-                  _id,
-                  bodyPart,
-                  equipment,
-                  name,
-                  target,
-                  burnedCalories,
-                  time,
-                  createAt,
-                }) => (
-                  <ExerciseItem
-                    key={_id}
-                    id={_id}
-                    bodyPart={bodyPart}
-                    equipment={equipment}
-                    name={name}
-                    target={target}
-                    burnedCalories={burnedCalories}
-                    time={time}
-                    date={createAt}
-                  />
-                )
-              )}
+            <List
+              dimentionList={
+                doneExercises && doneExercises.length > 0 ? 'true' : 'false'
+              }
+            >
+              {doneExercises.map(({ _id, exercise, burnedCalories, time }) => (
+                <ExerciseItem
+                  key={_id}
+                  id={_id}
+                  exercise={exercise}
+                  burnedCalories={burnedCalories}
+                  time={time}
+                  dateForDelete={dateForDelete}
+                />
+              ))}
             </List>
           </>
         ) : (

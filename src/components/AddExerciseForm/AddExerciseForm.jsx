@@ -1,11 +1,21 @@
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import { Notify } from 'notiflix';
 import ExersiceModalWindowList from './ExersiceModalWindowList';
 import Timer from './Timer';
 
-import {ExersiceModalWrapper, ExersiceModalContainer, ExersiceModalWrapperTwo, ExersiceModalWindowBtn, ExersiceModalImg, ExersiceModalTimer} from './AddExerciseForm.styled';
+import {
+  ExersiceModalWrapper,
+  ExersiceModalContainer,
+  ExersiceModalWrapperTwo,
+  ExersiceModalWindowBtn,
+  ExersiceModalImg,
+  ExersiceModalTimer,
+} from './AddExerciseForm.styled';
+import { addExercise } from 'redux/api/apiOperations';
+import { selectError, selectIsLoading } from 'redux/api/apiSelectors';
+import Loader from 'components/Loader';
 
 const formatDate = date => {
   const day = String(date.getDate()).padStart(2, '0');
@@ -14,7 +24,12 @@ const formatDate = date => {
   return `${day}/${month}/${year}`;
 };
 
-export const AddExerciseForm = ({ data, onClick}) => {
+export const AddExerciseForm = ({
+  data,
+  onSuccess,
+  dynamicTime,
+  setDynamicTime,
+}) => {
   const {
     bodyPart,
     equipment,
@@ -26,77 +41,77 @@ export const AddExerciseForm = ({ data, onClick}) => {
     time,
   } = data;
 
-  const [dinamicBurnCal, setDinamicBurnCal] = useState(0);
-  const [dinamicTime, setDinamicTime] = useState(0);
-
+  const [dynamicBurnCal, setDynamicBurnCal] = useState(0);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
- 
-
-  // useEffect(() => {
-  //   dispatch(getUserParams());
-  // }, [dispatch]);
 
   const amount = Math.round((burnedCalories / (time * 60)) * 180);
- 
 
   const savedDate = localStorage.getItem('selectedDate');
-  let date = new Date(); 
+  let date = new Date();
 
   if (savedDate) {
     const parsedDate = new Date(savedDate);
     if (!isNaN(parsedDate.getTime())) {
-      date = parsedDate; 
+      date = parsedDate;
     }
   }
 
   const formattedDate = formatDate(date);
 
-  const handleAddToDiary = () => {
-    if (!amount) {    
-      Notify.error('Must be greater than 0');
+  const handleAddToDiary = async () => {
+    if (!amount) {
+      Notify.failure('Must be greater than 0');
       return;
     }
 
-    // dispatch(
-    //   addExercise({
-    //     date: formattedDate, 
-    //     bodyPart,
-    //     target,
-    //     time: dinamicTime,
-    //     exerciseId: _id,
-    //     equipment,
-    //     name,
-    //     burnedCalories: dinamicBurnCal,
-    //   }),
-    // );
-    onClick();
+    if (dynamicTime < 1) {
+      Notify.failure(
+        'To log your activity you must work out for at least one minute'
+      );
+      return;
+    }
+
+    await dispatch(
+      addExercise({
+        exerciseId: _id,
+        date: formattedDate,
+        workoutTime: dynamicTime,
+        caloriesBurned: dynamicBurnCal,
+      })
+    ).unwrap();
+
+    if (!isLoading && !error) {
+      onSuccess(dynamicTime, dynamicBurnCal);
+    }
   };
 
   return (
-    <ExersiceModalContainer>      
-        <ExersiceModalWrapper>
-          <ExersiceModalImg src={gifUrl} alt={name} />
-          <ExersiceModalTimer>
-            <Timer
-              data={data}
-              setDinamicBurnCal={setDinamicBurnCal}
-              dinamicBurnCal={dinamicBurnCal}
-              setDinamicTime={setDinamicTime}
-            />
+    <ExersiceModalContainer>
+      {isLoading && <Loader />}
+      <ExersiceModalWrapper>
+        <ExersiceModalImg src={gifUrl} alt={name} />
+        <ExersiceModalTimer>
+          <Timer
+            data={data}
+            setDynamicBurnCal={setDynamicBurnCal}
+            dynamicBurnCal={dynamicBurnCal}
+            setDynamicTime={setDynamicTime}
+          />
         </ExersiceModalTimer>
+      </ExersiceModalWrapper>
+      <ExersiceModalWrapperTwo>
         <ExersiceModalWindowList
           name={name}
-          bodypart={bodyPart}
+          bodyPart={bodyPart}
           target={target}
           equipment={equipment}
           time={time}
-        />       
-      </ExersiceModalWrapper>      
-      <ExersiceModalWrapperTwo>        
-          <ExersiceModalWindowList/>  
-            <ExersiceModalWindowBtn type="button" onClick={handleAddToDiary}>
-              Add to diary 
-            </ExersiceModalWindowBtn>
+        />
+        <ExersiceModalWindowBtn type="button" onClick={handleAddToDiary}>
+          Add to diary
+        </ExersiceModalWindowBtn>
       </ExersiceModalWrapperTwo>
     </ExersiceModalContainer>
   );

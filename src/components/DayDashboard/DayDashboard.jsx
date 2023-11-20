@@ -17,6 +17,7 @@ const DayDashboard = ({ data }) => {
     caloriesRemaining,
     sportsRemaining,
   } = data;
+  console.log(userBMR);
 
   return (
     <DayDashboardArea>
@@ -27,7 +28,11 @@ const DayDashboard = ({ data }) => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        {data && Object.keys(data).length !== 0 && <Value>{userBMR}</Value>}
+        {(data && Object.keys(data).length) !== 0 && userBMR ? (
+          <Value>{userBMR}</Value>
+        ) : (
+          <Value>0</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -62,18 +67,26 @@ const DayDashboard = ({ data }) => {
           <Value>{caloriesBurnedSum}</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        borderColor={userBMR && caloriesRemaining < 0 ? 'red' : 'default'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#bubble`} />
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        {data && Object.keys(data).length !== 0 && (
+        {data && Object.keys(data).length !== 0 && userBMR ? (
           <Value>{caloriesRemaining}</Value>
+        ) : (
+          <Value>0</Value>
         )}
       </DashboardItem>
-      <DashboardItem accent="false">
+      <DashboardItem
+        accent="false"
+        borderColor={sportsRemaining >= 0 ? 'default' : 'green'}
+      >
         <TitleArea>
           <Icon iconColor="#EF8964">
             <use href={`${sprite}#figure`} />
@@ -81,7 +94,10 @@ const DayDashboard = ({ data }) => {
           <Title accent="false">Sports remaining</Title>
         </TitleArea>
         {data && Object.keys(data).length !== 0 && (
-          <Value>{sportsRemaining} min</Value>
+          <Value>
+            {sportsRemaining >= 0 ? <span></span> : <span>+</span>}
+            {Math.abs(sportsRemaining)} min
+          </Value>
         )}
       </DashboardItem>
     </DayDashboardArea>

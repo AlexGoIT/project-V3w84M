@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import {
   ProductDiv,
   Column,
@@ -21,32 +20,29 @@ import { deleteProduct } from 'redux/api/apiOperations';
 
 const ProductItem = ({
   id,
-  title,
-  category,
+  product,
   caloriesConsumed,
   weightConsumed,
   recommendedByGroupBlood,
-  date,
+  dateForDelete,
 }) => {
   const dispatch = useDispatch();
   
   const isRecommended = recommendedByGroupBlood; 
 
-  const handleClick = (productId, date) => {
-    const fDate = format(new Date(date), 'dd-MM-yyyy');
-
-    dispatch(deleteProduct({ productId, date: fDate }));
+  const handleClick = (id, dateForDelete) => {
+    dispatch(deleteProduct({ productId: id, date: dateForDelete }));
   };
 
   return (
     <ProductDiv key={id}>
       <Grid1>
         <Title>Title</Title>
-        <Column>{title}</Column>
+        <Column>{product.title}</Column>
       </Grid1>
       <Grid2>
         <Title>Category</Title>
-        <Column>{category}</Column>
+        <Column>{product.category}</Column>
       </Grid2>
       <Grid3>
         <Title>Calories</Title>
@@ -72,10 +68,9 @@ const ProductItem = ({
           )}
         </Column>
       </Grid5>
-      {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
         <Title></Title>
-        <ButtonEl onClick={() => handleClick(id, date)}>
+        <ButtonEl onClick={() => handleClick(id, dateForDelete)}>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>
@@ -92,7 +87,7 @@ ProductItem.propTypes = {
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
   recommendedByGroupBlood: PropTypes.bool,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.string,
 };
 
 export default ProductItem;

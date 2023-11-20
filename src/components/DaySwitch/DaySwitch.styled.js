@@ -9,7 +9,7 @@ export const DaySwitchArea = styled.div`
 
   @media screen and (min-width: 375px) {
     right: 0;
-    top: 42px;
+    top: 46px;
     gap: 20px;
   }
 
@@ -26,13 +26,6 @@ export const DaySwitchArea = styled.div`
 export const ArrowIcon = styled.svg`
   width: 16px;
   height: 16px;
-  // rgba(239,237,232,0.2) когда неактивная
-  fill: #efede8;
-
-  &:hover,
-  :focus {
-    fill: #ef8964;
-  }
 `;
 
 export const Button = styled.button`

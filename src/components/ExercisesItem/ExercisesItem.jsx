@@ -14,10 +14,38 @@ import {
   ExercisesCardInfoItem,
   ExercisesCardInfoValue,
 } from './ExercisesItem.styled';
+import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
+import AddExerciseForm from 'components/AddExerciseForm/AddExerciseForm';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { fetchExercises } from 'redux/api/apiOperations';
+import AddExerciseSuccess from 'components/AddExerciseSuccess/AddExerciseSuccess';
 
-// тут в пропах має бути { exercise }
+export const ExerciseCardItem = ({ exercise }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isExercAdded, setIsExercAdded] = useState(true);
+  const [totalCalories, setTotalCalories] = useState(0);
+  const [totalTime, setTotalTime] = useState(0);
 
-export const ExerciseCardItem = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchExercises());
+  }, [dispatch]);
+
+  const toggleModal = () => {
+    setIsModalOpen(prev => !prev);
+    setIsExercAdded(false);
+    setTotalCalories(0);
+    setTotalTime(0);
+  };
+
+  const onAddedSuccessfully = (time, calories) => {
+    setTotalCalories(calories);
+    setTotalTime(time);
+    setIsExercAdded(true);
+  };
+
   return (
     <ExercisesCard>
       <ExercisesCardStatusWorkout>
@@ -25,7 +53,7 @@ export const ExerciseCardItem = () => {
           <ExercisesCardWorkoutText>WORKOUT</ExercisesCardWorkoutText>
         </ExercisesCardWorkout>
         <ExercisesCardStatus>
-          <ExercisesCardAddBtn type="button">
+          <ExercisesCardAddBtn type="button" onClick={toggleModal}>
             Start
             <IconStart>
               <use href={`${sprite}#icon-arrow`} />
@@ -55,6 +83,27 @@ export const ExerciseCardItem = () => {
           Abs {/* {exercise.target || '300'} */}
         </ExercisesCardInfoValue>
       </ExercisesCardInfoList>
+
+      {exercise && isModalOpen && (
+        <BasicModalWindow isOpenModalToggle={toggleModal}>
+          {isExercAdded ? (
+            <AddExerciseSuccess
+              key={'exercSuccess'}
+              onClose={toggleModal}
+              totalTime={totalTime}
+              totalBurnedCalories={totalCalories}
+            />
+          ) : (
+            <AddExerciseForm
+              key={'addExerc'}
+              data={exercise}
+              onSuccess={onAddedSuccessfully}
+              dynamicTime={totalTime}
+              setDynamicTime={setTotalTime}
+            />
+          )}
+        </BasicModalWindow>
+      )}
     </ExercisesCard>
   );
 };
