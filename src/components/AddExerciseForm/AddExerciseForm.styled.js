@@ -33,7 +33,7 @@ export const ExersiceModalWrapperTwo = styled.div`
   @media screen and (min-width: 768px) {
     min-height: 454px;
     align-items: flex-end;
-    justify-items: space-between;
+    justify-content: space-between;
     gap: 0px;
   }
 `;

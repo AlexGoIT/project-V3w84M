@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
 export const ExercisesSubcategoryPictureLi = styled.li`
   max-width: 335px;
@@ -18,13 +17,24 @@ export const ExercisesSubcategoryPictureLi = styled.li`
   }
 `;
 
-export const PictureLink = styled(Link)`
-  width: 100%;
+export const CardWrapper = styled.div`
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.05);
+  }
 `;
 
-export const WrapperDiv = styled.div`
-  position: relative;
-  height: 206px;
+export const InfoWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
   background-color: rgba(4, 4, 4, 0.5);
   background: linear-gradient(
@@ -34,19 +44,11 @@ export const WrapperDiv = styled.div`
     ),
     url(${props => props.img}) center center no-repeat;
   background-size: cover;
-  border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 export const DescriptionUl = styled.ul`

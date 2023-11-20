@@ -1,42 +1,36 @@
 import PropTypes from 'prop-types';
 import {
   ExercisesSubcategoryPictureLi,
-  PictureLink,
-  WrapperDiv,
   DescriptionUl,
   MainText,
   Subtext,
+  InfoWrapper,
+  CardWrapper,
 } from './ExercisesSubcategoriesItem.styled';
 
-export default function ExercisesSubcategoriesItem() {
+export default function ExercisesSubcategoriesItem({ category, handleClick }) {
   return (
-    <ExercisesSubcategoryPictureLi>
-      <PictureLink to="#">
-        <WrapperDiv>
+    <ExercisesSubcategoryPictureLi onClick={() => handleClick(category.name)}>
+      <CardWrapper>
+        <InfoWrapper>
           <DescriptionUl>
             <li>
-              <MainText>
-                Shoulders
-                {/* {item.name} */}
-              </MainText>
+              <MainText>{category.name}</MainText>
             </li>
 
             <li>
-              <Subtext>
-                Body parts
-                {/* {item.filter} */}
-              </Subtext>
+              <Subtext>{category.filter}</Subtext>
             </li>
           </DescriptionUl>
-        </WrapperDiv>
-      </PictureLink>
+        </InfoWrapper>
+        <img src={category.imgURL} alt={category.name} />
+      </CardWrapper>
     </ExercisesSubcategoryPictureLi>
   );
 }
 
 ExercisesSubcategoriesItem.propTypes = {
-  item: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+  category: PropTypes.shape({
     name: PropTypes.string.isRequired,
     imgURL: PropTypes.string.isRequired,
     filter: PropTypes.string.isRequired,

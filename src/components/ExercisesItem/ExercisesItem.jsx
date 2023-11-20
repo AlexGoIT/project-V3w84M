@@ -1,4 +1,5 @@
 import sprite from 'assets/images/sprite.svg';
+import PropTypes from 'prop-types';
 
 import {
   ExercisesCard,
@@ -16,12 +17,10 @@ import {
 } from './ExercisesItem.styled';
 import BasicModalWindow from 'components/BasicModalWindow/BasicModalWindow';
 import AddExerciseForm from 'components/AddExerciseForm/AddExerciseForm';
-import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { fetchExercises } from 'redux/api/apiOperations';
+import { useState } from 'react';
 import AddExerciseSuccess from 'components/AddExerciseSuccess/AddExerciseSuccess';
 
-export const ExerciseCardItem = ({
+const ExerciseCardItem = ({
   id,
   name,
   burnedCalories,
@@ -35,12 +34,6 @@ export const ExerciseCardItem = ({
   const [isExercAdded, setIsExercAdded] = useState(true);
   const [totalCalories, setTotalCalories] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchExercises());
-  }, [dispatch]);
 
   const toggleModal = () => {
     setIsModalOpen(prev => !prev);
@@ -81,26 +74,17 @@ export const ExerciseCardItem = ({
       <ExercisesCardInfoList>
         <ExercisesCardInfoItem>
           Burned calories:
-          <ExercisesCardInfoValue>
-            {/* 312 {burnedCalories || '999'} */}
-            {burnedCalories}
-          </ExercisesCardInfoValue>
+          <ExercisesCardInfoValue>{burnedCalories}</ExercisesCardInfoValue>
         </ExercisesCardInfoItem>
 
         <ExercisesCardInfoItem>
           Body part:
-          <ExercisesCardInfoValue>
-            {/* Waist {bodyPart || '999'} */}
-            {bodyPart}
-          </ExercisesCardInfoValue>
+          <ExercisesCardInfoValue>{bodyPart}</ExercisesCardInfoValue>
         </ExercisesCardInfoItem>
 
         <ExercisesCardInfoItem>
           Target:
-          <ExercisesCardInfoValue>
-            {/* Abs {target || '300'} */}
-            {target}
-          </ExercisesCardInfoValue>
+          <ExercisesCardInfoValue>{target}</ExercisesCardInfoValue>
         </ExercisesCardInfoItem>
       </ExercisesCardInfoList>
 
@@ -134,3 +118,16 @@ export const ExerciseCardItem = ({
     </ExercisesCard>
   );
 };
+
+ExerciseCardItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  burnedCalories: PropTypes.number.isRequired,
+  bodyPart: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
+  equipment: PropTypes.string.isRequired,
+  gifUrl: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+};
+
+export default ExerciseCardItem;
