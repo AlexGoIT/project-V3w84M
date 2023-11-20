@@ -2,6 +2,7 @@ import Container from 'components/Container';
 import TitlePage from 'components/TitlePage';
 import { ExercisesCategories } from 'components/ExercisesCategories/ExercisesCategories';
 import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+import { ExercisesSubcategoriesList } from 'components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 
 import {
   ExercisesWrapper,
@@ -25,6 +26,8 @@ const Exercises = () => {
             <TitlePage title="Exercises" />
             <ExercisesCategories />
           </WrapperTitleCategoriesDiv>
+
+          <ExercisesSubcategoriesList />
 
           <ExerciseCardItem></ExerciseCardItem>
           <ExerciseCardItem></ExerciseCardItem>
