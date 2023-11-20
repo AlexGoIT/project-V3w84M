@@ -1,41 +1,56 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import { FormattedTitle, PlayIcon, TimerBtn, TimerSub, TimerText, TimerTitle, TimerWrapper} from './Timer.styled';
+import {
+  PlayIcon,
+  TimerBtn,
+  TimerSub,
+  TimerText,
+  TimerTitle,
+  TimerWrapper,
+} from './Timer.styled';
 
 import symbolDefs from '../../assets/images/sprite.svg';
 import { useState } from 'react';
 
-const Timer = ({ data, setDinamicBurnCal, dinamicBurnCal, setDinamicTime }) => {
+const Timer = ({ data, setDynamicBurnCal, dynamicBurnCal, setDynamicTime }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
   };
+
   const children = ({ remainingTime }) => {
     const duration = data.time * 60;
 
-    setDinamicBurnCal(() => {
+    setDynamicBurnCal(() => {
       const time = (duration - remainingTime) / duration;
 
-      const burnCal = time * data.burnedCalories;
+      const burnCal = (time * data.burnedCalories) / data.time;
       return Math.round(burnCal);
     });
-    setDinamicTime(() => duration - remainingTime);
+
+    setDynamicTime(() => Math.round((duration - remainingTime) / 60));
 
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
 
-    return `${minutes}:${seconds}`;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+      2,
+      '0'
+    )}`;
   };
+
   return (
     <TimerWrapper>
       <TimerTitle>Time</TimerTitle>
       <CountdownCircleTimer
-        strokeWidth={2}
+        strokeWidth={4}
         size={124}
         isPlaying={isPlaying}
         duration={data.time * 60}
         colors={'#E6533C'}
-        remainingTime={data.time * 60}       
+        trailColor="rgba(239, 237, 232, 0.10)"
+        remainingTime={data.time * 60}
+        strokeLinecap="round"
       >
         {({ remainingTime }) => (
           <div style={{ color: '#fff' }} role="timer" aria-live="assertive">
@@ -43,20 +58,15 @@ const Timer = ({ data, setDinamicBurnCal, dinamicBurnCal, setDinamicTime }) => {
           </div>
         )}
       </CountdownCircleTimer>
-      <FormattedTitle>{data.time} minutes</FormattedTitle>
       <TimerBtn onClick={handlePlay}>
         <PlayIcon>
           <use
-            href={
-              isPlaying
-                ? `${symbolDefs}#pause`
-                : `${symbolDefs}#play`
-            }
+            href={isPlaying ? `${symbolDefs}#pause` : `${symbolDefs}#play`}
           ></use>
         </PlayIcon>
       </TimerBtn>
       <TimerText>
-        Burned calories:<TimerSub>{dinamicBurnCal}</TimerSub>
+        Burned calories:<TimerSub>{dynamicBurnCal}</TimerSub>
       </TimerText>
     </TimerWrapper>
   );

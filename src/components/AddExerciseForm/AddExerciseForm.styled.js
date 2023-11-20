@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import exerciseImage from '../../assets/images/exercise_1x.png';
 
 export const ExersiceModalContainer = styled.div`
   display: flex;
@@ -15,26 +14,27 @@ export const ExersiceModalContainer = styled.div`
 `;
 
 export const ExersiceModalWrapper = styled.div`
-   display: flex;
-   align-items: center;
-   gap: 14px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 
   @media screen and (min-width: 768px) {
-   flex-direction: column;
-   gap: 32px;
+    justify-content: center;
   }
 `;
 
 export const ExersiceModalWrapperTwo = styled.div`
   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 24px;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 24px;
 
   @media screen and (min-width: 768px) {
-   align-items: flex-end;
-   gap: 254px;
-
+    min-height: 454px;
+    align-items: flex-end;
+    justify-items: space-between;
+    gap: 0px;
   }
 `;
 
@@ -48,33 +48,40 @@ export const ExersiceModalTimer = styled.div`
     align-items: start;
     width: 125px;
     height: 125px;
-    margin-left: 105px;
     margin-right: none;
   }
 `;
 
-export const ExersiceModalImg = styled.div`
-  background: url(${exerciseImage}) no-repeat center center;
-  background-size: cover;
-  display: inline-block;
+export const ExersiceModalImg = styled.img`
   width: 270px;
   height: 226px;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.20);
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  background: linear-gradient(
+      0deg,
+      rgba(4, 4, 4, 0.2) 0%,
+      rgba(4, 4, 4, 0.2) 100%
+    ),
+    lightgray 0px -17.5px / 100% 119.469% no-repeat;
 `;
 
 export const ExersiceModalWindowBtn = styled.button`
   width: 153px;
-  color: #EFEDE8;
+  color: #efede8;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.13;
-  padding: 12px 0;
+  padding: 12px;
+  border: none;
   border-radius: 12px;
-  background: #E6533C;  
-  border-color: #E6533C;  
+  background: #e6533c;
 
-  &:hover {
-    background: #EF8964;   
+  @media screen and (min-width: 768px) {
+    line-height: 1.5;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: #ef8964;
   }
 `;

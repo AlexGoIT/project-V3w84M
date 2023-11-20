@@ -4,19 +4,25 @@ export const BasicWindow = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(04, 04, 04, 0.4);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 200;
+
+  @media screen and (min-width: 768px) {
+    position: fixed;
+  }
 `;
 
 export const Modal = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
-  position: relative;
+  position: absolute;
+  top: 5dvh;
   ${({ children }) => {
     if (children.some(child => child.key === 'prodSuccess')) {
       return 'padding: 48px 89px;   @media screen and (min-width: 768px) {padding: 64px 136px;}';
@@ -33,8 +39,11 @@ export const Modal = styled.div`
   }};
 
   @media screen and (min-width: 768px) {
+    position: relative;
+    top: 0;
   }
 `;
+
 export const ButtonClouse = styled.button`
   width: 22px;
   height: 22px;

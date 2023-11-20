@@ -10,27 +10,39 @@ import {
   Grid5,
   Grid6,
   Title,
+  Indicator,
+  RecommendText
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from 'redux/api/apiOperations';
 
 const ProductItem = ({
   id,
-  title,
-  category,
+  product,
   caloriesConsumed,
   weightConsumed,
   recommendedByGroupBlood,
+  dateForDelete,
 }) => {
+  const dispatch = useDispatch();
+  
+  const isRecommended = recommendedByGroupBlood; 
+
+  const handleClick = (id, dateForDelete) => {
+    dispatch(deleteProduct({ productId: id, date: dateForDelete }));
+  };
+
   return (
     <ProductDiv key={id}>
       <Grid1>
         <Title>Title</Title>
-        <Column>{title}</Column>
+        <Column>{product.title}</Column>
       </Grid1>
       <Grid2>
         <Title>Category</Title>
-        <Column>{category}</Column>
+        <Column>{product.category}</Column>
       </Grid2>
       <Grid3>
         <Title>Calories</Title>
@@ -42,12 +54,23 @@ const ProductItem = ({
       </Grid4>
       <Grid5>
         <Title>Recommend</Title>
-        <Column>Yes</Column>
+        <Column>
+          {isRecommended ? (
+            <>
+              <Indicator color="#419B09" />
+              <RecommendText>Yes</RecommendText>
+            </>
+          ) : (
+            <>
+              <Indicator color="#E9101D" />
+              <RecommendText>No</RecommendText>
+            </>
+          )}
+        </Column>
       </Grid5>
-      {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
         <Title></Title>
-        <ButtonEl>
+        <ButtonEl onClick={() => handleClick(id, dateForDelete)}>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>
@@ -64,6 +87,7 @@ ProductItem.propTypes = {
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
   recommendedByGroupBlood: PropTypes.bool,
+  date: PropTypes.string,
 };
 
 export default ProductItem;

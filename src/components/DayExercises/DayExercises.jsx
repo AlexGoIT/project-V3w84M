@@ -27,7 +27,7 @@ import { Notify } from 'notiflix';
 import ExerciseItem from './ExerciseItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayExercises = ({ doneExercises }) => {
+const DayExercises = ({ doneExercises, dateForDelete }) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
@@ -77,28 +77,16 @@ const DayExercises = ({ doneExercises }) => {
               <Grid7 />
             </TableHeader>
             <List>
-              {doneExercises.map(
-                ({
-                  _id,
-                  bodyPart,
-                  equipment,
-                  name,
-                  target,
-                  burnedCalories,
-                  time,
-                }) => (
-                  <ExerciseItem
-                    key={_id}
-                    id={_id}
-                    bodyPart={bodyPart}
-                    equipment={equipment}
-                    name={name}
-                    target={target}
-                    burnedCalories={burnedCalories}
-                    time={time}
-                  />
-                )
-              )}
+              {doneExercises.map(({ _id, exercise, burnedCalories, time }) => (
+                <ExerciseItem
+                  key={_id}
+                  id={_id}
+                  exercise={exercise}
+                  burnedCalories={burnedCalories}
+                  time={time}
+                  dateForDelete={dateForDelete}
+                />
+              ))}
             </List>
           </>
         ) : (
