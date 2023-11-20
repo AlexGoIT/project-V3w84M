@@ -93,7 +93,11 @@ export const App = () => {
                 <ExercisesPage />
               </PrivateRoute>
             }
-          />
+          >
+            <Route path="bodyparts" element={<ExercisesPage />} />
+            <Route path="muscles" element={<ExercisesPage />} />
+            <Route path="equipment" element={<ExercisesPage />} />
+          </Route>
         </Route>
         <Route path="404" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to="/404" />} />
