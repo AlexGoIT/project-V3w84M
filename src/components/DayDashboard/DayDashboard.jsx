@@ -17,6 +17,7 @@ const DayDashboard = ({ data }) => {
     caloriesRemaining,
     sportsRemaining,
   } = data;
+  console.log(userBMR);
 
   return (
     <DayDashboardArea>
@@ -27,7 +28,11 @@ const DayDashboard = ({ data }) => {
           </Icon>
           <Title accent="true">Daily calorie intake</Title>
         </TitleArea>
-        {data && Object.keys(data).length !== 0 && <Value>{userBMR}</Value>}
+        {(data && Object.keys(data).length) !== 0 && userBMR ? (
+          <Value>{userBMR}</Value>
+        ) : (
+          <Value>0</Value>
+        )}
       </DashboardItem>
       <DashboardItem accent="true">
         <TitleArea>
@@ -64,7 +69,7 @@ const DayDashboard = ({ data }) => {
       </DashboardItem>
       <DashboardItem
         accent="false"
-        borderColor={caloriesRemaining >= 0 ? 'default' : 'red'}
+        borderColor={userBMR && caloriesRemaining < 0 ? 'red' : 'default'}
       >
         <TitleArea>
           <Icon iconColor="#EF8964">
@@ -72,8 +77,10 @@ const DayDashboard = ({ data }) => {
           </Icon>
           <Title accent="false">Calories remaining</Title>
         </TitleArea>
-        {data && Object.keys(data).length !== 0 && (
+        {data && Object.keys(data).length !== 0 && userBMR ? (
           <Value>{caloriesRemaining}</Value>
+        ) : (
+          <Value>0</Value>
         )}
       </DashboardItem>
       <DashboardItem
