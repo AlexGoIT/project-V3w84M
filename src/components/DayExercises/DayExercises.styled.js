@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-const setHeight = props => {
-  switch (props.dimention) {
+const setAreaHeight = props => {
+  switch (props.dimentionArea) {
     case 'true':
       return '1064px';
     case 'false':
@@ -21,11 +21,13 @@ export const DayExercisesArea = styled.div`
   padding: 16px;
 
   @media screen and (min-width: 375px) {
-    max-height: ${setHeight};
+    height: ${setAreaHeight};
+    padding-right: 8px;
   }
 
   @media screen and (min-width: 768px) {
     height: 234px;
+    padding-right: 16px;
   }
 `;
 
@@ -153,12 +155,23 @@ export const ShorterTitle = styled.div`
   text-overflow: ellipsis;
 `;
 
+const setListHeight = props => {
+  switch (props.dimentionList) {
+    case 'true':
+      return '900px';
+    case 'false':
+      return '335px';
+    default:
+      return '300px';
+  }
+};
+
 export const List = styled.div`
   @media screen and (min-width: 375px) {
     display: flex;
     flex-direction: column;
-    gap: 38px;
-    height: 900px;
+    gap: 40px;
+    height: ${setListHeight};
     overflow-y: scroll;
     overflow-x: hidden;
 
