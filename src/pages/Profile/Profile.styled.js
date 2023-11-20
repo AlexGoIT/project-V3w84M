@@ -13,6 +13,8 @@ export const ProfilerWrapper = styled.div`
 
     @media screen and (min-width: 1440px) {
       padding-bottom: 44px;
+      padding-right: 64px;
+      padding-left: 64px;
     }
   }
 `;
