@@ -9,7 +9,7 @@ export const DaySwitchArea = styled.div`
 
   @media screen and (min-width: 375px) {
     right: 0;
-    top: 42px;
+    top: 46px;
     gap: 20px;
   }
 

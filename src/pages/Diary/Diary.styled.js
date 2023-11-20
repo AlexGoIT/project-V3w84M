@@ -2,16 +2,16 @@ import styled from '@emotion/styled';
 
 export const DiaryWrapper = styled.div`
   padding-top: 62px;
-  padding-bottom: 80px;  
+  padding-bottom: 80px;
   width: 100%;
 
-    @media screen and (min-width: 768px) {   
-      padding-bottom: 64px;  
+  @media screen and (min-width: 768px) {
+    padding-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
-      padding-top: 85px;
-      padding-bottom: 68px; 
+    padding-top: 85px;
+    padding-bottom: 68px;
   }
 `;
 
@@ -28,15 +28,20 @@ export const ForPosition = styled.div`
 `;
 
 export const DiaryContainer = styled.div`
-  display: flex;
-
   @media screen and (min-width: 375px) {
-    flex-direction: column;
-    gap: 40px;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'grid2'
+      'grid1';
     margin-top: 40px;
   }
 
   @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
     gap: 64px;
     margin-top: 32px;
   }
@@ -48,6 +53,7 @@ export const DiaryContainer = styled.div`
 `;
 
 export const Left = styled.div`
+  grid-area: grid1;
   display: flex;
   flex-direction: column;
 
@@ -67,6 +73,7 @@ export const Left = styled.div`
 `;
 
 export const Right = styled.div`
+  grid-area: grid2;
   @media screen and (min-width: 375px) {
     width: 335px;
   }
