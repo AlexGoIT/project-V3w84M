@@ -26,6 +26,9 @@ export const ExercisesWrapper = styled.div`
 export const ContentDiv = styled.div`
   position: relative;
   margin-inline: auto;
+  @media screen and (min-width: 1440px) {
+    padding-inline: 63px;
+  }
 `;
 
 export const WrapperTitleCategoriesDiv = styled.div`
@@ -45,6 +48,32 @@ export const WrapperTitleCategoriesDiv = styled.div`
   @media screen and (min-width: 1440px) {
     margin-bottom: 64px;
     margin-bottom: ${props => props.margin && '32px'};
-    padding-inline: 64px;
+  }
+`;
+
+export const BackButton = styled.button`
+  position: absolute;
+  top: 11px;
+  padding: 0px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: rgba(239, 237, 232, 0.4);
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  background: transparent;
+  border: none;
+
+  @media screen and (min-width: 768px) {
+    top: 32px;
+    align-items: center;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+
+  & svg {
+    transform: scale(-1, 1);
+    width: 16px;
+    height: 16px;
   }
 `;

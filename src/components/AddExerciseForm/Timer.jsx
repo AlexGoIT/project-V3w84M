@@ -7,9 +7,10 @@ import {
   TimerTitle,
   TimerWrapper,
 } from './Timer.styled';
+import PropTypes from 'prop-types';
 
 import symbolDefs from '../../assets/images/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Timer = ({
   time,
@@ -20,25 +21,47 @@ const Timer = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  useEffect(() => {
+    const updateDynamicValues = ({ remainingTime }) => {
+      const duration = time * 60;
+
+      setDynamicBurnCal(() => {
+        const timeN = (duration - remainingTime) / duration;
+        const burnCal = (timeN * burnedCalories) / time;
+        return Math.round(burnCal);
+      });
+
+      setDynamicTime(() => Math.round((duration - remainingTime) / 60));
+    };
+
+    const interval = setInterval(() => {
+      // Отримати залишок часу ще раз і викликати функцію оновлення значень
+      updateDynamicValues({ remainingTime: remainingTimeRef.current });
+    }, 1000);
+
+    // При зміні isPlaying встановити або очистити інтервал
+    if (isPlaying) {
+      const remainingTime = time * 60;
+      updateDynamicValues({ remainingTime });
+      remainingTimeRef.current = remainingTime;
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [isPlaying, time, burnedCalories, setDynamicBurnCal, setDynamicTime]);
+
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
   };
 
+  const remainingTimeRef = useRef(time * 60);
+
   const children = ({ remainingTime }) => {
-    const duration = time * 60;
-
-    setDynamicBurnCal(() => {
-      const timeN = (duration - remainingTime) / duration;
-
-      const burnCal = (timeN * burnedCalories) / time;
-      return Math.round(burnCal);
-    });
-
-    setDynamicTime(() => Math.round((duration - remainingTime) / 60));
+    remainingTimeRef.current = remainingTime;
 
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
-
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
       2,
       '0'
@@ -76,6 +99,14 @@ const Timer = ({
       </TimerText>
     </TimerWrapper>
   );
+};
+
+Timer.propTypes = {
+  time: PropTypes.number.isRequired,
+  burnedCalories: PropTypes.number.isRequired,
+  setDynamicBurnCal: PropTypes.func.isRequired,
+  dynamicBurnCal: PropTypes.number.isRequired,
+  setDynamicTime: PropTypes.func.isRequired,
 };
 
 export default Timer;

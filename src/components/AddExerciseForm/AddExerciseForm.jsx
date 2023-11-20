@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 import { Notify } from 'notiflix';
+import PropTypes from 'prop-types';
 import ExersiceModalWindowList from './ExersiceModalWindowList';
 import Timer from './Timer';
 
@@ -112,6 +113,20 @@ export const AddExerciseForm = ({
       </ExersiceModalWrapperTwo>
     </ExersiceModalContainer>
   );
+};
+
+AddExerciseForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  burnedCalories: PropTypes.number.isRequired,
+  bodyPart: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
+  equipment: PropTypes.string.isRequired,
+  gifUrl: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+  onSuccess: PropTypes.func.isRequired,
+  dynamicTime: PropTypes.number.isRequired,
+  setDynamicTime: PropTypes.func.isRequired,
 };
 
 export default AddExerciseForm;
