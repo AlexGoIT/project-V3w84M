@@ -86,6 +86,7 @@ const DayExercises = ({ doneExercises }) => {
                   target,
                   burnedCalories,
                   time,
+                  createAt,
                 }) => (
                   <ExerciseItem
                     key={_id}
@@ -96,6 +97,7 @@ const DayExercises = ({ doneExercises }) => {
                     target={target}
                     burnedCalories={burnedCalories}
                     time={time}
+                    date={createAt}
                   />
                 )
               )}

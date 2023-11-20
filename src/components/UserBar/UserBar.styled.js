@@ -11,11 +11,7 @@ export const UserBarBlock = styled.div`
   gap: 10px;
   @media screen and (min-width: 1440px) {
     margin-right: 16px;
-    margin-left: auto;
-  }
-  @media screen and (min-width: 1440px) {
-    /* margin-left: 32px; */
-    margin-left: auto;
+    margin-left: 32px;
   }
 `;
 export const UserBarLink = styled(Link)``;

@@ -18,11 +18,16 @@ export const SloganText = styled.h1`
   font-size: 38px;
   line-height: 1.05;
   letter-spacing: 0.38px;
+  margin-top: 90px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     font-size: 70px;
     line-height: 1.11;
     letter-spacing: 0.7px;
+      margin-top: 0;
+  
+
   }
 `;
 

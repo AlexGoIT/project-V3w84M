@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import {
   ProductDiv,
   Column,
@@ -10,9 +11,13 @@ import {
   Grid5,
   Grid6,
   Title,
+  Indicator,
+  RecommendText
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { deleteProduct } from 'redux/api/apiOperations';
 
 const ProductItem = ({
   id,
@@ -21,7 +26,18 @@ const ProductItem = ({
   caloriesConsumed,
   weightConsumed,
   recommendedByGroupBlood,
+  date,
 }) => {
+  const dispatch = useDispatch();
+  
+  const isRecommended = recommendedByGroupBlood; 
+
+  const handleClick = (productId, date) => {
+    const fDate = format(new Date(date), 'dd-MM-yyyy');
+
+    dispatch(deleteProduct({ productId, date: fDate }));
+  };
+
   return (
     <ProductDiv key={id}>
       <Grid1>
@@ -42,12 +58,24 @@ const ProductItem = ({
       </Grid4>
       <Grid5>
         <Title>Recommend</Title>
-        <Column>Yes</Column>
+        <Column>
+          {isRecommended ? (
+            <>
+              <Indicator color="#419B09" />
+              <RecommendText>Yes</RecommendText>
+            </>
+          ) : (
+            <>
+              <Indicator color="#E9101D" />
+              <RecommendText>No</RecommendText>
+            </>
+          )}
+        </Column>
       </Grid5>
       {/* <ButtonEl onClick={() => deleteThisExercise(id)}>Delete</ButtonEl> */}
       <Grid6>
         <Title></Title>
-        <ButtonEl>
+        <ButtonEl onClick={() => handleClick(id, date)}>
           <DeleteIcon iconColor="#EF8964">
             <use href={`${sprite}#trash`} />
           </DeleteIcon>
@@ -64,6 +92,7 @@ ProductItem.propTypes = {
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
   recommendedByGroupBlood: PropTypes.bool,
+  date: PropTypes.string.isRequired,
 };
 
 export default ProductItem;

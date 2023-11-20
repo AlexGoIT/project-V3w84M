@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const ProductDiv = styled.div`
   @media screen and (min-width: 375px) {
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     color: #efede8;
     display: grid;
@@ -17,6 +17,7 @@ export const ProductDiv = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    font-size: 16px;
     grid-gap: 8px;
     grid-template-columns: 204px 128px 90px 90px 80px 20px;
     grid-template-rows: 40px;
@@ -96,3 +97,15 @@ export const DeleteIcon = styled.svg(
     stroke: iconColor,
   })
 );
+
+export const Indicator = styled.span`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+  background: ${props => props.color};
+`;
+
+export const RecommendText = styled.span`
+  margin-left: 8px;
+`;

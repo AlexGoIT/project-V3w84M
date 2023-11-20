@@ -151,10 +151,10 @@ export const deleteProduct = createAsyncThunk(
   'api/deleteProduct',
   async (body, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/api/diary/products`, body);
+      const { data } = await axios.delete(`/api/diary/products`, {
+        data: body,
+      });
       // Повертає оновленні данні щоденника
-
-      console.log('Delete product from diary =>', data);
 
       return data;
     } catch (err) {
@@ -174,10 +174,10 @@ export const deleteExercise = createAsyncThunk(
   'api/deleteExercise',
   async (body, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/api/diary/exercises`, body);
+      const { data } = await axios.delete(`/api/diary/exercises`, {
+        data: body,
+      });
       // Повертає оновленні данні щоденника
-
-      console.log('Delete exercise from diary =>', data);
 
       return data;
     } catch (err) {
