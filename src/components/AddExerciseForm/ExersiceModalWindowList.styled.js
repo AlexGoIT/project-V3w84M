@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const ExersiceModalList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 8px;
   align-items: center;
   width: 302px;
@@ -14,11 +15,10 @@ export const ExersiceModalList = styled.ul`
 `;
 
 export const ExersiceModalLink = styled.li`
+  height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 18px;
+  padding: 12px 18px;
   width: 147px;
   justify-content: center;
 
@@ -28,10 +28,7 @@ export const ExersiceModalLink = styled.li`
   background: rgba(239, 237, 232, 0.05);
 
   @media screen and (min-width: 768px) {
-    margin-left: 0;
-    margin-top: 0px;
     width: 168px;
-
     align-items: flex-start;
   }
 `;
@@ -39,13 +36,13 @@ export const ExersiceModalLink = styled.li`
 export const ExersiceModalLinkSub = styled.p`
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
-  font-weight: 400;
   line-height: 18px;
 `;
 
 export const ExersiceModalLinkTitle = styled.p`
-  color: #EFEDE8;
+  color: #efede8;
   font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: calc(24 / 16);
+  text-transform: capitalize;
 `;

@@ -1,27 +1,28 @@
-import { ExersiceModalLink, ExersiceModalLinkSub, ExersiceModalLinkTitle, ExersiceModalList } from "./ExersiceModalWindowList.styled";
+import {
+  ExersiceModalLink,
+  ExersiceModalLinkSub,
+  ExersiceModalLinkTitle,
+  ExersiceModalList,
+} from './ExersiceModalWindowList.styled';
 
-const ExersiceModalWindowList = ({ name, bodypart, target, equipment}) => {
-  const firstLetterToUppercase = (title) => {
-    return title.replace(title[0], title[0].toUpperCase());
-  };
-  
+const ExersiceModalWindowList = ({ name, bodyPart, target, equipment }) => {
   return (
     <ExersiceModalList>
       <ExersiceModalLink>
-        <ExersiceModalLinkSub >Name</ExersiceModalLinkSub>
-        <ExersiceModalLinkTitle >{firstLetterToUppercase(name)}</ExersiceModalLinkTitle>
+        <ExersiceModalLinkSub>Name</ExersiceModalLinkSub>
+        <ExersiceModalLinkTitle>{name}</ExersiceModalLinkTitle>
       </ExersiceModalLink>
-      <ExersiceModalLink >
-        <ExersiceModalLinkSub >Target</ExersiceModalLinkSub>
-        <ExersiceModalLinkTitle >{firstLetterToUppercase(target)}</ExersiceModalLinkTitle>
+      <ExersiceModalLink>
+        <ExersiceModalLinkSub>Target</ExersiceModalLinkSub>
+        <ExersiceModalLinkTitle>{target}</ExersiceModalLinkTitle>
       </ExersiceModalLink>
-      <ExersiceModalLink >
-        <ExersiceModalLinkSub >Body Part</ExersiceModalLinkSub>
-        <ExersiceModalLinkTitle >{firstLetterToUppercase(bodypart)}</ExersiceModalLinkTitle>
+      <ExersiceModalLink>
+        <ExersiceModalLinkSub>Body Part</ExersiceModalLinkSub>
+        <ExersiceModalLinkTitle>{bodyPart}</ExersiceModalLinkTitle>
       </ExersiceModalLink>
-      <ExersiceModalLink >
-        <ExersiceModalLinkSub >Equipment</ExersiceModalLinkSub>
-        <ExersiceModalLinkTitle>{firstLetterToUppercase(equipment)}</ExersiceModalLinkTitle>
+      <ExersiceModalLink>
+        <ExersiceModalLinkSub>Equipment</ExersiceModalLinkSub>
+        <ExersiceModalLinkTitle>{equipment}</ExersiceModalLinkTitle>
       </ExersiceModalLink>
     </ExersiceModalList>
   );
