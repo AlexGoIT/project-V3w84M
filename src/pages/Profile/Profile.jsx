@@ -5,18 +5,18 @@ import Container from 'components/Container';
 import TitlePage from 'components/TitlePage';
 
 const Profile = () => {
-  return (    
-    <ProfilerWrapper>
-      <Container>
-      <TitlePage title="ProfileSettings" />
-      <WrapperContent>
-        <UserCard />
-        <WrapperForm>
-          <UserForm />
-        </WrapperForm>
-      </WrapperContent>
+  return (
+    <Container>
+      <ProfilerWrapper>
+        <TitlePage title="ProfileSettings" />
+        <WrapperContent>
+          <UserCard />
+          <WrapperForm>
+            <UserForm />
+          </WrapperForm>
+        </WrapperContent>
+      </ProfilerWrapper>
     </Container>
-    </ProfilerWrapper>
   );
 };
 export default Profile;

@@ -2,18 +2,17 @@ import styled from '@emotion/styled';
 import { products_1x } from 'utils/background';
 import { products_2x } from 'utils/background';
 
-
-export const ProductsWrapper = styled.div`  
+export const ProductsWrapper = styled.div`
   padding-top: 62px;
-  padding-bottom: 80px;  
+  padding-bottom: 80px;
   width: 100%;
-    @media screen and (min-width: 768px) {   
-      padding-bottom: 48px;  
+  @media screen and (min-width: 768px) {
+    padding-bottom: 48px;
   }
 
-  @media screen and (min-width: 1440px) {      
+  @media screen and (min-width: 1440px) {
     padding-top: 85px;
-    padding-bottom: 81px;   
+    padding-bottom: 81px;
     background: image-set(url(${products_1x}) 1x, url(${products_2x}) 2x);
     background-repeat: no-repeat;
     background-position: top 85px right;
@@ -38,22 +37,3 @@ export const Wrapper = styled.div`
     padding-inline: 64px;
   }
 `;
-
-// export const ProductsTitle = styled.h1`
-//   color: rgba(239, 237, 232, 1);
-//   @media screen and (min-width: 375px) {
-//     font-size: 24px;
-//     font-weight: 700;
-//     line-height: 28px;
-//     /* margin-top: 40px;
-//     margin-bottom: 40px; */
-//     position: static;
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//     font-size: 32px;
-//     line-height: 44px;
-//     position: absolute;
-//     margin-bottom: 32px;
-//   }
-// `;
