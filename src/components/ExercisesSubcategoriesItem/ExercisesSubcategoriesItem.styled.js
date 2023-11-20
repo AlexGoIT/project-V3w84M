@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const GalleryExercisesSubcategoryPicture = styled.li`
+export const ExercisesSubcategoryPictureLi = styled.li`
   max-width: 335px;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ export const WrapperDiv = styled.div`
   }
 `;
 
-export const Description = styled.ul`
+export const DescriptionUl = styled.ul`
   color: white;
   text-align: center;
   z-index: 2;

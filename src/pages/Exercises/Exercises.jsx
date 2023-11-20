@@ -1,7 +1,9 @@
 import Container from 'components/Container';
 import TitlePage from 'components/TitlePage';
 import { ExercisesCategories } from 'components/ExercisesCategories/ExercisesCategories';
-// import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+import { ExerciseCardItem } from 'components/ExercisesItem/ExercisesItem';
+import { ExercisesSubcategoriesList } from 'components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+
 
 import {
   ExercisesWrapper,
@@ -51,6 +53,8 @@ const Exercises = () => {
             <TitlePage title="Exercises" />
             <ExercisesCategories />
           </WrapperTitleCategoriesDiv>
+
+          <ExercisesSubcategoriesList />
           <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
             {filterResult &&
               filterResult.map(el => {
@@ -67,10 +71,9 @@ const Exercises = () => {
                 );
               })}
           </ul>
-          {/* <ExerciseCardItem></ExerciseCardItem>
           <ExerciseCardItem></ExerciseCardItem>
-          <ExerciseCardItem></ExerciseCardItem> */}
-          {/* <Outlet /> */}
+          <ExerciseCardItem></ExerciseCardItem>
+          <ExerciseCardItem></ExerciseCardItem>
         </ContentDiv>
       </Container>
     </ExercisesWrapper>
