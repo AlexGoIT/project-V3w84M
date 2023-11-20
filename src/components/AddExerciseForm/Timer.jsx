@@ -11,7 +11,13 @@ import {
 import symbolDefs from '../../assets/images/sprite.svg';
 import { useState } from 'react';
 
-const Timer = ({ data, setDynamicBurnCal, dynamicBurnCal, setDynamicTime }) => {
+const Timer = ({
+  time,
+  burnedCalories,
+  setDynamicBurnCal,
+  dynamicBurnCal,
+  setDynamicTime,
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
@@ -19,12 +25,12 @@ const Timer = ({ data, setDynamicBurnCal, dynamicBurnCal, setDynamicTime }) => {
   };
 
   const children = ({ remainingTime }) => {
-    const duration = data.time * 60;
+    const duration = time * 60;
 
     setDynamicBurnCal(() => {
-      const time = (duration - remainingTime) / duration;
+      const timeN = (duration - remainingTime) / duration;
 
-      const burnCal = (time * data.burnedCalories) / data.time;
+      const burnCal = (timeN * burnedCalories) / time;
       return Math.round(burnCal);
     });
 
@@ -46,10 +52,10 @@ const Timer = ({ data, setDynamicBurnCal, dynamicBurnCal, setDynamicTime }) => {
         strokeWidth={4}
         size={124}
         isPlaying={isPlaying}
-        duration={data.time * 60}
+        duration={time * 60}
         colors={'#E6533C'}
         trailColor="rgba(239, 237, 232, 0.10)"
-        remainingTime={data.time * 60}
+        remainingTime={time * 60}
         strokeLinecap="round"
       >
         {({ remainingTime }) => (

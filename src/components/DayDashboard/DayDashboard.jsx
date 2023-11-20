@@ -17,7 +17,6 @@ const DayDashboard = ({ data }) => {
     caloriesRemaining,
     sportsRemaining,
   } = data;
-  console.log(userBMR);
 
   return (
     <DayDashboardArea>
