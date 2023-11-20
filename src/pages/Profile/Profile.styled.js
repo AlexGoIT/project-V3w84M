@@ -1,30 +1,28 @@
 import styled from '@emotion/styled';
 
-
 export const ProfilerWrapper = styled.div`
-  @media screen and (min-width: 1440px) {    
-    padding-top: 62px;
-    padding-bottom: 66px;  
+  @media screen and (min-width: 375px) {
+    padding-top: 40px;
+    padding-bottom: 66px;
     width: 100%;
 
-    @media screen and (min-width: 768px) {   
-      padding-bottom: 54px;  
-  }
+    @media screen and (min-width: 768px) {
+      padding-top: 72px;
+      padding-bottom: 54px;
+    }
 
-  @media screen and (min-width: 1440px) {
-      padding-top: 85px;
-      padding-bottom: 44px; 
+    @media screen and (min-width: 1440px) {
+      padding-bottom: 44px;
     }
   }
 `;
-
 
 export const WrapperContent = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    gap: 50px;    
+    gap: 50px;
   }
 `;
 
