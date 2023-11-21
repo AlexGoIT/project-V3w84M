@@ -97,12 +97,6 @@ export const ShorterTitle = styled.div`
       font-size: 12px;
     }
   }
-
-  @media screen and (min-width: 1440px) {
-    :hover {
-      font-size: inherit;
-    }
-  }
 `;
 
 export const ButtonEl = styled.button`
