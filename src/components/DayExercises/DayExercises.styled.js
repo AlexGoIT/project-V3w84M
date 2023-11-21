@@ -176,15 +176,14 @@ export const List = styled.div`
     overflow-x: hidden;
 
     &::-webkit-scrollbar-track {
-      background: rgba(239, 237, 232, 0.1);
-      border-radius: 12px;
-      height: 15px;
+      background-color: transparent;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #ef8964;
       border-radius: 12px;
-      height: 15px;
+      background: rgba(239, 237, 232, 0.1);
+      width: 6px;
+      height: 50px;
     }
 
     &::-webkit-scrollbar {

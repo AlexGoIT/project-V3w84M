@@ -72,6 +72,10 @@ export const Column = styled.div`
   display: flex;
   align-items: center;
   padding-inline: 14px;
+  /* text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; */
+
   @media screen and (min-width: 375px) {
     width: 100%;
     height: 38px;

@@ -20,8 +20,8 @@ import { deleteExercise } from 'redux/api/apiOperations';
 const ExerciseItem = ({
   id,
   exercise,
-  burnedCalories,
-  time,
+  caloriesBurned,
+  workoutTime,
   dateForDelete,
 }) => {
   const dispatch = useDispatch();
@@ -50,11 +50,11 @@ const ExerciseItem = ({
       </Grid4>
       <Grid5>
         <Title>Burned Calorie</Title>
-        <Column>{burnedCalories}</Column>
+        <Column>{caloriesBurned}</Column>
       </Grid5>
       <Grid6>
         <Title>Time</Title>
-        <Column>{time}</Column>
+        <Column>{workoutTime}</Column>
       </Grid6>
       <Grid7>
         <Title></Title>
