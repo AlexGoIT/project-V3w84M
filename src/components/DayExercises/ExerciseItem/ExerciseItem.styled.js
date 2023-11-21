@@ -16,6 +16,7 @@ export const ExerciseDiv = styled.div`
     'grid4 grid5 grid6 grid7';
 
   @media screen and (min-width: 768px) {
+    font-size: 16px;
     grid-gap: 8px;
     grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
     grid-template-rows: 40px;
@@ -64,21 +65,24 @@ export const Title = styled.p`
   }
 `;
 
-export const Column = styled.div`
+export const Column = styled.p`
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
   display: flex;
   align-items: center;
   padding-inline: 14px;
-  /* text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; */
   width: 100%;
   height: 38px;
 
   @media screen and (min-width: 768px) {
     height: 40px;
   }
+`;
+
+export const ShorterTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ButtonEl = styled.button`

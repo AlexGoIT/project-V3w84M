@@ -136,12 +136,6 @@ export const Grid6 = styled.div`
   grid-area: grid6;
 `;
 
-export const ShorterTitle = styled.div`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
 const setListHeight = props => {
   switch (props.dimentionList) {
     case 'true':

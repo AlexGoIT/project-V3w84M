@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ProductDiv = styled.div`
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   color: #efede8;
   display: grid;
@@ -105,4 +105,10 @@ export const Indicator = styled.span`
 
 export const RecommendText = styled.span`
   margin-left: 8px;
+`;
+
+export const ShorterTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

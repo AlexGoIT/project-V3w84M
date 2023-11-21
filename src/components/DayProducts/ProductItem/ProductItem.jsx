@@ -12,6 +12,7 @@ import {
   Title,
   Indicator,
   RecommendText,
+  ShorterTitle,
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
@@ -38,11 +39,15 @@ const ProductItem = ({
     <ProductDiv key={id}>
       <Grid1>
         <Title>Title</Title>
-        <Column>{product.title}</Column>
+        <Column>
+          <ShorterTitle>{product.title}</ShorterTitle>
+        </Column>
       </Grid1>
       <Grid2>
         <Title>Category</Title>
-        <Column>{product.category}</Column>
+        <Column>
+          <ShorterTitle>{product.category}</ShorterTitle>
+        </Column>
       </Grid2>
       <Grid3>
         <Title>Calories</Title>
