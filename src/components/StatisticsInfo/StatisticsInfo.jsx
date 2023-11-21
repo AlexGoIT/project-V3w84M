@@ -40,6 +40,14 @@ const StatisticsInfo = () => {
     return;
   }
 
+  const formatNumber = number => {
+    if (number < 1000) {
+      return number;
+    } else {
+      return `${Math.floor(number / 1000)}k+`;
+    }
+  };
+
   const {
     numberVideoTraining,
     totalCaloriesBurnedAllUsers,
@@ -69,21 +77,23 @@ const StatisticsInfo = () => {
           </svg>
         </ImageThumb>
         <CalInfoWrapper>
-          <CalCounter>{totalCaloriesBurnedAllUsers}</CalCounter>
+          <CalCounter>{formatNumber(totalCaloriesBurnedAllUsers)}</CalCounter>
           <CalText>cal</CalText>
         </CalInfoWrapper>
       </CalWrapper>
 
       <NumberUsersWrapper>
         <NumberUsersInfo>
-          <NumberUsers>{numberUsers}</NumberUsers>
+          <NumberUsers>{formatNumber(numberUsers)}</NumberUsers>
           <NumberUsersText>users</NumberUsersText>
         </NumberUsersInfo>
       </NumberUsersWrapper>
 
       <TotalHoursWrapper>
         <TotalHoursInfo>
-          <TotalHours>{totalHoursSpentTrainingAllUsers}</TotalHours>
+          <TotalHours>
+            {formatNumber(totalHoursSpentTrainingAllUsers)}
+          </TotalHours>
           <TotalHoursText>Total Hours</TotalHoursText>
         </TotalHoursInfo>
       </TotalHoursWrapper>
@@ -91,7 +101,7 @@ const StatisticsInfo = () => {
       <TotalNumberTrainingWrapper>
         <TotalNumberTrainingInfo>
           <TotalNumberTraining>
-            {totalNumberTrainingAllUsers}
+            {formatNumber(totalNumberTrainingAllUsers)}
           </TotalNumberTraining>
           <TotalNumberTrainingText>
             Total number Training
