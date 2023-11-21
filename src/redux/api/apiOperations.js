@@ -165,9 +165,9 @@ export const fetchDiary = createAsyncThunk(
 //
 export const addProduct = createAsyncThunk(
   'api/addProduct',
-  async (params, thunkAPI) => {
+  async (body, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/diary/products', params);
+      const { data } = await axios.post('/api/diary/products', body);
 
       return data;
     } catch (err) {
@@ -187,9 +187,9 @@ export const addProduct = createAsyncThunk(
 //
 export const addExercise = createAsyncThunk(
   'api/addExercise',
-  async (params, thunkAPI) => {
+  async (body, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/diary/exercises', params);
+      const { data } = await axios.post('/api/diary/exercises', body);
 
       return data;
     } catch (err) {
