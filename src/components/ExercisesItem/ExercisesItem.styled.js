@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const ExercisesCard = styled.li`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  width: 333px;
+  height: 163px;
   padding: 16px;
   justify-content: center;
   align-items: flex-start;
@@ -14,12 +14,13 @@ export const ExercisesCard = styled.li`
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
-    width: calc((100% - 16px) / 2);
+    /* width: calc((100% - 16px) / 2); */
     overflow: hidden;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 405px;
+    width: 405px;
+    height: 141px;
   }
 `;
 export const ExercisesCardStatusWorkout = styled.label`
@@ -48,7 +49,7 @@ export const ExercisesCardWorkoutText = styled.p`
 
 export const ExercisesCardStatus = styled.div`
   display: flex;
-  align-items: center;
+  align-items: center; 
 `;
 
 export const ExercisesCardAddBtn = styled.button`
@@ -120,7 +121,7 @@ export const ExercisesCardTitle = styled.h4`
 `;
 
 export const ExercisesCardInfoList = styled.ul`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -128,14 +129,14 @@ export const ExercisesCardInfoList = styled.ul`
 `;
 
 export const ExercisesCardInfoItem = styled.li`
-  width: 40%;
+  /* width: 40%; */
   display: flex;
   flex-direction: row;
   gap: 4px;
   color: rgba(239, 237, 232, 0.4);
   font-weight: 400;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 1.5;
   /* word-wrap: break-word; */
   /* flex-wrap: nowrap; */
 `;
@@ -146,7 +147,7 @@ export const ExercisesCardInfoValue = styled.p`
   text-overflow: ellipsis;
   color: #efede8;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 1.5;
   white-space: pre-wrap;
   /* word-wrap: break-word; */
 `;
