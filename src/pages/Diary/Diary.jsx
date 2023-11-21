@@ -26,7 +26,8 @@ const Diary = () => {
   const [selectedDate, setSelectedDate] = useState(new Date(Date.now()));
   const data = useSelector(selectDiary);
 
-  const { consumedProducts, doneExercises, date } = data;
+  const { consumedProducts, doneExercises, date, caloriesBurned, workoutTime } =
+    data;
   const user = useSelector(selectUser);
   const newDate = format(selectedDate, 'dd-MM-yyyy');
   const dairyUpdated = useSelector(selectDiaryUpdated);
@@ -62,6 +63,8 @@ const Diary = () => {
               <DayExercises
                 doneExercises={doneExercises}
                 dateForDelete={date}
+                caloriesBurned={caloriesBurned}
+                workoutTime={workoutTime}
               />
             </Left>
             <Right>

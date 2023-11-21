@@ -26,7 +26,12 @@ import { Notify } from 'notiflix';
 import ExerciseItem from './ExerciseItem';
 import { Link, useLocation } from 'react-router-dom';
 
-const DayExercises = ({ doneExercises, dateForDelete }) => {
+const DayExercises = ({
+  doneExercises,
+  dateForDelete,
+  caloriesBurned,
+  workoutTime,
+}) => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const location = useLocation();
@@ -69,16 +74,18 @@ const DayExercises = ({ doneExercises, dateForDelete }) => {
                 doneExercises && doneExercises.length > 0 ? 'true' : 'false'
               }
             >
-              {doneExercises.map(({ _id, exercise, burnedCalories, time }) => (
-                <ExerciseItem
-                  key={_id}
-                  id={_id}
-                  exercise={exercise}
-                  burnedCalories={burnedCalories}
-                  time={time}
-                  dateForDelete={dateForDelete}
-                />
-              ))}
+              {doneExercises.map(
+                ({ _id, exercise, caloriesBurned, workoutTime }) => (
+                  <ExerciseItem
+                    key={_id}
+                    id={_id}
+                    exercise={exercise}
+                    dateForDelete={dateForDelete}
+                    caloriesBurned={caloriesBurned}
+                    workoutTime={workoutTime}
+                  />
+                )
+              )}
             </List>
           </>
         ) : (
