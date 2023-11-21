@@ -102,8 +102,8 @@ const ProductsFilter = () => {
               onChange={handleChange}
             >
               <option value="">All</option>
-              <option value={true}>Recommended</option>
-              <option value={false}>Not recommended</option>
+              <option value={false}>Recommended</option>
+              <option value={true}>Not recommended</option>
             </ProdFilterRecSlct>
           </ProdFilterSelectsWrapper>
         </ProdFilterForm>
