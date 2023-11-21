@@ -13,13 +13,16 @@ export const ExercisesWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     padding-top: 85px;
-    padding-bottom: 81px;
-    background: image-set(
-      url(${exercises_background_1x}) 1x,
-      url(${exercises_background_2x}) 2x
-    );
-    background-repeat: no-repeat;
-    background-position: top 85px right;
+    padding-bottom: 46px;
+
+    &.exercises-list {
+      background: image-set(
+        url(${exercises_background_1x}) 1x,
+        url(${exercises_background_2x}) 2x
+      );
+      background-repeat: no-repeat;
+      background-position: bottom right;
+    }
   }
 `;
 
