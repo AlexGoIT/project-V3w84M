@@ -7,6 +7,7 @@ import {
   Icon,
 } from './DayDashboard.styled';
 import sprite from 'assets/images/sprite.svg';
+import PropTypes from 'prop-types';
 
 const DayDashboard = ({ data }) => {
   const {
@@ -101,6 +102,17 @@ const DayDashboard = ({ data }) => {
       </DashboardItem>
     </DayDashboardArea>
   );
+};
+
+DayDashboard.propTypes = {
+  data: PropTypes.shape({
+    dailyPhysicalActivity: PropTypes.number,
+    userBMR: PropTypes.number,
+    caloriesBurnedSum: PropTypes.number,
+    caloriesConsumedSum: PropTypes.number,
+    caloriesRemaining: PropTypes.number,
+    sportsRemaining: PropTypes.number,
+  }),
 };
 
 export default DayDashboard;

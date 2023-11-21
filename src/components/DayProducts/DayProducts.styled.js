@@ -62,6 +62,11 @@ export const Add = styled.p`
   font-weight: 500;
   color: #e6533c;
 
+  &:hover,
+  &:focus {
+    color: #efede8;
+  }
+
   @media screen and (min-width: 375px) {
     font-size: 14px;
   }

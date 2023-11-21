@@ -70,12 +70,15 @@ const ExerciseItem = ({
 
 ExerciseItem.propTypes = {
   id: PropTypes.string,
-  bodyPart: PropTypes.string,
-  equipment: PropTypes.string,
-  name: PropTypes.string,
-  target: PropTypes.string,
-  burnedCalories: PropTypes.number,
-  time: PropTypes.number,
+  exercise: PropTypes.shape({
+    bodyPart: PropTypes.string,
+    equipment: PropTypes.string,
+    name: PropTypes.string,
+    target: PropTypes.string,
+  }),
+  caloriesBurned: PropTypes.number,
+  workoutTime: PropTypes.number,
+  dateForDelete: PropTypes.string,
 };
 
 export default ExerciseItem;

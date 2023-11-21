@@ -11,7 +11,7 @@ import {
   Grid6,
   Title,
   Indicator,
-  RecommendText
+  RecommendText,
 } from './ProductItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
@@ -27,8 +27,8 @@ const ProductItem = ({
   dateForDelete,
 }) => {
   const dispatch = useDispatch();
-  
-  const isRecommended = recommendedByGroupBlood; 
+
+  const isRecommended = recommendedByGroupBlood;
 
   const handleClick = (id, dateForDelete) => {
     dispatch(deleteProduct({ productId: id, date: dateForDelete }));
@@ -82,12 +82,14 @@ const ProductItem = ({
 
 ProductItem.propTypes = {
   id: PropTypes.string,
-  title: PropTypes.string,
-  category: PropTypes.string,
+  product: PropTypes.shape({
+    title: PropTypes.string,
+    category: PropTypes.string,
+  }),
   caloriesConsumed: PropTypes.number,
   weightConsumed: PropTypes.number,
+  dateForDelete: PropTypes.string,
   recommendedByGroupBlood: PropTypes.bool,
-  date: PropTypes.string,
 };
 
 export default ProductItem;
