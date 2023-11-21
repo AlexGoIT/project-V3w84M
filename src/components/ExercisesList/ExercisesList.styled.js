@@ -4,9 +4,7 @@ export const ExercisesListUl = styled.ul`
   @media screen and (min-width: 375px) {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;   
-    
-    margin-bottom: 16px;
+    gap: 20px;      
   }
 
   @media screen and (min-width: 768px) {
@@ -19,7 +17,6 @@ export const ExercisesListUl = styled.ul`
 
   @media screen and (min-width: 1440px) {
     width: 850px;
-    max-height: 487px;
-    margin-top: 32px;
+    max-height: 487px;    
   }
 `;
