@@ -2,8 +2,6 @@
 
 ![Presentation](./src/assets/images/power-pulse.gif)
 
-[Обычная ссылка с title](https://www.google.com "Сайт Google")
-
 # [Frontend Developers](https://github.com/AlexGoIT/project-V3w84M)
 - [Olena Kasianenko **Scrum Master & Developer**](https://github.com/Olenakas)
 - [Maksym Kotyk **Developer**](https://github.com/mxm-kotyk)
