@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import { RadioOption } from './RadioOption';
@@ -29,9 +28,14 @@ import { selectUser } from 'redux/auth/authSelectors';
 import { useDispatch } from 'react-redux';
 import { updateProfile } from 'redux/auth/usersOperations';
 import { parseISO } from 'date-fns';
+import { fetchCalculate } from 'redux/api/apiOperations';
+import Loader from 'components/Loader';
+import { selectIsLoading } from 'redux/api/apiSelectors';
 
 const UserForm = () => {
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsLoading);
+
   const birthdayDateObj = parseISO(
     user.profileData?.birthday.split('-').reverse().join('-')
   );
@@ -101,20 +105,20 @@ const UserForm = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
     height: Yup.number()
-      .min(150, 'Height must be at least 150 cm')
       .max(250, 'Height must not exceed 250 cm')
       .positive('Height must be positive')
-      .required('Height is required'),
+      .required('Height is required')
+      .min(150, 'Height must be at least 150 cm'),
     currentWeight: Yup.number()
-      .min(35, 'Current weight must be at least 35 kg')
       .max(200, 'Current weight must not exceed 200 kg')
       .positive('Weight must be positive')
-      .required('Current weight is required'),
+      .required('Current weight is required')
+      .min(35, 'Current weight must be at least 35 kg'),
     desiredWeight: Yup.number()
-      .min(35, 'Desired weight must be at least 35 kg')
       .max(200, 'Desired weight must not exceed 200 kg')
       .positive('Weight must be positive')
-      .required('Desired weight is required'),
+      .required('Desired weight is required')
+      .min(35, 'Desired weight must be at least 35 kg'),
     birthday: Yup.date().required('Birthday is required'),
     blood: Yup.number()
       .oneOf([1, 2, 3, 4], 'Invalid blood type')
@@ -127,7 +131,7 @@ const UserForm = () => {
       .required('Activity level is required'),
   });
 
-  const handleSubmit = ({ name, ...profileData }) => {
+  const handleSubmit = async ({ name, ...profileData }) => {
     const user = {
       name,
       profileData: {
@@ -135,18 +139,21 @@ const UserForm = () => {
         birthday: format(profileData.birthday, 'dd-MM-yyyy'),
       },
     };
-    dispatch(updateProfile(user));
+    await dispatch(updateProfile(user)).unwrap();
+    await dispatch(fetchCalculate()).unwrap();
   };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={values => handleSubmit(values)}
       enableReinitialize={true}
+      noValidate={true}
     >
       {({ isValid, dirty, ...formik }) => (
         <UserFormStyled>
+          {isLoading && <Loader />}
           <FormContainer>
             <UserFormFieldWrapper>
               <SectionTitle>Basic info</SectionTitle>
