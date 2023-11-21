@@ -168,6 +168,12 @@ export const TitleWrapper = styled.button`
   align-items: center;
   font-size: 18px;
 
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: 375px) {
+    font-size: 18px;
+
   &:hover,
   &:focus {
     color: #ef8964;
@@ -179,10 +185,14 @@ export const TitleWrapper = styled.button`
 `;
 
 export const CalendarIcon = styled.svg`
-  fill: #ef8964;
-  stroke: #ef8964;
-  width: 20px;
+  fill: none;
+    width: 20px;
   height: 20px;
+   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    fill: #e6533c;
+  }
+
 
   @media screen and (min-width: 768px) {
     width: 24px;

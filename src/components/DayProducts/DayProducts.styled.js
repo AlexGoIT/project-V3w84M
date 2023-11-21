@@ -55,6 +55,9 @@ export const Button = styled.button`
 export const Add = styled.p`
   font-weight: 500;
   color: #e6533c;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   font-size: 14px;
 
   &:hover,
@@ -64,6 +67,9 @@ export const Add = styled.p`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+  }
+  &:hover {
+    color: #efede8;
   }
 `;
 

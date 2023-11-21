@@ -23,8 +23,15 @@ export const UserNavLink = styled(NavLink)`
   height: 44px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #e6533c;
+  }
   &.active {
     background-color: #e6533c;
     border: 1px solid #e6533c;
+  }
+  &.active:hover {
+    color: #efede8;
   }
 `;

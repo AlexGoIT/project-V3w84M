@@ -19,6 +19,7 @@ const UserBar = () => {
         <IconSettings>
           <use href={`${sprite}#settings`} />
         </IconSettings>
+        ;
       </UserBarLink>
       <UserAvatar>
         {user.avatarURL ? (

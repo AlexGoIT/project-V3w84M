@@ -17,6 +17,10 @@ export const LogoutButtonLink = styled(NavLink)`
   justify-content: flex-end;
   align-items: center;
   color: rgba(239, 237, 232, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    color: #e6533c;
+  }
   /* margin-top: 40px; */
 
   /* @media screen and (min-width: 768px) and (max-width: 1440px) {
