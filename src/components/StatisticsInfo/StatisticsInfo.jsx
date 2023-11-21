@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   CalCounter,
   CalInfoWrapper,
@@ -9,10 +10,44 @@ import {
   VideoTutorialText,
   VideoTutorialWrapper,
   StatisticsInfoWrapper,
+  NumberUsersWrapper,
+  NumberUsersInfo,
+  NumberUsersText,
+  NumberUsers,
+  TotalHoursWrapper,
+  TotalHoursInfo,
+  TotalHoursText,
+  TotalHours,
+  TotalNumberTrainingWrapper,
+  TotalNumberTrainingInfo,
+  TotalNumberTraining,
+  TotalNumberTrainingText,
 } from './StatisticsInfo.styled';
 import sprite from 'assets/images/sprite.svg';
+import { selectStatistics } from 'redux/api/apiSelectors';
+import { useEffect } from 'react';
+import { fetchStatistics } from 'redux/api/apiOperations';
 
 const StatisticsInfo = () => {
+  const dispatch = useDispatch();
+  const statistics = useSelector(selectStatistics);
+
+  useEffect(() => {
+    dispatch(fetchStatistics());
+  }, [dispatch]);
+
+  if (!statistics) {
+    return;
+  }
+
+  const {
+    numberVideoTraining,
+    totalCaloriesBurnedAllUsers,
+    numberUsers,
+    totalHoursSpentTrainingAllUsers,
+    totalNumberTrainingAllUsers,
+  } = statistics;
+
   return (
     <StatisticsInfoWrapper>
       <VideoTutorialWrapper>
@@ -22,7 +57,7 @@ const StatisticsInfo = () => {
           </svg>
         </ImageThumb>
         <VideoTutorialInfoWrapper>
-          <VideoTutorialCounter>350+</VideoTutorialCounter>
+          <VideoTutorialCounter>{numberVideoTraining}</VideoTutorialCounter>
           <VideoTutorialText>Video tutorial</VideoTutorialText>
         </VideoTutorialInfoWrapper>
       </VideoTutorialWrapper>
@@ -34,10 +69,35 @@ const StatisticsInfo = () => {
           </svg>
         </ImageThumb>
         <CalInfoWrapper>
-          <CalCounter>500</CalCounter>
+          <CalCounter>{totalCaloriesBurnedAllUsers}</CalCounter>
           <CalText>cal</CalText>
         </CalInfoWrapper>
       </CalWrapper>
+
+      <NumberUsersWrapper>
+        <NumberUsersInfo>
+          <NumberUsers>{numberUsers}</NumberUsers>
+          <NumberUsersText>users</NumberUsersText>
+        </NumberUsersInfo>
+      </NumberUsersWrapper>
+
+      <TotalHoursWrapper>
+        <TotalHoursInfo>
+          <TotalHours>{totalHoursSpentTrainingAllUsers}</TotalHours>
+          <TotalHoursText>Total Hours</TotalHoursText>
+        </TotalHoursInfo>
+      </TotalHoursWrapper>
+
+      <TotalNumberTrainingWrapper>
+        <TotalNumberTrainingInfo>
+          <TotalNumberTraining>
+            {totalNumberTrainingAllUsers}
+          </TotalNumberTraining>
+          <TotalNumberTrainingText>
+            Total number Training
+          </TotalNumberTrainingText>
+        </TotalNumberTrainingInfo>
+      </TotalNumberTrainingWrapper>
     </StatisticsInfoWrapper>
   );
 };

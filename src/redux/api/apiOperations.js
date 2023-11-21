@@ -244,6 +244,22 @@ export const deleteExercise = createAsyncThunk(
     }
   }
 );
+
 //=============================================================================
+// Statistics
+// ============================================================================
+export const fetchStatistics = createAsyncThunk(
+  'api/fetchStatistics',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('/api/statistics');
+
+      return data;
+    } catch (err) {
+      Notify.failure(err.response.data.message);
+      return thunkAPI.rejectWithValue({ message: err.response.data.message });
+    }
+  }
+);
 
 export const diaryUpdateReset = createAction('api/diaryUpdateReset');

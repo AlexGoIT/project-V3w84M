@@ -10,6 +10,7 @@ import {
   fetchExercises,
   fetchFilters,
   fetchProducts,
+  fetchStatistics,
 } from './apiOperations';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   products: {},
   calculate: {},
   diary: {},
+  statistics: {},
   diaryUpdated: false,
   isLoading: false,
   error: null,
@@ -114,7 +116,6 @@ export const apiSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addProduct.fulfilled, (state, action) => {
-        // state.diary = action.payload;
         state.isLoading = false;
       })
       .addCase(addProduct.rejected, (state, action) => {
@@ -127,7 +128,6 @@ export const apiSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(addExercise.fulfilled, (state, action) => {
-        // state.diary = action.payload;
         state.isLoading = false;
       })
       .addCase(addExercise.rejected, (state, action) => {
@@ -140,12 +140,7 @@ export const apiSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        // state.diary.products = state.diary.products.filter(
-        //   product => product._id !== action.payload
-        // );
-
         state.diary = action.payload;
-
         state.diaryUpdated = true;
         state.isLoading = false;
       })
@@ -159,10 +154,6 @@ export const apiSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteExercise.fulfilled, (state, action) => {
-        // state.diary.exercises = state.diary.exercises.filter(
-        //   exercise => exercise._id !== action.payload
-        // );
-
         state.diary = action.payload;
         state.diaryUpdated = true;
         state.isLoading = false;
@@ -173,6 +164,20 @@ export const apiSlice = createSlice({
       });
 
     //===============================================================
+    // Statistics
+    //===============================================================
+    builder
+      .addCase(fetchStatistics.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchStatistics.fulfilled, (state, action) => {
+        state.statistics = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchStatistics.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
   },
   reducers: {
     diaryUpdateReset: state => {

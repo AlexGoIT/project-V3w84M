@@ -15,3 +15,5 @@ export const selectCalculate = state => state.api.calculate; // {}
 export const selectDiary = state => state.api.diary; // {}
 
 export const selectDiaryUpdated = state => state.api.diaryUpdated; // boolean
+
+export const selectStatistics = state => state.api.statistics; // {}
