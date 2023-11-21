@@ -1,20 +1,18 @@
 import styled from '@emotion/styled';
 
 export const ProductDiv = styled.div`
-  @media screen and (min-width: 375px) {
-    align-items: center;
-    font-size: 14px;
-    font-weight: 400;
-    color: #efede8;
-    display: grid;
-    grid-gap: 14px;
-    grid-template-columns: 81px 80px 76px 20px;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'grid1 grid1 grid1 grid1'
-      'grid2 grid2 grid2 grid2'
-      'grid3 grid4 grid5 grid6';
-  }
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #efede8;
+  display: grid;
+  grid-gap: 14px;
+  grid-template-columns: 81px 80px 76px 20px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'grid1 grid1 grid1 grid1'
+    'grid2 grid2 grid2 grid2'
+    'grid3 grid4 grid5 grid6';
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -69,10 +67,9 @@ export const Column = styled.div`
   display: flex;
   align-items: center;
   padding-inline: 14px;
-  @media screen and (min-width: 375px) {
-    width: 100%;
-    height: 38px;
-  }
+
+  width: 100%;
+  height: 38px;
 
   @media screen and (min-width: 768px) {
     height: 40px;

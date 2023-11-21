@@ -1,21 +1,19 @@
 import styled from '@emotion/styled';
 
 export const ExerciseDiv = styled.div`
-  @media screen and (min-width: 375px) {
-    align-items: center;
-    font-size: 13px;
-    font-weight: 400;
-    color: #efede8;
-    display: grid;
-    grid-gap: 14px;
-    grid-template-columns: 81px 80px 76px 20px;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'grid1 grid1 grid1 grid1'
-      'grid2 grid2 grid2 grid2'
-      'grid3 grid3 grid3 grid3'
-      'grid4 grid5 grid6 grid7';
-  }
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: #efede8;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 81px 80px 76px 20px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'grid1 grid1 grid1 grid1'
+    'grid2 grid2 grid2 grid2'
+    'grid3 grid3 grid3 grid3'
+    'grid4 grid5 grid6 grid7';
 
   @media screen and (min-width: 768px) {
     grid-gap: 8px;
@@ -75,11 +73,8 @@ export const Column = styled.div`
   /* text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden; */
-
-  @media screen and (min-width: 375px) {
-    width: 100%;
-    height: 38px;
-  }
+  width: 100%;
+  height: 38px;
 
   @media screen and (min-width: 768px) {
     height: 40px;

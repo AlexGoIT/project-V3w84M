@@ -19,11 +19,8 @@ export const DayProductsArea = styled.div`
   border-radius: 12px;
   background-color: rgba(239, 237, 232, 0.05);
   padding: 16px;
-
-  @media screen and (min-width: 375px) {
-    height: ${setAreaHeight};
-    padding-right: 8px;
-  }
+  height: ${setAreaHeight};
+  padding-right: 8px;
 
   @media screen and (min-width: 768px) {
     height: 234px;
@@ -34,10 +31,7 @@ export const DayProductsArea = styled.div`
 export const TitleArea = styled.div`
   display: flex;
   justify-content: space-between;
-
-  @media screen and (min-width: 375px) {
-    margin-bottom: 22px;
-  }
+  margin-bottom: 22px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 16px;
@@ -61,14 +55,11 @@ export const Button = styled.button`
 export const Add = styled.p`
   font-weight: 500;
   color: #e6533c;
+  font-size: 14px;
 
   &:hover,
   &:focus {
     color: #efede8;
-  }
-
-  @media screen and (min-width: 375px) {
-    font-size: 14px;
   }
 
   @media screen and (min-width: 768px) {
@@ -94,10 +85,7 @@ export const Message = styled.p`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
-  @media screen and (min-width: 375px) {
-    font-size: 14px;
-  }
+  font-size: 14px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -110,9 +98,7 @@ export const TableArea = styled.div`
 `;
 
 export const TableHeader = styled.div`
-  @media screen and (min-width: 375px) {
-    display: none;
-  }
+  display: none;
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -168,29 +154,27 @@ const setListHeight = props => {
 };
 
 export const List = styled.div`
-  @media screen and (min-width: 375px) {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    height: ${setListHeight};
-    overflow-y: scroll;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: ${setListHeight};
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 
-    &::-webkit-scrollbar-thumb {
-      border-radius: 12px;
-      background: rgba(239, 237, 232, 0.1);
-      width: 6px;
-      height: 90px;
-    }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: rgba(239, 237, 232, 0.1);
+    width: 6px;
+    height: 90px;
+  }
 
-    &::-webkit-scrollbar {
-      width: 8px;
-      height: 15px;
-    }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
   }
 
   @media screen and (min-width: 768px) {

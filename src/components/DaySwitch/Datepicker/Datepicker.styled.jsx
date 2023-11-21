@@ -166,14 +166,11 @@ export const TitleWrapper = styled.button`
   gap: 8px;
   justify-content: center;
   align-items: center;
+  font-size: 18px;
 
   &:hover,
   &:focus {
     color: #ef8964;
-  }
-
-  @media screen and (min-width: 375px) {
-    font-size: 18px;
   }
 
   @media screen and (min-width: 768px) {
@@ -184,12 +181,8 @@ export const TitleWrapper = styled.button`
 export const CalendarIcon = styled.svg`
   fill: #ef8964;
   stroke: #ef8964;
-  /* display: none; */
-
-  @media screen and (min-width: 375px) {
-    width: 20px;
-    height: 20px;
-  }
+  width: 20px;
+  height: 20px;
 
   @media screen and (min-width: 768px) {
     width: 24px;
