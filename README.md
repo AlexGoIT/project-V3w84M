@@ -2,6 +2,24 @@
 
 ![Presentation](./src/assets/images/power-pulse.gif)
 
+[Обычная ссылка с title](https://www.google.com "Сайт Google")
+
+# Frontend Developers
+- (https://github.com/Olenakas Olena Kasianenko **Scrum Master & Developer**)
+- [Maksym Kotyk **Developer**](https://github.com/mxm-kotyk)
+- [Vadim Komar **Developer**](https://github.com/VadymKrem)
+- [Zemfira **Developer**](https://github.com/zemfira1)
+- [Denys Lavryk **Developer**](https://github.com/strictly-rigid)
+- (https://github.com/Anastasiia-Dubyna) Anastasiia Dubyna **Developer**
+- (https://github.com/MaryKuzo) Mary Kuzo **Developer**
+- (https://github.com/MarinaSigida) Marina Sigida **Developer**
+- (https://github.com/AlexGoIT) Alexandr Puryaev **Developer**
+  
+# Backend Developers (https://github.com/Igor-Chumak/powerpulse-backend)
+- (https://github.com/Igor-Chumak) Igor Chumak **Team Lead**
+- (https://github.com/Vitalii-Dashivets) Vitalii Dashivets **Developer**
+- (https://github.com/neyonse) Anastasiia Vedmid **Developer**
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
