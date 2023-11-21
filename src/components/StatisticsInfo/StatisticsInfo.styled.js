@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StatisticsInfoWrapper = styled.div`
-  /* position: relative; */
-`;
+export const StatisticsInfoWrapper = styled.div``;
 
 export const VideoTutorialWrapper = styled.div`
   position: absolute;
@@ -110,4 +108,115 @@ export const CalCounter = styled.p`
   line-height: 1.04;
   letter-spacing: -1px;
   text-transform: uppercase;
+`;
+
+// =====================================================================
+export const NumberUsersWrapper = styled.div`
+  padding: 20px 23px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgba(239, 237, 232, 0.65);
+
+  background-color: #ef8964;
+`;
+
+export const NumberUsersInfo = styled.p`
+  color: #efede8;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+`;
+
+export const NumberUsers = styled.p`
+  color: rgba(239, 237, 232, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
+export const NumberUsersText = styled.p`
+  color: rgba(239, 237, 232, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
+// =====================================================================
+
+export const TotalHoursWrapper = styled.div`
+  padding: 20px 23px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgba(239, 237, 232, 0.65);
+  border-radius: 12px;
+
+  background-color: #303030;
+`;
+
+export const TotalHoursInfo = styled.p`
+  color: #efede8;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+`;
+
+export const TotalHours = styled.p`
+  color: #efede8;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+`;
+
+export const TotalHoursText = styled.p`
+  color: rgba(239, 237, 232, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
+// =====================================================================
+
+export const TotalNumberTrainingWrapper = styled.div`
+  padding: 20px 23px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgba(239, 237, 232, 0.65);
+  border-radius: 12px;
+
+  background-color: #ef8964;
+`;
+
+export const TotalNumberTrainingInfo = styled.p`
+  color: #efede8;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+`;
+
+export const TotalNumberTraining = styled.p`
+  color: #efede8;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+`;
+
+export const TotalNumberTrainingText = styled.p`
+  color: rgba(239, 237, 232, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
 `;
