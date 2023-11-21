@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://alexgoit.github.io/project-V3w84M/",
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@redux-devtools/extension": "^3.2.6",

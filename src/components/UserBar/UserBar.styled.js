@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { Link } from 'react-router-dom';
 
 export const UserBarBlock = styled.div`
@@ -37,6 +38,11 @@ export const UserAvatar = styled.div`
 export const IconSettings = styled.svg`
   width: 24px;
   height: 24px;
+  fill: none;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    fill: #e6533c;
+  }
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
