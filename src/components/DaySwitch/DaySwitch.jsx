@@ -7,7 +7,6 @@ import {
 import StyledDatepicker from './Datepicker';
 import sprite from 'assets/images/sprite.svg';
 import { useState } from 'react';
-import { format } from 'date-fns';
 
 const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
   const [disabledLeft, setDisabledLeft] = useState(false);
@@ -23,9 +22,10 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     newDate.setDate(selectedDate.getDate() - 1);
     setSelectedDate(newDate);
 
-    const formatNewDate = format(newDate, 'dd-MM-yyyy');
-    const formatRegisterDate = format(createdDate, 'dd-MM-yyyy');
-    if (formatNewDate === formatRegisterDate) {
+    const formatNewDate = Math.floor(newDate.getTime() / (24 * 60 * 60 * 1000));
+    const formatRegisterDate = Math.floor(createdDate / (24 * 60 * 60 * 1000));
+
+    if (formatNewDate <= formatRegisterDate) {
       setDisabledLeft(true);
     }
     setDisabledRight(false);
@@ -36,10 +36,11 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     newDate.setDate(selectedDate.getDate() + 1);
     setSelectedDate(newDate);
 
-    const formatNewDate = format(newDate, 'dd-MM-yyyy');
-    const formatTodayDate = format(new Date(), 'dd-MM-yyyy');
-    if (formatNewDate !== formatTodayDate) {
-      setDisabledRight(false);
+    const formatNewDate = Math.floor(newDate.getTime() / (24 * 60 * 60 * 1000));
+    const formatTodayDate = Math.floor(new Date() / (24 * 60 * 60 * 1000)) - 1;
+
+    if (formatNewDate >= formatTodayDate) {
+      setDisabledRight(true);
     }
     setDisabledLeft(false);
   };

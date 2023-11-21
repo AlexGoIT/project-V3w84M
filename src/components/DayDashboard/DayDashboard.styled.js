@@ -4,13 +4,10 @@ export const DayDashboardArea = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
-  @media screen and (min-width: 375px) {
-    height: 328px;
-    margin-bottom: 20px;
-    row-gap: 20px;
-    column-gap: 13px;
-  }
+  height: 328px;
+  margin-bottom: 20px;
+  row-gap: 20px;
+  column-gap: 13px;
 
   @media screen and (min-width: 768px) {
     height: 248px;
@@ -60,11 +57,8 @@ export const DashboardItem = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  @media screen and (min-width: 375px) {
-    width: 161px;
-    height: 96px;
-  }
+  width: 161px;
+  height: 96px;
 
   @media screen and (min-width: 768px) {
     width: 187px;
@@ -109,10 +103,7 @@ export const Title = styled.p`
 export const Value = styled.p`
   font-weight: 700;
   color: #efede8;
-
-  @media screen and (min-width: 375px) {
-    font-size: 18px;
-  }
+  font-size: 18px;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;

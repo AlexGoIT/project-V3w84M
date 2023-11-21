@@ -3,15 +3,11 @@ import styled from '@emotion/styled';
 export const DaySwitchArea = styled.div`
   position: absolute;
   display: flex;
-
   justify-content: center;
   align-items: center;
-
-  @media screen and (min-width: 375px) {
-    right: 0;
-    top: 46px;
-    gap: 20px;
-  }
+  right: 0;
+  top: 46px;
+  gap: 20px;
 
   @media screen and (min-width: 768px) {
     top: 52px;

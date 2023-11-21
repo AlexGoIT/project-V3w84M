@@ -1,23 +1,22 @@
 import styled from '@emotion/styled';
 
 export const ExerciseDiv = styled.div`
-  @media screen and (min-width: 375px) {
-    align-items: center;
-    font-size: 13px;
-    font-weight: 400;
-    color: #efede8;
-    display: grid;
-    grid-gap: 14px;
-    grid-template-columns: 81px 80px 76px 20px;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'grid1 grid1 grid1 grid1'
-      'grid2 grid2 grid2 grid2'
-      'grid3 grid3 grid3 grid3'
-      'grid4 grid5 grid6 grid7';
-  }
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: #efede8;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 81px 80px 76px 20px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'grid1 grid1 grid1 grid1'
+    'grid2 grid2 grid2 grid2'
+    'grid3 grid3 grid3 grid3'
+    'grid4 grid5 grid6 grid7';
 
   @media screen and (min-width: 768px) {
+    font-size: 16px;
     grid-gap: 8px;
     grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
     grid-template-rows: 40px;
@@ -66,23 +65,37 @@ export const Title = styled.p`
   }
 `;
 
-export const Column = styled.div`
+export const Column = styled.p`
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
   display: flex;
   align-items: center;
   padding-inline: 14px;
-  /* text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; */
-
-  @media screen and (min-width: 375px) {
-    width: 100%;
-    height: 38px;
-  }
+  width: 100%;
+  height: 38px;
 
   @media screen and (min-width: 768px) {
     height: 40px;
+  }
+`;
+
+export const ShorterTitle = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all;
+
+  :hover {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+    height: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    :hover {
+      font-size: 12px;
+    }
   }
 `;
 

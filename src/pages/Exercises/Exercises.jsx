@@ -33,13 +33,16 @@ const exercisesFilter = {
 
 const Exercises = () => {
   const { pathname } = useLocation();
-  const page = pathname.split('/')[2];
-  const categoryName = exercisesCategories[page];
+  const pageName = pathname.split('/')[2];
+  const categoryName = exercisesCategories[pageName];
   const [category, setCategory] = useState(
     localStorage.getItem('category') ?? 'Body parts'
   );
   const [toggleList, setToggleList] = useState(false);
   const [subCategory, setSubcategory] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+  const elementsPerPage =
+    window.innerWidth >= 768 && window.innerWidth < 1440 ? 9 : 10;
   const dispatch = useDispatch();
   const filterResult = useSelector(selectFilters).result;
   const isLoading = useSelector(selectIsLoading);
@@ -57,12 +60,24 @@ const Exercises = () => {
   }, [category, categoryName]);
 
   useEffect(() => {
-    dispatch(fetchFilters({ filter: category }));
-  }, [category, dispatch]);
+    dispatch(
+      fetchFilters({
+        filter: category,
+        page: pageNumber,
+        limit: elementsPerPage,
+      })
+    );
+  }, [category, dispatch, elementsPerPage, pageNumber]);
 
-  const handleCategoryClick = name => {
+  const handleCategoryClick = () => {
+    setPageNumber(1);
+    setToggleList(false);
+    setSubcategory('');
+  };
+
+  const handleSubCategoryClick = name => {
     setSubcategory(name);
-    dispatch(fetchExercises({ [exercisesFilter[page]]: name }));
+    dispatch(fetchExercises({ [exercisesFilter[pageName]]: name }));
     setToggleList(true);
   };
 
@@ -71,7 +86,7 @@ const Exercises = () => {
   };
 
   return (
-    <ExercisesWrapper>
+    <ExercisesWrapper className={toggleList ? 'exercises-list' : null}>
       <Container>
         {isLoading && <Loader />}
         <ContentDiv>
@@ -90,10 +105,15 @@ const Exercises = () => {
             <TitlePage
               title={toggleList ? capitalizeString(subCategory) : 'Exercises'}
             />
-            <ExercisesCategories />
+            <ExercisesCategories handleClick={handleCategoryClick} />
           </WrapperTitleCategoriesDiv>
           {filterResult && !toggleList && (
-            <ExercisesSubcategoriesList handleClick={handleCategoryClick} />
+            <ExercisesSubcategoriesList
+              handleSubCategoryClick={handleSubCategoryClick}
+              handleChangePage={number => setPageNumber(number)}
+              pageNumber={pageNumber}
+              elementsPerPage={elementsPerPage}
+            />
           )}
           {toggleList && <ExercisesList />}
         </ContentDiv>

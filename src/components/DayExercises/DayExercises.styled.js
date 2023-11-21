@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const setAreaHeight = props => {
   switch (props.dimentionArea) {
     case 'true':
-      return '1064px';
+      return '1010px';
     case 'false':
       return '335px';
     default:
@@ -19,11 +19,8 @@ export const DayExercisesArea = styled.div`
   border-radius: 12px;
   background-color: rgba(239, 237, 232, 0.05);
   padding: 16px;
-
-  @media screen and (min-width: 375px) {
-    height: ${setAreaHeight};
-    padding-right: 8px;
-  }
+  height: ${setAreaHeight};
+  padding-right: 8px;
 
   @media screen and (min-width: 768px) {
     height: 234px;
@@ -34,10 +31,7 @@ export const DayExercisesArea = styled.div`
 export const TitleArea = styled.div`
   display: flex;
   justify-content: space-between;
-
-  @media screen and (min-width: 375px) {
-    margin-bottom: 22px;
-  }
+  margin-bottom: 22px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 16px;
@@ -66,9 +60,11 @@ export const Add = styled.p`
     color: #efede8;
   }
 
-  @media screen and (min-width: 375px) {
-    font-size: 14px;
+  &:hover,
+  &:focus {
+    color: #efede8;
   }
+  font-size: 14px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -93,10 +89,7 @@ export const Message = styled.p`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
-  @media screen and (min-width: 375px) {
-    font-size: 14px;
-  }
+  font-size: 14px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -110,9 +103,7 @@ export const TableArea = styled.div`
 `;
 
 export const TableHeader = styled.div`
-  @media screen and (min-width: 375px) {
-    display: none;
-  }
+  display: none;
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -157,12 +148,32 @@ export const ShorterTitle = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all;
+
+  :hover {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+    height: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    :hover {
+      font-size: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    :hover {
+      font-size: inherit;
+    }
+  }
 `;
 
 const setListHeight = props => {
   switch (props.dimentionList) {
     case 'true':
-      return '900px';
+      return '930px';
     case 'false':
       return '335px';
     default:
@@ -171,29 +182,27 @@ const setListHeight = props => {
 };
 
 export const List = styled.div`
-  @media screen and (min-width: 375px) {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    height: ${setListHeight};
-    overflow-y: scroll;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: ${setListHeight};
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 
-    &::-webkit-scrollbar-thumb {
-      border-radius: 12px;
-      background: rgba(239, 237, 232, 0.1);
-      width: 6px;
-      height: 50px;
-    }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: rgba(239, 237, 232, 0.1);
+    width: 6px;
+    height: 50px;
+  }
 
-    &::-webkit-scrollbar {
-      width: 8px;
-      height: 15px;
-    }
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
   }
 
   @media screen and (min-width: 768px) {
