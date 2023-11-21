@@ -106,9 +106,3 @@ export const Indicator = styled.span`
 export const RecommendText = styled.span`
   margin-left: 8px;
 `;
-
-export const ShorterTitle = styled.div`
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;

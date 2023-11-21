@@ -83,6 +83,26 @@ export const ShorterTitle = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all;
+
+  :hover {
+    overflow: inherit;
+    text-overflow: inherit;
+    white-space: inherit;
+    height: auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    :hover {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    :hover {
+      font-size: inherit;
+    }
+  }
 `;
 
 export const ButtonEl = styled.button`
