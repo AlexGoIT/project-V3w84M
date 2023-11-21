@@ -11,6 +11,7 @@ import {
   Grid6,
   Grid7,
   Title,
+  ShorterTitle,
 } from './ExerciseItem.styled';
 import sprite from 'assets/images/sprite.svg';
 import PropTypes from 'prop-types';
@@ -34,19 +35,27 @@ const ExerciseItem = ({
     <ExerciseDiv key={id}>
       <Grid1>
         <Title>Body Part</Title>
-        <Column>{exercise.bodyPart}</Column>
+        <Column>
+          <ShorterTitle>{exercise.bodyPart}</ShorterTitle>
+        </Column>
       </Grid1>
       <Grid2>
         <Title>Equipment</Title>
-        <Column>{exercise.equipment}</Column>
+        <Column>
+          <ShorterTitle>{exercise.equipment}</ShorterTitle>
+        </Column>
       </Grid2>
       <Grid3>
         <Title>Name</Title>
-        <Column>{exercise.name}</Column>
+        <Column>
+          <ShorterTitle>{exercise.name}</ShorterTitle>
+        </Column>
       </Grid3>
       <Grid4>
         <Title>Target</Title>
-        <Column>{exercise.target}</Column>
+        <Column>
+          <ShorterTitle>{exercise.target}</ShorterTitle>
+        </Column>
       </Grid4>
       <Grid5>
         <Title>Burned Calorie</Title>
@@ -70,12 +79,15 @@ const ExerciseItem = ({
 
 ExerciseItem.propTypes = {
   id: PropTypes.string,
-  bodyPart: PropTypes.string,
-  equipment: PropTypes.string,
-  name: PropTypes.string,
-  target: PropTypes.string,
-  burnedCalories: PropTypes.number,
-  time: PropTypes.number,
+  exercise: PropTypes.shape({
+    bodyPart: PropTypes.string,
+    equipment: PropTypes.string,
+    name: PropTypes.string,
+    target: PropTypes.string,
+  }),
+  caloriesBurned: PropTypes.number,
+  workoutTime: PropTypes.number,
+  dateForDelete: PropTypes.string,
 };
 
 export default ExerciseItem;

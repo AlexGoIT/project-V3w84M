@@ -28,16 +28,14 @@ export const ForPosition = styled.div`
 `;
 
 export const DiaryContainer = styled.div`
-  @media screen and (min-width: 375px) {
-    display: grid;
-    grid-gap: 40px;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'grid2'
-      'grid1';
-    margin-top: 40px;
-  }
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'grid2'
+    'grid1';
+  margin-top: 40px;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -56,11 +54,8 @@ export const Left = styled.div`
   grid-area: grid1;
   display: flex;
   flex-direction: column;
-
-  @media screen and (min-width: 375px) {
-    width: 335px;
-    gap: 40px;
-  }
+  width: 335px;
+  gap: 40px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -74,9 +69,7 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   grid-area: grid2;
-  @media screen and (min-width: 375px) {
-    width: 335px;
-  }
+  width: 335px;
 
   @media screen and (min-width: 768px) {
     width: 593px;
