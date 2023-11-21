@@ -4,21 +4,21 @@
 
 [Обычная ссылка с title](https://www.google.com "Сайт Google")
 
-# Frontend Developers
-- (https://github.com/Olenakas Olena Kasianenko **Scrum Master & Developer**)
+# [Frontend Developers](https://github.com/AlexGoIT/project-V3w84M)
+- [Olena Kasianenko **Scrum Master & Developer**](https://github.com/Olenakas)
 - [Maksym Kotyk **Developer**](https://github.com/mxm-kotyk)
 - [Vadim Komar **Developer**](https://github.com/VadymKrem)
 - [Zemfira **Developer**](https://github.com/zemfira1)
 - [Denys Lavryk **Developer**](https://github.com/strictly-rigid)
-- (https://github.com/Anastasiia-Dubyna) Anastasiia Dubyna **Developer**
-- (https://github.com/MaryKuzo) Mary Kuzo **Developer**
-- (https://github.com/MarinaSigida) Marina Sigida **Developer**
-- (https://github.com/AlexGoIT) Alexandr Puryaev **Developer**
+- [Anastasiia Dubyna **Developer**](https://github.com/Anastasiia-Dubyna)
+- [Mary Kuzo **Developer**](https://github.com/MaryKuzo)
+- [Marina Sigida **Developer**](https://github.com/MarinaSigida)
+- [Alexandr Puryaev **Developer**](https://github.com/AlexGoIT)
   
-# Backend Developers (https://github.com/Igor-Chumak/powerpulse-backend)
-- (https://github.com/Igor-Chumak) Igor Chumak **Team Lead**
-- (https://github.com/Vitalii-Dashivets) Vitalii Dashivets **Developer**
-- (https://github.com/neyonse) Anastasiia Vedmid **Developer**
+# [Backend Developers](https://github.com/Igor-Chumak/powerpulse-backend)
+- [Igor Chumak **Team Lead**](https://github.com/Igor-Chumak)
+- [Vitalii Dashivets **Developer**](https://github.com/Vitalii-Dashivets)
+- [Anastasiia Vedmid **Developer**](https://github.com/neyonse)
 
 # Getting Started with Create React App
 
