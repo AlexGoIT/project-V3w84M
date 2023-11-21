@@ -3,23 +3,22 @@ import styled from '@emotion/styled';
 export const ExercisesListUl = styled.ul`
   @media screen and (min-width: 375px) {
     display: flex;
-    gap: 20px;
-    flex-direction: column;
-    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;   
+    
     margin-bottom: 16px;
   }
 
   @media screen and (min-width: 768px) {
-    overflow-y: scroll;
-    gap: 16px;
-    flex-wrap: wrap;
-    flex-direction: row;
+    overflow-y: scroll; 
     max-height: 660px;
-    padding-right: 16px;
+    gap: 32px 16px; 
+    /* width: 686px; */
+    /* margin-right: 16px; */
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 860px;
+    width: 850px;
     max-height: 487px;
     margin-top: 32px;
   }
