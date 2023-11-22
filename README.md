@@ -1,6 +1,8 @@
 # React & Node.js Team Project
 
-![Presentation](./src/assets/images/power-pulse.gif)
+![Presentation1](./src/assets/images/power-pulse.gif)
+
+![Presentation2](./src/assets/images/presentation.gif)
 
 # [Frontend Developers](https://github.com/AlexGoIT/project-V3w84M)
 - [Olena Kasianenko **Scrum Master & Developer**](https://github.com/Olenakas)
