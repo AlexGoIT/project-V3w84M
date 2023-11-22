@@ -27,7 +27,7 @@ const ProductsList = ({
         changePage();
       }
     },
-    rootMargin: '300px',
+    rootMargin: '1000px',
   });
 
   useEffect(() => {

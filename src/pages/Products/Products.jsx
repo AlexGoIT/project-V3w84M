@@ -3,7 +3,7 @@ import ProductsFilter from 'components/products/ProductsFilter';
 import ProductsList from 'components/products/ProductsList/ProductsList';
 import { ProductsWrapper, Wrapper } from './Products.styled';
 import TitlePage from 'components/TitlePage';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/api/apiSelectors';
 import Loader from 'components/Loader';
