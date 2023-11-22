@@ -14,6 +14,7 @@ const ProductsList = ({ changePage, filters, pageNumber }) => {
   const data = useSelector(selectUser);
   const bloodType = data?.profileData?.blood;
   const [products, setProducts] = useState([]);
+  const observerTarget = useRef(null);
 
   const productsList = useSelector(selectProducts);
   const productItems = useMemo(
@@ -31,20 +32,24 @@ const ProductsList = ({ changePage, filters, pageNumber }) => {
   );
 
   useEffect(() => {
+    dispatch(fetchProducts({ ...filters, page: pageNumber }));
+  }, [dispatch, filters, pageNumber]);
+
+  useEffect(() => {
     if (products.length === 0) {
       setProducts(productItems);
     }
-  }, [productItems, products.length]);
-
-  const observerTarget = useRef(null);
+    if (pageNumber === 1) {
+      setProducts([]);
+    }
+  }, [pageNumber, productItems, products.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      async entries => {
+      entries => {
         if (entries[0].isIntersecting) {
-          await changePage();
-          await dispatch(fetchProducts({ ...filters, page: pageNumber }))
-            .unwrap;
+          changePage();
+          dispatch(fetchProducts({ ...filters, page: pageNumber }));
           setProducts(prev => {
             console.log(
               'prev',
@@ -58,7 +63,7 @@ const ProductsList = ({ changePage, filters, pageNumber }) => {
           });
         }
       },
-      { rootMargin: '50px' }
+      { rootMargin: '300px' }
     );
 
     if (observerTarget.current) {
@@ -71,10 +76,6 @@ const ProductsList = ({ changePage, filters, pageNumber }) => {
       }
     };
   }, [changePage, dispatch, filters, observerTarget, pageNumber, productItems]);
-
-  useEffect(() => {
-    dispatch(fetchProducts({ ...filters, page: pageNumber }));
-  }, [dispatch, filters, pageNumber]);
 
   // const fetchMoreProducts = () => {
   //   dispatch(fetchProducts({ ...filters, page: pageNumber }));
