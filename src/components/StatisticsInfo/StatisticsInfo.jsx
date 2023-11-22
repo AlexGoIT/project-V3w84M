@@ -41,6 +41,10 @@ const StatisticsInfo = () => {
   }
 
   const formatNumber = number => {
+    if (!number) {
+      return 0;
+    }
+
     if (number < 1000) {
       return number;
     } else {
@@ -65,7 +69,9 @@ const StatisticsInfo = () => {
           </svg>
         </ImageThumb>
         <VideoTutorialInfoWrapper>
-          <VideoTutorialCounter>{numberVideoTraining}</VideoTutorialCounter>
+          <VideoTutorialCounter>
+            {numberVideoTraining || 0}
+          </VideoTutorialCounter>
           <VideoTutorialText>Video tutorial</VideoTutorialText>
         </VideoTutorialInfoWrapper>
       </VideoTutorialWrapper>
@@ -100,12 +106,12 @@ const StatisticsInfo = () => {
             <use href={`${sprite}#figure`} />
           </svg>
         </ImageThumb>
-         <TotalHoursInfo>
-            <TotalHours>
-              {formatNumber(totalHoursSpentTrainingAllUsers)}
-            </TotalHours>
-              <TotalHoursText>hours</TotalHoursText>
-        </TotalHoursInfo>       
+        <TotalHoursInfo>
+          <TotalHours>
+            {formatNumber(totalHoursSpentTrainingAllUsers)}
+          </TotalHours>
+          <TotalHoursText>hours</TotalHoursText>
+        </TotalHoursInfo>
       </TotalHoursWrapper>
 
       <TotalNumberTrainingWrapper>
@@ -118,9 +124,7 @@ const StatisticsInfo = () => {
           <TotalNumberTraining>
             {formatNumber(totalNumberTrainingAllUsers)}
           </TotalNumberTraining>
-          <TotalNumberTrainingText>
-            Total number training
-          </TotalNumberTrainingText>
+          <TotalNumberTrainingText>Total training</TotalNumberTrainingText>
         </TotalNumberTrainingInfo>
       </TotalNumberTrainingWrapper>
     </StatisticsInfoWrapper>

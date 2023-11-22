@@ -50,15 +50,26 @@ export const VideoTutorialInfoWrapper = styled.div`
 
 export const VideoTutorialText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1;
+  }
 `;
 
 export const VideoTutorialCounter = styled.p`
   color: #efede8;
-  font-size: 24px;
   font-weight: 700;
-  line-height: 1;
+
+  font-size: 16px;
+  line-height: 1.12;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1;
+  }
 `;
 
 export const CalWrapper = styled.div`
@@ -66,7 +77,7 @@ export const CalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 180px;
+  width: 160px;
   gap: 8px;
   padding: 20px 23px;
   border-radius: 12px;
@@ -96,18 +107,29 @@ export const CalInfoWrapper = styled.div`
 
 export const CalText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
   font-weight: 700;
-  line-height: 1.5;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.5;
+  }
 `;
 
 export const CalCounter = styled.p`
   color: #efede8;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.04;
   letter-spacing: -1px;
   text-transform: uppercase;
+  font-weight: 700;
+
+  font-size: 24px;
+  line-height: 1;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 // =====================================================================
@@ -125,36 +147,46 @@ export const NumberUsersWrapper = styled.div`
   border-radius: 12px;
   background-color: #303030;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     bottom: 550px;
     right: 100px;
   }
 
   @media screen and (min-width: 1440px) {
-      bottom: 170px;
-      right: 600px;
+    bottom: 170px;
+    right: 600px;
   }
-
-
 `;
 
-export const NumberUsersInfo = styled.p`
-display: flex;
-flex-direction: column;  
+export const NumberUsersInfo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const NumberUsers = styled.p`
-color: #EFEDE8;
-font-size: 24px;
-font-weight: 700;
+  color: #efede8;
+  font-weight: 700;
+
+  font-size: 16px;
+  line-height: 1;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1;
+  }
 `;
 
 export const NumberUsersText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
   font-weight: 400;
+
+  font-size: 12px;
   line-height: 1.5;
 
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1;
+  }
 `;
 
 // =====================================================================
@@ -165,7 +197,7 @@ export const TotalHoursWrapper = styled.div`
   right: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
   width: 180px;
   gap: 8px;
   padding: 20px 23px;
@@ -183,26 +215,37 @@ export const TotalHoursWrapper = styled.div`
   }
 `;
 
-export const TotalHoursInfo = styled.p`
+export const TotalHoursInfo = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 11px;
-  `;
+`;
 
 export const TotalHours = styled.p`
   color: #efede8;
-  font-size: 48px;
   font-weight: 700;
-  line-height: 1.04;
   letter-spacing: -1px;
   text-transform: uppercase;
+
+  font-size: 24px;
+  line-height: 1;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 export const TotalHoursText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
   font-weight: 700;
-  line-height: 1.5;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.5;
+  }
 `;
 
 // =====================================================================
@@ -210,31 +253,47 @@ export const TotalHoursText = styled.p`
 export const TotalNumberTrainingWrapper = styled.div`
   position: absolute;
   bottom: 20px;
-  right: 190px;
+  right: 200px;
 
-  display: flex; 
+  display: flex;
   align-items: center;
   padding: 20px 23px;
   gap: 12px;
 
   border-radius: 12px;
   background-color: #303030;
+
+  @media screen and (min-width: 768px) {
+    right: 240px;
+  }
 `;
 
-export const TotalNumberTrainingInfo = styled.p`
+export const TotalNumberTrainingInfo = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `;
 
 export const TotalNumberTraining = styled.p`
-    color: #EFEDE8;
+  color: #efede8;
+  font-weight: 700;
+
+  font-size: 16px;
+  line-height: 1;
+
+  @media screen and (min-width: 768px) {
     font-size: 24px;
-    font-weight: 700;
+  }
 `;
 
 export const TotalNumberTrainingText = styled.p`
   color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
+
+  font-size: 12px;
+  line-height: 1.3;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1;
+  }
 `;
