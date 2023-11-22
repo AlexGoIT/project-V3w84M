@@ -13,7 +13,7 @@ export const ExercisesCard = styled.li`
   background: rgba(239, 237, 232, 0.05);
   box-sizing: border-box;
 
-  @media screen and (min-width: 768px) {   
+  @media screen and (min-width: 768px) {
     overflow: hidden;
   }
 
@@ -23,7 +23,7 @@ export const ExercisesCard = styled.li`
   }
 `;
 
-export const ExercisesCardStatusWorkout = styled.label`
+export const ExercisesCardStatusWorkout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -31,12 +31,12 @@ export const ExercisesCardStatusWorkout = styled.label`
   margin-bottom: 33px;
   justify-content: space-between;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 25px;
   }
 
   @media screen and (min-width: 1440px) {
-     margin-bottom: 27px;
+    margin-bottom: 27px;
   }
 `;
 
@@ -59,7 +59,7 @@ export const ExercisesCardWorkoutText = styled.p`
 
 export const ExercisesCardStatus = styled.div`
   display: flex;
-  align-items: center; 
+  align-items: center;
 `;
 
 export const ExercisesCardAddBtn = styled.button`

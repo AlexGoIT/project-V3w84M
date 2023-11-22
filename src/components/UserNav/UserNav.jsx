@@ -1,8 +1,6 @@
 import { UserNavBlock, UserNavLink } from './UserNav.styled';
 
 const UserNav = () => {
-  //   const { isLoggedIn } = useAuth();
-
   return (
     <UserNavBlock>
       <UserNavLink to="/diary">Diary</UserNavLink>
