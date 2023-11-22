@@ -1,37 +1,94 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { selectProducts } from 'redux/api/apiSelectors';
 import { fetchProducts } from 'redux/api/apiOperations';
-// import products from '../../../resources/products.json';
 
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { ProductsListUl } from './ProductsList.styled';
 import { SearchNotResult } from '../SearchNotResult/SearchNotResult';
 import { selectUser } from 'redux/auth/authSelectors';
+// import InfiniteScroll from 'react-infinite-scroll-component';
 
-const ProductsList = () => {
+const ProductsList = ({ changePage, filters, pageNumber }) => {
   const dispatch = useDispatch();
   const data = useSelector(selectUser);
   const bloodType = data?.profileData?.blood;
+  const [products, setProducts] = useState([]);
 
   const productsList = useSelector(selectProducts);
-  const productItems =
-    productsList?.result?.map(el => ({
-      ...el,
-      recommended: el.groupBloodNotAllowed[bloodType],
-    })) ?? [];
+  const productItems = useMemo(
+    () =>
+      productsList?.result?.map(el => ({
+        ...el,
+        recommended: el.groupBloodNotAllowed[bloodType],
+      })) ?? [],
+    [bloodType, productsList?.result]
+  );
+
+  console.log(
+    'products',
+    products.map(prod => prod.title)
+  );
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    if (products.length === 0) {
+      setProducts(productItems);
+    }
+  }, [productItems, products.length]);
+
+  const observerTarget = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      async entries => {
+        if (entries[0].isIntersecting) {
+          await changePage();
+          await dispatch(fetchProducts({ ...filters, page: pageNumber }))
+            .unwrap;
+          setProducts(prev => {
+            console.log(
+              'prev',
+              prev.map(prod => prod.title)
+            );
+            console.log(
+              'productItems',
+              productItems.map(prod => prod.title)
+            );
+            return [...prev, ...productItems];
+          });
+        }
+      },
+      { rootMargin: '50px' }
+    );
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, [changePage, dispatch, filters, observerTarget, pageNumber, productItems]);
+
+  useEffect(() => {
+    dispatch(fetchProducts({ ...filters, page: pageNumber }));
+  }, [dispatch, filters, pageNumber]);
+
+  // const fetchMoreProducts = () => {
+  //   dispatch(fetchProducts({ ...filters, page: pageNumber }));
+  // };
+  // console.log(products);
 
   return (
     <>
       {productItems.length > 0 ? (
-        <ProductsListUl>
-          {productItems.map(product => (
+        <ProductsListUl id="products-list">
+          {products.map(product => (
             <ProductsItem key={product.title} product={product} />
           ))}
+          <div ref={observerTarget}></div>
         </ProductsListUl>
       ) : (
         <SearchNotResult />
@@ -39,5 +96,19 @@ const ProductsList = () => {
     </>
   );
 };
+
+// <InfiniteScroll
+//   dataLength={productsList.total_results} //This is important field to render the next data
+//   next={fetchMoreProducts}
+//   hasMore={true}
+//   scrollableTarget="products-list"
+//   loader={<h4>Loading...</h4>}
+//   endMessage={
+//     <p style={{ textAlign: 'center' }}>
+//       <b>Yay! You have seen it all</b>
+//     </p>
+//   }
+// >
+/* </InfiniteScroll> */
 
 export default ProductsList;
