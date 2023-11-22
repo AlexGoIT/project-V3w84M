@@ -10,16 +10,15 @@ import {
 import sprite from 'assets/images/sprite.svg';
 import { selectUser } from 'redux/auth/authSelectors';
 
-const UserBar = () => {
+const UserBar = ({ profileDataFill }) => {
   const user = useSelector(selectUser);
 
   return (
-    <UserBarBlock>
+    <UserBarBlock profileDataFill={profileDataFill}>
       <UserBarLink to="/profile">
         <IconSettings>
           <use href={`${sprite}#settings`} />
         </IconSettings>
-        ;
       </UserBarLink>
       <UserAvatar>
         {user.avatarURL ? (

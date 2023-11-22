@@ -61,7 +61,7 @@ const Header = () => {
         <>
           {!profileDataFill || <UserNav />}
 
-          <UserBar />
+          <UserBar profileDataFill={profileDataFill} />
           <HideLogout>
             <Logout />
           </HideLogout>
