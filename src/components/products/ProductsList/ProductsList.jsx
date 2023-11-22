@@ -42,7 +42,7 @@ const ProductsList = ({
   }, [isNewRequest, pageNumber, resetIsNewRequest]);
 
   useEffect(() => {
-    if (productsList && productsList[0]?._id !== products[0]?._id) {
+    if (productsList) {
       setProducts(prev => [...prev, ...productsList]);
     }
   }, [productsList]);
