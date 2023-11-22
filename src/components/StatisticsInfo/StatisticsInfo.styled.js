@@ -4,8 +4,8 @@ export const StatisticsInfoWrapper = styled.div``;
 
 export const VideoTutorialWrapper = styled.div`
   position: absolute;
-  bottom: 186px;
-  right: 108px;
+  bottom: 250px;
+  right: 130px;
 
   display: flex;
   width: 206px;
@@ -112,60 +112,82 @@ export const CalCounter = styled.p`
 
 // =====================================================================
 export const NumberUsersWrapper = styled.div`
-  padding: 20px 23px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: rgba(239, 237, 232, 0.65);
+  position: absolute;
+  bottom: 370px;
+  right: 150px;
 
-  background-color: #ef8964;
+  display: flex;
+  width: 206px;
+  align-items: center;
+  padding: 20px 23px;
+  gap: 12px;
+
+  border-radius: 12px;
+  background-color: #303030;
+
+    @media screen and (min-width: 768px) {
+    bottom: 550px;
+    right: 100px;
+  }
+
+  @media screen and (min-width: 1440px) {
+      bottom: 170px;
+      right: 600px;
+  }
+
+
 `;
 
 export const NumberUsersInfo = styled.p`
-  color: #efede8;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -1px;
-  text-transform: uppercase;
+display: flex;
+flex-direction: column;  
 `;
 
 export const NumberUsers = styled.p`
-  color: rgba(239, 237, 232, 0.65);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
+color: #EFEDE8;
+font-size: 24px;
+font-weight: 700;
 `;
 
 export const NumberUsersText = styled.p`
   color: rgba(239, 237, 232, 0.65);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5;
+
 `;
 
 // =====================================================================
 
 export const TotalHoursWrapper = styled.div`
+  position: absolute;
+  bottom: 480px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  width: 180px;
+  gap: 8px;
   padding: 20px 23px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: rgba(239, 237, 232, 0.65);
   border-radius: 12px;
+  background-color: #ef8964;
 
-  background-color: #303030;
+  @media screen and (min-width: 768px) {
+    bottom: 400px;
+    right: 10px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    bottom: 350px;
+    right: 100px;
+  }
 `;
 
 export const TotalHoursInfo = styled.p`
-  color: #efede8;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-`;
+  display: flex;
+  align-items: flex-end;
+  gap: 11px;
+  `;
 
 export const TotalHours = styled.p`
   color: #efede8;
@@ -186,37 +208,33 @@ export const TotalHoursText = styled.p`
 // =====================================================================
 
 export const TotalNumberTrainingWrapper = styled.div`
-  padding: 20px 23px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: rgba(239, 237, 232, 0.65);
-  border-radius: 12px;
+  position: absolute;
+  bottom: 20px;
+  right: 190px;
 
-  background-color: #ef8964;
+  display: flex; 
+  align-items: center;
+  padding: 20px 23px;
+  gap: 12px;
+
+  border-radius: 12px;
+  background-color: #303030;
 `;
 
 export const TotalNumberTrainingInfo = styled.p`
-  color: #efede8;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -1px;
-  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const TotalNumberTraining = styled.p`
-  color: #efede8;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -1px;
-  text-transform: uppercase;
+    color: #EFEDE8;
+    font-size: 24px;
+    font-weight: 700;
 `;
 
 export const TotalNumberTrainingText = styled.p`
   color: rgba(239, 237, 232, 0.65);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5;
 `;
