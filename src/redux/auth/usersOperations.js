@@ -8,9 +8,6 @@ export const updateProfile = createAsyncThunk(
     try {
       const { data } = await axios.put('/users/profile', params);
 
-      console.log('patchProfile: params', params);
-      console.log('patchProfile: result', data);
-
       Notify.success('Profile updated');
       return data;
     } catch (err) {

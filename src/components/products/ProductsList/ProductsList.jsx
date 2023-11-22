@@ -1,37 +1,60 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { selectProducts } from 'redux/api/apiSelectors';
 import { fetchProducts } from 'redux/api/apiOperations';
-// import products from '../../../resources/products.json';
 
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { ProductsListUl } from './ProductsList.styled';
 import { SearchNotResult } from '../SearchNotResult/SearchNotResult';
-import { selectUser } from 'redux/auth/authSelectors';
 
-const ProductsList = () => {
+const ProductsList = ({
+  changePage,
+  filters,
+  pageNumber,
+  isNewRequest,
+  resetIsNewRequest,
+}) => {
   const dispatch = useDispatch();
-  const data = useSelector(selectUser);
-  const bloodType = data?.profileData?.blood;
+  const [products, setProducts] = useState([]);
 
-  const productsList = useSelector(selectProducts);
-  const productItems =
-    productsList?.result?.map(el => ({
-      ...el,
-      recommended: el.groupBloodNotAllowed[bloodType],
-    })) ?? [];
+  const { result: productsList, total_results: productsAmount } =
+    useSelector(selectProducts);
+
+  const { ref } = useInView({
+    onChange: inView => {
+      if (inView) {
+        changePage();
+      }
+    },
+    rootMargin: '1000px',
+  });
 
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    dispatch(fetchProducts({ ...filters, page: pageNumber }));
+  }, [dispatch, filters, pageNumber]);
+
+  useEffect(() => {
+    if (pageNumber === 1 && isNewRequest) {
+      setProducts([]);
+      resetIsNewRequest();
+    }
+  }, [isNewRequest, pageNumber, resetIsNewRequest]);
+
+  useEffect(() => {
+    if (productsList && productsList[0]?._id !== products[0]?._id) {
+      setProducts(prev => [...prev, ...productsList]);
+    }
+  }, [productsList]);
 
   return (
     <>
-      {productItems.length > 0 ? (
-        <ProductsListUl>
-          {productItems.map(product => (
+      {products.length > 0 ? (
+        <ProductsListUl id="products-list">
+          {products.map(product => (
             <ProductsItem key={product.title} product={product} />
           ))}
+          <div ref={products.length < productsAmount ? ref : null}></div>
         </ProductsListUl>
       ) : (
         <SearchNotResult />

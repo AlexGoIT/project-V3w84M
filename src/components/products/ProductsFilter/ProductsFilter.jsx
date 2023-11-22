@@ -1,7 +1,7 @@
 import sprite from '../../../assets/images/sprite.svg';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories, fetchProducts } from 'redux/api/apiOperations';
+import { fetchCategories } from 'redux/api/apiOperations';
 import { selectCategories } from 'redux/api/apiSelectors';
 import {
   ProdFilterCategorySlct,
@@ -18,7 +18,7 @@ import {
 } from './ProductsFilter.styled';
 import { useFormik } from 'formik';
 
-const ProductsFilter = () => {
+const ProductsFilter = ({ handleSetFilters }) => {
   const dispatch = useDispatch();
   const productCategories = useSelector(selectCategories);
   const formik = useFormik({
@@ -37,7 +37,7 @@ const ProductsFilter = () => {
     );
     const payload = Object.fromEntries(filledValues);
 
-    dispatch(fetchProducts(payload));
+    handleSetFilters(payload);
   };
 
   const handleChange = e => {
