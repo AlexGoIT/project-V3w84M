@@ -83,28 +83,43 @@ const StatisticsInfo = () => {
       </CalWrapper>
 
       <NumberUsersWrapper>
+        <ImageThumb w={40} h={40} bgColor={'#ef8964'}>
+          <svg width="20" height="20" fill="#efede8">
+            <use href={`${sprite}#play-2`} />
+          </svg>
+        </ImageThumb>
         <NumberUsersInfo>
           <NumberUsers>{formatNumber(numberUsers)}</NumberUsers>
-          <NumberUsersText>users</NumberUsersText>
+          <NumberUsersText>Users</NumberUsersText>
         </NumberUsersInfo>
       </NumberUsersWrapper>
 
       <TotalHoursWrapper>
-        <TotalHoursInfo>
-          <TotalHours>
-            {formatNumber(totalHoursSpentTrainingAllUsers)}
-          </TotalHours>
-          <TotalHoursText>Total Hours</TotalHoursText>
-        </TotalHoursInfo>
+        <ImageThumb w={24} h={24} bgColor={'#efa082'}>
+          <svg width="16" height="16" fill="#efede8">
+            <use href={`${sprite}#figure`} />
+          </svg>
+        </ImageThumb>
+         <TotalHoursInfo>
+            <TotalHours>
+              {formatNumber(totalHoursSpentTrainingAllUsers)}
+            </TotalHours>
+              <TotalHoursText>hours</TotalHoursText>
+        </TotalHoursInfo>       
       </TotalHoursWrapper>
 
       <TotalNumberTrainingWrapper>
+        <ImageThumb w={40} h={40} bgColor={'#ef8964'}>
+          <svg width="20" height="20" fill="#efede8">
+            <use href={`${sprite}#play-2`} />
+          </svg>
+        </ImageThumb>
         <TotalNumberTrainingInfo>
           <TotalNumberTraining>
             {formatNumber(totalNumberTrainingAllUsers)}
           </TotalNumberTraining>
           <TotalNumberTrainingText>
-            Total number Training
+            Total number training
           </TotalNumberTrainingText>
         </TotalNumberTrainingInfo>
       </TotalNumberTrainingWrapper>
