@@ -25,7 +25,7 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     const formatNewDate = Math.floor(newDate.getTime() / (24 * 60 * 60 * 1000));
     const formatRegisterDate = Math.floor(createdDate / (24 * 60 * 60 * 1000));
 
-    if (formatNewDate <= formatRegisterDate) {
+    if (formatNewDate < formatRegisterDate) {
       setDisabledLeft(true);
     }
     setDisabledRight(false);
@@ -39,7 +39,7 @@ const DaySwitch = ({ selectedDate, setSelectedDate, user }) => {
     const formatNewDate = Math.floor(newDate.getTime() / (24 * 60 * 60 * 1000));
     const formatTodayDate = Math.floor(new Date() / (24 * 60 * 60 * 1000)) - 1;
 
-    if (formatNewDate >= formatTodayDate) {
+    if (formatNewDate > formatTodayDate) {
       setDisabledRight(true);
     }
     setDisabledLeft(false);
